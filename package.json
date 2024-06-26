@@ -1,5 +1,8 @@
 {
   "homepage": "https://github.com/jininc3/motivdle.git",
+  "engines": {
+  "node": ">=14.x"
+  },
   "name": "motivdle",
   "version": "0.1.0",
   "private": true,
