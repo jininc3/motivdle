@@ -1,0 +1,74 @@
+
+
+.overlay2 {
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  
+}
+
+
+
+  .quotey {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  color: wheat;
+  opacity: 0;
+  
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+       /* Optional: add some vertical movement */
+    }
+    to {
+      opacity: 1;
+
+    }
+  }
+  
+  .fade-in-element {
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    
+  }
+  
+  .fade-in {
+    opacity: 1;
+    
+  }
+  
+
+  .quote-button2 {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color:#181818;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    top: 100px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    
+}
+
+.quote-button2:hover {
+  background-color: white;
+  color: #181818;
+}
+
+.background-quote {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  background: url('../assets/backgroundImage.png') no-repeat center center/cover;
+  filter: brightness(50%);
+  
+}

@@ -1,0 +1,26 @@
+import React from 'react';
+import './Home.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
+
+
+function Home() {
+    const navigate = useNavigate();
+
+  const handleQuoteClick = () => {
+    navigate('/quote');
+  };
+
+  return (
+    <div className="home">
+      <div className="background-home"></div>
+      <div className="overlay1">   
+          <button className="quote-button" onClick={handleQuoteClick}>Motivation of the day</button>
+      
+          </div>
+        
+    </div>
+    
+  );
+}
+
+export default Home;
