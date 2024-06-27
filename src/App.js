@@ -6,6 +6,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Quote from './components/Quote';
 import Image from './components/Image';
+import Video from './components/Video';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/quote" element={<Quote />} />
           <Route path="/image" element={<Image />} />
+          <Route path="/video" element={<Video />} />
         </Routes>
         <div className="subscribe">
           <h2>Subscribe</h2>

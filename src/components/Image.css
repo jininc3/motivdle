@@ -1,8 +1,41 @@
-.background-quote {
-    position: relative;
-    width: 100%;
-    height: 100vh; 
-    background: url('../assets/backgroundImage.png') no-repeat center center/cover;
-    filter: brightness(50%);
-    
-  }
+.background-image {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  background: url('../assets/backgroundImage.png') no-repeat center center/cover;
+  filter: brightness(50%);
+}
+
+.overlay-i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.middle-image {
+  width: 400px;
+  height: auto;
+  margin-bottom: 20px; /* Space between the image and button */
+}
+
+.image-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #181818;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.image-button:hover {
+  background-color: white;
+  color: #181818;
+}
