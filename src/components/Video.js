@@ -1,16 +1,23 @@
 import React from 'react';
-import './Video.css'; 
+import './Video.css'; // Import the CSS file for the video page
+import { Link } from 'react-router-dom';
+import videoSrc from '../assets/video1.mp4'; // Import the video file
 
-
-
-function Image() {
+function Video() {
     return (
         <div>
-            <div className="background-image"></div>
-               
+            <div className="background-video"></div>
+            <div className="overlay-v">
+                <video className="middle-video" controls autoPlay>
+                    <source src={videoSrc} type="video/mp4" /> {/* Use imported video source */}
+                    Your browser does not support the video tag.
+                </video>
+                <Link to="/">
+                    <button className="video-button">Go chase your dreams</button>
+                </Link>
             </div>
-        
+        </div>
     );
 }
 
-export default Image;
+export default Video;

@@ -1,0 +1,45 @@
+.background-video {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    background: url('../assets/backgroundImage.png') no-repeat center center/cover;
+    filter: brightness(50%);
+}
+
+.overlay-v {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.middle-video {
+    width: 80%; /* Adjust the width as needed */
+    height: auto;
+    margin-bottom: 20px; /* Space between the video and button */
+    border: 2px solid #fff; /* Add border */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.video-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #181818;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin-top: 20px; /* Add margin to separate button from video */
+}
+
+.video-button:hover {
+    background-color: white;
+    color: #181818;
+}

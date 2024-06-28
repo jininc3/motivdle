@@ -12,21 +12,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar">
-          <ul className="nav-links">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </nav>
+            
+              
+            
+            
+          
+        
         <div className="overlay">
-          <h1 className="title">Motivdle</h1>
+          <Link to="/"><h1 className="title">Motivdle</h1></Link>
           <p className="subtitle">Inspire. Empower. Achieve.</p>
         </div>
         <Routes>

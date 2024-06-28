@@ -10,28 +10,8 @@ body, html {
   text-align: center;
 }
 
-nav {
-  margin-bottom: 20px;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
 
-li {
-  display: inline;
-  margin-right: 10px;
-}
-
-a {
-  text-decoration: none;
-  color: #61dafb;
-}
-
-a:hover {
-  text-decoration: underline;
-}
 
 body, html, #root {
   margin: 0;
@@ -54,28 +34,19 @@ body, html, #root {
   background-color: transparent;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bolder;
-}
 
-.nav-links li {
-  margin: 0 10px;
-}
-
-.nav-links a {
-  color: white;
+a {
   text-decoration: none;
+  color: inherit; /* Ensure the link inherits the color of the parent */
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
+a:hover {
+  text-decoration: none; /* Remove underline on hover */
 }
 
+a .title:hover {
+  text-decoration: none; /* Ensure title is not underlined on hover */
+}
 
 
 .title {

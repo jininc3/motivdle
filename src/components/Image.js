@@ -1,7 +1,7 @@
 import React from 'react';
 import './Image.css'; 
 import { Link } from 'react-router-dom';
-import middleImage from '../assets/image1.jpg'; // Import your image
+import middleImage from '../assets/image2.jpg'; // Import your image
 
 function Image() {
     return (
