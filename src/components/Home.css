@@ -4,6 +4,7 @@
   width: 100%;
   height: 100vh; 
   background: url('../assets/backgroundImage.png') no-repeat center center/cover;
+  filter: brightness(50%);
 }
   
   .home {
@@ -20,29 +21,42 @@
   
   .overlay1 {
     position: absolute;
-    top: 124px;
+   
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
+    top: 500px;
+    
     
   }
   
   .quote-button {
      /* Add space above the button */
     padding: 10px 20px;
-    font-size: 2rem;
+    font-size: 1.2rem;
     background-color:#181818;
     color: white;
     border: none;
     cursor: pointer;
     position: relative;
-    top: 500px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+   margin-top: 100px;
   }
   
   .quote-button:hover {
     background-color: white;
     color: #181818;
+  }
+
+  .subsubtitle {
+    font-size: 2.5rem;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+
   }

@@ -10,10 +10,13 @@ function Home() {
     navigate('/quote');
   };
 
+
+
   return (
     <div className="home">
       <div className="background-home"></div>
       <div className="overlay1">   
+        <p className="subsubtitle">Today's genre:<br></br> Chase your dreams</p>
           <button className="quote-button" onClick={handleQuoteClick}>Motivational quote</button>
       
           </div>

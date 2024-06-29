@@ -17,7 +17,7 @@ function Quote() {
     <div>
       <div className="background-quote"></div>
         <div className="overlay2">
-        <p className="quotey fade-in-element">“The best way to predict the future is to invent it.” - Alan Kay</p>
+        <p className="quotey fade-in-element">"Dreams don't work unless you do. - John C. Maxwell"</p>
         <Link to="/image">
                     <button className="quote-button2">Motivational Image</button>
                 </Link>
