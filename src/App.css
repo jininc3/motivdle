@@ -35,6 +35,8 @@ body, html, #root {
 }
 
 
+/* Existing CSS rules */
+
 a {
   text-decoration: none;
   color: inherit; /* Ensure the link inherits the color of the parent */
@@ -48,9 +50,15 @@ a .title:hover {
   text-decoration: none; /* Ensure title is not underlined on hover */
 }
 
+.overlay:hover .title,
+.overlay:hover .subtitle {
+  color: #181818; /* Change this color to your desired hover color */
+}
+
+
 
 .title {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   position: relative;
@@ -60,7 +68,7 @@ a .title:hover {
 }
 
 .subtitle {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0;
   font-family: 'Playfair Display', serif;
   position: relative;

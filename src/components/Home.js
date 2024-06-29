@@ -14,7 +14,7 @@ function Home() {
     <div className="home">
       <div className="background-home"></div>
       <div className="overlay1">   
-          <button className="quote-button" onClick={handleQuoteClick}>Motivation of the day</button>
+          <button className="quote-button" onClick={handleQuoteClick}>Motivational quote</button>
       
           </div>
         

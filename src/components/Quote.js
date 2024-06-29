@@ -19,7 +19,7 @@ function Quote() {
         <div className="overlay2">
         <p className="quotey fade-in-element">“The best way to predict the future is to invent it.” - Alan Kay</p>
         <Link to="/image">
-                    <button className="quote-button2">Go to Image Page</button>
+                    <button className="quote-button2">Motivational Image</button>
                 </Link>
                 </div>
    

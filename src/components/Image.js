@@ -10,7 +10,7 @@ function Image() {
             <div className="overlay-i">
                 <img src={middleImage} alt="Middle" className="middle-image"/>
                 <Link to="/video">
-                    <button className="image-button">Go to Video Page</button>
+                    <button className="image-button">Motivational video</button>
                 </Link>
             </div>
         </div>
