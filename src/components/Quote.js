@@ -17,6 +17,8 @@ function Quote() {
     <div>
       <div className="background-quote"></div>
         <div className="overlay2">
+        <Link to="/"><h1 className="title-quote">Motivdle</h1></Link>
+        <Link to="/"><p className="subtitle-quote">Inspire. Empower. Achieve.</p></Link>  
         <p className="quotey fade-in-element">"Dreams don't work unless you do. - John C. Maxwell"</p>
         <Link to="/image">
                     <button className="quote-button2">Motivational Image</button>

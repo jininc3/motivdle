@@ -8,7 +8,7 @@
 
 .overlay-i {
   position: absolute;
-  top: 50%;
+  top:370px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -22,6 +22,8 @@
   width: 300px;
   height: auto;
   margin-bottom: 20px; /* Space between the image and button */
+  position: relative;
+  top: 100px;
 }
 
 .image-button {
@@ -33,6 +35,8 @@
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+  position: relative;
+  top: 100px;
 }
 
 .image-button:hover {

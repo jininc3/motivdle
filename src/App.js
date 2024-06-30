@@ -19,8 +19,6 @@ function App() {
           
         
         <div className="overlay">
-          <Link to="/"><h1 className="title">Motivdle</h1></Link>
-          <Link to="/"><p className="subtitle">Inspire. Empower. Achieve.</p></Link>
         </div>
         <Routes>
           <Route path="/" element={<Home />} />

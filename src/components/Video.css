@@ -8,7 +8,7 @@
 
 .overlay-v {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -25,6 +25,8 @@
     border: 2px solid #fff; /* Add border */
     border-radius: 10px; /* Round the corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    position:relative;
+    top: 100px;
 }
 
 .video-button {
@@ -37,9 +39,30 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     margin-top: 20px; /* Add margin to separate button from video */
+    position: relative;
+    top: 100px;
 }
 
 .video-button:hover {
     background-color: white;
     color: #181818;
 }
+
+.title-video {
+    font-size: 4rem;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    text-align: center;
+    color: white;
+    
+  }
+  
+  .subtitle-video {
+    font-size: 3rem;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    text-align: center;
+    color: white;
+  }

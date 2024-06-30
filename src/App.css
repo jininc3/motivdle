@@ -58,7 +58,7 @@ a .title:hover {
 
 
 .title {
-  font-size: 4rem;
+  font-size: 12rem;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   position: relative;
@@ -78,7 +78,7 @@ a .title:hover {
 
 .overlay {
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;

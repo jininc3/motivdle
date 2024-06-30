@@ -2,7 +2,7 @@
 
 .overlay2 {
   position: absolute;
-  top: 500px;
+  top: 200px;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -19,6 +19,8 @@
   line-height: 1.5;
   color: wheat;
   opacity: 0;
+  top: 200px;
+  position: relative;
   
   }
 
@@ -53,7 +55,7 @@
     border: none;
     cursor: pointer;
     position: relative;
-    top: 100px;
+    top: 300px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     
@@ -71,4 +73,24 @@
   background: url('../assets/backgroundImage.png') no-repeat center center/cover;
   filter: brightness(50%);
   
+}
+
+
+.title-quote {
+  font-size: 4rem;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  text-align: center;
+  color: white;
+  
+}
+
+.subtitle-quote {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  text-align: center;
+  color: white;
 }

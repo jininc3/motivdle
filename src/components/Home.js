@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css'; // Import the CSS file for styling
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function Home() {
@@ -15,8 +16,9 @@ function Home() {
   return (
     <div className="home">
       <div className="background-home"></div>
-      <div className="overlay1">   
-        <p className="subsubtitle">Today's genre:<br></br> Chase your dreams</p>
+      <div className="overlay1">
+        <Link to="/"><h1 className="title-home">Motivdle</h1></Link>
+        <Link to="/"><p className="subtitle-home">Inspire. Empower. Achieve.</p></Link>   
           <button className="quote-button" onClick={handleQuoteClick}>Motivational quote</button>
       
           </div>
@@ -27,3 +29,5 @@ function Home() {
 }
 
 export default Home;
+
+
