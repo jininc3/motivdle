@@ -30,15 +30,17 @@
 }
 
 .video-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #181818;
-    color: white;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Increase padding */
+    margin: 10px; /* Add margin */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+    font-family: 'Arial', sans-serif; /* Match font style */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     border: none;
     cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    margin-top: 20px; /* Add margin to separate button from video */
     position: relative;
     top: 100px;
 }
@@ -55,6 +57,7 @@
     position: relative;
     text-align: center;
     color: white;
+    top: 0%;
     
   }
   
@@ -65,4 +68,10 @@
     position: relative;
     text-align: center;
     color: white;
+    top: 0%;
+  }
+
+  .titles {
+    position: absolute;
+    top: 0px;
   }

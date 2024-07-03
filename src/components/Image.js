@@ -7,9 +7,11 @@ function Image() {
     return (
         <div>
             <div className="background-image"></div>
+           
+            
             <div className="overlay-i">
-            <Link to="/"><h1 className="title-quote">Motivdle</h1></Link>
-            <Link to="/"><p className="subtitle-quote">Inspire. Empower. Achieve.</p></Link> 
+            <Link to="/"><h1 className="title-image">Motivdle</h1></Link>
+            <Link to="/"><p className="subtitle-image">Inspire. Empower. Achieve.</p></Link> 
                 <img src={middleImage} alt="Middle" className="middle-image"/>
                 <Link to="/video">
                     <button className="image-button">Motivational video</button>

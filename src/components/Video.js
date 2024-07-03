@@ -7,10 +7,11 @@ function Video() {
     return (
         <div>
             <div className="background-video"></div>
+            
             <div className="overlay-v">
             <Link to="/"><h1 className="title-video">Motivdle</h1></Link>
-            <Link to="/"><p className="subtitle-video">Inspire. Empower. Achieve.</p></Link> 
-                <video className="middle-video" controls autoPlay>
+            <Link to="/"><p className="subtitle-video">Inspire. Empower. Achieve.</p></Link>
+                <video className="middle-video" controls>
                     <source src={videoSrc} type="video/mp4" /> {/* Use imported video source */}
                     Your browser does not support the video tag.
                 </video>
