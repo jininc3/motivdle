@@ -11,8 +11,7 @@ function Quote() {
       quoteyElement.classList.add('fade-in');
     }, 400); // Adjust the delay as needed
   }, []);
-
-
+  
   return (
     <div>
       <div className="background-quote"></div>
@@ -23,7 +22,7 @@ function Quote() {
         <Link to="/"><p className="subtitle-quote">Inspire. Empower. Achieve.</p></Link>
         <p className="quotey fade-in-element">"Dreams don't work unless you do. - John C. Maxwell"</p>
         <Link to="/image">
-                    <button className="quote-button2">Motivational Image</button>
+                    <button className="quote-button2" id="transitionButton">Motivational Image</button>
                 </Link>
                 </div>
    

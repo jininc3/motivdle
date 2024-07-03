@@ -2,7 +2,7 @@
 
 .overlay2 {
   position: absolute;
-  top: 200px;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -95,4 +95,15 @@
   position: relative;
   text-align: center;
   color: white;
+}
+
+.section {
+  height: 100vh;
+  padding: 20px;
+}
+.hidden-section {
+  display: none;
+}
+.visible-section {
+  display: block;
 }
