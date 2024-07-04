@@ -2,11 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
-import About from './components/About';
-import Contact from './components/Contact';
 import Quote from './components/Quote';
 import Image from './components/Image';
 import Video from './components/Video';
+import Test from './components/Test';
 
 function App() {
   return (
@@ -22,11 +21,10 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/quote" element={<Quote />} />
           <Route path="/image" element={<Image />} />
           <Route path="/video" element={<Video />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
         <div className="subscribe">
           <h2>Subscribe</h2>

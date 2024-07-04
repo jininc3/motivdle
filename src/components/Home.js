@@ -22,8 +22,9 @@ function Home() {
           <button className="quote-button" onClick={handleQuoteClick}>Motivational quote</button>
       
           </div>
-        
+          <Link to="/test">hi</Link>
     </div>
+    
     
   );
 }
