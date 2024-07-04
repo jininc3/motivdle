@@ -15,7 +15,7 @@ function Video() {
                     <source src={videoSrc} type="video/mp4" /> {/* Use imported video source */}
                     Your browser does not support the video tag.
                 </video>
-                <Link to="/">
+                <Link to="/comment">
                     <button className="video-button">Go chase your dreams</button>
                 </Link>
             </div>
