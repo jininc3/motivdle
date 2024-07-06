@@ -1,14 +1,14 @@
-.background-video {
+.background-image {
     position: relative;
     width: 100%;
     height: 100vh; 
     background: url('../assets/backgroundImage.png') no-repeat center center/cover;
     filter: brightness(50%);
-}
-
-.overlay-v {
-    position: absolute;
-    top: 32%;
+  }
+  
+  .overlay-i {
+    position: relative;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -16,20 +16,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.middle-video {
-    width: 80%; /* Adjust the width as needed */
+  }
+  
+  .middle-image {
+    width: 300px;
     height: auto;
-    margin-bottom: 20px; /* Space between the video and button */
-    border: 2px solid #fff; /* Add border */
-    border-radius: 10px; /* Round the corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
-    position:relative;
-    top: 100px;
-}
-
-.video-button {
+    margin-bottom: 20px; /* Space between the image and button */
+  }
+  
+  .image-button {
     background-color: #4CAF50; /* Green background */
     color: white; /* White text */
     padding: 10px 20px; /* Increase padding */
@@ -41,37 +36,26 @@
     border: none;
     cursor: pointer;
     font-weight: bold;
-    position: relative;
-    top: 100px;
-}
-
-.video-button:hover {
+  }
+  
+  .image-button:hover {
     background-color: white;
     color: #181818;
-}
-
-.title-video {
+  }
+  
+  .title-image {
     font-size: 4rem;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    position: relative;
     text-align: center;
     color: white;
-    top: 0%;
-    
   }
   
-  .subtitle-video {
+  .subtitle-image {
     font-size: 3rem;
     margin: 0;
     font-family: 'Playfair Display', serif;
-    position: relative;
     text-align: center;
     color: white;
-    top: 0%;
   }
-
-  .titles {
-    position: absolute;
-    top: 0px;
-  }
+  

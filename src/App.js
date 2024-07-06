@@ -2,11 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
-import Quote from './components/Quote';
-import Image from './components/Image';
-import Video from './components/Video';
-import Test from './components/Test';
-import Comment from './components/Comment';
+
 
 function App() {
   return (
@@ -22,11 +18,6 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/quote" element={<Quote />} />
-          <Route path="/image" element={<Image />} />
-          <Route path="/video" element={<Video />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/comment" element={<Comment />} />
         </Routes>
         <div className="subscribe">
           <h2>Subscribe</h2>

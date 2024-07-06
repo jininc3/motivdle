@@ -1,0 +1,109 @@
+
+
+.overlay2 {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  
+}
+
+
+
+  .quotey {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  color: wheat;
+  opacity: 0;
+  top: 200px;
+  position: relative;
+  
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+       /* Optional: add some vertical movement */
+    }
+    to {
+      opacity: 1;
+
+    }
+  }
+  
+  .fade-in-element {
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    
+  }
+  
+  .fade-in {
+    opacity: 1;
+    
+  }
+  
+
+  .quote-button2 {
+    position: relative;
+    top: 300px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Increase padding */
+    margin: 10px; /* Add margin */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+    font-family: 'Arial', sans-serif; /* Match font style */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    
+}
+
+.quote-button2:hover {
+  background-color: white;
+  color: #181818;
+}
+
+.background-quote {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  background: url('../assets/backgroundImage.png') no-repeat center center/cover;
+  filter: brightness(50%);
+  
+}
+
+
+.title-quote {
+  font-size: 4rem;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: white;
+  
+}
+
+.subtitle-quote {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.section {
+  height: 100vh;
+  padding: 20px;
+}
+.hidden-section {
+  display: none;
+}
+.visible-section {
+  display: block;
+}
