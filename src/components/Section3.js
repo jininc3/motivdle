@@ -1,6 +1,5 @@
 import React from 'react';
 import './Section3.css'; 
-import { Link } from 'react-router-dom';
 import middleImage from '../assets/image3.jpg'; // Import your image
 
 const Section3 = React.forwardRef(({ handleScroll }, ref) => {
