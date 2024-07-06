@@ -12,9 +12,11 @@ const Section2 = React.forwardRef(({ handleScroll }, ref) => {
 
   return (
     <div id="section2" className="section" ref={ref}>
-        <p className="quotey fade-in-element">"Dreams don't work unless you do. - John C. Maxwell"</p>
+      <div className="overlay2">
+        <p className="quotey fade-in-element">"Dreams don't work unless you do."<br /> - John C. Maxwell</p>
         <button className="quote-button2" id="transitionButton" onClick={handleScroll}>Motivational Image</button>
       </div>
+    </div>
   );
 });
 

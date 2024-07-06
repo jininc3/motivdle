@@ -24,8 +24,14 @@
     height: auto;
     margin-bottom: 20px; /* Space between the video and button */
     border: 2px solid #fff; /* Add border */
-    border-radius: 10px; /* Round the corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    border-radius: 15px; /* Round the corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for hover effect */
+}
+
+.middle-video:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
 }
 
 .video-button {
@@ -40,11 +46,14 @@
     border: none;
     cursor: pointer;
     font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for hover effect */
 }
 
 .video-button:hover {
     background-color: white;
     color: #181818;
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 .title-video {

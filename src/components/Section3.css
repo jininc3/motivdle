@@ -4,9 +4,9 @@
     height: 100vh; 
     background: url('../assets/backgroundImage.png') no-repeat center center/cover;
     filter: brightness(50%);
-  }
-  
-  .overlay-i {
+}
+
+.overlay-i {
     position: relative;
     top: 50%;
     left: 50%;
@@ -16,15 +16,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .middle-image {
-    width: 300px;
+    justify-content: center; /* Center content vertically */
+}
+
+.middle-image {
+    width: 400px;
     height: auto;
     margin-bottom: 20px; /* Space between the image and button */
-  }
-  
-  .image-button {
+    border: 5px solid #fff; /* Add white border */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better visual appeal */
+    transition: transform 0.3s ease; /* Add smooth transition for hover effect */
+}
+
+.middle-image:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.image-button {
     background-color: #4CAF50; /* Green background */
     color: white; /* White text */
     padding: 10px 20px; /* Increase padding */
@@ -36,26 +45,26 @@
     border: none;
     cursor: pointer;
     font-weight: bold;
-  }
-  
-  .image-button:hover {
+}
+
+.image-button:hover {
     background-color: white;
     color: #181818;
-  }
-  
-  .title-image {
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.title-image {
     font-size: 4rem;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     color: white;
-  }
-  
-  .subtitle-image {
+}
+
+.subtitle-image {
     font-size: 3rem;
     margin: 0;
     font-family: 'Playfair Display', serif;
     text-align: center;
     color: white;
-  }
-  
+}
