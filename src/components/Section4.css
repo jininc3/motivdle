@@ -20,7 +20,7 @@
 }
 
 .middle-video {
-    width: 50%; /* Adjust the width as needed */
+    max-width: 500px; /* Adjust the width as needed */
     height: auto;
     margin-bottom: 20px; /* Space between the video and button */
     border: 2px solid #fff; /* Add border */

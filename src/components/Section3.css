@@ -22,7 +22,7 @@
 .middle-image {
     width: 400px;
     height: auto;
-    margin-bottom: 20px; /* Space between the image and button */
+    margin-bottom: 50px; /* Space between the image and button */
     border: 5px solid #fff; /* Add white border */
     border-radius: 10px; /* Round the corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better visual appeal */
