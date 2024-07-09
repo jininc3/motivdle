@@ -56,31 +56,31 @@ body {
   }
 
 .title-home {
-    font-size: 10rem;
+    font-size: 17rem;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     position: relative;
     text-align: center;
     color: white;
-    top:30%;
+    top:20%;
     
   }
   
 .subtitle-home {
-    font-size: 3rem;
+    font-size: 5rem;
     margin: 0;
     font-family: 'Playfair Display', serif;
     position: relative;
     text-align: center;
     color: white;
-    top: 30%;
+    top: 20%;
   }
 
 
   .logo {
     position: relative;
-    top: 35%;
-    left: 15%;
+    top: 25%;
+    left: 25%;
     width: 100px; /* Adjust the size as needed */
     height: auto;
     z-index: 50;
