@@ -20,18 +20,19 @@
 }
 
 .middle-video {
-    max-width: 500px; /* Adjust the width as needed */
+    max-width: 400px; /* Adjust the width as needed */
     height: auto;
     margin-bottom: 20px; /* Space between the video and button */
     border: 2px solid #fff; /* Add border */
     border-radius: 15px; /* Round the corners */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for hover effect */
+    opacity: 0; /* Initially hidden */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out; /* Add smooth transition for hover effect and fade-in */
 }
 
-.middle-video:hover {
+.middle-video.fade-in {
+    opacity: 1;
     transform: scale(1.05); /* Slightly increase size on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
 }
 
 .video-button {
@@ -46,14 +47,15 @@
     border: none;
     cursor: pointer;
     font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for hover effect */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
+    position: relative;
+    top: 50px;
 }
 
-.video-button:hover {
-    background-color: white;
-    color: #181818;
-    transform: scale(1.05); /* Slightly increase size on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+.video-button.fade-in {
+    opacity: 1;
+    transform: translateY(-20px); /* Slight upward movement */
 }
 
 .title-video {

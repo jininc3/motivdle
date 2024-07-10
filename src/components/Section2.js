@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
 
 const quotes = [
@@ -13,23 +13,34 @@ const quotes = [
 
 const Section2 = React.forwardRef(({ handleScroll }, ref) => {
   const [quote, setQuote] = useState("");
+  const quoteyRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     const today = new Date();
     const quoteIndex = today.getDate() % quotes.length;
     setQuote(quotes[quoteIndex]);
 
-    const quoteyElement = document.querySelector('.quotey');
-    setTimeout(() => {
-      quoteyElement.classList.add('fade-in');
-    }, 800); // Adjust the delay as needed
+    if (quoteyRef.current) {
+      setTimeout(() => {
+        quoteyRef.current.classList.add('fade-in');
+      }, 800); // Adjust the delay as needed
+    }
+
+    if (buttonRef.current) {
+      setTimeout(() => {
+        buttonRef.current.classList.add('fade-in');
+      }, 1000); // Adjust the delay as needed
+    }
   }, []);
 
   return (
     <div id="section2" className="section" ref={ref}>
       <div className="overlay2">
-        <p className="quotey fade-in-element">{quote}</p>
-        <button className="quote-button2" id="transitionButton" onClick={handleScroll}>Motivational Image</button>
+        <div className="quote-background">
+          <p ref={quoteyRef} className="quotey fade-in-element">{quote}</p>
+        </div>
+        <button ref={buttonRef} className="quote-button2" id="transitionButton" onClick={handleScroll}>Motivational Image</button>
       </div>
     </div>
   );

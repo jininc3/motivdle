@@ -1,111 +1,119 @@
 .overlay2 {
-    position: relative;
-    top: 50%; /* Center vertically */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    width: 80%; /* Ensure it doesn't stretch too wide */
-  }
-  
-  .quotey {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem; /* Adjust font size to fit better over multiple lines */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for better readability */
-    line-height: 1.5;
-    color: wheat;
-    opacity: 0;
-    position: relative;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Smooth transition */
-    max-width: 80%; /* Limit the width to ensure wrapping */
-    margin: 0 auto; /* Center horizontally */
-    word-break: break-word; /* Ensure words wrap properly */
-  }
-  
-  .quotey.fade-in {
-    opacity: 1;
-    transform: translateY(-20px); /* Slight upward movement */
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px); /* Start with slight downward position */
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0); /* End in the final position */
-    }
-  }
-  
-  .quote-button2 {
-    position: relative;
-    top: 50px;
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Increase padding */
-    margin: 10px; /* Add margin */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Increase font size */
-    font-family: 'Arial', sans-serif; /* Match font style */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for hover effect */
-  }
-  
-  .quote-button2:hover {
-    background-color: white;
-    color: #181818;
-    transform: scale(1.05); /* Slightly increase size on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
-  }
-  
-  .background-quote {
-    position: relative;
-    width: 100%;
-    height: 100vh; 
-    background: url('../assets/backgroundImage.png') no-repeat center center/cover;
-    filter: brightness(50%);
-  }
-  
-  .title-quote {
-    font-size: 4rem;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    color: white;
-  }
-  
-  .subtitle-quote {
-    font-size: 3rem;
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    position: relative;
-    text-align: center;
-    color: white;
-  }
-  
-  .section {
-    height: 100vh;
-    padding: 20px;
-  }
-  
-  .hidden-section {
-    display: none;
-  }
-  
-  .visible-section {
-    display: block;
-  }
-
-  .title-s2 {
-    position: relative;
-    font: 1rem;
-    top: 0%;
-    left: -25%;
-    font-family: 'Montserrat', sans-serif;
-    color: white;
+  position: relative;
+  top: 50%; /* Center vertically */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  width: 80%; /* Ensure it doesn't stretch too wide */
 }
-  
+
+.quote-background {
+  position: relative;
+  top: -100px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 20px; /* Add some padding around the text */
+  border-radius: 10px; /* Optional: rounded corners */
+  display: inline-block; /* Ensure the background fits tightly around the text */
+  padding-top: 50px;
+}
+
+.quotey {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem; /* Adjust font size to fit better over multiple lines */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for better readability */
+  line-height: 1.5;
+  color: wheat;
+  opacity: 0;
+  position: relative;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Smooth transition */
+  max-width: 80%; /* Limit the width to ensure wrapping */
+  margin: 0 auto; /* Center horizontally */
+  word-break: break-word; /* Ensure words wrap properly */
+}
+
+.quotey.fade-in {
+  opacity: 1;
+  transform: translateY(-20px); /* Slight upward movement */
+}
+
+.quote-button2 {
+  position: relative;
+  top: 50px;
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Increase padding */
+  margin: 10px; /* Add margin */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Increase font size */
+  font-family: 'Arial', sans-serif; /* Match font style */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
+}
+
+.quote-button2.fade-in {
+  opacity: 1;
+  transform: translateY(-20px); /* Slight upward movement */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start with slight downward position */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End in the final position */
+  }
+}
+
+.background-quote {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  background: url('../assets/backgroundImage.png') no-repeat center center/cover;
+  filter: brightness(50%);
+}
+
+.title-quote {
+  font-size: 4rem;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: white;
+}
+
+.subtitle-quote {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.section {
+  height: 100vh;
+  padding: 20px;
+}
+
+.hidden-section {
+  display: none;
+}
+
+.visible-section {
+  display: block;
+}
+
+.title-s2 {
+  position: relative;
+  font: 1rem;
+  top: 0%;
+  left: -25%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}

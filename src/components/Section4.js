@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Section4.css'; 
 import { Link } from 'react-router-dom';
 import video1 from '../assets/video2.mp4';
-import video2 from '../assets/video2.mp4';
-import video3 from '../assets/video3.mp4';
+import video2 from '../assets/video3.mp4';
+import video3 from '../assets/video4.mp4';
 // Import other videos as needed
 
 const videoFiles = [
@@ -21,17 +21,32 @@ const getTodaysVideo = () => {
 
 const Section4 = React.forwardRef((props, ref) => {
     const videoSrc = getTodaysVideo();
-    console.log(`Loading video: ${videoSrc}`); // Debugging line
+    const videoRef = useRef(null);
+    const buttonRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            setTimeout(() => {
+                videoRef.current.classList.add('fade-in');
+            }, 800); // Adjust the delay as needed
+        }
+
+        if (buttonRef.current) {
+            setTimeout(() => {
+                buttonRef.current.classList.add('fade-in');
+            }, 1600); // Adjust the delay as needed
+        }
+    }, []);
 
     return (
         <div id="section4" className="section" ref={ref}>
             <div className="overlay-v">
-                <video className="middle-video" controls>
+                <video ref={videoRef} className="middle-video" controls>
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-                <Link to="/comment">
-                    <button className="video-button">Go chase your dreams</button>
+                <Link to="/">
+                    <button ref={buttonRef} className="video-button">Go chase your dreams</button>
                 </Link>
             </div>
         </div>
