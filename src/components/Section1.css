@@ -90,3 +90,18 @@ body {
   z-index: 50;
   filter: brightness(0) invert(1);
 }
+
+@media (max-width: 768px) {
+  .title-home {
+    font-size: 5rem;
+  }
+
+  .subtitle-home {
+    font-size: 2rem;
+  }
+
+  .test-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

@@ -89,7 +89,18 @@ a .title:hover {
 }
 
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .subscribe {
+    padding: 20px;
+    font-size: 1rem;
+  }
 
+  .subscribe input, .subscribe button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
 
 
 .subscribe {

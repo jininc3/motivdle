@@ -117,3 +117,14 @@
   font-family: 'Montserrat', sans-serif;
   color: white;
 }
+
+@media (max-width: 768px) {
+  .quotey {
+    font-size: 2rem;
+  }
+
+  .quote-button2 {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

@@ -71,3 +71,14 @@
     text-align: center;
     color: white;
 }
+
+@media (max-width: 768px) {
+    .middle-image {
+      width: 90%;
+    }
+  
+    .image-button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
