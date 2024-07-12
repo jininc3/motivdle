@@ -73,3 +73,22 @@
     text-align: center;
     color: white;
 }
+
+@media (max-width: 768px) {
+    .middle-video {
+        max-width: 90%;
+    }
+
+    .video-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .title-video {
+        font-size: 2rem;
+    }
+
+    .subtitle-video {
+        font-size: 1.5rem;
+    }
+}
