@@ -1,11 +1,3 @@
-.background-image {
-    position: relative;
-    width: 100%;
-    height: 100vh; 
-    background: url('../assets/backgroundImage.png') no-repeat center center/cover;
-    filter: brightness(50%);
-}
-
 .overlay-i {
     position: relative;
     top: 50%;
@@ -56,21 +48,6 @@
     transform: translateY(-20px); /* Slight upward movement */
 }
 
-.title-image {
-    font-size: 4rem;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    color: white;
-}
-
-.subtitle-image {
-    font-size: 3rem;
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    color: white;
-}
 
 @media (max-width: 768px) {
     .middle-image {

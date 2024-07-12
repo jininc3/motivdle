@@ -8,16 +8,6 @@
   width: 80%; /* Ensure it doesn't stretch too wide */
 }
 
-.quote-background {
-  position: relative;
-  top: -100px;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  padding: 20px; /* Add some padding around the text */
-  border-radius: 10px; /* Optional: rounded corners */
-  display: inline-block; /* Ensure the background fits tightly around the text */
-  padding-top: 50px;
-}
-
 .quotey {
   font-family: 'Playfair Display', serif;
   font-size: 5rem; /* Adjust font size to fit better over multiple lines */
@@ -39,7 +29,7 @@
 
 .quote-button2 {
   position: relative;
-  top: 50px;
+  top: 500px;
   background-color: #4CAF50; /* Green background */
   color: white; /* White text */
   padding: 10px 20px; /* Increase padding */
@@ -71,52 +61,12 @@
   }
 }
 
-.background-quote {
-  position: relative;
-  width: 100%;
-  height: 100vh; 
-  background: url('../assets/backgroundImage.png') no-repeat center center/cover;
-  filter: brightness(50%);
-}
-
-.title-quote {
-  font-size: 4rem;
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  color: white;
-}
-
-.subtitle-quote {
-  font-size: 3rem;
-  margin: 0;
-  font-family: 'Playfair Display', serif;
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
 .section {
   height: 100vh;
   padding: 20px;
 }
 
-.hidden-section {
-  display: none;
-}
 
-.visible-section {
-  display: block;
-}
-
-.title-s2 {
-  position: relative;
-  font: 1rem;
-  top: 0%;
-  left: -25%;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-}
 
 @media (max-width: 768px) {
   .quotey {

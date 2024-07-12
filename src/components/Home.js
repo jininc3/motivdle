@@ -52,7 +52,7 @@ function Home() {
 
   return (
     <div>
-      <div className="background-test"></div>
+      <div className="background-home"></div>
       <div className="content">
         <Section1 handleScroll={handleScrollToSection2} isButtonVisible={isButtonVisible} />
         {isSection2Visible && <Section2 ref={section2Ref} handleScroll={handleScrollToSection3} />}

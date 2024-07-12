@@ -5,22 +5,6 @@ body {
   padding: 0; /* Ensure there is no padding to avoid unwanted scrolling behavior */
 }
 
-.background-test {
-  position: fixed; /* Keep the background fixed */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: url('../assets/backgroundImage.png') no-repeat center center/cover;
-  filter: brightness(70%);
-  z-index: -1; /* Ensure it stays behind the content */
-}
-
-.content {
-  position: relative; /* Position content relative to allow scrolling */
-  z-index: 1; /* Ensure content stays above the background */
-}
-
 .section {
   height: 100vh;
   display: block;
@@ -51,14 +35,6 @@ body {
 
 .test-button.fade-in {
   opacity: 1; /* Visible after fade-in */
-}
-
-.section2 {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
 }
 
 .title-home {

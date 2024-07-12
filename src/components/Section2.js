@@ -37,12 +37,11 @@ const Section2 = React.forwardRef(({ handleScroll }, ref) => {
   return (
     <div id="section2" className="section" ref={ref}>
       <div className="overlay2">
-        <div className="quote-background">
           <p ref={quoteyRef} className="quotey fade-in-element">{quote}</p>
         </div>
         <button ref={buttonRef} className="quote-button2" id="transitionButton" onClick={handleScroll}>Motivational Image</button>
       </div>
-    </div>
+    
   );
 });
 

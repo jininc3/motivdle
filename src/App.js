@@ -8,12 +8,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-            
-              
-            
-            
-          
-        
         <div className="overlay">
         </div>
         <Routes>
@@ -25,6 +19,9 @@ function App() {
           <input type="email" placeholder="Email" />
           <button>SIGN UP</button>
         </div>
+        <footer class="footer">
+        <p>&copy; 2024 Motivdle. All rights reserved.</p>
+    </footer>
       </div>
     </Router>
   );
