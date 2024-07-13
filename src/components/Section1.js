@@ -16,7 +16,7 @@ function Section1({ handleScroll }) {
   return (
     <div id="section1" className="section">
       <img src="/motivdle-logo.png" alt="Logo" className="logo" /> {/* Update the path here */}
-      <Link to="/"><h1 className="title-home">Motivdle</h1></Link>
+      <Link to="/"><h1 className="title-home">Motivdle.</h1></Link>
       <Link to="/"><p className="subtitle-home">Daily Motivation to inspire.</p></Link>
       <button
         id="scrollButton"

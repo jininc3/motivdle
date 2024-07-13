@@ -13,7 +13,11 @@
   font-size: 5rem; /* Adjust font size to fit better over multiple lines */
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for better readability */
   line-height: 1.5;
-  color: wheat;
+  color: white; /* Change text color to black for better contrast with white background */
+  background-color: transparent; /* Add white background */
+  border: 2px solid white; /* Add black border */
+  padding: 20px; /* Add padding for spacing inside the quote box */
+  border-radius: 10px; /* Add rounded corners */
   opacity: 0;
   position: relative;
   transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Smooth transition */
@@ -30,7 +34,7 @@
 .quote-button2 {
   position: relative;
   top: 500px;
-  background-color: #4CAF50; /* Green background */
+  background-color: black; /* Green background */
   color: white; /* White text */
   padding: 10px 20px; /* Increase padding */
   margin: 10px; /* Add margin */
@@ -47,7 +51,12 @@
 
 .quote-button2.fade-in {
   opacity: 1;
-  transform: translateY(-20px); /* Slight upward movement */
+}
+
+.quote-button2:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: white; /* Change background to white on hover */
+  color: black; /* Change text to green on hover */
 }
 
 @keyframes fadeIn {
@@ -65,8 +74,6 @@
   height: 100vh;
   padding: 20px;
 }
-
-
 
 @media (max-width: 768px) {
   .quotey {

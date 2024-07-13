@@ -18,7 +18,7 @@ body {
 .test-button {
   position: relative;
   top: 30%;
-  background-color: #4CAF50; /* Green background */
+  background-color: black; /* Green background */
   color: white; /* White text */
   padding: 10px 20px; /* Increase padding */
   margin: 10px; /* Add margin */
@@ -35,6 +35,13 @@ body {
 
 .test-button.fade-in {
   opacity: 1; /* Visible after fade-in */
+  
+}
+
+.test-button:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: white; /* Change background to white on hover */
+    color: black; /* Change text to green on hover */
 }
 
 .title-home {

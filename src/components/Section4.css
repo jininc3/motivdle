@@ -1,4 +1,3 @@
-
 .overlay-v {
     position: relative;
     top: 50%;
@@ -25,11 +24,14 @@
 
 .middle-video.fade-in {
     opacity: 1;
-    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.middle-video:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
 }
 
 .video-button {
-    background-color: #4CAF50; /* Green background */
+    background-color: black; /* Green background */
     color: white; /* White text */
     padding: 10px 20px; /* Increase padding */
     margin: 10px; /* Add margin */
@@ -51,6 +53,11 @@
     transform: translateY(-20px); /* Slight upward movement */
 }
 
+.video-button:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
+    background-color: white; /* Change background to white on hover */
+    color: black; /* Change text to green on hover */
+}
 
 @media (max-width: 768px) {
     .middle-video {

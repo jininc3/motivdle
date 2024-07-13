@@ -29,6 +29,14 @@ const Section4 = React.forwardRef((props, ref) => {
             setTimeout(() => {
                 videoRef.current.classList.add('fade-in');
             }, 800); // Adjust the delay as needed
+
+            videoRef.current.addEventListener('mouseenter', () => {
+                videoRef.current.play();
+            });
+
+            videoRef.current.addEventListener('mouseleave', () => {
+                videoRef.current.pause();
+            });
         }
 
         if (buttonRef.current) {
@@ -41,7 +49,7 @@ const Section4 = React.forwardRef((props, ref) => {
     return (
         <div id="section4" className="section" ref={ref}>
             <div className="overlay-v">
-                <video ref={videoRef} className="middle-video" controls>
+                <video ref={videoRef} className="middle-video" controls muted>
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
