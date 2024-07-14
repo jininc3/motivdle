@@ -13,7 +13,7 @@
   font-size: 5rem; /* Adjust font size to fit better over multiple lines */
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for better readability */
   line-height: 1.5;
-  color: white; /* Change text color to black for better contrast with white background */
+  color: #d4af37;
   background-color: transparent; /* Add white background */
   border: 2px solid white; /* Add black border */
   padding: 20px; /* Add padding for spacing inside the quote box */
@@ -24,6 +24,7 @@
   max-width: 80%; /* Limit the width to ensure wrapping */
   margin: 0 auto; /* Center horizontally */
   word-break: break-word; /* Ensure words wrap properly */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .quotey.fade-in {

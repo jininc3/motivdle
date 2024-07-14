@@ -29,4 +29,4 @@ function Section1({ handleScroll }) {
   );
 }
 
-export default Section1;
+export default Section1;  

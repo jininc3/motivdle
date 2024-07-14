@@ -50,8 +50,10 @@ body {
   font-family: 'Montserrat', sans-serif;
   position: relative;
   text-align: center;
-  color: white;
+  color: #d4af37;
   top: 20%;
+  font-weight: bolder;
+  
 }
 
 .subtitle-home {
@@ -60,8 +62,9 @@ body {
   font-family: 'Playfair Display', serif;
   position: relative;
   text-align: center;
-  color: white;
+  color: #d4af37;
   top: 20%;
+  font-weight: bolder;
 }
 
 .logo {
@@ -72,6 +75,7 @@ body {
   height: auto;
   z-index: 50;
   filter: brightness(0) invert(1);
+  
 }
 
 @media (max-width: 768px) {
