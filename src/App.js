@@ -19,7 +19,7 @@ function App() {
           <input type="email" placeholder="Email" />
           <button>SIGN UP</button>
         </div>
-        <footer class="footer">
+        <footer className="footer">
         <p>&copy; 2024 Motivdle. All rights reserved.</p>
     </footer>
       </div>
