@@ -93,3 +93,10 @@ body {
     font-size: 14px;
   }
 }
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('./assets/font/Oswald-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
