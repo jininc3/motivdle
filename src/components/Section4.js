@@ -4,12 +4,26 @@ import { Link } from 'react-router-dom';
 import video1 from '../assets/video2.mp4';
 import video2 from '../assets/video3.mp4';
 import video3 from '../assets/video4.mp4';
+import video4 from '../assets/video4.mp4';
+import video5 from '../assets/video4.mp4';
+import video6 from '../assets/video4.mp4';
+import video7 from '../assets/video4.mp4';
+import video8 from '../assets/video4.mp4';
+import video9 from '../assets/video4.mp4';
+import video10 from '../assets/video4.mp4';
 // Import other videos as needed
 
 const videoFiles = [
     video1,
     video2,
     video3,
+    video4,
+    video5,
+    video6,
+    video7,
+    video8,
+    video9,
+    video10,
     // Add more video imports as needed
 ];
 
