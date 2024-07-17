@@ -1,6 +1,6 @@
 .overlay-v {
     position: relative;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -12,7 +12,7 @@
 }
 
 .middle-video {
-    max-width: 400px; /* Adjust the width as needed */
+    max-width: 20%; /* Adjust the width as needed */
     height: auto;
     margin-bottom: 20px; /* Space between the video and button */
     border: 2px solid #fff; /* Add border */
@@ -31,13 +31,10 @@
 }
 
 .video-button {
-    background-color: black; /* Green background */
-    color: white; /* White text */
     padding: 10px 20px; /* Increase padding */
     margin: 10px; /* Add margin */
     border-radius: 5px; /* Rounded corners */
     font-size: 16px; /* Increase font size */
-    font-family: 'Arial', sans-serif; /* Match font style */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     border: none;
     cursor: pointer;
@@ -46,6 +43,9 @@
     transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
     position: relative;
     top: 50px;
+    background-color: black; /* Green background */
+    color:#ffd935;; /* White text */
+    font-family: "Oswald", sans-serif; 
 }
 
 .video-button.fade-in {

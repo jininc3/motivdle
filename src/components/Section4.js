@@ -68,7 +68,7 @@ const Section4 = React.forwardRef((props, ref) => {
                     Your browser does not support the video tag.
                 </video>
                 <Link to="/">
-                    <button ref={buttonRef} className="video-button">Go chase your dreams</button>
+                    <button ref={buttonRef} className="video-button">GO CHASE YOUR DREAMS</button>
                 </Link>
             </div>
         </div>

@@ -1,6 +1,6 @@
 .overlay2 {
   position: relative;
-  top: 50%; /* Center vertically */
+  top: 40%; /* Center vertically */
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -9,11 +9,11 @@
 }
 
 .quotey {
-  font-family: 'Playfair Display', serif;
+  font-family:  sans-serif;
   font-size: 5rem; /* Adjust font size to fit better over multiple lines */
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for better readability */
   line-height: 1.5;
-  color: #d4af37;
+  color: white;
   background-color: transparent; /* Add white background */
   border: 2px solid white; /* Add black border */
   padding: 20px; /* Add padding for spacing inside the quote box */
@@ -34,20 +34,20 @@
 
 .quote-button2 {
   position: relative;
-  top: 500px;
-  background-color: black; /* Green background */
-  color: white; /* White text */
+  top: 40%;
   padding: 10px 20px; /* Increase padding */
   margin: 10px; /* Add margin */
   border-radius: 5px; /* Rounded corners */
   font-size: 16px; /* Increase font size */
-  font-family: 'Arial', sans-serif; /* Match font style */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
   border: none;
   cursor: pointer;
   font-weight: bold;
   opacity: 0; /* Initially hidden */
   transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
+  background-color: black; /* Green background */
+  color:#ffd935;; /* White text */
+  font-family: "Oswald", sans-serif;
 }
 
 .quote-button2.fade-in {

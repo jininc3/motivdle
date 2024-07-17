@@ -63,6 +63,7 @@ a .title:hover {
   padding: 40px;
   font-size: 1.2rem;
   color: white;
+  font-family: "Oswald", sans-serif;
   
 }
 
@@ -70,6 +71,7 @@ a .title:hover {
   padding: 10px;
   font-size: 1rem;
   margin-right: 10px;
+  font-family: "Oswald", sans-serif;
 }
 
 .subscribe button {
@@ -79,7 +81,7 @@ a .title:hover {
   color: #181818;
   border: none;
   cursor: pointer;
-  
+  font-family: "Oswald", sans-serif;
 }
 
 .subscribe button:hover {
@@ -89,4 +91,5 @@ a .title:hover {
 
 .footer {
   padding: 10px;
+  color: white;
 }
