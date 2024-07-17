@@ -82,17 +82,32 @@ body {
 
 @media (max-width: 768px) {
   .title-home {
-    font-size: 5rem;
+    font-size: 40pt;
+    letter-spacing: 0px;
   }
 
   .subtitle-home {
-    font-size: 2rem;
+    font-size: 20pt;
   }
 
   .test-button {
     padding: 8px 16px;
     font-size: 14px;
+    position: relative;
+    top: 30%;
   }
+
+  .logo {
+    width: 70px;
+    position: relative;
+    top: 70px;
+    left: 120px;
+  }
+
+  .section {
+    position: relative;
+    top: 20%
+  };
 }
 
 @font-face {
