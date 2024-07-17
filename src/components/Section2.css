@@ -9,8 +9,8 @@
 }
 
 .quotey {
-  font-family:  sans-serif;
-  font-size: 5rem; /* Adjust font size to fit better over multiple lines */
+  font-family: 'Bona Nova SC', serif;
+  font-size: 6rem; /* Adjust font size to fit better over multiple lines */
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for better readability */
   line-height: 1.5;
   color: white;
@@ -86,3 +86,4 @@
     font-size: 14px;
   }
 }
+
