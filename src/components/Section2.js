@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
+import shareIcon from '../assets/share-icon.png'; // Adjust the path as necessary
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, LinkedinIcon, WhatsappIcon } from 'react-share';
+
 
 const quotes = [
   "\"Dream big. Start small. Act now.\" - Robin Sharma",
@@ -54,11 +57,11 @@ const quotes = [
   "\"Don’t wait for opportunity. Create it.\" - Unknown"
 ];
 
-
 const Section2 = React.forwardRef(({ handleScroll }, ref) => {
   const [quote, setQuote] = useState("");
   const quoteyRef = useRef(null);
   const buttonRef = useRef(null);
+  const shareButtonRef = useRef(null);
 
   useEffect(() => {
     const today = new Date();
@@ -76,12 +79,37 @@ const Section2 = React.forwardRef(({ handleScroll }, ref) => {
         buttonRef.current.classList.add('fade-in');
       }, 1000); // Adjust the delay as needed
     }
+
+    if (shareButtonRef.current) {
+      setTimeout(() => {
+        shareButtonRef.current.classList.add('fade-in');
+      }, 1200); // Adjust the delay as needed
+    }
   }, []);
+
+  const url = window.location.href;
 
   return (
     <div id="section2" className="section" ref={ref}>
       <div className="overlay2">
         <p ref={quoteyRef} className="quotey fade-in-element">{quote}</p>
+        <div ref={shareButtonRef} className="share-button fade-in">
+          <img src={shareIcon} alt="Share" className="share-icon" />
+          <div className="share-options">
+            <FacebookShareButton url={url} quote={quote}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={url} title={quote}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <LinkedinShareButton url={url} summary={quote}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+            <WhatsappShareButton url={url} title={quote}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </div>
+        </div>
       </div>
       <button ref={buttonRef} className="quote-button2" id="transitionButton" onClick={handleScroll}>MOTIVATIONAL IMAGE</button>
     </div>

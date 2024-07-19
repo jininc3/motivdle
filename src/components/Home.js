@@ -19,12 +19,6 @@ function Home() {
         // Scroll to the top of the page when the component mounts
         window.scrollTo(0, 0);
 
-        // Simulate loading delay
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 2000); // 2 seconds loading time
-
-        return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {

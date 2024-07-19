@@ -64,21 +64,74 @@
   color: black; /* Change text to green on hover */
 }
 
+.share-button {
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 0.5s ease-out;
+  background-color: #ffd935;
+  color: black;
+  font-family: "Oswald", sans-serif;
+}
+
+.share-button.fade-in {
+  opacity: 1;
+}
+
+.share-button:hover {
+  transform: scale(1.1);
+  background-color: white;
+  color: black;
+}
+
+.share-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.share-options {
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.share-button:hover .share-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.share-options button {
+  margin-bottom: 5px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Start with slight downward position */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* End in the final position */
+    transform: translateY(0);
   }
 }
 
 .section {
   height: 100vh;
   padding: 20px;
-  
 }
 
 @media (max-width: 768px) {
@@ -86,17 +139,22 @@
     font-size: 1rem;
     max-height: 400px;
     max-width: 200px;
-    
   }
   .overlay2 {
     position: relative;
-    top:20%;
+    top: 20%;
   }
-
   .quote-button2 {
     padding: 8px 16px;
     font-size: 14px;
     top: 20%;
   }
+  .share-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  .share-icon {
+    width: 16px;
+    height: 16px;
+  }
 }
-
