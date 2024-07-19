@@ -1,6 +1,6 @@
 .overlay-v {
     position: relative;
-    top: 40%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -19,7 +19,9 @@
     border-radius: 15px; /* Round the corners */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow */
     opacity: 0; /* Initially hidden */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out; /* Add smooth transition for hover effect and fade-in */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out;
+    height: 700px;
+    
 }
 
 .middle-video.fade-in {
@@ -32,9 +34,8 @@
 
 .video-button {
     padding: 10px 20px; /* Increase padding */
-    margin: 10px; /* Add margin */
     border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Increase font size */
+    font-size: 24px; /* Increase font size */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     border: none;
     cursor: pointer;
@@ -61,19 +62,17 @@
 
 @media (max-width: 768px) {
     .middle-video {
-        max-width: 90%;
+        max-width: 160px;
+        height: auto;
+    }
+
+    .overlay-v {
+        top: 30%;
     }
 
     .video-button {
         padding: 8px 16px;
         font-size: 14px;
-    }
-
-    .title-video {
-        font-size: 2rem;
-    }
-
-    .subtitle-video {
-        font-size: 1.5rem;
+        top: 15%;
     }
 }
