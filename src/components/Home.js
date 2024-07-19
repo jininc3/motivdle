@@ -11,7 +11,6 @@ function Home() {
     const [isSection3Visible, setIsSection3Visible] = useState(false);
     const [isSection4Visible, setIsSection4Visible] = useState(false);
     const [isButtonVisible, setIsButtonVisible] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
     const section4Ref = useRef(null);
