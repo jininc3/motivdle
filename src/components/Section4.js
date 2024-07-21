@@ -1,7 +1,7 @@
-// src/Section4.js
+// src/components/Section4.js
 import React, { useEffect, useRef, useState } from 'react';
 import './Section4.css';
-import { db, doc, getDoc, setDoc } from './firebase';  // Import Firestore functions
+import { db, doc, getDoc, setDoc } from '../firebase';  // Correct the relative path
 import video1 from '../assets/video2.mp4';
 import video2 from '../assets/video3.mp4';
 import video3 from '../assets/video4.mp4';
