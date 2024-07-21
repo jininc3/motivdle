@@ -100,8 +100,8 @@ const Section4 = React.forwardRef((props, ref) => {
                 <div className="overlay-window">
                     <div className="overlay-content">
                         <p>Congratulations!</p>
-                        <p>You've reached the end of the motivide for today.</p>
-                        <p>{clickCount} users have clicked this button today.</p>
+                        <p>You've reached the end of the Motivdle.</p>
+                        <p>{clickCount} users have motivated themselves today.</p>
                         <button
                             className="close-overlay"
                             onClick={() => setShowOverlay(false)}
