@@ -3,7 +3,6 @@ import './Section2.css';
 import shareIcon from '../assets/share-icon.png'; // Adjust the path as necessary
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, LinkedinIcon, WhatsappIcon } from 'react-share';
 
-
 const quotes = [
   "\"Dream big. Start small. Act now.\" - Robin Sharma",
   "\"Believe you can and you're halfway there.\" - Theodore Roosevelt",
@@ -83,7 +82,7 @@ const Section2 = React.forwardRef(({ handleScroll }, ref) => {
     if (shareButtonRef.current) {
       setTimeout(() => {
         shareButtonRef.current.classList.add('fade-in');
-      }, 1200); // Adjust the delay as needed
+      }, 1000); // Adjust the delay as needed
     }
   }, []);
 

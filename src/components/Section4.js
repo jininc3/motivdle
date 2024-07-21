@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import './Section4.css'; 
-import { Link } from 'react-router-dom';
+// src/Section4.js
+import React, { useEffect, useRef, useState } from 'react';
+import './Section4.css';
+import { db, doc, getDoc, setDoc } from './firebase';  // Import Firestore functions
 import video1 from '../assets/video2.mp4';
 import video2 from '../assets/video3.mp4';
 import video3 from '../assets/video4.mp4';
@@ -11,7 +12,6 @@ import video7 from '../assets/video4.mp4';
 import video8 from '../assets/video4.mp4';
 import video9 from '../assets/video4.mp4';
 import video10 from '../assets/video4.mp4';
-// Import other videos as needed
 
 const videoFiles = [
     video1,
@@ -24,25 +24,26 @@ const videoFiles = [
     video8,
     video9,
     video10,
-    // Add more video imports as needed
 ];
 
 const getTodaysVideo = () => {
     const today = new Date();
     const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-    return videoFiles[dayOfYear % videoFiles.length]; // Cycle through videos
+    return videoFiles[dayOfYear % videoFiles.length];
 };
 
 const Section4 = React.forwardRef((props, ref) => {
     const videoSrc = getTodaysVideo();
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
+    const [showOverlay, setShowOverlay] = useState(false);
+    const [clickCount, setClickCount] = useState(0);
 
     useEffect(() => {
         if (videoRef.current) {
             setTimeout(() => {
                 videoRef.current.classList.add('fade-in');
-            }, 800); // Adjust the delay as needed
+            }, 800);
 
             videoRef.current.addEventListener('mouseenter', () => {
                 videoRef.current.play();
@@ -56,9 +57,29 @@ const Section4 = React.forwardRef((props, ref) => {
         if (buttonRef.current) {
             setTimeout(() => {
                 buttonRef.current.classList.add('fade-in');
-            }, 1600); // Adjust the delay as needed
+            }, 1600);
         }
     }, []);
+
+    const handleButtonClick = async () => {
+        try {
+            const docRef = doc(db, 'clicks', 'buttonClick');
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                await setDoc(docRef, { count: data.count + 1 });
+                setClickCount(data.count + 1);
+            } else {
+                await setDoc(docRef, { count: 1 });
+                setClickCount(1);
+            }
+
+            setShowOverlay(true);
+        } catch (error) {
+            console.error('Failed to fetch:', error);
+        }
+    };
 
     return (
         <div id="section4" className="section" ref={ref}>
@@ -67,10 +88,29 @@ const Section4 = React.forwardRef((props, ref) => {
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-                <Link to="/">
-                    <button ref={buttonRef} className="video-button">GO CHASE YOUR DREAMS</button>
-                </Link>
+                <button
+                    ref={buttonRef}
+                    className="video-button"
+                    onClick={handleButtonClick}
+                >
+                    GO CHASE YOUR DREAMS
+                </button>
             </div>
+            {showOverlay && (
+                <div className="overlay-window">
+                    <div className="overlay-content">
+                        <p>Congratulations!</p>
+                        <p>You've reached the end of the motivide for today.</p>
+                        <p>{clickCount} users have clicked this button today.</p>
+                        <button
+                            className="close-overlay"
+                            onClick={() => setShowOverlay(false)}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 });
