@@ -1,7 +1,7 @@
 // src/components/Section4.js
 import React, { useEffect, useRef, useState } from 'react';
 import './Section4.css';
-import { db, doc, getDoc, setDoc } from '../firebase';  // Correct the relative path
+import { db, doc, getDoc, setDoc } from '../firebase';  // Correct relative path
 import video1 from '../assets/video2.mp4';
 import video2 from '../assets/video3.mp4';
 import video3 from '../assets/video4.mp4';
@@ -63,15 +63,15 @@ const Section4 = React.forwardRef((props, ref) => {
 
     const handleButtonClick = async () => {
         try {
-            const docRef = doc(db, 'clicks', 'buttonClick');
+            const docRef = doc(db, 'clicks', 'buttonClick');  // Reference to the 'buttonClick' document in 'clicks' collection
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
                 const data = docSnap.data();
-                await setDoc(docRef, { count: data.count + 1 });
+                await setDoc(docRef, { count: data.count + 1 });  // Increment the count
                 setClickCount(data.count + 1);
             } else {
-                await setDoc(docRef, { count: 1 });
+                await setDoc(docRef, { count: 1 });  // Initialize the count if the document does not exist
                 setClickCount(1);
             }
 
