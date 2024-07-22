@@ -98,6 +98,7 @@ body {
 
   .logo {
     width: 70px;
+    
   }
 
   .section {
@@ -110,7 +111,7 @@ body {
 /* Small devices (small laptops, tablets, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
   .title-home {
-    font-size: 60pt;
+    font-size: 66pt;
     letter-spacing: -5px;
   }
 
@@ -151,7 +152,9 @@ body {
   }
 
   .logo {
-    width: 200px;
+    width: 100px;
+    top: 10%;
+    left: 30%;
   }
 
   .section {
