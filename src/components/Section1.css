@@ -80,7 +80,8 @@ body {
   margin:0;
 }
 
-@media (max-width: 768px) {
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
   .title-home {
     font-size: 40pt;
     letter-spacing: 0px;
@@ -93,22 +94,101 @@ body {
   .test-button {
     padding: 8px 16px;
     font-size: 14px;
-    position: relative;
-    top: 30%;
   }
 
   .logo {
     width: 70px;
-    position: relative;
-    top: 70px;
-    left: 120px;
   }
 
   .section {
-    position: relative;
-    top: 20%
-  };
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
 }
+
+/* Small devices (small laptops, tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .title-home {
+    font-size: 60pt;
+    letter-spacing: -5px;
+  }
+
+  .subtitle-home {
+    font-size: 30pt;
+  }
+
+  .test-button {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+
+/* Medium devices (large laptops, tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .title-home {
+    font-size: 80pt;
+    letter-spacing: -8px;
+  }
+
+  .subtitle-home {
+    font-size: 40pt;
+  }
+
+  .test-button {
+    padding: 15px 30px;
+    font-size: 22px;
+  }
+
+  .logo {
+    width: 200px;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 10%;
+    padding: 0;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .title-home {
+    font-size: 100pt;
+    letter-spacing: -10px;
+  }
+
+  .subtitle-home {
+    font-size: 50pt;
+  }
+
+  .test-button {
+    padding: 18px 36px;
+    font-size: 26px;
+  }
+
+  .logo {
+    width: 250px;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 5%;
+    padding: 0;
+  }
+}
+
+
 
 @font-face {
   font-family: 'Oswald';
@@ -123,3 +203,5 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+

@@ -91,13 +91,28 @@
 }
 
 .overlay-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+    background: black;
+    padding: 40px 20px;
+    border-radius: 15px;
     text-align: center;
-    max-width: 80%;
-    max-height: 80%;
-    overflow-y: auto;
+    max-width: 700px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    font-family: "Oswald", sans-serif;
+    transition: background-color 0.3s ease; /* Add transition for smooth effect */
+    border: 3px solid #ffd935;
+    color: white;
+}
+
+.overlay-content:hover {
+    background-color: #141414; /* Change this color to your desired hover color */
+}
+
+.overlay-content p {
+    margin: 10px 0;
+    font-size: 28px;
+    line-height: 1.5;
+    color:white;
+    
 }
 
 .close-overlay {
@@ -112,4 +127,26 @@
     background-color: #ffd935;
     color: black;
     font-family: "Oswald", sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.close-overlay:hover {
+    background-color: #222222;
+}
+
+.time-left {
+    margin-top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.number-highlight {
+    color: #ffd935; /* Set this to your desired color */
+    font-weight: bold;
+}
+
+.timer-highlight {
+    color: #ffd935; /* Set this to your desired color */
+    font-weight: bold;
 }

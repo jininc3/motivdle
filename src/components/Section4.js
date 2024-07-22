@@ -34,9 +34,9 @@ const calculateTimeLeft = () => {
     midnight.setHours(24, 0, 0, 0);
     const difference = midnight - now;
 
-    const hours = Math.floor(difference / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    const hours = String(Math.floor(difference / (1000 * 60 * 60))).padStart(2, '0');
+    const minutes = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    const seconds = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
 
     return { hours, minutes, seconds };
 };
@@ -143,10 +143,10 @@ const Section4 = React.forwardRef((props, ref) => {
             {showOverlay && (
                 <div className="overlay-window">
                     <div className="overlay-content">
-                        <p>Congratulations!</p>
-                        <p>You've reached the end of the Motivdle.</p>
-                        <p>{clickCount} users have motivated themselves today.</p>
-                        <p>Time left till the next motivdle {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}.</p>
+                        <p><strong>CONGRATULATIONS</strong></p>
+                        <p>This is the end of today's motivdle.</p> <br></br>
+                        <p>You are of <span className="number-highlight">{clickCount}</span> users who have motivated themselves today.</p>
+<p>Time left till the next motivdle: <span className="timer-highlight">{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}</span></p>
                         <button
                             className="close-overlay"
                             onClick={() => setShowOverlay(false)}
