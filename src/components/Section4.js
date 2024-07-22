@@ -5,13 +5,11 @@ import { db, doc, getDoc, setDoc } from '../firebase';  // Correct relative path
 import video1 from '../assets/video2.mp4';
 import video2 from '../assets/video3.mp4';
 import video3 from '../assets/video4.mp4';
-import video4 from '../assets/video4.mp4';
-import video5 from '../assets/video4.mp4';
-import video6 from '../assets/video4.mp4';
-import video7 from '../assets/video4.mp4';
-import video8 from '../assets/video4.mp4';
-import video9 from '../assets/video4.mp4';
-import video10 from '../assets/video4.mp4';
+import video4 from '../assets/video5.mp4';
+import video5 from '../assets/video6.mp4';
+import video6 from '../assets/video7.mp4';
+import video7 from '../assets/video8.mp4';
+import video8 from '../assets/video10.mp4';
 
 const videoFiles = [
     video1,
@@ -22,8 +20,6 @@ const videoFiles = [
     video6,
     video7,
     video8,
-    video9,
-    video10,
 ];
 
 const getTodaysVideo = () => {
@@ -32,14 +28,50 @@ const getTodaysVideo = () => {
     return videoFiles[dayOfYear % videoFiles.length];
 };
 
+const calculateTimeLeft = () => {
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0);
+    const difference = midnight - now;
+
+    const hours = Math.floor(difference / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return { hours, minutes, seconds };
+};
+
 const Section4 = React.forwardRef((props, ref) => {
     const videoSrc = getTodaysVideo();
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [showOverlay, setShowOverlay] = useState(false);
     const [clickCount, setClickCount] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     useEffect(() => {
+        const fetchClickCount = async () => {
+            const docRef = doc(db, 'clicks', 'buttonClick');
+            const docSnap = await getDoc(docRef);
+
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                if (data.date === today) {
+                    setClickCount(data.count);
+                } else {
+                    await setDoc(docRef, { count: 0, date: today }); // Reset count for new day
+                    setClickCount(0);
+                }
+            } else {
+                await setDoc(docRef, { count: 0, date: today }); // Initialize if document does not exist
+                setClickCount(0);
+            }
+        };
+
+        fetchClickCount();
+
         if (videoRef.current) {
             setTimeout(() => {
                 videoRef.current.classList.add('fade-in');
@@ -59,19 +91,31 @@ const Section4 = React.forwardRef((props, ref) => {
                 buttonRef.current.classList.add('fade-in');
             }, 1600);
         }
+
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000); // Update every second
+
+        return () => clearInterval(timer);
     }, []);
 
     const handleButtonClick = async () => {
         try {
-            const docRef = doc(db, 'clicks', 'buttonClick');  // Reference to the 'buttonClick' document in 'clicks' collection
+            const docRef = doc(db, 'clicks', 'buttonClick');
             const docSnap = await getDoc(docRef);
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
 
             if (docSnap.exists()) {
                 const data = docSnap.data();
-                await setDoc(docRef, { count: data.count + 1 });  // Increment the count
-                setClickCount(data.count + 1);
+                if (data.date === today) {
+                    await setDoc(docRef, { count: data.count + 1, date: today });
+                    setClickCount(data.count + 1);
+                } else {
+                    await setDoc(docRef, { count: 1, date: today }); // Reset count for new day
+                    setClickCount(1);
+                }
             } else {
-                await setDoc(docRef, { count: 1 });  // Initialize the count if the document does not exist
+                await setDoc(docRef, { count: 1, date: today }); // Initialize if document does not exist
                 setClickCount(1);
             }
 
@@ -102,6 +146,7 @@ const Section4 = React.forwardRef((props, ref) => {
                         <p>Congratulations!</p>
                         <p>You've reached the end of the Motivdle.</p>
                         <p>{clickCount} users have motivated themselves today.</p>
+                        <p>Time left till the next motivdle {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}.</p>
                         <button
                             className="close-overlay"
                             onClick={() => setShowOverlay(false)}
