@@ -10,15 +10,12 @@ function Home() {
     const [isSection2Visible, setIsSection2Visible] = useState(false);
     const [isSection3Visible, setIsSection3Visible] = useState(false);
     const [isSection4Visible, setIsSection4Visible] = useState(false);
-    const [isButtonVisible, setIsButtonVisible] = useState(true);
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
     const section4Ref = useRef(null);
 
     useEffect(() => {
-        // Scroll to the top of the page when the component mounts
         window.scrollTo(0, 0);
-
     }, []);
 
     useEffect(() => {
@@ -41,27 +38,33 @@ function Home() {
 
     const handleScrollToSection2 = () => {
         setIsSection2Visible(true);
-        setIsButtonVisible(false); // Hide the button once clicked
+        if (section2Ref.current) {
+            section2Ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     const handleScrollToSection3 = () => {
         setIsSection3Visible(true);
+        if (section3Ref.current) {
+            section3Ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     const handleScrollToSection4 = () => {
         setIsSection4Visible(true);
+        if (section4Ref.current) {
+            section4Ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
     };
-
-  
 
     return (
         <div>
             <div className="background-home"></div>
             <div className="content">
-                <Section1 handleScroll={handleScrollToSection2} isButtonVisible={isButtonVisible} />
-                {isSection2Visible && <Section2 ref={section2Ref} handleScroll={handleScrollToSection3} />}
-                {isSection3Visible && <Section3 ref={section3Ref} handleScroll={handleScrollToSection4} />}
-                {isSection4Visible && <Section4 ref={section4Ref} />}
+                <Section1 handleScroll={handleScrollToSection2} />
+                <Section2 ref={section2Ref} handleScroll={handleScrollToSection3} />
+                <Section3 ref={section3Ref} handleScroll={handleScrollToSection4} />
+                <Section4 ref={section4Ref} />
             </div>
         </div>
     );
