@@ -30,3 +30,5 @@ function Section1({ handleScroll }) {
 }
 
 export default Section1;  
+
+
