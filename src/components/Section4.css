@@ -60,22 +60,7 @@
     color: black; /* Change text to green on hover */
 }
 
-@media (max-width: 768px) {
-    .middle-video {
-        max-width: 160px;
-        height: auto;
-    }
 
-    .overlay-v {
-        top: 30%;
-    }
-
-    .video-button {
-        padding: 8px 16px;
-        font-size: 14px;
-        top: 15%;
-    }
-}
 
 .overlay-window {
     position: fixed;
@@ -150,3 +135,41 @@
     color: #ffd935; /* Set this to your desired color */
     font-weight: bold;
 }
+
+
+@media (min-width:0px) and (max-width: 391px) {
+    .middle-video {
+        width: 80%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .overlay-content {
+        width: 80%;
+        left: -1%;
+        position: relative;
+    }
+  }
+
+
+@media (min-width:392px) and (max-width: 575.9px) {
+    .middle-video {
+        width: 100%;
+    }
+  }
+
+
+
+  @media (min-width: 430px) and (max-width: 767.98px) {
+    .middle-video {
+        width: 80%;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .overlay-content {
+        width: 80%;
+        left: -1%;
+        position: relative;
+    }
+  }

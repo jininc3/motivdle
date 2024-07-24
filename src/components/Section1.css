@@ -80,8 +80,41 @@ body {
   margin:0;
 }
 
+/* Customize for iPhone 14 size (390px width) */
+@media (min-width:0px) and (max-width: 391px) {
+  .title-home {
+    font-size: 60pt;
+    letter-spacing: -2px;
+  }
+
+  .subtitle-home {
+    font-size: 25pt;
+  }
+
+  .test-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-size: 20pt;
+    top: 30%;
+  }
+
+  .logo {
+    width: 70px;
+    position: relative;
+    top: 9%;
+    left: 48%;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+
+
 /* Extra small devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
+@media (min-width: 392px) and (max-width: 429px) {
   .title-home {
     font-size: 40pt;
     letter-spacing: 0px;
@@ -109,9 +142,9 @@ body {
 }
 
 /* Small devices (small laptops, tablets, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 430px) and (max-width: 767.98px) {
   .title-home {
-    font-size: 66pt;
+    font-size: 70pt;
     letter-spacing: -5px;
   }
 
@@ -122,10 +155,13 @@ body {
   .test-button {
     padding: 10px 20px;
     font-size: 18px;
+    top: 20%;
   }
 
   .logo {
-    width: 150px;
+    width: 75px;
+    top: 10%;
+    left: 48%;
   }
 
   .section {
