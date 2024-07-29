@@ -81,7 +81,7 @@
 }
 
 
-@media (min-width:0px) and (max-width: 391px) {
+@media (min-width:0px) and (max-width: 343.99px) {
   .quotey {
     font-size: 28pt; /* Larger font size for smaller screens */
     padding: 15px; /* Adjust padding */
@@ -93,12 +93,59 @@
   .quote-button2 {
     font-size: 1.2rem; /* Larger font size for smaller screens */
     padding: 15px 30px; /* Adjust padding */
-    top: 25%;
+    top: 15%;
     
   }
 }
+
+@media (min-width:0px) and (max-width: 360.99px) {
+  .quotey {
+    font-size: 26pt; /* Larger font size for smaller screens */
+     /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+    
+  }
+
+.overlay2 {
+  top: 60%;
+
+}
+
+  .quote-button2 {
+    font-size: 1.2rem; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 35%;
+    
+  }
+}
+
+@media (min-width:344px) and (max-width: 361.99px) {
+  .quotey {
+    font-size: 24pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+  }
+
+  .overlay2 {
+    top: 40%;
+  }
+
+  .quote-button2 {
+    font-size: 1.2rem; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 25%;
+    
+  }
+
+}
+
+
 /* Extra small devices (phones, less than 576px) */
-@media (min-width: 392px) and (max-width: 429px) {
+@media (min-width: 361px) and (max-width: 429px) {
   .quotey {
     font-size: 28pt; /* Larger font size for smaller screens */
     padding: 15px; /* Adjust padding */
@@ -116,7 +163,7 @@
 }
 
 /* Small devices (small laptops, tablets, 576px and up) */
-@media (min-width: 430px) and (max-width: 767.98px) {
+@media (min-width: 430px) and (max-width: 576.98px) {
   .quotey {
     font-size: 28pt; /* Larger font size for smaller screens */
     padding: 15px; /* Adjust padding */
@@ -133,32 +180,36 @@
   }
 }
 
-/* Medium devices (large laptops, tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .title-home {
-    font-size: 80pt;
-    letter-spacing: -8px;
+@media (min-width: 577px) and (max-width: 821px) {
+  .quotey {
+    font-size: 48pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+    
   }
 
-  .subtitle-home {
-    font-size: 40pt;
+  .overlay2 {
+    top: 40%;
+  
   }
-
-  .test-button {
-    padding: 15px 30px;
-    font-size: 22px;
-  }
-
-  .logo {
-    width: 100px;
-    top: 10%;
-    left: 30%;
-  }
-
-  .section {
-    max-width: 100%;
-    top: 10%;
-    padding: 0;
+  .quote-button2 {
+    font-size: 30px; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 15%;
+    
   }
 }
+
+@media (min-width: 822px) and (max-width: 1024px) {
+  .quote-button2 {
+    font-size: 30px; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 15%;
+    
+  }
+}
+
+
 

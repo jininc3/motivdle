@@ -1,9 +1,12 @@
-body {
+html, body {
   font-family: "Oswald", sans-serif;
   scroll-behavior: smooth;
   margin: 0; /* Ensure there is no margin to avoid unwanted scrolling behavior */
   padding: 0; /* Ensure there is no padding to avoid unwanted scrolling behavior */
+  overflow-x: hidden;
+  width: 100%;
 }
+
 
 .section {
   height: 100vh;
@@ -79,12 +82,76 @@ body {
   padding: 0;
   margin:0;
 }
+/* Samsung Galaxy S8+ */
+@media (min-width:0px) and (max-width: 343.99px) {
+  .title-home {
+    font-size: 65pt;
+    letter-spacing: -4px;
+  }
 
-/* Customize for iPhone 14 size (390px width) */
-@media (min-width:0px) and (max-width: 395px) {
+  .subtitle-home {
+    font-size: 25pt;
+  }
+
+  .test-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-size: 20pt;
+    top: 30%;
+  }
+
+  .logo {
+    width: 60px;
+    position: relative;
+    top: 8.5%;
+    left: 52%;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+/* Galaxy Z Fold 5 */
+@media (min-width:344px) and (max-width: 361.99px) {
   .title-home {
     font-size: 60pt;
-    letter-spacing: -2px;
+    letter-spacing: -4px;
+  }
+
+  .subtitle-home {
+    font-size: 25pt;
+  }
+
+  .test-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-size: 20pt;
+    top: 30%;
+  }
+
+  .logo {
+    width: 60px;
+    position: relative;
+    top: 8.5%;
+    left: 52%;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+
+
+
+/* Iphone SE (375px) */
+@media (min-width:362px) and (max-width: 395px) {
+  .title-home {
+    font-size: 60pt;
+    letter-spacing: -4px;
   }
 
   .subtitle-home {
@@ -113,8 +180,8 @@ body {
 }
 
 
-/* Extra small devices (phones, less than 576px) */
-@media (min-width: 396px) and (max-width: 429px) {
+/* misc */
+@media (min-width: 396px) and (max-width: 409.99px) {
   .title-home {
     font-size: 40pt;
     letter-spacing: 0px;
@@ -141,8 +208,38 @@ body {
   }
 }
 
-/* Small devices (small laptops, tablets, 576px and up) */
-@media (min-width: 430px) and (max-width: 767.98px) {
+/* Samsung Galaxy S20 Ultra (412px) */
+@media (min-width: 410px) and (max-width: 429.99px) {
+  .title-home {
+    font-size: 75pt;
+    letter-spacing: -6px;
+  }
+
+  .subtitle-home {
+    font-size: 35pt;
+  }
+
+  .test-button {
+    padding: 8px 16px;
+    font-size: 24px;
+    top:20%;
+  }
+
+  .logo {
+    width: 60px;
+    top: 8%;
+    left: 50%;
+  }
+  
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+
+/* Iphone 14 pro max (430px) */
+@media (min-width: 430px) and (max-width: 539.99px) {
   .title-home {
     font-size: 70pt;
     letter-spacing: -5px;
@@ -154,13 +251,13 @@ body {
 
   .test-button {
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 24px;
     top: 20%;
   }
 
   .logo {
     width: 75px;
-    top: 10%;
+    top: 9%;
     left: 48%;
   }
 
@@ -171,10 +268,40 @@ body {
   }
 }
 
-/* Medium devices (large laptops, tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 540px) and (max-width: 576.98px) {
   .title-home {
-    font-size: 80pt;
+    font-size: 100pt;
+    letter-spacing: -5px;
+  }
+
+  .subtitle-home {
+    font-size: 30pt;
+  }
+
+  .test-button {
+    padding: 10px 20px;
+    font-size: 24px;
+    top: 20%;
+  }
+
+  .logo {
+    width: 75px;
+    top: 12%;
+    left: 50%;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+
+
+/* Ipad Mini (768px) */
+@media (min-width: 577px) and (max-width: 821.99px) {
+  .title-home {
+    font-size: 120pt;
     letter-spacing: -8px;
   }
 
@@ -183,28 +310,28 @@ body {
   }
 
   .test-button {
-    padding: 15px 30px;
-    font-size: 22px;
+    padding: 10px 20px;
+    font-size: 35px;
+    top: 20%;
   }
 
   .logo {
-    width: 100px;
-    top: 10%;
-    left: 30%;
+    width: 90px;
+    top: 11%;
+    left: 44%;
   }
 
   .section {
     max-width: 100%;
-    top: 10%;
+    top: 20%;
     padding: 0;
   }
 }
 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
+@media (min-width: 822px) and (max-width: 913px) {
   .title-home {
-    font-size: 100pt;
-    letter-spacing: -10px;
+    font-size: 150pt;
+    letter-spacing: -8px;
   }
 
   .subtitle-home {
@@ -212,20 +339,57 @@ body {
   }
 
   .test-button {
-    padding: 18px 36px;
-    font-size: 26px;
+    padding: 10px 20px;
+    font-size: 35px;
+    top: 20%;
   }
 
   .logo {
-    width: 250px;
+    width: 100px;
+    top: 10%;
+    left: 46%;
   }
 
   .section {
     max-width: 100%;
-    top: 5%;
+    top: 20%;
     padding: 0;
   }
 }
+
+
+/* Ipad Pro (1024px) */
+@media (min-width: 914px) and (max-width: 1024px) {
+  .title-home {
+    font-size: 180pt;
+    letter-spacing: -13px;
+  }
+
+  .subtitle-home {
+    font-size: 50pt;
+  }
+
+  .test-button {
+    padding: 10px 20px;
+    font-size: 35px;
+    top: 20%;
+  }
+
+  .logo {
+    width: 120px;
+    top: 11%;
+    left: 48%;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+
+
+
 
 
 

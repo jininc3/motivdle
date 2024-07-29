@@ -1,6 +1,6 @@
 .overlay-i {
     position: relative;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -12,7 +12,7 @@
 }
 
 .middle-image {
-    width: 25%;
+    width: 30%;
     height: auto;
     margin-bottom: 50px; /* Space between the image and button */
     border: 5px solid #fff; /* Add white border */
@@ -43,7 +43,7 @@
     background-color: black; /* Green background */
     color:#ffd935;; /* White text */
     font-family: "Oswald", sans-serif;    
-    margin-top: 2%;
+    margin-top: 5%;
     transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
 }
 
@@ -66,8 +66,37 @@
 
     }
   }
+
+  @media (min-width: 410px) and (max-width: 429.99px) {
+ 
+    .middle-image {
+        width: 100%;
+       max-width: 100%;
+    }
+
+    .overlay-i {
+        top: 40%;
+        position: relative;
+    }
+
+   .image-button {
+    margin-top: 12%;
+   }
   
-  @media (min-width: 430px) and (max-width: 767.98px) {
+  }
+
+
+
+  
+  @media (min-width: 430px) and (max-width: 567.99px) {
+    .middle-image {
+        width: 90%;
+       max-width: 100%;
+    
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 821px) {
     .middle-image {
         width: 90%;
        max-width: 100%;
@@ -76,11 +105,16 @@
   }
 
 
-
-
-
-
-
-
+  @media (min-width: 822px) and (max-width: 1024px) {
+    .middle-image {
+        width: 90%;
+       max-width: 100%;
+    
+    }
+    .overlay-i {
+        top: 40%;
+        position: relative;
+    }
+  }
 
   
