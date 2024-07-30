@@ -148,9 +148,40 @@ html, body {
 
 
 /* Iphone SE (375px) */
-@media (min-width:362px) and (max-width: 395px) {
+@media (min-width:362px) and (max-width: 392.99px) {
   .title-home {
     font-size: 60pt;
+    letter-spacing: -4px;
+  }
+
+  .subtitle-home {
+    font-size: 25pt;
+  }
+
+  .test-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-size: 20pt;
+    top: 30%;
+  }
+
+  .logo {
+    width: 70px;
+    position: relative;
+    top: 9%;
+    left: 48%;
+  }
+
+  .section {
+    max-width: 100%;
+    top: 20%;
+    padding: 0;
+  }
+}
+
+@media (min-width:393px) and (max-width: 395.99px) {
+  .title-home {
+    font-size: 200pt;
     letter-spacing: -4px;
   }
 
