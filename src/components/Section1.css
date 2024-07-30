@@ -181,7 +181,7 @@ html, body {
 
 @media (min-width:393px) and (max-width: 395.99px) {
   .title-home {
-    font-size: 200pt;
+    font-size: 60pt;
     letter-spacing: -4px;
   }
 
@@ -191,9 +191,8 @@ html, body {
 
   .test-button {
     padding: 8px 16px;
-    font-size: 14px;
     font-size: 20pt;
-    top: 30%;
+    top: 40%;
   }
 
   .logo {

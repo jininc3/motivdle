@@ -128,7 +128,7 @@ const Section4 = React.forwardRef((props, ref) => {
     return (
         <div id="section4" className="section" ref={ref}>
             <div className="overlay-v">
-                <video ref={videoRef} className="middle-video" controls muted>
+                <video ref={videoRef} className="middle-video" controls autoPlay muted>
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
