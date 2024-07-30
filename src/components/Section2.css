@@ -163,8 +163,16 @@
 }
 
 @media (min-width:393px) and (max-width: 395.99px) {
+  
+  .quotey {
+    font-size: 28pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+  }
+
   .quote-button2 {
-    
     top: 45%;
     
   }
