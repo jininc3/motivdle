@@ -1,0 +1,5 @@
+# Redirect from www to non-www
+https://www.motividle.com/* https://motividle.com/:splat 301!
+
+# Redirect HTTP to HTTPS
+http://motividle.com/* https://motividle.com/:splat 301!

@@ -20,7 +20,7 @@ html, body {
 
 .test-button {
   position: relative;
-  top: 10%;
+  top: 30%;
   background-color: #ffd935; /* Green background */
   color:black; /* White text */
   font-family: "Oswald", sans-serif;
@@ -55,7 +55,7 @@ html, body {
   position: relative;
   text-align: center;
   color: #ffd935;
-  top: 0%;
+  top: 20%;
   font-weight: bolder;
   letter-spacing: -15px;
 }
@@ -67,7 +67,7 @@ html, body {
   position: relative;
   text-align: center;
   color: #ffd935;
-  top: 0%;
+  top: 15%;
   font-weight: bolder;
   letter-spacing: -1px;
 }

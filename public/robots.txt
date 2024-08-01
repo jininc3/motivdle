@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.motivdle.com/sitemap.xml
+Sitemap: https://motividle.com/sitemap.xml
