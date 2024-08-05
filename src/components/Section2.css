@@ -174,8 +174,8 @@
   }
 
   .quote-button2 {
-    top: 95%;
-    position: relative;
+    position: absolute;
+    top: 75%;
     
     
   }
