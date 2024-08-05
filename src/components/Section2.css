@@ -168,12 +168,12 @@
     font-size: 28pt; /* Larger font size for smaller screens */
     padding: 15px; /* Adjust padding */
     max-width: 120%;
-    width: 100%;
+    width: 80%;
     left: -5%;
   }
 
   .quote-button2 {
-    top: 65%;
+    top: 85%;
     position: relative;
     
     
