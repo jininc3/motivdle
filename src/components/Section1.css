@@ -15,17 +15,17 @@ html, body {
   justify-content: center;
   font-size: 2em;
   position: relative;
-  top: -100px;
+  top: -250px;
 }
 
 .test-button {
   position: relative;
   top: 30%;
   background-color: #ffd935; /* Green background */
-  color:black; /* White text */
+  color: black; /* White text */
   font-family: "Oswald", sans-serif;
   padding: 10px 20px; /* Increase padding */
-  margin: 10px; /* Add margin */
+  margin: 10px 150px; /* Adjust margin: top/bottom, left/right */
   border-radius: 5px; /* Rounded corners */
   font-size: 24px; /* Increase font size */
   
@@ -35,6 +35,7 @@ html, body {
   font-weight: bold;
   opacity: 0; /* Initially hidden */
   transition: opacity 1s ease-in-out; /* Smooth transition for fade-in effect */
+  display: inline-block; /* This makes buttons sit next to each other */
 }
 
 .test-button.fade-in {
@@ -45,8 +46,17 @@ html, body {
 .test-button:hover {
   transform: scale(1.1); /* Slightly increase size on hover */
   background-color: white; /* Change background to white on hover */
-    color: black; /* Change text to green on hover */
+  color: black; /* Change text to green on hover */
 }
+
+#scrollButton {
+  color: #ffd935;
+  background-color: black;
+}
+
+
+
+
 
 .title-home {
   font-size: 17rem;
@@ -438,5 +448,3 @@ html, body {
   font-weight: normal;
   font-style: normal;
 }
-
-

@@ -8,7 +8,7 @@ function Section1({ handleScroll }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setButtonVisible(true);
-    }, 500); // Adjust the delay time (3000ms = 3 seconds)
+    }, 500); // Adjust the delay time
 
     return () => clearTimeout(timer); // Cleanup the timer on component unmount
   }, []);
@@ -25,10 +25,15 @@ function Section1({ handleScroll }) {
       >
         MOTIVATIONAL QUOTE
       </button>
+      <button
+        id="gameButton"
+        className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
+        onClick={() => window.location.href = "/motivation-only"}
+      >
+        THE MOTIVDLE GAME
+      </button>
     </div>
   );
 }
 
-export default Section1;  
-
-
+export default Section1;
