@@ -71,6 +71,7 @@
 }
 
 .search-bar-container {
+  position: relative; /* Make the search container relative to handle the absolute dropdown */
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -116,27 +117,35 @@
 }
 
 .suggestions-list {
-  margin-top: 10px;
+  margin-top: 0;
   padding: 0;
   list-style: none;
   max-height: 150px;
   overflow-y: auto;
-  background-color: white;
+  background-color: #ffd935;
   border: 1px solid #ffd935;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   width: 350px;
-  margin: 0 auto;
+  position: absolute;
+  z-index: 1000;
+  top: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .suggestion-item {
   padding: 10px;
   cursor: pointer;
+  color: black;
+  text-transform: uppercase; /* Force uppercase display */
 }
 
 .suggestion-item:hover {
   background-color: #ffd935;
   color: black;
+}
+
+.search-bar-container {
+  position: relative; /* Make the search container relative to handle the absolute dropdown */
 }
 
 @keyframes fadeIn {

@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
-import { db } from '../firebase'; // Import the Firestore instance
+import { db } from '../firebase'; // Ensure this import is correct
 import { collection, getDocs, query, where, limit } from 'firebase/firestore';
 
-const Section2 = React.forwardRef(({ handleScroll }, ref) => {
+const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
+  const [quoteInfluencer, setQuoteInfluencer] = useState(""); // State for the influencer of the displayed quote
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const quoteyRef = useRef(null);
   const buttonRef = useRef(null);
 
@@ -14,11 +16,15 @@ const Section2 = React.forwardRef(({ handleScroll }, ref) => {
     const fetchQuotes = async () => {
       const quotesCollection = collection(db, 'quotes');
       const quoteSnapshot = await getDocs(quotesCollection);
-      const quotesList = quoteSnapshot.docs.map(doc => doc.data().text);
-      
+      const quotesList = quoteSnapshot.docs.map(doc => ({
+        text: doc.data().quote,
+        influencer: doc.data().name, // Assuming each quote document has 'quote' and 'name' fields
+      }));
+
       const today = new Date();
       const quoteIndex = today.getDate() % quotesList.length;
-      setQuote(quotesList[quoteIndex]);
+      setQuote(quotesList[quoteIndex].text);
+      setQuoteInfluencer(quotesList[quoteIndex].influencer); // Set the corresponding influencer
     };
 
     fetchQuotes();
@@ -42,13 +48,45 @@ const Section2 = React.forwardRef(({ handleScroll }, ref) => {
 
     if (value.length > 0) {
       const influencersRef = collection(db, 'influencers');
-      const q = query(influencersRef, where('name', '>=', value), where('name', '<=', value + '\uf8ff'), limit(10));
+      const q = query(
+        influencersRef, 
+        where('name', '>=', value), 
+        where('name', '<=', value + '\uf8ff'), 
+        limit(10)
+      );
       const querySnapshot = await getDocs(q);
       const results = querySnapshot.docs.map(doc => doc.data().name);
       setSuggestions(results);
+      setShowSuggestions(true);
     } else {
       setSuggestions([]);
+      setShowSuggestions(false);
     }
+  };
+
+  const handleSearchClick = async () => {
+    if (searchTerm.length > 0) {
+      const quotesCollection = collection(db, 'quotes');
+      const q = query(
+        quotesCollection,
+        where('name', '==', searchTerm) // Compare searchTerm with 'name' field in the quotes collection
+      );
+      const querySnapshot = await getDocs(q);
+      
+      if (!querySnapshot.empty) {
+        // Trigger the scroll behavior to Section 3
+        onSearchMatch();
+      } else {
+        alert('The input does not match the name of the influencer associated with the quote.');
+      }
+    } else {
+      alert('Please enter a name in the search bar.');
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchTerm(suggestion);
+    setShowSuggestions(false);
   };
 
   return (
@@ -63,16 +101,29 @@ const Section2 = React.forwardRef(({ handleScroll }, ref) => {
             placeholder="Type a name..." 
             value={searchTerm} 
             onChange={handleSearch} 
+            onBlur={() => setTimeout(() => setShowSuggestions(false), 100)} // Delay to allow click
+            onFocus={() => setShowSuggestions(true)} // Show suggestions on focus
           />
-          <button className="search-button">Search</button>
+          <button 
+            className="search-button"
+            onClick={handleSearchClick} // Trigger check on search button click
+          >
+            Search
+          </button>
+          {showSuggestions && suggestions.length > 0 && (
+            <ul className="suggestions-list">
+              {suggestions.map((suggestion, index) => (
+                <li 
+                  key={index} 
+                  className="suggestion-item" 
+                  onMouseDown={() => handleSuggestionClick(suggestion)}
+                >
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-        {suggestions.length > 0 && (
-          <ul className="suggestions-list">
-            {suggestions.map((suggestion, index) => (
-              <li key={index} className="suggestion-item">{suggestion}</li>
-            ))}
-          </ul>
-        )}
       </div>
       <button ref={buttonRef} className="quote-button2" id="transitionButton" onClick={handleScroll}>MOTIVATIONAL IMAGE</button>
     </div>

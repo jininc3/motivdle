@@ -52,14 +52,16 @@ function Home() {
         setIsSection4Visible(true);
     };
 
-  
+    const handleSearchTriggerScroll = () => {
+        setIsSection3Visible(true); // Trigger scroll to Section 3
+    };
 
     return (
         <div>
             <div className="background-home"></div>
             <div className="content">
                 <Section1 handleScroll={handleScrollToSection2} isButtonVisible={isButtonVisible} />
-                {isSection2Visible && <Section2 ref={section2Ref} handleScroll={handleScrollToSection3} />}
+                {isSection2Visible && <Section2 ref={section2Ref} handleScroll={handleScrollToSection3} onSearchMatch={handleSearchTriggerScroll} />}
                 {isSection3Visible && <Section3 ref={section3Ref} handleScroll={handleScrollToSection4} />}
                 {isSection4Visible && <Section4 ref={section4Ref} />}
             </div>
