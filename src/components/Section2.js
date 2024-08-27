@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
 import { db } from '../firebase'; // Ensure this import is correct
-import { collection, getDocs, query, where, limit } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
@@ -23,7 +23,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
 
       const today = new Date();
       const quoteIndex = today.getDate() % quotesList.length;
-      setQuote(quotesList[quoteIndex].text);
+      setQuote(`"${quotesList[quoteIndex].text}"`); // Add quotation marks here
       setQuoteInfluencer(quotesList[quoteIndex].influencer); // Set the corresponding influencer
     };
 
@@ -47,15 +47,14 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
     setSearchTerm(value);
 
     if (value.length > 0) {
-      const influencersRef = collection(db, 'influencers');
+      const quotesCollection = collection(db, 'quotes');
       const q = query(
-        influencersRef, 
+        quotesCollection, 
         where('name', '>=', value), 
-        where('name', '<=', value + '\uf8ff'), 
-        limit(10)
+        where('name', '<=', value + '\uf8ff')
       );
       const querySnapshot = await getDocs(q);
-      const results = querySnapshot.docs.map(doc => doc.data().name);
+      const results = querySnapshot.docs.map(doc => doc.data().name.toUpperCase()); // Convert names to uppercase
       setSuggestions(results);
       setShowSuggestions(true);
     } else {
@@ -69,15 +68,20 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       const quotesCollection = collection(db, 'quotes');
       const q = query(
         quotesCollection,
-        where('name', '==', searchTerm) // Compare searchTerm with 'name' field in the quotes collection
+        where('name', '==', searchTerm.trim().toLowerCase()) // Ensure exact match by trimming and converting to lowercase
       );
       const querySnapshot = await getDocs(q);
       
       if (!querySnapshot.empty) {
-        // Trigger the scroll behavior to Section 3
-        onSearchMatch();
+        const matchedQuote = querySnapshot.docs[0].data();
+        if (matchedQuote.name.toLowerCase() === quoteInfluencer.toLowerCase()) {
+          // Trigger the scroll behavior to Section 3
+          onSearchMatch();
+        } else {
+          alert('The input does not match the name of the influencer associated with the quote.');
+        }
       } else {
-        alert('The input does not match the name of the influencer associated with the quote.');
+        alert('The input does not match any known influencer.');
       }
     } else {
       alert('Please enter a name in the search bar.');
