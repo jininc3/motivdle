@@ -129,7 +129,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
           )}
         </div>
       </div>
-      <button ref={buttonRef} className="quote-button2" id="transitionButton" onClick={handleScroll}>MOTIVATIONAL IMAGE</button>
+      
     </div>
   );
 });

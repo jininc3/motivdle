@@ -1,6 +1,6 @@
 // src/components/Section4.js
 import React, { useEffect, useRef, useState } from 'react';
-import './Section4.css';
+import './Section3.css';
 import { db, doc, getDoc, setDoc } from '../firebase';  // Correct relative path
 import video1 from '../assets/video2.mp4';
 import video2 from '../assets/video3.mp4';
