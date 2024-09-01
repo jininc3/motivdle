@@ -1,25 +1,10 @@
-// src/components/Section4.js
 import React, { useEffect, useRef, useState } from 'react';
 import './Section3.css';
 import { db, doc, getDoc, setDoc } from '../firebase';  // Correct relative path
-import video1 from '../assets/video2.mp4';
-import video2 from '../assets/video3.mp4';
-import video3 from '../assets/video4.mp4';
-import video4 from '../assets/video5.mp4';
-import video5 from '../assets/video6.mp4';
-import video6 from '../assets/video7.mp4';
-import video7 from '../assets/video8.mp4';
-import video8 from '../assets/video10.mp4';
+import video1 from '../assets/video-bob.mp4';
 
 const videoFiles = [
     video1,
-    video2,
-    video3,
-    video4,
-    video5,
-    video6,
-    video7,
-    video8,
 ];
 
 const getTodaysVideo = () => {
@@ -77,13 +62,14 @@ const Section4 = React.forwardRef((props, ref) => {
                 videoRef.current.classList.add('fade-in');
             }, 800);
 
-            videoRef.current.addEventListener('mouseenter', () => {
-                videoRef.current.play();
-            });
+            // Remove these lines to stop the video from playing/pausing on hover
+            // videoRef.current.addEventListener('mouseenter', () => {
+            //     videoRef.current.play();
+            // });
 
-            videoRef.current.addEventListener('mouseleave', () => {
-                videoRef.current.pause();
-            });
+            // videoRef.current.addEventListener('mouseleave', () => {
+            //     videoRef.current.pause();
+            // });
         }
 
         if (buttonRef.current) {
@@ -128,7 +114,7 @@ const Section4 = React.forwardRef((props, ref) => {
     return (
         <div id="section4" className="section" ref={ref}>
             <div className="overlay-v">
-                <video ref={videoRef} className="middle-video" controls autoPlay muted>
+                <video ref={videoRef} className="middle-video" controls>
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
