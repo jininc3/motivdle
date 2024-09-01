@@ -17,20 +17,20 @@ function Section1({ handleScroll }) {
     <div id="section1" className="section">
       
       <Link to="/"><h1 className="title-home">MOTIVDLE</h1></Link>
-      <Link to="/"><p className="subtitle-home">Daily Motivation To Inspire</p></Link>
+      <Link to="/"><p className="subtitle-home">MOTIVATION ONCE A DAY IS ENOUGH.</p></Link>
       <button
         id="scrollButton"
         className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
         onClick={handleScroll}
       >
-        MOTIVATIONAL QUOTE
+        THE MOTIVDLE GAME
       </button>
       <button
         id="gameButton"
         className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
         onClick={() => window.location.href = "/motivation-only"}
       >
-        THE MOTIVDLE GAME
+        MOTIVATIONAL QUOTE
       </button>
     </div>
   );

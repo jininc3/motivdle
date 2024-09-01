@@ -47,8 +47,8 @@ const Section3 = React.forwardRef(({ handleScroll }, ref) => {
   return (
     <div id="section3" className="section" ref={ref}>
       <div className="overlay-i">
-        <img ref={imageRef} src={image} alt="Daily" className="middle-image fade-in-element"/>
-        <button ref={buttonRef} className="image-button" onClick={handleScroll}>MOTIVATIONAL VIDEO</button>
+        
+        <button ref={buttonRef} className="image-button" onClick={handleScroll}>ROUND 2</button>
       </div>
     </div>
   );
