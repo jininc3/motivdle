@@ -26,7 +26,8 @@ const calculateTimeLeft = () => {
     return { hours, minutes, seconds };
 };
 
-const Section4 = React.forwardRef((props, ref) => {
+// Update the Section3 component to accept influencerName prop
+const Section3 = React.forwardRef(({ influencerName }, ref) => {
     const videoSrc = getTodaysVideo();
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
@@ -61,15 +62,6 @@ const Section4 = React.forwardRef((props, ref) => {
             setTimeout(() => {
                 videoRef.current.classList.add('fade-in');
             }, 800);
-
-            // Remove these lines to stop the video from playing/pausing on hover
-            // videoRef.current.addEventListener('mouseenter', () => {
-            //     videoRef.current.play();
-            // });
-
-            // videoRef.current.addEventListener('mouseleave', () => {
-            //     videoRef.current.pause();
-            // });
         }
 
         if (buttonRef.current) {
@@ -112,8 +104,13 @@ const Section4 = React.forwardRef((props, ref) => {
     };
 
     return (
-        <div id="section4" className="section" ref={ref}>
+        <div id="section3" className="section" ref={ref}>
             <div className="overlay-v">
+            <h1 className="congratulations-title">
+    <span className="congratulations-text">CONGRATULATIONS!</span>
+    <br />
+    THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
+</h1>
                 <video ref={videoRef} className="middle-video" controls>
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
@@ -131,8 +128,8 @@ const Section4 = React.forwardRef((props, ref) => {
                     <div className="overlay-content">
                         <p><strong>CONGRATULATIONS</strong></p>
                         <p>This is the end of today's motivdle.</p> <br></br>
-                        <p>You are of <span className="number-highlight">{clickCount}</span> users who have motivated themselves today.</p>
-<p>Time left till the next motivdle: <span className="timer-highlight">{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}</span></p>
+                        <p>You are one of <span className="number-highlight">{clickCount}</span> users who have motivated themselves today.</p>
+                        <p>Time left till the next motivdle: <span className="timer-highlight">{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}</span></p>
                         <button
                             className="close-overlay"
                             onClick={() => setShowOverlay(false)}
@@ -146,4 +143,4 @@ const Section4 = React.forwardRef((props, ref) => {
     );
 });
 
-export default Section4;
+export default Section3;

@@ -35,15 +35,14 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       const quotesCollection = collection(db, 'quotes');
       const q = query(
         quotesCollection,
-        where('name', '==', searchTerm.trim().toLowerCase()) // Ensure exact match by trimming and converting to lowercase
+        where('name', '==', searchTerm.trim().toLowerCase())
       );
       const querySnapshot = await getDocs(q);
       
       if (!querySnapshot.empty) {
         const matchedQuote = querySnapshot.docs[0].data();
         if (matchedQuote.name.toLowerCase() === quoteInfluencer.toLowerCase()) {
-          // Trigger the scroll behavior to Section 3
-          onSearchMatch();
+          onSearchMatch(quoteInfluencer); // Pass influencer name to parent or directly to Section3
         } else {
           alert('The input does not match the name of the influencer associated with the quote.');
         }
@@ -54,7 +53,6 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       alert('Please enter a name in the search bar.');
     }
   };
-  
 
 
   const handleSearch = async (e) => {

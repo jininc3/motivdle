@@ -12,7 +12,7 @@
 }
 
 .middle-video {
-    max-width: 20%; /* Adjust the width as needed */
+    max-width: 15%; /* Adjust the width as needed */
     height: auto;
     margin-bottom: 20px; /* Space between the video and button */
     border: 2px solid #fff; /* Add border */
@@ -20,8 +20,29 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow */
     opacity: 0; /* Initially hidden */
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out;
-    height: 700px;
+    height: auto;
     
+}
+
+.congratulations-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.congratulations-text {
+    font-size: 60px; /* Make this larger than the rest */
+    color: white;
+    display: block;
+    color: #ffd935;
+}
+
+.influencer-name {
+    color: #ffd935; /* Yellow color for the name */
+    font-size: 40px; /* Slightly smaller or equal to the rest */
+    display: inline;
 }
 
 .middle-video.fade-in {

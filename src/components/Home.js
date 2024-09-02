@@ -1,16 +1,17 @@
-// src/Home.js
 import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
-import Section1 from './Section1';
+import Section1 from './Section1'; // Adjust the paths if necessary
 import Section2 from './Section2';
 import Section3 from './Section3';
 import Section4 from './Section4';
+
 
 function Home() {
     const [isSection2Visible, setIsSection2Visible] = useState(false);
     const [isSection3Visible, setIsSection3Visible] = useState(false);
     const [isSection4Visible, setIsSection4Visible] = useState(false);
     const [isButtonVisible, setIsButtonVisible] = useState(true);
+    const [influencerName, setInfluencerName] = useState(""); // Add this line
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
     const section4Ref = useRef(null);
@@ -18,7 +19,6 @@ function Home() {
     useEffect(() => {
         // Scroll to the top of the page when the component mounts
         window.scrollTo(0, 0);
-
     }, []);
 
     useEffect(() => {
@@ -52,7 +52,9 @@ function Home() {
         setIsSection4Visible(true);
     };
 
-    const handleSearchTriggerScroll = () => {
+    // Modify handleSearchTriggerScroll to accept the influencer name
+    const handleSearchTriggerScroll = (name) => {
+        setInfluencerName(name); // Save the influencer name
         setIsSection3Visible(true); // Trigger scroll to Section 3
     };
 
@@ -62,7 +64,7 @@ function Home() {
             <div className="content">
                 <Section1 handleScroll={handleScrollToSection2} isButtonVisible={isButtonVisible} />
                 {isSection2Visible && <Section2 ref={section2Ref} handleScroll={handleScrollToSection3} onSearchMatch={handleSearchTriggerScroll} />}
-                {isSection3Visible && <Section3 ref={section3Ref} handleScroll={handleScrollToSection4} />}
+                {isSection3Visible && <Section3 ref={section3Ref} handleScroll={handleScrollToSection4} influencerName={influencerName} />} {/* Pass influencerName */}
                 {isSection4Visible && <Section4 ref={section4Ref} />}
             </div>
         </div>
