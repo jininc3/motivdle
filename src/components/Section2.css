@@ -1,6 +1,6 @@
 .overlay2 {
   position: relative;
-  top: 25%; /* Adjust as needed to vertically center */
+  top: 45%; /* Adjust as needed to vertically center */
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -99,6 +99,35 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
 }
 
+.search-input.incorrect-guess {
+  border-color: red;
+  background-color: #ffdada;
+}
+
+.suggestion-item.incorrect-guess {
+  color: red;
+}
+
+.guess-tracker {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.incorrect-guesses {
+  margin-top: 20px;
+  height: 200px; /* Set a fixed height */
+  
+}
+
+.incorrect-guess-text {
+  color: red;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px 0; /* Add some spacing between guesses */
+}
 .search-button {
   padding: 12px 25px;
   font-size: 16px;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
-import { db } from '../firebase'; // Ensure this import is correct
+import { db } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
@@ -9,7 +9,9 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false); // State to manage play/pause
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [guessCount, setGuessCount] = useState(0); // Track number of guesses
+  const [incorrectGuesses, setIncorrectGuesses] = useState([]); // Track incorrect guesses
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -31,29 +33,59 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   }, []);
 
   const handleSearchClick = async () => {
+    if (guessCount >= 5) {
+      alert("You've reached the maximum number of guesses.");
+      return;
+    }
+
+    const guessedName = searchTerm.trim().toLowerCase();
+
+    // Check if the name has already been guessed
+    if (incorrectGuesses.map(guess => guess.toLowerCase()).includes(guessedName)) {
+      alert("You have already guessed this name. Try a different one.");
+      return;
+    }
+
     if (searchTerm.length > 0) {
       const quotesCollection = collection(db, 'quotes');
       const q = query(
         quotesCollection,
-        where('name', '==', searchTerm.trim().toLowerCase())
+        where('name', '==', guessedName)
       );
       const querySnapshot = await getDocs(q);
-      
+
       if (!querySnapshot.empty) {
         const matchedQuote = querySnapshot.docs[0].data();
         if (matchedQuote.name.toLowerCase() === quoteInfluencer.toLowerCase()) {
-          onSearchMatch(quoteInfluencer); // Pass influencer name to parent or directly to Section3
+          onSearchMatch(quoteInfluencer); // Correct match
         } else {
-          alert('The input does not match the name of the influencer associated with the quote.');
+          setIncorrectGuesses([...incorrectGuesses, searchTerm.trim()]); // Add to incorrect guesses
+          setGuessCount(guessCount + 1); // Increment guess count
+
+          // Remove the guessed name from suggestions if it's incorrect
+          const updatedSuggestions = suggestions.filter(
+            (suggestion) => suggestion.toLowerCase() !== guessedName
+          );
+          setSuggestions(updatedSuggestions);
         }
       } else {
-        alert('The input does not match any known influencer.');
+        setIncorrectGuesses([...incorrectGuesses, searchTerm.trim()]);
+        setGuessCount(guessCount + 1);
+
+        // Remove the guessed name from suggestions if it's incorrect
+        const updatedSuggestions = suggestions.filter(
+          (suggestion) => suggestion.toLowerCase() !== guessedName
+        );
+        setSuggestions(updatedSuggestions);
       }
+
+      // Reset search term after search
+      setSearchTerm(""); 
+      setShowSuggestions(false);
     } else {
       alert('Please enter a name in the search bar.');
     }
   };
-
 
   const handleSearch = async (e) => {
     const value = e.target.value;
@@ -62,8 +94,8 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
     if (value.length > 0) {
       const quotesCollection = collection(db, 'quotes');
       const q = query(
-        quotesCollection, 
-        where('name', '>=', value), 
+        quotesCollection,
+        where('name', '>=', value),
         where('name', '<=', value + '\uf8ff')
       );
       const querySnapshot = await getDocs(q);
@@ -83,7 +115,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       } else {
         audioRef.current.play();
       }
-      setIsPlaying(!isPlaying); // Toggle the state
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -111,11 +143,18 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             </ul>
           )}
         </div>
-
+        <p className="guess-tracker">Guesses: {guessCount} / 5</p>
         {/* Hint Button */}
         <button className="hint-button" onClick={handleAudioToggle}>
           {isPlaying ? 'STOP AUDIO' : 'AUDIO CLUE'}
         </button>
+
+        {/* Incorrect Guesses Display */}
+        <div className="incorrect-guesses">
+          {incorrectGuesses.map((guess, index) => (
+            <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
+          ))}
+        </div>
 
         {/* Audio Element */}
         <audio ref={audioRef}>
