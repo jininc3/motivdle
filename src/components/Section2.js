@@ -10,8 +10,12 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [guessCount, setGuessCount] = useState(0); // Track number of guesses
-  const [incorrectGuesses, setIncorrectGuesses] = useState([]); // Track incorrect guesses
+  const [guessCount, setGuessCount] = useState(0); 
+  const [incorrectGuesses, setIncorrectGuesses] = useState([]); 
+  const [hint1, setHint1] = useState(""); 
+  const [showHint1, setShowHint1] = useState(false); 
+  const [hint2, setHint2] = useState(""); 
+  const [showHint2, setShowHint2] = useState(false); 
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -21,26 +25,24 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       const quotesList = quoteSnapshot.docs.map(doc => ({
         text: doc.data().quote,
         influencer: doc.data().name,
+        hint1: doc.data().hint1, 
+        hint2: doc.data().hint2, 
       }));
 
       const today = new Date();
       const quoteIndex = today.getDate() % quotesList.length;
       setQuote(`"${quotesList[quoteIndex].text}"`);
       setQuoteInfluencer(quotesList[quoteIndex].influencer);
+      setHint1(quotesList[quoteIndex].hint1); 
+      setHint2(quotesList[quoteIndex].hint2); 
     };
 
     fetchQuotes();
   }, []);
 
   const handleSearchClick = async () => {
-    if (guessCount >= 5) {
-      alert("You've reached the maximum number of guesses.");
-      return;
-    }
-
     const guessedName = searchTerm.trim().toLowerCase();
 
-    // Check if the name has already been guessed
     if (incorrectGuesses.map(guess => guess.toLowerCase()).includes(guessedName)) {
       alert("You have already guessed this name. Try a different one.");
       return;
@@ -57,29 +59,16 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       if (!querySnapshot.empty) {
         const matchedQuote = querySnapshot.docs[0].data();
         if (matchedQuote.name.toLowerCase() === quoteInfluencer.toLowerCase()) {
-          onSearchMatch(quoteInfluencer); // Correct match
+          onSearchMatch(quoteInfluencer); 
         } else {
-          setIncorrectGuesses([...incorrectGuesses, searchTerm.trim()]); // Add to incorrect guesses
-          setGuessCount(guessCount + 1); // Increment guess count
-
-          // Remove the guessed name from suggestions if it's incorrect
-          const updatedSuggestions = suggestions.filter(
-            (suggestion) => suggestion.toLowerCase() !== guessedName
-          );
-          setSuggestions(updatedSuggestions);
+          setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]); 
+          setGuessCount(guessCount + 1); 
         }
       } else {
-        setIncorrectGuesses([...incorrectGuesses, searchTerm.trim()]);
+        setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]);
         setGuessCount(guessCount + 1);
-
-        // Remove the guessed name from suggestions if it's incorrect
-        const updatedSuggestions = suggestions.filter(
-          (suggestion) => suggestion.toLowerCase() !== guessedName
-        );
-        setSuggestions(updatedSuggestions);
       }
 
-      // Reset search term after search
       setSearchTerm(""); 
       setShowSuggestions(false);
     } else {
@@ -119,6 +108,17 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
     }
   };
 
+  // Toggle functions with logic to close other clues
+  const toggleHint1 = () => {
+    setShowHint1(!showHint1); 
+    if (showHint2) setShowHint2(false); // Hide hint2 if it's visible
+  };
+
+  const toggleHint2 = () => {
+    setShowHint2(!showHint2); 
+    if (showHint1) setShowHint1(false); // Hide hint1 if it's visible
+  };
+
   return (
     <div id="section2" className="section" ref={ref}>
       <div className="overlay2">
@@ -143,20 +143,31 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             </ul>
           )}
         </div>
-        <p className="guess-tracker">Guesses: {guessCount} / 5</p>
-        {/* Hint Button */}
-        <button className="hint-button" onClick={handleAudioToggle}>
-          {isPlaying ? 'STOP AUDIO' : 'AUDIO CLUE'}
-        </button>
+        <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
+        <div className="button-container">
+          <button className="hint-button" onClick={toggleHint1}>
+            CHARACTER CLUE
+          </button>
+          {showHint1 && (
+            <div className="hint-bubble">{hint1}</div>
+          )}
+          <button className="hint-button" onClick={toggleHint2}>
+            ACHIEVEMENTS CLUE
+          </button>
+          {showHint2 && (
+            <div className="hint-bubble">{hint2}</div>
+          )}
+          <button className="audio-button" onClick={handleAudioToggle}>
+            {isPlaying ? 'STOP AUDIO' : 'AUDIO CLUE'}
+          </button>
+        </div>
 
-        {/* Incorrect Guesses Display */}
         <div className="incorrect-guesses">
           {incorrectGuesses.map((guess, index) => (
             <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
           ))}
         </div>
 
-        {/* Audio Element */}
         <audio ref={audioRef}>
           <source src={require('../assets/audio-bob.mp3')} type="audio/mpeg" />
           Your browser does not support the audio element.

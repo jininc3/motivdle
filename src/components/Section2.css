@@ -12,7 +12,7 @@
 
 .quotey {
   font-family: 'Bona Nova SC', serif;
-  font-size: 50px; /* Adjust this base size as needed */
+  font-size: 2vw; /* Font size adjusts with viewport width */
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
   line-height: 1.5;
   color: white;
@@ -20,18 +20,14 @@
   border: 2px solid white;
   padding: 20px;
   border-radius: 10px;
-  opacity: 1; /* Ensure it's visible */
+  opacity: 1; 
   max-width: 60%;
-  margin: 0 auto 20px auto; /* Add margin-bottom to space out the quote and buttons */
+  margin: 0 auto 20px auto; 
   word-break: break-word;
   height: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Number of lines you want */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow-wrap: break-word; /* Ensures long words don't overflow */
 }
-
 .quotey.fit-text {
   font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
 }
@@ -100,12 +96,12 @@
 }
 
 .search-input.incorrect-guess {
-  border-color: red;
+  border-color: orangered;
   background-color: #ffdada;
 }
 
 .suggestion-item.incorrect-guess {
-  color: red;
+  color: orangered;
 }
 
 .guess-tracker {
@@ -113,6 +109,7 @@
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   margin-top: 20px;
+  font-size: 20px;
 }
 
 .incorrect-guesses {
@@ -121,12 +118,17 @@
   
 }
 
+.guess-number {
+  color: #ffd935 ;
+}
+
 .incorrect-guess-text {
-  color: red;
+  color: #ff2c2c;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   font-size: 18px;
   margin: 5px 0; /* Add some spacing between guesses */
+  
 }
 .search-button {
   padding: 12px 25px;
@@ -149,6 +151,51 @@
 .search-button:active {
   transform: scale(0.98); /* Slight press-down effect */
 }
+
+.hint-bubble {
+  position: absolute;
+  background-color: #ffd935;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.hint-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: #ffd935 transparent transparent transparent;
+}
+
+.button-container {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.hint-button:hover, .audio-button:hover {
+  background-color: black;
+  color: #ffd935;
+}
+
+
+
 
 .suggestions-list {
   margin-top: 0;
@@ -182,17 +229,19 @@
   position: relative; /* Make the search container relative to handle the absolute dropdown */
 }
 
-.hint-button {
-  margin-top: 20px;
+
+
+.hint-button, .audio-button {
+  margin: 0 10px;
   padding: 10px 20px;
-  font-size: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid #ffd935;
   background-color: #ffd935;
   color: black;
-  border: 2px solid #ffd935;
-  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-weight: bolder;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .hint-button:hover {
