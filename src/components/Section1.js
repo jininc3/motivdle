@@ -25,13 +25,6 @@ function Section1({ handleScroll }) {
       >
         THE MOTIVDLE GAME
       </button>
-      <button
-        id="gameButton"
-        className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
-        onClick={() => window.location.href = "/motivation-only"}
-      >
-        MOTIVATIONAL QUOTE
-      </button>
     </div>
   );
 }

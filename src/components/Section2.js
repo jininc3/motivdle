@@ -145,22 +145,29 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
         </div>
         <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
         <div className="button-container">
-          <button className="hint-button" onClick={toggleHint1}>
-            CHARACTER CLUE
-          </button>
-          {showHint1 && (
-            <div className="hint-bubble">{hint1}</div>
-          )}
-          <button className="hint-button" onClick={toggleHint2}>
-            ACHIEVEMENTS CLUE
-          </button>
-          {showHint2 && (
-            <div className="hint-bubble">{hint2}</div>
-          )}
-          <button className="audio-button" onClick={handleAudioToggle}>
-            {isPlaying ? 'STOP AUDIO' : 'AUDIO CLUE'}
-          </button>
-        </div>
+        <button className="hint-button" onClick={toggleHint1} data-tooltip="Character Clue">
+  <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+</button>
+
+<button className="hint-button" onClick={toggleHint2} data-tooltip="Achievements Clue">
+  <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+</button>
+
+<button className="audio-button" onClick={handleAudioToggle} data-tooltip="Audio Clue">
+  <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+</button>
+</div>
+
+{/* Render the hints below the buttons */}
+<div className="hint-container">
+  {showHint1 && (
+    <div className="hint-bubble">{hint1}</div>
+  )}
+  
+  {showHint2 && (
+    <div className="hint-bubble">{hint2}</div>
+  )}
+</div>
 
         <div className="incorrect-guesses">
           {incorrectGuesses.map((guess, index) => (

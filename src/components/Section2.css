@@ -153,19 +153,20 @@
 }
 
 .hint-bubble {
-  position: absolute;
+  position: relative;
   background-color: #ffd935;
   color: black;
   padding: 10px;
   border-radius: 10px;
   font-size: 12px;
   font-weight: bold;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
+  margin-top: 10px;  /* Space between buttons and the hint */
+  display: inline-block;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+}
+
+.hint-container {
+  margin-top: 20px; /* Space between the buttons and the hint container */
 }
 
 .hint-bubble:after {
@@ -190,7 +191,7 @@
 
 
 .hint-button:hover, .audio-button:hover {
-  background-color: black;
+  background-color: white;
   color: #ffd935;
 }
 
@@ -232,9 +233,8 @@
 
 
 .hint-button, .audio-button {
+  position: relative;
   margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 14px;
   font-weight: bold;
   border: 2px solid #ffd935;
   background-color: #ffd935;
@@ -242,15 +242,52 @@
   cursor: pointer;
   border-radius: 5px;
   transition: all 0.3s ease;
+  width: 60px;
+  height: 60px;
 }
 
-.hint-button:hover {
-  background-color: black;
-  color: #ffd935;
+.hint-button:hover:after, .audio-button:hover:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px; /* Adjust for tooltip position */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffd935;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
+
+.hint-button:hover:before, .audio-button:hover:before {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* Adjust for tooltip arrow */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffd935 transparent transparent transparent;
+}
+
+.icons {
+  max-width: 30px;
+  height: 30px;
+}
+
+
 
 .hint-button:active {
   transform: scale(0.98); /* Press-down effect */
+}
+
+.section {
+  height: 100vh;
+  padding: 20px;
 }
 
 
@@ -265,10 +302,6 @@
   }
 }
 
-.section {
-  height: 100vh;
-  padding: 20px;
-}
 
 
 @media (min-width:0px) and (max-width: 343.99px) {
