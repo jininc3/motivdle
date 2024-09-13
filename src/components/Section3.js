@@ -1,41 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Section3.css';
-import { db, doc, getDoc, setDoc } from '../firebase';  // Correct relative path
-import video1 from '../assets/video-bob.mp4';
-
-const videoFiles = [
-    video1,
-];
-
-const getTodaysVideo = () => {
-    const today = new Date();
-    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-    return videoFiles[dayOfYear % videoFiles.length];
-};
+import { db, doc, getDoc, setDoc } from '../firebase'; 
 
 const calculateTimeLeft = () => {
     const now = new Date();
     const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0);
+    midnight.setHours(24, 0, 0, 0); // Set the time to midnight
     const difference = midnight - now;
-
+  
     const hours = String(Math.floor(difference / (1000 * 60 * 60))).padStart(2, '0');
     const minutes = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
     const seconds = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
-
+  
     return { hours, minutes, seconds };
-};
+  };
 
-// Update the Section3 component to accept influencerName prop
-const Section3 = React.forwardRef(({ influencerName }, ref) => {
-    const videoSrc = getTodaysVideo();
+const Section3 = React.forwardRef(({ videoFileName, influencerName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [showOverlay, setShowOverlay] = useState(false);
     const [clickCount, setClickCount] = useState(0);
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [videoSrc, setVideoSrc] = useState(""); // New state for video source URL
+
+
+
 
     useEffect(() => {
+        const fetchVideo = async () => {
+            const videoUrl = `https://storage.googleapis.com/motivdle-videos/${videoFileName}`;
+            setVideoSrc(videoUrl); // Set the dynamically fetched video URL
+        };
+
+        fetchVideo();
+
         const fetchClickCount = async () => {
             const docRef = doc(db, 'clicks', 'buttonClick');
             const docSnap = await getDoc(docRef);
@@ -75,7 +73,7 @@ const Section3 = React.forwardRef(({ influencerName }, ref) => {
         }, 1000); // Update every second
 
         return () => clearInterval(timer);
-    }, []);
+    }, [videoFileName]); // Depend on videoFileName to ensure it updates properly
 
     const handleButtonClick = async () => {
         try {
@@ -106,12 +104,13 @@ const Section3 = React.forwardRef(({ influencerName }, ref) => {
     return (
         <div id="section3" className="section" ref={ref}>
             <div className="overlay-v">
-            <h1 className="congratulations-title">
-    <span className="congratulations-text">CONGRATULATIONS!</span>
-    <br />
-    THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
-</h1>
+                <h1 className="congratulations-title">
+                    <span className="congratulations-text">CONGRATULATIONS!</span>
+                    <br />
+                    THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
+                </h1>
                 <video ref={videoRef} className="middle-video" controls>
+                    {/* Dynamically set video src */}
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>

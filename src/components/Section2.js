@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
 import { db } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import Section3 from './Section3';
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
@@ -10,6 +11,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [suggestions, setSuggestions] = useState([]);  // Suggestions will now include name and icon
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [audioFile, setAudioFile] = useState("");
   const [guessCount, setGuessCount] = useState(0); 
   const [incorrectGuesses, setIncorrectGuesses] = useState([]); 
   const [hint1, setHint1] = useState(""); 
@@ -28,6 +30,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
         icon: doc.data().icon, // Fetch icon
         hint1: doc.data().hint1, 
         hint2: doc.data().hint2, 
+        audio: doc.data().audio, 
       }));
 
       const today = new Date();
@@ -36,11 +39,16 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       setQuoteInfluencer(quotesList[quoteIndex].influencer);
       setHint1(quotesList[quoteIndex].hint1); 
       setHint2(quotesList[quoteIndex].hint2); 
+      setAudioFile(quotesList[quoteIndex].audio);
     };
 
     fetchQuotes();
   }, []);
 
+  useEffect(() => {
+    console.log("Audio file being set:", audioFile);  // Log the value of audioFile
+  }, [audioFile]);
+  
   const handleSearchClick = async () => {
     const guessedName = searchTerm.trim().toLowerCase();
 
@@ -103,15 +111,21 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       setShowSuggestions(false);
     }
   };
-
   const handleAudioToggle = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        console.log("Audio paused");
       } else {
-        audioRef.current.play();
+        audioRef.current.play().then(() => {
+          console.log("Audio playing");
+        }).catch(error => {
+          console.error("Audio failed to play:", error);
+        });
       }
       setIsPlaying(!isPlaying);
+    } else {
+      console.error("Audio reference not set");
     }
   };
 
@@ -190,12 +204,20 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
           ))}
         </div>
 
+        {/* Conditionally render the audio element only if audioFile is set */}
+      {audioFile && (
         <audio ref={audioRef}>
-          <source src={require('../assets/audio-bob.mp3')} type="audio/mpeg" />
+          <source 
+            src={`https://storage.googleapis.com/motivdle-audio/${audioFile}`} 
+            type="audio/mpeg" 
+          />
           Your browser does not support the audio element.
         </audio>
-      </div>
+      )}
+
     </div>
+    </div>
+    
   );
 });
 
