@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
 import { db } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import Section3 from './Section3';
+
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
