@@ -12,6 +12,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioFile, setAudioFile] = useState("");
+  const [videoFile, setVideoFile] = useState("");
   const [guessCount, setGuessCount] = useState(0); 
   const [incorrectGuesses, setIncorrectGuesses] = useState([]); 
   const [hint1, setHint1] = useState(""); 
@@ -31,6 +32,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
         hint1: doc.data().hint1, 
         hint2: doc.data().hint2, 
         audio: doc.data().audio, 
+        video: doc.data().video
       }));
 
       const today = new Date();
@@ -40,6 +42,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       setHint1(quotesList[quoteIndex].hint1); 
       setHint2(quotesList[quoteIndex].hint2); 
       setAudioFile(quotesList[quoteIndex].audio);
+      setVideoFile(quotesList[quoteIndex].video);
     };
 
     fetchQuotes();
