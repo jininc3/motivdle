@@ -6,7 +6,6 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
   const [quoteInfluencer, setQuoteInfluencer] = useState("");
-  const [icon, setIcon] = useState("");  // New state for icon image
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);  // Suggestions will now include name and icon
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -35,7 +34,6 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       const quoteIndex = today.getDate() % quotesList.length;
       setQuote(`"${quotesList[quoteIndex].text}"`);
       setQuoteInfluencer(quotesList[quoteIndex].influencer);
-      setIcon(quotesList[quoteIndex].icon); // Set icon for the influencer
       setHint1(quotesList[quoteIndex].hint1); 
       setHint2(quotesList[quoteIndex].hint2); 
     };
