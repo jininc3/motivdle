@@ -12,16 +12,14 @@
 }
 
 .middle-video {
-    max-width: 15%; /* Adjust the width as needed */
+    width: 15%; /* Adjust to a smaller size */
     height: auto;
-    margin-bottom: 20px; /* Space between the video and button */
-    border: 2px solid #fff; /* Add border */
-    border-radius: 15px; /* Round the corners */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow */
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     opacity: 0; /* Initially hidden */
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out;
-    height: auto;
-    
 }
 
 .congratulations-title {

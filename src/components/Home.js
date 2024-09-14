@@ -1,71 +1,62 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
-import Section1 from './Section1'; // Adjust the paths if necessary
+import Section1 from './Section1';
 import Section2 from './Section2';
 import Section3 from './Section3';
-import Section4 from './Section4';
-
 
 function Home() {
     const [isSection2Visible, setIsSection2Visible] = useState(false);
     const [isSection3Visible, setIsSection3Visible] = useState(false);
-    const [isSection4Visible, setIsSection4Visible] = useState(false);
-    const [isButtonVisible, setIsButtonVisible] = useState(true);
-    const [influencerName, setInfluencerName] = useState(""); // Add this line
+    const [influencerName, setInfluencerName] = useState("");
+    const [videoFile, setVideoFile] = useState("");
+    
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
-    const section4Ref = useRef(null);
 
+    // Scroll to Section2 when "MOTIVDLE GAME" is clicked
     useEffect(() => {
-        // Scroll to the top of the page when the component mounts
-        window.scrollTo(0, 0);
-    }, []);
-
-    useEffect(() => {
-        if (isSection2Visible) {
+        if (isSection2Visible && section2Ref.current) {
             section2Ref.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [isSection2Visible]);
 
+    // Scroll to Section3 after the correct answer is given
     useEffect(() => {
-        if (isSection3Visible) {
+        if (isSection3Visible && section3Ref.current) {
             section3Ref.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [isSection3Visible]);
 
-    useEffect(() => {
-        if (isSection4Visible) {
-            section4Ref.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    }, [isSection4Visible]);
-
     const handleScrollToSection2 = () => {
-        setIsSection2Visible(true);
-        setIsButtonVisible(false); // Hide the button once clicked
+        setIsSection2Visible(true); // Show Section2 and trigger scroll in useEffect
     };
 
-    const handleScrollToSection3 = () => {
-        setIsSection3Visible(true);
-    };
-
-    const handleScrollToSection4 = () => {
-        setIsSection4Visible(true);
-    };
-
-    // Modify handleSearchTriggerScroll to accept the influencer name
-    const handleSearchTriggerScroll = (name) => {
-        setInfluencerName(name); // Save the influencer name
-        setIsSection3Visible(true); // Trigger scroll to Section 3
+    const handleSearchTriggerScroll = (name, videoFileName) => {
+        setInfluencerName(name);
+        setVideoFile(videoFileName);
+        setIsSection3Visible(true); // Show Section3 and trigger scroll in useEffect
     };
 
     return (
         <div>
             <div className="background-home"></div>
             <div className="content">
-                <Section1 handleScroll={handleScrollToSection2} isButtonVisible={isButtonVisible} />
-                {isSection2Visible && <Section2 ref={section2Ref} handleScroll={handleScrollToSection3} onSearchMatch={handleSearchTriggerScroll} />}
-                {isSection3Visible && <Section3 ref={section3Ref} handleScroll={handleScrollToSection4} influencerName={influencerName} />} {/* Pass influencerName */}
-                {isSection4Visible && <Section4 ref={section4Ref} />}
+                <Section1 handleScroll={handleScrollToSection2} />
+                
+                {isSection2Visible && (
+                    <Section2
+                        ref={section2Ref}
+                        onSearchMatch={handleSearchTriggerScroll} // Pass the handler for correct guess
+                    />
+                )}
+
+                {isSection3Visible && (
+                    <Section3
+                        ref={section3Ref}
+                        influencerName={influencerName}
+                        videoFileName={videoFile}
+                    />
+                )}
             </div>
         </div>
     );

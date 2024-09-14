@@ -19,6 +19,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [hint2, setHint2] = useState(""); 
   const [showHint2, setShowHint2] = useState(false); 
   const audioRef = useRef(null);
+  const [videoFile, setVideoFile] = useState("");
 
   useEffect(() => {
     const fetchQuotes = async () => {
@@ -31,6 +32,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
         hint1: doc.data().hint1, 
         hint2: doc.data().hint2, 
         audio: doc.data().audio, 
+        video: doc.data().video,
       }));
 
       const today = new Date();
@@ -40,6 +42,8 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       setHint1(quotesList[quoteIndex].hint1); 
       setHint2(quotesList[quoteIndex].hint2); 
       setAudioFile(quotesList[quoteIndex].audio);
+      setVideoFile(quotesList[quoteIndex].video);
+      
     };
 
     fetchQuotes();
@@ -68,10 +72,11 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       if (!querySnapshot.empty) {
         const matchedQuote = querySnapshot.docs[0].data();
         if (matchedQuote.name.toLowerCase() === quoteInfluencer.toLowerCase()) {
-          onSearchMatch(quoteInfluencer); 
+          // Only trigger scroll to Section3 on correct answer
+          onSearchMatch(quoteInfluencer, videoFile); 
         } else {
-          setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]); 
-          setGuessCount(guessCount + 1); 
+          setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]);
+          setGuessCount(guessCount + 1);
         }
       } else {
         setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]);
@@ -83,7 +88,8 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
     } else {
       alert('Please enter a name in the search bar.');
     }
-  };
+};
+
 
   const handleSearch = async (e) => {
     const value = e.target.value;
@@ -111,6 +117,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       setShowSuggestions(false);
     }
   };
+  
   const handleAudioToggle = () => {
     if (audioRef.current) {
       if (isPlaying) {
