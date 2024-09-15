@@ -91,32 +91,35 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
 };
 
 
-  const handleSearch = async (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
+const handleSearch = async (e) => {
+  const value = e.target.value;  // Keep the original casing of the user's input
+  setSearchTerm(value);  // This keeps the user's search term as-is
 
-    if (value.length > 0) {
-      const quotesCollection = collection(db, 'quotes');
-      const q = query(
-        quotesCollection,
-        where('name', '>=', value),
-        where('name', '<=', value + '\uf8ff')
-      );
-      const querySnapshot = await getDocs(q);
-      
-      // Store both name and icon in suggestions
-      const results = querySnapshot.docs.map(doc => ({
-        name: doc.data().name.toUpperCase(),
-        icon: doc.data().icon, // Include icon in suggestions
-      }));
+  if (value.length > 0) {
+    const lowerCaseValue = value.toLowerCase();  // Convert input to lowercase for comparison
 
-      setSuggestions(results);
-      setShowSuggestions(true);
-    } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
-    }
-  };
+    const quotesCollection = collection(db, 'quotes');
+    const q = query(
+      quotesCollection,
+      where('name', '>=', lowerCaseValue),  // Search with lowercase value
+      where('name', '<=', lowerCaseValue + '\uf8ff')  // Ensure it's case-insensitive
+    );
+
+    const querySnapshot = await getDocs(q);
+    
+    // Case-insensitive filter: Convert both name and search term to lowercase for comparison
+    const results = querySnapshot.docs.map(doc => ({
+      name: doc.data().name,  // Keep original casing for display
+      icon: doc.data().icon, 
+    })).filter(suggestion => suggestion.name.toLowerCase().includes(lowerCaseValue)); // Match case-insensitively
+
+    setSuggestions(results);  // Suggestions will display with original casing
+    setShowSuggestions(true);
+  } else {
+    setSuggestions([]);
+    setShowSuggestions(false);
+  }
+};
   
   const handleAudioToggle = () => {
     if (audioRef.current) {
