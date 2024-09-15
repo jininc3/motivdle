@@ -20,6 +20,11 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [showHint2, setShowHint2] = useState(false); 
   const audioRef = useRef(null);
   const [videoFile, setVideoFile] = useState("");
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();  // Focus the input as soon as Section2 becomes visible
+  }, []);
 
   useEffect(() => {
     const fetchQuotes = async () => {
@@ -153,13 +158,18 @@ const handleSearch = async (e) => {
   return (
     <div id="section2" className="section" ref={ref}>
       <div className="overlay2">
-        <p className="whosays">WHO SAYS THIS QUOTE</p>
+      <p className="whosays">
+  WHO SAYS THIS QUOTE?
+  <br />
+  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span> {/* This moves ROUND 1 closer */}
+</p>
         <p className="quotey">{quote}</p>
 
         {/* The image in the middle was removed here */}
 
         <div className="search-bar-container">
           <input
+          ref={inputRef}
             type="text"
             className="search-input"
             placeholder="Type a name..."

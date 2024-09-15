@@ -66,9 +66,20 @@
 }
 
 .whosays {
-  color: #ffd935; /* White text */
+  color: #ffd935;
   font-family: "Oswald", sans-serif;
   font-weight: bolder;
+  font-size: 42pt;
+  margin-bottom: 10px;  /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  line-height: 1.2; /* Adjust line height to bring the text closer */
+}
+
+.rounds {
+  color: white;
+  font-size:25pt;
+  padding: 0;
+  
 }
 
 .search-bar-container {
