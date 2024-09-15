@@ -109,10 +109,10 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     <br />
                     THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
                 </h1>
-                <video ref={videoRef} className="middle-video" controls>
-                    <source src={videoSrc} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                <video ref={videoRef} className="middle-video" controls preload="auto">
+  <source src={videoSrc} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
                 <button
                     ref={buttonRef}
                     className="video-button"
