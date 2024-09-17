@@ -176,7 +176,9 @@ const handleSearch = async (e) => {
             value={searchTerm}
             onChange={handleSearch}
           />
-          <button className="search-button" onClick={handleSearchClick}>SEARCH</button>
+          <button className="search-button" onClick={handleSearchClick}>
+    <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+  </button>
           {showSuggestions && suggestions.length > 0 && (
             <ul className="suggestions-list">
               {suggestions.map((suggestion, index) => (

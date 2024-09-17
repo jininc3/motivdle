@@ -1,6 +1,6 @@
 .overlay2 {
   position: relative;
-  top: 45%; /* Adjust as needed to vertically center */
+  top: 42%; /* Adjust as needed to vertically center */
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -30,6 +30,11 @@
 }
 .quotey.fit-text {
   font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.suggestion-item.highlighted {
+  background-color: #ffd935;
+  color: black;
 }
 
 .quotey.fade-in {
@@ -83,22 +88,53 @@
 }
 
 .search-bar-container {
-  position: relative; /* Make the search container relative to handle the absolute dropdown */
-  margin-top: 20px;
-  display: flex;
+  position: relative;  /* Make sure the container is positioned relative */
+  display: flex;       /* Flex to keep input and button in line */
   justify-content: center;
   align-items: center;
+  width: 450px;  /* Set the total width for both input and button */
+  margin: 0 auto;
 }
+
 
 .search-input {
   padding: 12px 15px;
   font-size: 18px;
-  border-radius: 30px 0 0 30px; /* Rounded corners for left side */
+  border-radius: 30px 30px 30px 30px;
   border: 2px solid #ffd935;
-  width: 350px;
+  width: 300px;   /* Set width of the input */
   outline: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: all 0.3s ease-in-out;
+}
+
+
+.search-button {
+  padding: 10px;
+  margin-left: 5px;
+  font-size: 16px;
+  border-radius: 30px 30px 30px 30px; /* Rounded corners for the right side */
+  border: 2px solid #ffd935;
+  background-color: #ffd935;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Matching shadow */
+  transition: all 0.3s ease-in-out;
+}
+
+.search-button:hover {
+  background-color: black;
+  color: #ffd935;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.search-button:active {
+  transform: scale(0.98); /* Slight press-down effect */
+}
+
+.search-icon {
+  width: 25px; /* Set the desired width for the search icon */
+  height: 25px; /* Set the desired height for the search icon */
 }
 
 .search-input:focus {
@@ -141,27 +177,7 @@
   margin: 5px 0; /* Add some spacing between guesses */
   
 }
-.search-button {
-  padding: 12px 25px;
-  font-size: 16px;
-  border-radius: 0 30px 30px 0; /* Rounded corners for right side */
-  border: 2px solid #ffd935;
-  background-color: #ffd935;
-  color: black;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Matching shadow for button */
-  transition: all 0.3s ease-in-out;
-}
 
-.search-button:hover {
-  background-color: black;
-  color: #ffd935;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.search-button:active {
-  transform: scale(0.98); /* Slight press-down effect */
-}
 
 .hint-bubble {
   position: relative;
@@ -210,30 +226,30 @@
 
 
 .suggestions-list {
-  margin-top: 0;
-  padding: 0;
-  list-style: none;
-  max-height: 150px;
-  overflow-y: auto;
+  position: absolute;
+  top: 100%;  /* Make sure it appears just below the input */
+  left: 32px;    /* Align to the left side of the container */
+  width: 74%;  /* Take the full width of the container (input + button) */
   background-color: #ffd935;
   border: 1px solid #ffd935;
-  border-radius: 0 0 5px 5px;
-  width: 350px;
-  position: absolute;
-  z-index: 1000;
-  top: 50px;
+  border-radius: 30px 30px 30px 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 200px;  /* Limit height and make it scrollable */
+  overflow-y: auto;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .suggestion-item {
-  display: flex;              /* Use flexbox for better alignment */
-  align-items: center;         /* Vertically align the content */
+  display: flex;
+  align-items: center;
   padding: 10px;
   cursor: pointer;
   color: black;
-  text-transform: uppercase;  
+  text-transform: capitalize;
 }
-
 .suggestion-item:hover {
   background-color: #ffd935;
   color: black;
@@ -297,7 +313,6 @@
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
-  margin-left: 0; 
 }
 
 .hint-button:active {
