@@ -159,7 +159,7 @@ const handleSearch = async (e) => {
     <div id="section2" className="section" ref={ref}>
       <div className="overlay2">
       <p className="whosays">
-  WHO SAYS THIS QUOTE?
+  GUESS WHO SAYS THIS QUOTE?
   <br />
   <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span> {/* This moves ROUND 1 closer */}
 </p>

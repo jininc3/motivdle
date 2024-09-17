@@ -27,7 +27,13 @@
   height: auto;
   text-overflow: ellipsis;
   overflow-wrap: break-word; /* Ensures long words don't overflow */
+  transition: transform 0.3s ease;
 }
+
+.quotey:hover {
+  transform: scale(1.02);
+}
+
 .quotey.fit-text {
   font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
 }
@@ -120,12 +126,14 @@
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Matching shadow */
   transition: all 0.3s ease-in-out;
+  
 }
 
 .search-button:hover {
-  background-color: black;
+  background-color: white;
   color: #ffd935;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: scale(1.1);
 }
 
 .search-button:active {
@@ -218,6 +226,7 @@
 
 
 .hint-button:hover, .audio-button:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
   background-color: white;
   color: #ffd935;
 }
@@ -285,7 +294,7 @@
   color: black;
   cursor: pointer;
   border-radius: 5px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
   width: 60px;
   height: 60px;
 }
@@ -328,6 +337,7 @@
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
+  object-fit: cover;
 }
 
 .hint-button:active {
