@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Section3.css';
-import { db } from '../firebase';  // Make sure this path is correct based on your project structure
+import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const calculateTimeLeft = () => {
     const now = new Date();
     const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0); // Set the time to midnight
+    midnight.setHours(24, 0, 0, 0);
     const difference = midnight - now;
 
     const hours = String(Math.floor(difference / (1000 * 60 * 60))).padStart(2, '0');
@@ -16,21 +16,48 @@ const calculateTimeLeft = () => {
     return { hours, minutes, seconds };
 };
 
-// Section3 component now accepts both influencerName and videoFileName as props
 const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [showOverlay, setShowOverlay] = useState(false);
     const [clickCount, setClickCount] = useState(0);
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-    const [videoSrc, setVideoSrc] = useState("");  // Video source URL
+    const [videoSrc, setVideoSrc] = useState("");  
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);  
 
-    // Fetch the video based on the videoFileName passed as a prop
+    const preloadVideo = async (url) => {
+        return new Promise((resolve, reject) => {
+            const video = document.createElement('video');
+            video.src = url;
+            video.preload = 'auto';
+
+            video.onloadeddata = () => {
+                console.log('Video preloaded successfully:', url);
+                resolve(url);  
+            };
+
+            video.onerror = () => {
+                console.error('Error preloading video:', url);
+                reject(new Error('Error preloading video'));
+            };
+        });
+    };
+
     useEffect(() => {
         if (videoFileName) {
             const videoUrl = `https://storage.googleapis.com/motivdle-videos/${videoFileName}`;
-            setVideoSrc(videoUrl);  // Set the dynamically fetched video URL
-            console.log("Fetched video URL:", videoUrl);  // Log for debugging purposes
+            preloadVideo(videoUrl)
+                .then((url) => {
+                    setVideoSrc(url);
+                    setIsVideoLoaded(true);
+                    if (videoRef.current) {
+                        videoRef.current.classList.add('fade-in');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Failed to preload video:', error);
+                    setIsVideoLoaded(false);
+                });
         }
     }, [videoFileName]);
 
@@ -38,18 +65,18 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         const fetchClickCount = async () => {
             const docRef = doc(db, 'clicks', 'buttonClick');
             const docSnap = await getDoc(docRef);
-            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            const today = new Date().toISOString().split('T')[0];
 
             if (docSnap.exists()) {
                 const data = docSnap.data();
                 if (data.date === today) {
                     setClickCount(data.count);
                 } else {
-                    await setDoc(docRef, { count: 0, date: today }); // Reset count for new day
+                    await setDoc(docRef, { count: 0, date: today });
                     setClickCount(0);
                 }
             } else {
-                await setDoc(docRef, { count: 0, date: today }); // Initialize if document does not exist
+                await setDoc(docRef, { count: 0, date: today });
                 setClickCount(0);
             }
         };
@@ -70,7 +97,7 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
 
         const timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft());
-        }, 1000); // Update every second
+        }, 1000);
 
         return () => clearInterval(timer);
     }, []);
@@ -79,7 +106,7 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         try {
             const docRef = doc(db, 'clicks', 'buttonClick');
             const docSnap = await getDoc(docRef);
-            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            const today = new Date().toISOString().split('T')[0];
 
             if (docSnap.exists()) {
                 const data = docSnap.data();
@@ -87,11 +114,11 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     await setDoc(docRef, { count: data.count + 1, date: today });
                     setClickCount(data.count + 1);
                 } else {
-                    await setDoc(docRef, { count: 1, date: today }); // Reset count for new day
+                    await setDoc(docRef, { count: 1, date: today });
                     setClickCount(1);
                 }
             } else {
-                await setDoc(docRef, { count: 1, date: today }); // Initialize if document does not exist
+                await setDoc(docRef, { count: 1, date: today });
                 setClickCount(1);
             }
 
@@ -109,13 +136,17 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     <br />
                     THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
                 </h1>
-                <video ref={videoRef} className="middle-video" controls preload="auto">
-  <source src={videoSrc} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+                {isVideoLoaded ? (
+                    <video ref={videoRef} className="middle-video fade-in" controls preload="auto">
+                        <source src={videoSrc} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                ) : (
+                    <p>Loading video...</p>
+                )}
                 <button
                     ref={buttonRef}
-                    className="video-button"
+                    className="video-button fade-in"
                     onClick={handleButtonClick}
                 >
                     GO CHASE YOUR DREAMS
