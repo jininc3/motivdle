@@ -38,10 +38,7 @@
   font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
 }
 
-.suggestion-item.highlighted {
-  background-color: #ffd935;
-  color: black;
-}
+
 
 .quotey.fade-in {
   opacity: 1;
@@ -274,8 +271,14 @@
   color: black;
   text-transform: capitalize;
 }
+
+.suggestion-item.highlighted {
+  background-color:white;
+  color: black;
+}
+
 .suggestion-item:hover {
-  background-color: #ffd935;
+  background-color:white;
   color: black;
 }
 
