@@ -45,15 +45,20 @@ html, body {
 
 .test-button:hover {
   transform: scale(1.1); /* Slightly increase size on hover */
-  background-color: white; /* Change background to white on hover */
+  background-color: #ffd935; /* Change background to white on hover */
   color: black; /* Change text to green on hover */
 }
 
 #scrollButton {
-  color: black;
-  background-color: #ffd935;
+  color: #ffd935;
+  background-color: black;
 }
 
+#scrollButton:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: #ffd935; /* Change background to white on hover */
+  color: black; 
+}
 
 
 

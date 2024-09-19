@@ -136,14 +136,19 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     <br />
                     THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
                 </h1>
-                {isVideoLoaded ? (
-                    <video ref={videoRef} className="middle-video fade-in" controls preload="auto">
-                        <source src={videoSrc} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                ) : (
-                    <p>Loading video...</p>
-                )}
+                <div className="video-and-text">
+                    {isVideoLoaded ? (
+                        <video ref={videoRef} className="middle-video fade-in" controls preload="auto">
+                            <source src={videoSrc} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    ) : (
+                        <p>Loading video...</p>
+                    )}
+                    <p className="description-text">
+                        This is an inspiring moment from {influencerName} where they talk about their journey and success. Watch the video to get motivated and chase your dreams!
+                    </p>
+                    </div>
                 <button
                     ref={buttonRef}
                     className="video-button fade-in"
