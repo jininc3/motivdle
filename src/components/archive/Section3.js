@@ -1,57 +1,180 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Section3.css';
+import { db } from '../firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-import image2 from '../assets/image2.jpg';
-import image3 from '../assets/image3.jpg';
-import image4 from '../assets/image4.jpg';
-import image5 from '../assets/image5.jpg';
-import image6 from '../assets/image6.jpg';
-import image7 from '../assets/image7.jpg';
-import image8 from '../assets/image8.jpg';
-import image9 from '../assets/image9.jpg';
-import image10 from '../assets/image10.jpg';
-import image11 from '../assets/image11.jpg';
-import image12 from '../assets/image12.jpg';
-import image13 from '../assets/image13.jpg';
-import image14 from '../assets/image14.jpg';
-import image15 from '../assets/image15.jpg';
-import image16 from '../assets/image16.jpg';
+const calculateTimeLeft = () => {
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0);
+    const difference = midnight - now;
 
+    const hours = String(Math.floor(difference / (1000 * 60 * 60))).padStart(2, '0');
+    const minutes = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    const seconds = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
 
+    return { hours, minutes, seconds };
+};
 
-const images = [image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16];
+const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+    const videoRef = useRef(null);
+    const buttonRef = useRef(null);
+    const [showOverlay, setShowOverlay] = useState(false);
+    const [clickCount, setClickCount] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [videoSrc, setVideoSrc] = useState("");  
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);  
 
-const Section3 = React.forwardRef(({ handleScroll }, ref) => {
-  const [image, setImage] = useState("");
-  const imageRef = useRef(null);
-  const buttonRef = useRef(null);
+    const preloadVideo = async (url) => {
+        return new Promise((resolve, reject) => {
+            const video = document.createElement('video');
+            video.src = url;
+            video.preload = 'auto';
 
-  useEffect(() => {
-    const today = new Date();
-    const imageIndex = today.getDate() % images.length;
-    setImage(images[imageIndex]);
+            video.onloadeddata = () => {
+                console.log('Video preloaded successfully:', url);
+                resolve(url);  
+            };
 
-    if (imageRef.current) {
-      setTimeout(() => {
-        imageRef.current.classList.add('fade-in');
-      }, 800); // Adjust the delay as needed
-    }
+            video.onerror = () => {
+                console.error('Error preloading video:', url);
+                reject(new Error('Error preloading video'));
+            };
+        });
+    };
 
-    if (buttonRef.current) {
-      setTimeout(() => {
-        buttonRef.current.classList.add('fade-in');
-      }, 1600); // Adjust the delay as needed
-    }
-  }, []);
+    useEffect(() => {
+        if (videoFileName) {
+            const videoUrl = `https://storage.googleapis.com/motivdle-videos/${videoFileName}`;
+            preloadVideo(videoUrl)
+                .then((url) => {
+                    setVideoSrc(url);
+                    setIsVideoLoaded(true);
+                    if (videoRef.current) {
+                        videoRef.current.classList.add('fade-in');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Failed to preload video:', error);
+                    setIsVideoLoaded(false);
+                });
+        }
+    }, [videoFileName]);
 
-  return (
-    <div id="section3" className="section" ref={ref}>
-      <div className="overlay-i">
-        <img ref={imageRef} src={image} alt="Daily" className="middle-image fade-in-element"/>
-        <button ref={buttonRef} className="image-button" onClick={handleScroll}>MOTIVATIONAL VIDEO</button>
-      </div>
-    </div>
-  );
+    useEffect(() => {
+        const fetchClickCount = async () => {
+            const docRef = doc(db, 'clicks', 'buttonClick');
+            const docSnap = await getDoc(docRef);
+            const today = new Date().toISOString().split('T')[0];
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                if (data.date === today) {
+                    setClickCount(data.count);
+                } else {
+                    await setDoc(docRef, { count: 0, date: today });
+                    setClickCount(0);
+                }
+            } else {
+                await setDoc(docRef, { count: 0, date: today });
+                setClickCount(0);
+            }
+        };
+
+        fetchClickCount();
+
+        if (videoRef.current) {
+            setTimeout(() => {
+                videoRef.current.classList.add('fade-in');
+            }, 800);
+        }
+
+        if (buttonRef.current) {
+            setTimeout(() => {
+                buttonRef.current.classList.add('fade-in');
+            }, 1600);
+        }
+
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
+    const handleButtonClick = async () => {
+        try {
+            const docRef = doc(db, 'clicks', 'buttonClick');
+            const docSnap = await getDoc(docRef);
+            const today = new Date().toISOString().split('T')[0];
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                if (data.date === today) {
+                    await setDoc(docRef, { count: data.count + 1, date: today });
+                    setClickCount(data.count + 1);
+                } else {
+                    await setDoc(docRef, { count: 1, date: today });
+                    setClickCount(1);
+                }
+            } else {
+                await setDoc(docRef, { count: 1, date: today });
+                setClickCount(1);
+            }
+
+            setShowOverlay(true);
+        } catch (error) {
+            console.error('Failed to fetch:', error);
+        }
+    };
+
+    return (
+        <div id="section3" className="section" ref={ref}>
+            <div className="overlay-v">
+                <h1 className="congratulations-title">
+                    <span className="congratulations-text">CONGRATULATIONS!</span>
+                    <br />
+                    THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
+                </h1>
+                <div className="video-and-text">
+                    {isVideoLoaded ? (
+                        <video ref={videoRef} className="middle-video fade-in" controls preload="auto">
+                            <source src={videoSrc} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    ) : (
+                        <p>Loading video...</p>
+                    )}
+                    <p className="description-text">
+                        This is an inspiring moment from {influencerName} where they talk about their journey and success. Watch the video to get motivated and chase your dreams!
+                    </p>
+                    </div>
+                <button
+                    ref={buttonRef}
+                    className="video-button fade-in"
+                    onClick={handleButtonClick}
+                >
+                    GO CHASE YOUR DREAMS
+                </button>
+            </div>
+            {showOverlay && (
+                <div className="overlay-window">
+                    <div className="overlay-content">
+                        <p><strong>CONGRATULATIONS</strong></p>
+                        <p>This is the end of today's motivdle.</p> <br />
+                        <p>You are one of <span className="number-highlight">{clickCount}</span> users who have motivated themselves today.</p>
+                        <p>Time left till the next motivdle: <span className="timer-highlight">{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}</span></p>
+                        <button
+                            className="close-overlay"
+                            onClick={() => setShowOverlay(false)}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 });
 
 export default Section3;

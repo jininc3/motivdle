@@ -12,7 +12,7 @@
 }
 
 .middle-video {
-    width: 33%; /* Adjust to a smaller size */
+    width: 15%; /* Adjust to a smaller size */
     height: auto;
     margin-bottom: 20px;
     border: 2px solid #fff;
@@ -79,24 +79,6 @@
     background-color: white; /* Change background to white on hover */
     color: black; /* Change text to green on hover */
 }
-
-.description-text {
-    font-size: 18px;
-    color: white;
-    max-width: 400px; /* Adjust as needed */
-    text-align: left; /* Align text to the left */
-    line-height: 1.6; /* Increase line height for readability */
-}
-
-.video-and-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px; /* Space between video and text */
-    flex-wrap: wrap; /* Ensure items wrap on smaller screens */
-}
-
-
 
 
 

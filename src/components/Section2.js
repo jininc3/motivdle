@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
 import { db } from '../firebase';
