@@ -4,7 +4,7 @@ import './App.css';
 import Home from './components/Home';
 import Section3 from './components/Section3';
 import Home2 from './components/Home2'; // Import Home2 component
-import Section4 from './components/Section4'; // Import Section4 component
+
 import Section5 from './components/Section5'; // Import Section5 component
 
 
