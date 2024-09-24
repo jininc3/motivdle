@@ -9,7 +9,9 @@ function Home() {
     const [isSection3Visible, setIsSection3Visible] = useState(false);
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
-    
+    const [backgroundStyle, setBackgroundStyle] = useState({});
+    const [subscribeStyle, setSubscribeStyle] = useState({}); // State for Subscribe section
+
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
 
@@ -20,10 +22,15 @@ function Home() {
         }
     }, [isSection2Visible]);
 
-    // Scroll to Section3 after the correct answer is given
+    // Scroll to Section3 after the correct answer is given and update styles
     useEffect(() => {
         if (isSection3Visible && section3Ref.current) {
             section3Ref.current.scrollIntoView({ behavior: 'smooth' });
+            setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.6)' }); // Change background when Section3 is visible
+            
+        } else if (!isSection3Visible) {
+            setBackgroundStyle({});
+            setSubscribeStyle({}); // Reset Subscribe section style
         }
     }, [isSection3Visible]);
 
@@ -38,8 +45,9 @@ function Home() {
     };
 
     return (
-        <div>
+        <div style={backgroundStyle}> {/* Apply dynamic background style here */}
             <div className="background-home"></div>
+            
             <div className="content">
                 <Section1 handleScroll={handleScrollToSection2} />
                 
@@ -58,6 +66,15 @@ function Home() {
                     />
                 )}
             </div>
+            <div className="subscribe" style={subscribeStyle}> {/* Apply dynamic style here */}
+                <h2>Subscribe</h2>
+                <p>Sign up to be the first to get updates.</p>
+                <input type="email" placeholder="Email" />
+                <button>SIGN UP</button>
+            </div>
+            <footer className="footer">
+                <p>&copy; 2024 Motivdle. All rights reserved.</p>
+            </footer>
         </div>
     );
 }

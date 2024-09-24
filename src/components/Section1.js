@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';  // Ensure Link is imported from react-router-dom
 import './Section1.css';
 
+
 function Section1({ handleScroll }) {
   const [isButtonVisible, setButtonVisible] = useState(false);
 
@@ -16,6 +17,7 @@ function Section1({ handleScroll }) {
 
   return (
     <div id="section1" className="section">
+      
       <Link to="/"><h1 className="title-home">MOTIVDLE</h1></Link>
       <Link to="/"><p className="subtitle-home">MOTIVATION ONCE A DAY IS ENOUGH.</p></Link>
       

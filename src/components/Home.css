@@ -33,3 +33,39 @@ body {
 .section.visible {
   display: block;
 }
+
+.subscribe {
+  padding: 40px;
+  font-size: 1.2rem;
+  color: white;
+  font-family: "Oswald", sans-serif;
+   /* Default background */
+  transition: background-color 0.5s ease; /* Smooth transition */
+}
+
+.subscribe input {
+  padding: 10px;
+  font-size: 1rem;
+  margin-right: 10px;
+  font-family: "Oswald", sans-serif;
+}
+
+.subscribe button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: white;
+  color: #181818;
+  border: none;
+  cursor: pointer;
+  font-family: "Oswald", sans-serif;
+}
+
+.subscribe button:hover {
+  background-color: #333;
+  color: white;
+}
+
+.footer {
+  padding: 10px;
+  color: white;
+}

@@ -3,7 +3,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
 import { db } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import TextLogo from './TextLogo';
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
@@ -169,13 +168,12 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   };
 
   return (
-    <div id="section2" className="section" ref={ref}>
-      < TextLogo />
-      <div className="overlay2">
+    <div id="section2" className="section3" ref={ref}>
+      <div className="overlay3">
         <p className="whosays">
           GUESS WHO SAYS THIS QUOTE?
           <br />
-          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span>
+          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span>
         </p>
         <p className="quotey">{quote}</p>
 

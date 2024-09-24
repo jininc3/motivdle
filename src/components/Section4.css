@@ -1,0 +1,520 @@
+.overlay3 {
+ 
+  top: 60%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Move the content back to the center */
+  color: white;
+  text-align: center;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.section3 {
+  position: relative;
+  top: 50%;
+}
+
+.quotey {
+  font-family: 'Bona Nova SC', serif;
+  font-size: 2vw; /* Font size adjusts with viewport width */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 1; 
+  max-width: 60%;
+  margin: 0 auto 20px auto; 
+  word-break: break-word;
+  height: auto;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word; /* Ensures long words don't overflow */
+  transition: transform 0.3s ease;
+}
+
+.quotey:hover {
+  transform: scale(1.02);
+}
+
+.quotey.fit-text {
+  font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
+}
+
+
+
+.quotey.fade-in {
+  opacity: 1;
+  transform: translateY(-20px); /* Slight upward movement */
+}
+
+.quote-button2 {
+  position: relative;
+  top: 40%;
+  padding: 10px 20px; /* Increase padding */
+   /* Add margin */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 24px; /* Increase font size */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
+  background-color: black; /* Green background */
+  color:#ffd935;; /* White text */
+  font-family: "Oswald", sans-serif;
+}
+
+.quote-button2.fade-in {
+  opacity: 1;
+}
+
+.quote-button2:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: white; /* Change background to white on hover */
+  color: black; /* Change text to green on hover */
+}
+
+.whosays {
+  color: #ffd935;
+  font-family: "Oswald", sans-serif;
+  font-weight: bolder;
+  font-size: 42pt;
+  margin-bottom: 10px;  /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  line-height: 1.2; /* Adjust line height to bring the text closer */
+}
+
+.rounds {
+  color: white;
+  font-size:25pt;
+  padding: 0;
+  
+}
+
+.search-bar-container {
+  position: relative;  /* Make sure the container is positioned relative */
+  display: flex;       /* Flex to keep input and button in line */
+  justify-content: center;
+  align-items: center;
+  width: 450px;  /* Set the total width for both input and button */
+  margin: 0 auto;
+}
+
+
+.search-input {
+  padding: 12px 15px;
+  font-size: 18px;
+  border-radius: 30px 30px 30px 30px;
+  border: 2px solid #ffd935;
+  width: 300px;   /* Set width of the input */
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease-in-out;
+}
+
+
+.search-button {
+  padding: 10px;
+  margin-left: 5px;
+  font-size: 16px;
+  border-radius: 30px 30px 30px 30px; /* Rounded corners for the right side */
+  border: 2px solid #ffd935;
+  background-color: #ffd935;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Matching shadow */
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.search-button:hover {
+  background-color: white;
+  color: #ffd935;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: scale(1.1);
+}
+
+.search-button:active {
+  transform: scale(0.98); /* Slight press-down effect */
+}
+
+.search-icon {
+  width: 25px; /* Set the desired width for the search icon */
+  height: 25px; /* Set the desired height for the search icon */
+}
+
+.search-input:focus {
+  border-color: #ffd935;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
+}
+
+.search-input.incorrect-guess {
+  border-color: orangered;
+  background-color: #ffdada;
+}
+
+.suggestion-item.incorrect-guess {
+  color: orangered;
+}
+
+.guess-tracker {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.incorrect-guesses {
+  margin-top: 20px;
+  height: 200px; /* Set a fixed height */
+  
+}
+
+.guess-number {
+  color: #ffd935 ;
+}
+
+.incorrect-guess-text {
+  color: #ff2c2c;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px 0; /* Add some spacing between guesses */
+  
+}
+
+
+.hint-bubble {
+  position: relative;
+  background-color: #ffd935;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;  /* Space between buttons and the hint */
+  display: inline-block;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hint-container {
+  margin-top: 20px; /* Space between the buttons and the hint container */
+}
+
+.hint-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: #ffd935 transparent transparent transparent;
+}
+
+.button-container {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.hint-button:hover, .audio-button:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: white;
+  color: #ffd935;
+}
+
+
+
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;  /* Make sure it appears just below the input */
+  left: 32px;    /* Align to the left side of the container */
+  width: 74%;  /* Take the full width of the container (input + button) */
+  background-color: #ffd935;
+  border: 1px solid #ffd935;
+  border-radius: 30px 30px 30px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 200px;  /* Limit height and make it scrollable */
+  overflow-y: auto;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.suggestions-list::-webkit-scrollbar {
+  width: 5px;  /* Set scrollbar width */
+}
+
+.suggestions-list::-webkit-scrollbar-thumb {
+  background-color: #333;  /* Dark scrollbar handle */
+  border-radius: 10px;  /* Rounded scrollbar handle */
+  /* Adds padding to the handle */
+}
+
+.suggestions-list::-webkit-scrollbar-track {
+    /* Matches the list background */
+  border-radius: 10px;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  text-transform: capitalize;
+}
+
+.suggestion-item.highlighted {
+  background-color:white;
+  color: black;
+}
+
+.suggestion-item:hover {
+  background-color:white;
+  color: black;
+}
+
+.search-bar-container {
+  position: relative; /* Make the search container relative to handle the absolute dropdown */
+}
+
+
+
+.hint-button, .audio-button {
+  position: relative;
+  margin: 0 10px;
+  font-weight: bold;
+  border: 2px solid #ffd935;
+  background-color: #ffd935;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  width: 60px;
+  height: 60px;
+}
+
+.hint-button:hover:after, .audio-button:hover:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px; /* Adjust for tooltip position */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffd935;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.hint-button:hover:before, .audio-button:hover:before {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* Adjust for tooltip arrow */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffd935 transparent transparent transparent;
+}
+
+.icons {
+  max-width: 30px;
+  height: 30px;
+}
+
+.suggestion-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.hint-button:active {
+  transform: scale(0.98); /* Press-down effect */
+}
+
+.section {
+  height: 100vh;
+  padding: 20px;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+@media (min-width:0px) and (max-width: 343.99px) {
+  .quotey {
+    font-size: 28pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+  }
+
+  .quote-button2 {
+    font-size: 1.2rem; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 15%;
+    
+  }
+}
+
+@media (min-width:344px) and (max-width: 360.99px) {
+  .quotey {
+    font-size: 26pt; /* Larger font size for smaller screens */
+     /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+    
+  }
+
+.overlay2 {
+  top: 60%;
+
+}
+
+  .quote-button2 {
+    font-size: 1.2rem; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 35%;
+    
+  }
+}
+
+@media (min-width:344px) and (max-width: 361.99px) {
+  .quotey {
+    font-size: 24pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+  }
+
+  .overlay2 {
+    top: 40%;
+  }
+
+  .quote-button2 {
+    font-size: 1.2rem; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 25%;
+    
+  }
+
+}
+
+
+/* Extra small devices (phones, less than 576px) */
+@media (min-width: 362px) and (max-width: 392.99px) {
+  .quotey {
+    font-size: 28pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+  }
+
+  .quote-button2 {
+    font-size: 1.2rem; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 25%;
+    
+  }
+}
+
+@media (min-width:393px) and (max-width: 395.99px) {
+
+  .quotey {
+    font-size: 20pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+    height: auto;
+  }
+
+  .quote-button2 {
+    margin-top: 40%;
+    
+    
+  }
+}
+
+/* Small devices (small laptops, tablets, 576px and up) */
+@media (min-width: 430px) and (max-width: 576.99px) {
+  .quotey {
+    font-size: 28pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+  }
+
+  .quote-button2 {
+    font-size: 1.2rem; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 25%;
+    
+  }
+}
+
+@media (min-width: 577px) and (max-width: 821.99px) {
+  .quotey {
+    font-size: 48pt; /* Larger font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+    max-width: 120%;
+    width: 100%;
+    left: -5%;
+    margin-top: 130px;
+  }
+
+  .overlay2 {
+    top: 40%;
+  
+  }
+  .quote-button2 {
+    font-size: 30px; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 15%;
+    
+  }
+}
+
+@media (min-width: 822px) and (max-width: 1024px) {
+  .quote-button2 {
+    font-size: 30px; /* Larger font size for smaller screens */
+    padding: 15px 30px; /* Adjust padding */
+    top: 15%;
+    
+  }
+}

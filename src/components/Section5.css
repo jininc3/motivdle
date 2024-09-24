@@ -1,30 +1,20 @@
 .overlay-v {
     position: relative;
-    top: 25%;
-    left: 75%;
+    top: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
     display: flex; /* Use flex to align items vertically */
-    flex-direction: row; /* Align items horizontally */
-    align-items: flex-start; /* Align items at the start */
-    justify-content: center; /* Center items horizontally */
-}
-
-.section4 {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Take the full height of the viewport */
-  /* Optional: Background for better visibility */
-    position: relative; /* Relative positioning to anchor button position */
-    right: 8%;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
 }
 
 .middle-video {
-    width: 30%; /* Adjust to a smaller size */
+    width: 15%; /* Adjust to a smaller size */
     height: auto;
-    margin-right: 20px; /* Add space between video and text */
+    margin-bottom: 20px;
     border: 2px solid #fff;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -34,30 +24,18 @@
 }
 
 .congratulations-title {
-    text-align: center; /* Center text */
+    text-align: center;
     margin-bottom: 20px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    font-size: 2em; /* Increase font size */
-    position: relative; /* Reset any positioning */
-    left: -25%; /* Remove left offset */
-
+    font-size: 30px;
 }
 
 .congratulations-text {
-    left:0%;
-    position: relative;
-    font-size: 3rem;
-}
-
-.video-description {
-    text-align: left; /* Align text to the left */
-    color: white; /* Text color */
-    font-size: 18px; /* Font size for the paragraph */
-    line-height: 1.5; /* Line height for better readability */
-    max-width: 50%; /* Limit the width of the text */
-    font-family: 'Arial', sans-serif; /* Font style */
-    margin-left: 20px; /* Space between text and video */
+    font-size: 60px; /* Make this larger than the rest */
+    color: white;
+    display: block;
+    color: #ffd935;
 }
 
 .influencer-name {
@@ -84,14 +62,11 @@
     font-weight: bold;
     opacity: 0; /* Initially hidden */
     transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
-    position: fixed; /* Changed to fixed positioning */
-    bottom: 20px; /* Positioned 20px from the bottom */
-    left: 42%; /* Positioned in the middle */
-    transform: translateX(-50%); /* Center the button horizontally */
-    background-color: black; /* Button background color */
-    color: #ffd935; /* Button text color */
+    position: relative;
+    top: 50px;
+    background-color: black; /* Green background */
+    color:#ffd935;; /* White text */
     font-family: "Oswald", sans-serif; 
-    z-index: 1000; /* Ensure it's above other content */
 }
 
 .video-button.fade-in {
