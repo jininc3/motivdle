@@ -19,10 +19,11 @@
   /* Optional: Background for better visibility */
     position: relative; /* Relative positioning to anchor button position */
     right: 8%;
+    top: 100px;
 }
 
 .middle-video {
-    width: 30%; /* Adjust to a smaller size */
+    max-width: 400px; /* Adjust to a smaller size */
     height: auto;
     margin-right: 20px; /* Add space between video and text */
     border: 2px solid #fff;
@@ -86,7 +87,7 @@
     transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
     position: fixed; /* Changed to fixed positioning */
     bottom: 20px; /* Positioned 20px from the bottom */
-    left: 42%; /* Positioned in the middle */
+    left: 35%; /* Positioned in the middle */
     transform: translateX(-50%); /* Center the button horizontally */
     background-color: black; /* Button background color */
     color: #ffd935; /* Button text color */
