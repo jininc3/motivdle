@@ -19,6 +19,7 @@ function Home() {
     useEffect(() => {
         if (isSection2Visible && section2Ref.current) {
             section2Ref.current.scrollIntoView({ behavior: 'smooth' });
+            
         }
     }, [isSection2Visible]);
 
@@ -26,8 +27,8 @@ function Home() {
     useEffect(() => {
         if (isSection3Visible && section3Ref.current) {
             section3Ref.current.scrollIntoView({ behavior: 'smooth' });
-            setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.6)' }); // Change background when Section3 is visible
-            
+             // Change background when Section3 is visible
+             setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.6)' });
         } else if (!isSection3Visible) {
             setBackgroundStyle({});
             setSubscribeStyle({}); // Reset Subscribe section style

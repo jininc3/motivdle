@@ -1,6 +1,6 @@
 .overlay2 {
   position: relative;
-  top: 42%; /* Adjust as needed to vertically center */
+  top: 50%; /* Adjust as needed to vertically center */
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -10,9 +10,15 @@
   align-items: center;
 }
 
+.sectionquote {
+  position: relative;
+  top: 500px;
+
+}
+
 .quotey {
-  font-family: 'Bona Nova SC', serif;
-  font-size: 2vw; /* Font size adjusts with viewport width */
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5vw; /* Font size adjusts with viewport width */
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
   line-height: 1.5;
   color: white;
@@ -117,8 +123,8 @@
   margin-left: 5px;
   font-size: 16px;
   border-radius: 30px 30px 30px 30px; /* Rounded corners for the right side */
-  border: 2px solid #ffd935;
-  background-color: #ffd935;
+  border: transparent;
+  background-color: transparent;
   color: black;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Matching shadow */
@@ -126,20 +132,15 @@
   
 }
 
-.search-button:hover {
-  background-color: white;
-  color: #ffd935;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-  transform: scale(1.1);
-}
+
 
 .search-button:active {
   transform: scale(0.98); /* Slight press-down effect */
 }
 
 .search-icon {
-  width: 25px; /* Set the desired width for the search icon */
-  height: 25px; /* Set the desired height for the search icon */
+  width: 40px; /* Set the desired width for the search icon */
+  height: 40px; /* Set the desired height for the search icon */
 }
 
 .search-input:focus {

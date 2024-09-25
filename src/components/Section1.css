@@ -21,8 +21,8 @@ html, body {
 .test-button {
   position: relative;
   top: 30%;
-  background-color: #ffd935; /* Green background */
-  color: black; /* White text */
+  background-color: black; /* Green background */
+  color: #ffd935; /* White text */
   font-family: "Oswald", sans-serif;
   padding: 10px 20px; /* Increase padding */
   margin: 10px 150px; /* Adjust margin: top/bottom, left/right */
@@ -50,33 +50,43 @@ html, body {
 }
 
 #scrollButton {
-  color: black;
-  background-color: #ffd935;
+  color: #ffd935;
+  background-color: black;
+}
+
+.button-logo {
+  width: 40px; /* Adjust the size as needed */
+  height: auto;
+  margin-right: 3px; /* Space between the logo and text */
+  margin-left:-10px;
+  vertical-align: middle; /* Align the logo with the button text */
+  padding: -20px;
 }
 
 
 
-
-
 .title-home {
-  font-size: 17rem;
+  font-size: 15rem;
   margin: 0;
   font-family: "Oswald", sans-serif;
   position: relative;
   text-align: center;
-  color: #ffd935;
+  color: #ffd700; /* Change the color to a sleek yellow */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for a sleek effect */
   top: 20%;
   font-weight: bolder;
   letter-spacing: -15px;
 }
 
+/* Additional styling for the subtitle, if needed */
 .subtitle-home {
-  font-size: 4rem;
+  font-size: 2rem;
   margin: 0;
   font-family: "Oswald", sans-serif;
   position: relative;
   text-align: center;
-  color: #ffd935;
+  color: #ffd700; /* Match the subtitle color */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for a sleek effect */
   top: 15%;
   font-weight: bolder;
   letter-spacing: -1px;

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';  // Ensure Link is imported from react-router-dom
 import './Section1.css';
+import logo from '../assets/m-button3.png';
 
 
 function Section1({ handleScroll }) {
@@ -19,26 +20,17 @@ function Section1({ handleScroll }) {
     <div id="section1" className="section">
       
       <Link to="/"><h1 className="title-home">MOTIVDLE</h1></Link>
-      <Link to="/"><p className="subtitle-home">MOTIVATION ONCE A DAY IS ENOUGH.</p></Link>
+      <Link to="/"><p className="subtitle-home">GUESS WHO SAYS THE INSPIRATION</p></Link>
       
-      {/* Existing button */}
       <button
         id="scrollButton"
         className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
         onClick={handleScroll}
       >
+        <img src={logo} alt="Logo" className="button-logo" /> {/* Add your logo here */}
         THE MOTIVDLE GAME
       </button>
-
-      {/* New button linked to testing page */}
-      <Link to="/testing">
-        <button
-          id="testButton"
-          className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
-        >
-          GO TO TESTING PAGE
-        </button>
-      </Link>
+      
     </div>
   );
 }
