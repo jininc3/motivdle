@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Section3.css';
+import './Section5.css';
 import { db } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const calculateTimeLeft = () => {
@@ -16,14 +17,15 @@ const calculateTimeLeft = () => {
     return { hours, minutes, seconds };
 };
 
-const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [showOverlay, setShowOverlay] = useState(false);
     const [clickCount, setClickCount] = useState(0);
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-    const [videoSrc, setVideoSrc] = useState("");  
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);  
+    const [videoSrc, setVideoSrc] = useState("");
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const navigate = useNavigate();
 
     const preloadVideo = async (url) => {
         return new Promise((resolve, reject) => {
@@ -33,7 +35,7 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
 
             video.onloadeddata = () => {
                 console.log('Video preloaded successfully:', url);
-                resolve(url);  
+                resolve(url);
             };
 
             video.onerror = () => {
@@ -122,20 +124,15 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                 setClickCount(1);
             }
 
-            setShowOverlay(true);
+            navigate('/section6'); // Navigate to the next section or end page
         } catch (error) {
             console.error('Failed to fetch:', error);
         }
     };
 
     return (
-        <div id="section3" className="section" ref={ref}>
+        <div id="section5" className="section5" ref={ref}>
             <div className="overlay-v">
-                <h1 className="congratulations-title">
-                    <span className="congratulations-text">CONGRATULATIONS!</span>
-                    <br />
-                    THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
-                </h1>
                 {isVideoLoaded ? (
                     <video ref={videoRef} className="middle-video fade-in" controls preload="auto">
                         <source src={videoSrc} type="video/mp4" />
@@ -144,13 +141,23 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                 ) : (
                     <p>Loading video...</p>
                 )}
-                <button
-                    ref={buttonRef}
-                    className="video-button fade-in"
-                    onClick={handleButtonClick}
-                >
-                    GO CHASE YOUR DREAMS
-                </button>
+                <div className="text-content">
+                    <h1 className="congratulations-title">
+                        <span className="congratulations-text">CONGRATULATIONS!</span>
+                        <br />
+                        THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
+                    </h1>
+                    <p className="video-description">
+                        This video showcases a powerful quote from {influencerName}. It is intended to inspire and motivate viewers to take action and push themselves beyond their limits. Watch the video and feel the power of positive words in action.
+                    </p>
+                    <button
+                        ref={buttonRef}
+                        className="video-button fade-in"
+                        onClick={handleButtonClick}
+                    >
+                        PRESS FOR ROUND 2
+                    </button>
+                </div>
             </div>
             {showOverlay && (
                 <div className="overlay-window">
@@ -172,4 +179,4 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     );
 });
 
-export default Section3;
+export default Section5;

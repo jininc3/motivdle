@@ -1,81 +1,88 @@
-.overlay-v {
+.overlay-3 {
     position: relative;
-    top: 25%;
-    left: 75%;
+    top: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
+    display: flex;
+   justify-content: center;
+   align-items: flex-start;
+    width: 100%; /* Adjust width of the container */
+    padding: 20px;
+     /* Add background overlay */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for depth */
     color: white;
-    display: flex; /* Use flex to align items vertically */
-    flex-direction: row; /* Align items horizontally */
-    align-items: flex-start; /* Align items at the start */
-    justify-content: center; /* Center items horizontally */
 }
 
 .section4 {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Take the full height of the viewport */
-  /* Optional: Background for better visibility */
-    position: relative; /* Relative positioning to anchor button position */
-    right: 8%;
-    top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+    
 }
 
-.middle-video {
-    max-width: 400px; /* Adjust to a smaller size */
+.middle-video2 {
+    max-width: 450px; /* Increase the width to make the video bigger */
     height: auto;
     margin-right: 20px; /* Add space between video and text */
     border: 2px solid #fff;
     border-radius: 15px;
+   
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    opacity: 0; /* Initially hidden */
+    opacity: 1; /* Make it visible */
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out;
     z-index: 1000;
 }
 
-.congratulations-title {
+
+.text-content1 {
+    max-width: 800px; 
+    height: 500px;/* Adjust width as needed */
+    padding: 20px;
+     /* Remove top margin */
+    text-align: left;
+    margin-left: 20px; /* Align with the video on the left */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.congratulations-title1 {
     text-align: center; /* Center text */
-    margin-bottom: 20px;
+    padding: 0;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     font-size: 2em; /* Increase font size */
-    position: relative; /* Reset any positioning */
-    left: -25%; /* Remove left offset */
-
+    color: white; /* Yellow color for the title */
+    
 }
 
-.congratulations-text {
-    left:0%;
-    position: relative;
-    font-size: 3rem;
+
+
+.congratulations-text2 {
+    font-size: 3rem; /* Adjust size */
+    color: white; /* Yellow color */
+    
+    padding: 0%;
 }
 
 .video-description {
-    text-align: left; /* Align text to the left */
-    color: white; /* Text color */
-    font-size: 18px; /* Font size for the paragraph */
-    line-height: 1.5; /* Line height for better readability */
-    max-width: 50%; /* Limit the width of the text */
-    font-family: 'Arial', sans-serif; /* Font style */
-    margin-left: 20px; /* Space between text and video */
+    text-align: left; /* Center text */
+    color: white;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 90%; 
+    height: auto;/* Ensure text width doesn’t overflow */
+    margin: 20px auto; /* Space around the text */
+    font-family: 'Arial', sans-serif;
 }
 
 .influencer-name {
     color: #ffd935; /* Yellow color for the name */
-    font-size: 40px; /* Slightly smaller or equal to the rest */
+    font-size: 3rem; /* Adjust size */
     display: inline;
 }
-
-.middle-video.fade-in {
-    opacity: 1;
-}
-
-.middle-video:hover {
-    transform: scale(1.1); /* Slightly increase size on hover */
-}
-
-.video-button {
+.video-button2 {
     padding: 10px 20px; /* Increase padding */
     border-radius: 5px; /* Rounded corners */
     font-size: 24px; /* Increase font size */
@@ -89,99 +96,22 @@
     bottom: 20px; /* Positioned 20px from the bottom */
     left: 35%; /* Positioned in the middle */
     transform: translateX(-50%); /* Center the button horizontally */
-    background-color: black; /* Button background color */
-    color: #ffd935; /* Button text color */
+    background-color: #ffd700; /* Green background */
+  color: black; /* Button text color */
     font-family: "Oswald", sans-serif; 
     z-index: 1000; /* Ensure it's above other content */
 }
 
+.video-button:hover {
+    transform: scale(1.1);
+    background-color: white;
+    color: black;
+}
+
 .video-button.fade-in {
     opacity: 1;
-    transform: translateY(-20px); /* Slight upward movement */
+    transform: translateY(-20px);
 }
-
-.video-button:hover {
-    transform: scale(1.1); /* Slightly increase size on hover */
-    background-color: white; /* Change background to white on hover */
-    color: black; /* Change text to green on hover */
-}
-
-
-
-.overlay-window {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.overlay-content {
-    background: black;
-    padding: 40px 20px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 700px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    font-family: "Oswald", sans-serif;
-    transition: background-color 0.3s ease; /* Add transition for smooth effect */
-    border: 3px solid #ffd935;
-    color: white;
-}
-
-.overlay-content:hover {
-    background-color: #141414; /* Change this color to your desired hover color */
-}
-
-.overlay-content p {
-    margin: 10px 0;
-    font-size: 28px;
-    line-height: 1.5;
-    color:white;
-    
-}
-
-.close-overlay {
-    margin-top: 20px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #ffd935;
-    color: black;
-    font-family: "Oswald", sans-serif;
-    transition: background-color 0.3s ease;
-}
-
-.close-overlay:hover {
-    background-color: #222222;
-}
-
-.time-left {
-    margin-top: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: white;
-}
-
-.number-highlight {
-    color: #ffd935; /* Set this to your desired color */
-    font-weight: bold;
-}
-
-.timer-highlight {
-    color: #ffd935; /* Set this to your desired color */
-    font-weight: bold;
-}
-
 
 
 

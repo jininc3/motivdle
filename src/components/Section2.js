@@ -172,11 +172,11 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       < TextLogo />
       <div className="overlay2">
         <p className="whosays">
-          GUESS WHO SAYS THIS QUOTE?
+          Guess Who Says This Quote?
           <br />
           <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span>
         </p>
-        <p className="quotey">{quote}</p>
+        <p className="quotey"><span className="thequote">{quote}</span></p>
 
         <div className="search-bar-container">
           <input

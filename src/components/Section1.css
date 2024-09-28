@@ -22,13 +22,13 @@ html, body {
   position: relative;
   top: 30%;
   background-color: black; /* Green background */
-  color: #ffd935; /* White text */
+  color: #ffd700; /* White text */
   font-family: "Oswald", sans-serif;
   padding: 10px 20px; /* Increase padding */
   margin: 10px 150px; /* Adjust margin: top/bottom, left/right */
   border-radius: 5px; /* Rounded corners */
-  font-size: 24px; /* Increase font size */
-  
+  font-size: 30px; /* Increase font size */  /* Change the color to a sleek yellow */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
   border: none;
   cursor: pointer;
@@ -50,8 +50,8 @@ html, body {
 }
 
 #scrollButton {
-  color: #ffd935;
-  background-color: black;
+  color: black;
+  background-color: #ffd935;
 }
 
 .button-logo {

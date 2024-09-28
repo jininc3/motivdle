@@ -43,12 +43,15 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
 
       const today = new Date();
       const quoteIndex = today.getDate() % quotesList.length;
-      setQuote(`"${quotesList[quoteIndex].text}"`);
-      setQuoteInfluencer(quotesList[quoteIndex].influencer);
-      setHint1(quotesList[quoteIndex].hint1);
-      setHint2(quotesList[quoteIndex].hint2);
-      setAudioFile(quotesList[quoteIndex].audio);
-      setVideoFile(quotesList[quoteIndex].video);
+      const excludedIndex = today.getDate() % quotesList.length; // This index is used in Section2.js
+      const newIndex = (excludedIndex + 1) % quotesList.length;
+
+      setQuote(`"${quotesList[newIndex].text}"`);
+      setQuoteInfluencer(quotesList[newIndex].influencer);
+      setHint1(quotesList[newIndex].hint1);
+      setHint2(quotesList[newIndex].hint2);
+      setAudioFile(quotesList[newIndex].audio);
+      setVideoFile(quotesList[newIndex].video);
     };
 
     fetchQuotes();

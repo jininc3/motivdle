@@ -132,18 +132,18 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
 
     return (
         <div id="section3" className="section4" ref={ref}>
-            <div className="overlay-v">
+            <div className="overlay-3">
                 {isVideoLoaded ? (
-                    <video ref={videoRef} className="middle-video fade-in" controls preload="auto">
+                    <video ref={videoRef} className="middle-video2 fade-in" controls preload="auto">
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 ) : (
                     <p>Loading video...</p>
                 )}
-                <div className="text-content">
-                    <h1 className="congratulations-title">
-                        <span className="congratulations-text">CONGRATULATIONS!</span>
+                <div className="text-content1">
+                    <h1 className="congratulations-title1">
+                        <span className="congratulations-text2">CONGRATULATIONS!</span>
                         <br />
                         THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
                     </h1>
