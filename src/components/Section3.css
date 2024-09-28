@@ -13,7 +13,7 @@
     color: white;
 }
 
-.section4 {
+.section3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +23,7 @@
     
 }
 
-.middle-video2 {
+.middle-video3 {
     max-width: 450px; /* Increase the width to make the video bigger */
     height: auto;
     margin-right: 20px; /* Add space between video and text */
@@ -37,7 +37,7 @@
 }
 
 
-.text-content1 {
+.text-content3 {
     max-width: 800px; 
     height: 500px;/* Adjust width as needed */
     padding: 20px;
@@ -47,7 +47,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
 
-.congratulations-title1 {
+.congratulations-title3 {
     text-align: center; /* Center text */
     padding: 0;
     font-family: 'Oswald', sans-serif;
@@ -59,14 +59,14 @@
 
 
 
-.congratulations-text2 {
+.congratulations-text3 {
     font-size: 3rem; /* Adjust size */
     color: white; /* Yellow color */
     
     padding: 0%;
 }
 
-.video-description {
+.video-description3 {
     text-align: left; /* Center text */
     color: white;
     font-size: 18px;
@@ -77,12 +77,13 @@
     font-family: 'Arial', sans-serif;
 }
 
-.influencer-name {
+.influencer-name3 {
     color: #ffd935; /* Yellow color for the name */
     font-size: 3rem; /* Adjust size */
     display: inline;
 }
-.video-button2 {
+
+.video-button3 {
     padding: 10px 20px; /* Increase padding */
     border-radius: 5px; /* Rounded corners */
     font-size: 24px; /* Increase font size */
@@ -90,11 +91,11 @@
     border: none;
     cursor: pointer;
     font-weight: bold;
-    opacity: 0; /* Initially hidden */
+    opacity: 1; /* Initially hidden */
     transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
     position: fixed; /* Changed to fixed positioning */
     bottom: 20px; /* Positioned 20px from the bottom */
-    left: 35%; /* Positioned in the middle */
+    left: 63%; /* Positioned in the middle */
     transform: translateX(-50%); /* Center the button horizontally */
     background-color: #ffd700; /* Green background */
   color: black; /* Button text color */

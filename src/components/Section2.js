@@ -192,7 +192,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
           </button>
           {showSuggestions && suggestions.length > 0 && (
-            <ul className="suggestions-list">
+            <ul className="suggestions-list2">
               {suggestions.map((suggestion, index) => (
                 <li
                   key={index}

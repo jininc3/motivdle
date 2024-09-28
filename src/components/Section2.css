@@ -268,10 +268,10 @@
 
 
 
-.suggestions-list {
+.suggestions-list2 {
   position: absolute;
   top: 100%;  /* Make sure it appears just below the input */
-  left: 600px; /* Align to the left side of the search bar */
+  left: 490px; /* Align to the left side of the search bar */
   width: 440px; /* Full width of the parent container (search bar) */
   background-color: #ffd935;
   border: 1px solid #ffd935;

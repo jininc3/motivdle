@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import './Section2.css';
+import './Section4.css';
 import { db } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
@@ -171,38 +171,38 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   };
 
   return (
-    <div id="section2" className="section3" ref={ref}>
-      <div className="overlay3">
-        <p className="whosays">
+    <div id="section4" className="section4" ref={ref}>
+      <div className="overlay4">
+        <p className="whosays4">
           GUESS WHO SAYS THIS QUOTE?
           <br />
-          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span>
+          <span className="rounds4" style={{ marginTop: '-10px' }}>(ROUND 2)</span>
         </p>
-        <p className="quotey">{quote}</p>
+        <p className="quotey4"><span className="thequote4">{quote}</span></p>
 
-        <div className="search-bar-container">
+        <div className="search-bar-container4">
           <input
             ref={inputRef}
             type="text"
-            className="search-input"
+            className="search-input4"
             placeholder="Type a name..."
             value={searchTerm}
             onChange={handleSearch}
             onKeyDown={handleKeyDown} // Add keydown listener
           />
-          <button className="search-button" onClick={handleSearchClick}>
-            <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+          <button className="search-button4" onClick={handleSearchClick}>
+            <img src={require('../assets/search.png')} alt="Search" className="search-icon4" />
           </button>
           {showSuggestions && suggestions.length > 0 && (
-            <ul className="suggestions-list">
+            <ul className="suggestions-list4">
               {suggestions.map((suggestion, index) => (
                 <li
                   key={index}
-                  className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
+                  className={`suggestion-item4 ${index === highlightedIndex ? 'highlighted' : ''}`}
                   onMouseDown={() => setSearchTerm(suggestion.name)} // On click, set the search term
                 >
                   <img
-                    className="suggestion-image"
+                    className="suggestion-image4"
                     src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
                     alt={suggestion.name}
                   />
@@ -212,34 +212,34 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             </ul>
           )}
         </div>
-        <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
-        <div className="button-container">
-          <button className="hint-button" onClick={toggleHint1} data-tooltip="Character Clue">
-            <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+        <p className="guess-tracker4">You have made <span className='guess-number4'>{guessCount}</span> guesses</p>
+        <div className="button-container4">
+          <button className="hint-button4" onClick={toggleHint1} data-tooltip="Character Clue">
+            <img className="icons4" src={require('../assets/details-clue.png')} alt="Character Clue" />
           </button>
 
           <button className="hint-button" onClick={toggleHint2} data-tooltip="Achievements Clue">
-            <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+            <img className="icons4" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
           </button>
 
           <button className="audio-button" onClick={handleAudioToggle} data-tooltip="Audio Clue">
-            <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+            <img className="icons4" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
           </button>
         </div>
 
-        <div className="hint-container">
+        <div className="hint-container4">
           {showHint1 && (
-            <div className="hint-bubble">{hint1}</div>
+            <div className="hint-bubble4">{hint1}</div>
           )}
 
           {showHint2 && (
-            <div className="hint-bubble">{hint2}</div>
+            <div className="hint-bubble4">{hint2}</div>
           )}
         </div>
 
-        <div className="incorrect-guesses">
+        <div className="incorrect-guesses4">
           {incorrectGuesses.map((guess, index) => (
-            <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
+            <p key={index} className="incorrect-guess-text4">{guess.toUpperCase()}</p>
           ))}
         </div>
 

@@ -1,28 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Section5.css';
-import { db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-const calculateTimeLeft = () => {
-    const now = new Date();
-    const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0);
-    const difference = midnight - now;
 
-    const hours = String(Math.floor(difference / (1000 * 60 * 60))).padStart(2, '0');
-    const minutes = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-    const seconds = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
 
-    return { hours, minutes, seconds };
-};
 
 const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
-    const [showOverlay, setShowOverlay] = useState(false);
-    const [clickCount, setClickCount] = useState(0);
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    
     const [videoSrc, setVideoSrc] = useState("");
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const navigate = useNavigate();
@@ -63,71 +49,13 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         }
     }, [videoFileName]);
 
-    useEffect(() => {
-        const fetchClickCount = async () => {
-            const docRef = doc(db, 'clicks', 'buttonClick');
-            const docSnap = await getDoc(docRef);
-            const today = new Date().toISOString().split('T')[0];
 
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                if (data.date === today) {
-                    setClickCount(data.count);
-                } else {
-                    await setDoc(docRef, { count: 0, date: today });
-                    setClickCount(0);
-                }
-            } else {
-                await setDoc(docRef, { count: 0, date: today });
-                setClickCount(0);
-            }
-        };
 
-        fetchClickCount();
-
-        if (videoRef.current) {
-            setTimeout(() => {
-                videoRef.current.classList.add('fade-in');
-            }, 800);
-        }
-
-        if (buttonRef.current) {
-            setTimeout(() => {
-                buttonRef.current.classList.add('fade-in');
-            }, 1600);
-        }
-
-        const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
-
-        return () => clearInterval(timer);
-    }, []);
 
     const handleButtonClick = async () => {
-        try {
-            const docRef = doc(db, 'clicks', 'buttonClick');
-            const docSnap = await getDoc(docRef);
-            const today = new Date().toISOString().split('T')[0];
-
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                if (data.date === today) {
-                    await setDoc(docRef, { count: data.count + 1, date: today });
-                    setClickCount(data.count + 1);
-                } else {
-                    await setDoc(docRef, { count: 1, date: today });
-                    setClickCount(1);
-                }
-            } else {
-                await setDoc(docRef, { count: 1, date: today });
-                setClickCount(1);
-            }
-
+       
             navigate('/section6'); // Navigate to the next section or end page
-        } catch (error) {
-            console.error('Failed to fetch:', error);
-        }
+       
     };
 
     return (
@@ -159,22 +87,7 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     </button>
                 </div>
             </div>
-            {showOverlay && (
-                <div className="overlay-window">
-                    <div className="overlay-content">
-                        <p><strong>CONGRATULATIONS</strong></p>
-                        <p>This is the end of today's motivdle.</p> <br />
-                        <p>You are one of <span className="number-highlight">{clickCount}</span> users who have motivated themselves today.</p>
-                        <p>Time left till the next motivdle: <span className="timer-highlight">{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}</span></p>
-                        <button
-                            className="close-overlay"
-                            onClick={() => setShowOverlay(false)}
-                        >
-                            Close
-                        </button>
-                    </div>
-                </div>
-            )}
+          
         </div>
     );
 });
