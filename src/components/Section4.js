@@ -42,7 +42,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       }));
 
       const today = new Date();
-      const quoteIndex = today.getDate() % quotesList.length;
+      
       const excludedIndex = today.getDate() % quotesList.length; // This index is used in Section2.js
       const newIndex = (excludedIndex + 1) % quotesList.length;
 
