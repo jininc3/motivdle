@@ -5,7 +5,6 @@ import Section5 from './Section5';
 import TextLogo from './TextLogo';
 
 function Home2() {
-    const [isSection4Visible, setIsSection4Visible] = useState(true);
     const [isSection5Visible, setIsSection5Visible] = useState(false);
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
@@ -33,8 +32,7 @@ function Home2() {
 
     const handleSearchMatch = (name, videoFileName) => {
         setInfluencerName(name);
-        setVideoFile(videoFileName);
-         
+        setVideoFile(videoFileName); 
         setIsSection5Visible(true); 
     };
 
