@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Section5.css';
+import './Section3.css';
 import { useNavigate } from 'react-router-dom';
 
-const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+
+
+const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
-    
     const [videoSrc, setVideoSrc] = useState("");
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const navigate = useNavigate();
@@ -46,13 +47,14 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         }
     }, [videoFileName]);
 
-
-
+   
 
     const handleButtonClick = async () => {
+      
+
+            navigate('/section4');
        
-            navigate('/section6'); // Navigate to the next section or end page
-       
+        
     };
 
     return (
@@ -80,13 +82,14 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                         className="video-button3 fade-in"
                         onClick={handleButtonClick}
                     >
-                        PRESS FOR ROUND 2
+                        ROUND 3 - MOVIE
                     </button>
                 </div>
             </div>
-          
+            
+            
         </div>
     );
 });
 
-export default Section5;
+export default Section3;

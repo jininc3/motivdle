@@ -34,7 +34,7 @@ function Home2() {
     const handleSearchMatch = (name, videoFileName) => {
         setInfluencerName(name);
         setVideoFile(videoFileName);
-        setIsSection4Visible(false); 
+         
         setIsSection5Visible(true); 
     };
 

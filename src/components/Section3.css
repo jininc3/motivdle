@@ -6,9 +6,8 @@
     display: flex;
    justify-content: center;
    align-items: flex-start;
-    width: 100%; /* Adjust width of the container */
+    width: 100%; 
     padding: 20px;
-     /* Add background overlay */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for depth */
     color: white;
 }
@@ -20,7 +19,6 @@
     height: 100vh;
     background-size: cover;
     position: relative;
-    
 }
 
 .middle-video3 {
@@ -62,7 +60,6 @@
 .congratulations-text3 {
     font-size: 3rem; /* Adjust size */
     color: white; /* Yellow color */
-    
     padding: 0%;
 }
 
@@ -94,22 +91,22 @@
     opacity: 1; /* Initially hidden */
     transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
     position: fixed; /* Changed to fixed positioning */
-    bottom: 20px; /* Positioned 20px from the bottom */
-    left: 63%; /* Positioned in the middle */
+    bottom: 10px;/* Positioned 20px from the bottom */
+    left: 56%; /* Positioned in the middle */
     transform: translateX(-50%); /* Center the button horizontally */
     background-color: #ffd700; /* Green background */
   color: black; /* Button text color */
     font-family: "Oswald", sans-serif; 
-    z-index: 1000; /* Ensure it's above other content */
+    z-index: 1000;
 }
 
-.video-button:hover {
+.video-button3:hover {
     transform: scale(1.1);
     background-color: white;
     color: black;
 }
 
-.video-button.fade-in {
+.video-button3.fade-in {
     opacity: 1;
     transform: translateY(-20px);
 }
