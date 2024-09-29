@@ -234,24 +234,33 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
 }
 
-
-.hint-bubble4 {
-  position: relative;
-  background-color: #ffd935;
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 30px;  /* Space between buttons and the hint */
-  display: inline-block;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
 .hint-container4 {
   margin-top: 20px; /* Space between the buttons and the hint container */
 }
 
+.hint-bubble4 {
+  position: relative;
+  background-color: #ffd935; /* Bright yellow background */
+  color: black;
+  padding: 15px 20px; /* Increase padding for better spacing */
+  border-radius: 20px; /* Rounder corners */
+  font-size: 14px; /* Slightly larger font size for readability */
+  font-weight: bold;
+  font-family: 'Arial', sans-serif; /* Modern and clean font */
+  margin-top: 20px;  /* Space between the hint and other elements */
+  display: inline-block;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Softer, more modern shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Add hover effect to give the hint more interaction */
+.hint-bubble4:hover {
+  background-color: #ffce00; /* Slightly lighter yellow on hover */
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Adjust the arrow under the bubble */
 .hint-bubble4:after {
   content: '';
   position: absolute;
@@ -261,6 +270,10 @@
   border-width: 10px;
   border-style: solid;
   border-color: #ffd935 transparent transparent transparent;
+}
+
+.hint-bubble4:hover:after {
+  border-color: #ffce00 transparent transparent transparent; /* Change arrow color on hover */
 }
 
 .button-container4 {
@@ -275,7 +288,7 @@
 .suggestions-list4 {
   position: absolute;
   top: 100%;  /* Make sure it appears just below the input */
-  left: 490px; /* Align to the left side of the search bar */
+  left: 600px; /* Align to the left side of the search bar */
   width: 440px; /* Full width of the parent container (search bar) */
   background-color: #ffd935;
   border: 1px solid #ffd935;

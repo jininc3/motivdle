@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Section5.css';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
 const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
@@ -59,28 +56,28 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     };
 
     return (
-        <div id="section5" className="section5" ref={ref}>
-            <div className="overlay-v">
+        <div id="section3" className="section3" ref={ref}>
+            <div className="overlay-3">
                 {isVideoLoaded ? (
-                    <video ref={videoRef} className="middle-video fade-in" controls preload="auto">
+                    <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto">
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 ) : (
                     <p>Loading video...</p>
                 )}
-                <div className="text-content">
-                    <h1 className="congratulations-title">
-                        <span className="congratulations-text">CONGRATULATIONS!</span>
+                <div className="text-content3">
+                    <h1 className="congratulations-title3">
+                        <span className="congratulations-text3">CONGRATULATIONS!</span>
                         <br />
-                        THIS QUOTE IS FROM <span className="influencer-name">{influencerName}</span>
+                        THIS QUOTE IS FROM <span className="influencer-name3">{influencerName}</span>
                     </h1>
-                    <p className="video-description">
+                    <p className="video-description3">
                         This video showcases a powerful quote from {influencerName}. It is intended to inspire and motivate viewers to take action and push themselves beyond their limits. Watch the video and feel the power of positive words in action.
                     </p>
                     <button
                         ref={buttonRef}
-                        className="video-button fade-in"
+                        className="video-button3 fade-in"
                         onClick={handleButtonClick}
                     >
                         PRESS FOR ROUND 2

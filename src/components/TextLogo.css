@@ -1,7 +1,7 @@
 .text-logo {
     position: fixed; /* Fixed position for consistent placement */
-    top: 10px; /* Adjust this value to vertically center if needed */
-    left: 10px; /* Centers horizontally */
+    top: 0px; /* Adjust this value to vertically center if needed */
+    left: 94%; /* Centers horizontally */
      /* Centers by adjusting the X-axis */
     font-size: 2rem; /* Adjust size as needed */
     font-family: "Oswald", sans-serif;

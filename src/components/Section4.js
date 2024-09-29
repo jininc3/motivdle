@@ -198,7 +198,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
               {suggestions.map((suggestion, index) => (
                 <li
                   key={index}
-                  className={`suggestion-item4 ${index === highlightedIndex ? 'highlighted' : ''}`}
+                  className={`suggestion-item4 ${index === highlightedIndex ? 'highlighted4' : ''}`}
                   onMouseDown={() => setSearchTerm(suggestion.name)} // On click, set the search term
                 >
                   <img

@@ -9,6 +9,7 @@ function Home2() {
     const [isSection5Visible, setIsSection5Visible] = useState(false);
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
+    const [backgroundStyle, setBackgroundStyle] = useState({});
     const section4Ref = useRef(null);
     const section5Ref = useRef(null);
 
@@ -21,8 +22,15 @@ function Home2() {
     useEffect(() => {
         if (isSection5Visible && section5Ref.current) {
             section5Ref.current.scrollIntoView({ behavior: 'smooth' });
+            setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.6)' });
+        } else if (!isSection5Visible) {
+            setBackgroundStyle({});
         }
     }, [isSection5Visible]);
+
+
+
+    
 
     const handleSearchMatch = (name, videoFileName) => {
         setInfluencerName(name);
