@@ -21,9 +21,9 @@ function Home2() {
     useEffect(() => {
         if (isSection5Visible && section5Ref.current) {
             section5Ref.current.scrollIntoView({ behavior: 'smooth' });
-            setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.6)' });
+            
         } else if (!isSection5Visible) {
-            setBackgroundStyle({});
+            
         }
     }, [isSection5Visible]);
 
