@@ -9,7 +9,6 @@ function Home2() {
     const [isSection5Visible, setIsSection5Visible] = useState(false);
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
-    const [backgroundStyle, setBackgroundStyle] = useState({});
     const section4Ref = useRef(null);
     const section5Ref = useRef(null);
 
