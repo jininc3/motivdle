@@ -12,10 +12,10 @@ function Home2() {
     const section5Ref = useRef(null);
 
     useEffect(() => {
-        if (isSection4Visible && section4Ref.current) {
+        if (section4Ref.current) {
             section4Ref.current.scrollIntoView({ behavior: 'smooth' });
         }
-    }, [isSection4Visible]);
+    }, );
 
     useEffect(() => {
         if (isSection5Visible && section5Ref.current) {
@@ -40,7 +40,7 @@ function Home2() {
         <div>
             <TextLogo />
             <div className="background-home"></div>
-            {isSection4Visible && (
+            { (
                 <Section4
                     ref={section4Ref}
                     onSearchMatch={handleSearchMatch}
