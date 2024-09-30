@@ -28,7 +28,7 @@ function Home() {
         if (isSection3Visible && section3Ref.current) {
             section3Ref.current.scrollIntoView({ behavior: 'smooth' });
              // Change background when Section3 is visible
-             setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.6)' });
+             setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.7)' });
         } else if (!isSection3Visible) {
             setBackgroundStyle({});
             setSubscribeStyle({}); // Reset Subscribe section style
