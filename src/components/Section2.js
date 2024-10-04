@@ -6,7 +6,6 @@ import TextLogo from './TextLogo';
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
-  const [quoteInfluencer, setQuoteInfluencer] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -20,7 +19,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [hint2, setHint2] = useState("");
   const [showHint2, setShowHint2] = useState(false);
   const audioRef = useRef(null);
-  const [videoFile, setVideoFile] = useState("");
+  
   const inputRef = useRef(null);
 
   useEffect(() => {
