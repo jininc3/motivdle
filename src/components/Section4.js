@@ -6,6 +6,7 @@ import { doc, getDoc, setDoc, collection, getDocs, query, where } from 'firebase
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
+  const [quoteInfluencer, setQuoteInfluencer] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);

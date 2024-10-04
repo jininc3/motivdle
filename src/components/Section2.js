@@ -9,7 +9,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [highlightedIndex, setHighlightedIndex] = useState(-1); // Track highlighted suggestion
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioFile, setAudioFile] = useState("");
   const [guessCount, setGuessCount] = useState(0);
@@ -18,10 +18,10 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [showHint1, setShowHint1] = useState(false);
   const [hint2, setHint2] = useState("");
   const [showHint2, setShowHint2] = useState(false);
+  const [quoteInfluencer, setQuoteInfluencer] = useState(""); // Define state for the influencer
+  const [videoFile, setVideoFile] = useState(""); // Define state for the video file
   const audioRef = useRef(null);
-  
   const inputRef = useRef(null);
-
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
