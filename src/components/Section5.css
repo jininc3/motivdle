@@ -52,6 +52,10 @@
     transform: scale(1.1); /* Slightly increase size on hover */
 }
 
+.caps {
+    text-transform: capitalize;
+}
+
 .video-button {
     padding: 10px 20px; /* Increase padding */
     border-radius: 5px; /* Rounded corners */

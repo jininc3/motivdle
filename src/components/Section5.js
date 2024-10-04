@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Section3.css';
+import './Section3.css'; // Ensure the correct CSS file is imported
 import { useNavigate } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase'; // Ensure your Firebase config is imported
 
-
-
-const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+const Section5 = React.forwardRef(({ videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [videoSrc, setVideoSrc] = useState("");
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [influencerName, setInfluencerName] = useState(''); // Fetch this from the actual quote document
     const navigate = useNavigate();
 
     const preloadVideo = async (url) => {
@@ -47,18 +48,40 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         }
     }, [videoFileName]);
 
-   
+    useEffect(() => {
+        const fetchQuoteOfTheDay = async () => {
+            try {
+                // First, get the quoteOfTheDay2 document to retrieve quoteId2
+                const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
+
+                if (quoteOfTheDayDoc.exists()) {
+                    const quoteId2 = quoteOfTheDayDoc.data().quoteId2;
+
+                    // Fetch the actual quote document using quoteId2
+                    const quoteDoc = await getDoc(doc(db, 'quotes', quoteId2));
+                    if (quoteDoc.exists()) {
+                        const quoteData = quoteDoc.data();
+                        setInfluencerName(quoteData.name); // Set the name from the actual quote
+                    } else {
+                        console.error('Quote not found in quotes collection');
+                    }
+                } else {
+                    console.error('Quote of the day not found');
+                }
+            } catch (error) {
+                console.error('Error fetching quote of the day:', error);
+            }
+        };
+
+        fetchQuoteOfTheDay();
+    }, []); // This will run only once when the component mounts
 
     const handleButtonClick = async () => {
-      
-
-            navigate('/section4');
-       
-        
+        navigate('/section4'); // Adjust this navigation to fit your flow
     };
 
     return (
-        <div id="section3" className="section3" ref={ref}>
+        <div id="section5" className="section3" ref={ref}>
             <div className="overlay-3">
                 {isVideoLoaded ? (
                     <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto">
@@ -75,7 +98,7 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                         THIS QUOTE IS FROM <span className="influencer-name3">{influencerName}</span>
                     </h1>
                     <p className="video-description3">
-                        This video showcases a powerful quote from {influencerName}. It is intended to inspire and motivate viewers to take action and push themselves beyond their limits. Watch the video and feel the power of positive words in action.
+                        This video showcases a powerful quote from <span className="caps">{influencerName}</span>. It is intended to inspire and motivate viewers to take action and push themselves beyond their limits. Watch the video and feel the power of positive words in action.
                     </p>
                     <button
                         ref={buttonRef}
@@ -86,10 +109,8 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     </button>
                 </div>
             </div>
-            
-            
         </div>
     );
 });
 
-export default Section3;
+export default Section5;

@@ -111,6 +111,9 @@
     transform: translateY(-20px);
 }
 
+.caps {
+    text-transform: capitalize;
+}
 
 
 @media (min-width:0px) and (max-width: 360.99px) {

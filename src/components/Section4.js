@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Section4.css';
 import { db } from '../firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { doc, getDoc, setDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
@@ -28,70 +28,96 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   }, []);
 
   useEffect(() => {
-    const fetchQuotes = async () => {
-      const quotesCollection = collection(db, 'quotes');
-      const quoteSnapshot = await getDocs(quotesCollection);
-      const quotesList = quoteSnapshot.docs.map(doc => ({
-        text: doc.data().quote,
-        influencer: doc.data().name,
-        icon: doc.data().icon,
-        hint1: doc.data().hint1,
-        hint2: doc.data().hint2,
-        audio: doc.data().audio,
-        video: doc.data().video,
-      }));
-
+    const fetchQuoteOfTheDay = async () => {
       const today = new Date();
-      
-      const excludedIndex = today.getDate() % quotesList.length; // This index is used in Section2.js
-      const newIndex = (excludedIndex + 1) % quotesList.length;
+      const currentDay = today.toDateString(); // Convert current date to a string
 
-      setQuote(`"${quotesList[newIndex].text}"`);
-      setQuoteInfluencer(quotesList[newIndex].influencer);
-      setHint1(quotesList[newIndex].hint1);
-      setHint2(quotesList[newIndex].hint2);
-      setAudioFile(quotesList[newIndex].audio);
-      setVideoFile(quotesList[newIndex].video);
+      // Check Firestore for today's quote in the quoteOTD2 collection
+      const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
+
+      if (quoteOfTheDayDoc.exists() && quoteOfTheDayDoc.data().date === currentDay) {
+        // If today's quote exists, use the quote ID to fetch the actual quote
+        const quoteId = quoteOfTheDayDoc.data().quoteId2;
+        const quoteDoc = await getDoc(doc(db, 'quotes', quoteId));
+
+        if (quoteDoc.exists()) {
+          const dailyQuote = quoteDoc.data();
+          setQuote(`"${dailyQuote.quote}"`);
+          setQuoteInfluencer(dailyQuote.influencer);
+          setHint1(dailyQuote.hint1);
+          setHint2(dailyQuote.hint2);
+          setAudioFile(dailyQuote.audio);
+          setVideoFile(dailyQuote.video);
+
+          console.log("Quote of the Day:", dailyQuote.quote);
+        } else {
+          console.error('Quote not found');
+        }
+      } else {
+        // Pick a new random quote from the quotes collection and set it as today's quote
+        const quotesCollection = collection(db, 'quotes');
+        const quoteSnapshot = await getDocs(quotesCollection);
+        const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay2'); // Exclude the `quoteOfTheDay2` doc
+
+        const randomIndex = Math.floor(Math.random() * quotesList.length);
+        const selectedQuote = quotesList[randomIndex];
+
+        // Set the new quote
+        setQuote(`"${selectedQuote.data().quote}"`);
+        setQuoteInfluencer(selectedQuote.data().influencer);
+        setHint1(selectedQuote.data().hint1);
+        setHint2(selectedQuote.data().hint2);
+        setAudioFile(selectedQuote.data().audio);
+        setVideoFile(selectedQuote.data().video);
+
+        // Store the new quote's ID and today's date in Firestore
+        await setDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'), {
+          quoteId2: selectedQuote.id, // Store the ID of the randomly selected quote
+          date: currentDay            // Store today's date
+        });
+
+        console.log("New Quote of the Day for Section 4:", selectedQuote.data().quote);
+      }
     };
 
-    fetchQuotes();
+    fetchQuoteOfTheDay();
   }, []);
-
+  
   const handleSearchClick = async () => {
     const guessedName = searchTerm.trim().toLowerCase();
-
+  
     if (incorrectGuesses.map(guess => guess.toLowerCase()).includes(guessedName)) {
       alert("You have already guessed this name. Try a different one.");
       return;
     }
-
+  
     if (searchTerm.length > 0) {
-      const quotesCollection = collection(db, 'quotes');
-      const q = query(
-        quotesCollection,
-        where('name', '==', guessedName)
-      );
-      const querySnapshot = await getDocs(q);
-
-      if (!querySnapshot.empty) {
-        const matchedQuote = querySnapshot.docs[0].data();
-        if (matchedQuote.name.toLowerCase() === quoteInfluencer.toLowerCase()) {
-          onSearchMatch(quoteInfluencer, videoFile);
+      // Fetch the quoteOfTheDay2 document to get the current name
+      const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
+  
+      if (quoteOfTheDayDoc.exists()) {
+        const dailyQuote = quoteOfTheDayDoc.data();
+        const quoteInfluencerName = dailyQuote.quoteId2.toLowerCase(); // Use the correct field from Firestore
+  
+        // Compare the guessed name with the name from quoteOfTheDay2
+        if (guessedName === quoteInfluencerName) {
+          // If it matches, scroll to the next section
+          onSearchMatch(dailyQuote.name, videoFile); // Pass name and video for next section
         } else {
           setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]);
           setGuessCount(guessCount + 1);
         }
       } else {
-        setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]);
-        setGuessCount(guessCount + 1);
+        console.error('Quote of the day not found');
       }
-
+  
       setSearchTerm("");
       setShowSuggestions(false);
     } else {
       alert('Please enter a name in the search bar.');
     }
   };
+  
 
   const handleSearch = async (e) => {
     const value = e.target.value;
