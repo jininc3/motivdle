@@ -275,6 +275,11 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             Your browser does not support the audio element.
           </audio>
         )}
+        {/* Invisible quoteInfluencer and videoFile */}
+      <div style={{ display: 'none' }}>
+        <p>{quoteInfluencer}</p>
+        <video src={videoFile} controls />
+        </div>
       </div>
     </div>
   );
