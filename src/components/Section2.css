@@ -8,6 +8,7 @@
   width: 80%;
   justify-content: center;
   align-items: center;
+  
 }
 
 .quotey {
@@ -31,12 +32,27 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  
+  border: solid;
   /* Centering Content */
   display: flex;  /* Use flexbox for centering */
   justify-content: center;  /* Center horizontally */
   align-items: center;  /* Center vertically */
   text-align: center;
+}
+
+.quoteandclue {
+  
+  display: flex;
+}
+
+.button-container {
+  position: relative;
+  gap: 300px;
+  display: flex;
+  flex-direction: column;
+  right: 450px;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .thequote {
@@ -226,28 +242,75 @@
 
 
 .hint-container {
-  margin-top: 20px; /* Space between the buttons and the hint container */
+  position: relative;
+}
+
+.hint-bubble {
+  position: absolute;
+  background-color: #ffd935; /* Bright yellow background */
+  color: black;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  top: 125px; 
+  right: 250px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.hint-bubble1 {
+  position: absolute;
+  background-color: #ffd935; /* Bright yellow background */
+  color: black;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  top: 125px; 
+  right: 250px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.hint-bubble2 {
+  position: absolute;
+  background-color: #ffd935; /* Bright yellow background */
+  color: black;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  top: 265px; 
+  right: 220px;
+  z-index: 10;
+  transition: all 0.3s ease;
 }
 
 
-.hint-bubble {
-  position: relative;
-  background-color: #ffd935; /* Bright yellow background */
-  color: black;
-  padding: 15px 20px; /* Increase padding for better spacing */
-  border-radius: 20px; /* Rounder corners */
-  font-size: 14px; /* Slightly larger font size for readability */
-  font-weight: bold;
-  font-family: 'Arial', sans-serif; /* Modern and clean font */
-  margin-top: 20px;  /* Space between the hint and other elements */
-  display: inline-block;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Softer, more modern shadow */
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+.hint-bubble:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10px; /* Position the arrow to the left of the bubble */
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #ffd935; /* Make the arrow match the bubble color */
 }
 
 /* Add hover effect to give the hint more interaction */
 .hint-bubble:hover {
-  background-color: #ffce00; /* Slightly lighter yellow on hover */
+  background-color: white; /* Slightly lighter yellow on hover */
   transform: translateY(-5px); /* Subtle lift on hover */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
@@ -269,13 +332,7 @@
 }
 
 
-.button-container {
-  position: relative;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 
 
@@ -346,6 +403,7 @@
   font-weight: bold;
   border: 2px solid #ffd935;
   background-color: #ffd935;;
+  margin-bottom: 50px;
   color: black;
   cursor: pointer;
   border-radius: 10px; /* Rounded corners */

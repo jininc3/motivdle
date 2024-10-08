@@ -199,12 +199,38 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
     <div id="section2" className="section" ref={ref}>
       < TextLogo />
       <div className="overlay2">
+        
         <p className="whosays">
           Guess Who Says This Quote?
           <br />
           <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span>
         </p>
+        <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
+        <div className="button-container">
+          <button className="hint-button" onClick={toggleHint1} data-tooltip="Character Clue">
+            <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+          </button>
+
+          <button className="hint-button" onClick={toggleHint2} data-tooltip="Achievements Clue">
+            <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+          </button>
+
+          <button className="audio-button" onClick={handleAudioToggle} data-tooltip="Audio Clue">
+            <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+          </button>
+        </div>
+
+        <div className="hint-container">
+  {showHint1 && (
+    <div className="hint-bubble hint-bubble1">{hint1}</div>
+  )}
+
+  {showHint2 && (
+    <div className="hint-bubble hint-bubble2">{hint2}</div>
+  )}
+</div>
+        </div>
 
         <div className="search-bar-container">
           <input
@@ -246,29 +272,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
           )}
         </div>
         <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
-        <div className="button-container">
-          <button className="hint-button" onClick={toggleHint1} data-tooltip="Character Clue">
-            <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
-          </button>
-
-          <button className="hint-button" onClick={toggleHint2} data-tooltip="Achievements Clue">
-            <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-          </button>
-
-          <button className="audio-button" onClick={handleAudioToggle} data-tooltip="Audio Clue">
-            <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
-          </button>
-        </div>
-
-        <div className="hint-container">
-          {showHint1 && (
-            <div className="hint-bubble">{hint1}</div>
-          )}
-
-          {showHint2 && (
-            <div className="hint-bubble">{hint2}</div>
-          )}
-        </div>
+        
 
         <div className="incorrect-guesses">
           {incorrectGuesses.map((guess, index) => (
