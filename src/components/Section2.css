@@ -245,6 +245,38 @@
   position: relative;
 }
 
+.disabled-button {
+  background-color: #ccc; /* Grey background */
+  border-color: #999; /* Grey border */
+   /* Disabled cursor */
+  filter: opacity(0.5); /* Lower opacity */
+   /* Disable clicks */
+}
+
+.enabled-button {
+  background-color: #ffd935; /* Active yellow background */
+  cursor: pointer;
+  pointer-events: auto; /* Enable clicks */
+  filter: opacity(1);
+  border: 2px solid #ffd935;
+}
+
+.enabled-button:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: #ffd935;/* Change background color on hover */
+  color: black; /* Change text color on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  filter: opacity(1);
+}
+
+.disabled-button:hover {
+  transform: scale(1); /* Slightly increase size on hover */
+  background-color: grey;/* Change background color on hover */
+  color: black; /* Change text color on hover */
+   /* Enhanced shadow on hover */
+  filter: opacity(1);
+}
+
 .hint-bubble {
   position: absolute;
   background-color: #ffd935; /* Bright yellow background */
@@ -401,8 +433,8 @@
   position: relative;
   margin: 0 10px;
   font-weight: bold;
-  border: 2px solid #ffd935;
-  background-color: #ffd935;;
+  
+  
   margin-bottom: 50px;
   color: black;
   cursor: pointer;
@@ -418,13 +450,7 @@
   
 }
 
-.hint-button:hover, .audio-button:hover {
-  transform: scale(1.1); /* Slightly increase size on hover */
-  background-color: #ffd935; /* Change background color on hover */
-  color: black; /* Change text color on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-  filter: opacity(1);
-}
+
 
 .hint-button:active, .audio-button:active {
   transform: scale(0.95); /* Press-down effect */

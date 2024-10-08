@@ -208,17 +208,31 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
         <div className="button-container">
-          <button className="hint-button" onClick={toggleHint1} data-tooltip="Character Clue">
-            <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
-          </button>
+        <button
+    className={`hint-button ${guessCount >= 2 ? 'enabled-button' : 'disabled-button'}`}
+    onClick={guessCount >= 2 ? toggleHint1 : null}
+    data-tooltip={guessCount >= 2 ? "Character Clue" : "Clue after 2 guesses"}
+  >
+    <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+  </button>
 
-          <button className="hint-button" onClick={toggleHint2} data-tooltip="Achievements Clue">
-            <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-          </button>
+  {/* Achievements Clue button - enabled after 5 guesses */}
+  <button
+    className={`hint-button ${guessCount >= 5 ? 'enabled-button' : 'disabled-button'}`}
+    onClick={guessCount >= 5 ? toggleHint2 : null}
+    data-tooltip={guessCount >= 5 ? "Achievements Clue" : "Clue after 5 guesses"}
+  >
+    <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+  </button>
 
-          <button className="audio-button" onClick={handleAudioToggle} data-tooltip="Audio Clue">
-            <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
-          </button>
+  {/* Audio Clue button - enabled after 7 guesses */}
+  <button
+    className={`audio-button ${guessCount >= 7 ? 'enabled-button' : 'disabled-button'}`}
+    onClick={guessCount >= 7 ? handleAudioToggle : null}
+    data-tooltip={guessCount >= 7 ? "Audio Clue" : "Clue after 7 guesses"}
+  >
+    <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+  </button>
         </div>
 
         <div className="hint-container">
