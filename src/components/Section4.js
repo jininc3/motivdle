@@ -84,31 +84,41 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   }, []);
   
   const handleSearchClick = async () => {
-    const guessedName = searchTerm.trim().toLowerCase();
+    const guessedName = inputRef.current.value.trim().toLowerCase();
+    console.log('Guessed Name:', guessedName); // Log the guessed name
   
     if (incorrectGuesses.map(guess => guess.toLowerCase()).includes(guessedName)) {
       alert("You have already guessed this name. Try a different one.");
       return;
     }
   
-    if (searchTerm.length > 0) {
-      // Fetch the quoteOfTheDay2 document to get the current name
-      const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
+    if (guessedName.length > 0) {
+      try {
+        // Fetch the quoteOfTheDay2 document to get the current quoteId2
+        const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
+        console.log('quoteOfTheDayDoc:', quoteOfTheDayDoc.exists() ? quoteOfTheDayDoc.data() : 'No document found');
   
-      if (quoteOfTheDayDoc.exists()) {
-        const dailyQuote = quoteOfTheDayDoc.data();
-        const quoteInfluencerName = dailyQuote.quoteId2.toLowerCase(); // Use the correct field from Firestore
+        if (quoteOfTheDayDoc.exists()) {
+          const dailyQuote = quoteOfTheDayDoc.data();
+          const quoteId2 = dailyQuote.quoteId2;
+          console.log('Quote ID 2:', quoteId2); // Log the fetched quote ID
   
-        // Compare the guessed name with the name from quoteOfTheDay2
-        if (guessedName === quoteInfluencerName) {
-          // If it matches, scroll to the next section
-          onSearchMatch(dailyQuote.name, videoFile); // Pass name and video for next section
+          // Compare the guessed name with quoteId2 directly
+          if (guessedName === quoteId2.toLowerCase()) {
+            console.log('Match found!'); // Log if a match is found
+            // If it matches, scroll to section4
+            onSearchMatch(quoteId2, videoFile); // Pass name and video for next section
+          } else {
+            console.log('No match found, incorrect guess'); // Log if no match is found
+            // If it doesn't match, log an incorrect guess
+            setIncorrectGuesses(prev => [...prev.slice(-4), guessedName]);
+            setGuessCount(guessCount + 1);
+          }
         } else {
-          setIncorrectGuesses(prev => [...prev.slice(-4), searchTerm.trim()]);
-          setGuessCount(guessCount + 1);
+          console.error('Quote of the day document not found.');
         }
-      } else {
-        console.error('Quote of the day not found');
+      } catch (error) {
+        console.error('Error fetching quote of the day or quote document:', error);
       }
   
       setSearchTerm("");
@@ -117,6 +127,9 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       alert('Please enter a name in the search bar.');
     }
   };
+  
+  
+  
   
 
   const handleSearch = async (e) => {
@@ -149,22 +162,23 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowDown' && showSuggestions) {
-      // Move highlight down
       setHighlightedIndex((prevIndex) =>
         prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex
       );
     } else if (e.key === 'ArrowUp' && showSuggestions) {
-      // Move highlight up
       setHighlightedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-    } else if (e.key === 'Enter' && showSuggestions && highlightedIndex >= 0) {
-      // Set search term to the highlighted suggestion, but do not search yet
-      const selectedSuggestion = suggestions[highlightedIndex].name;
-      setSearchTerm(selectedSuggestion); // Fill the input with highlighted suggestion
-      setShowSuggestions(false);
-      inputRef.current.value = selectedSuggestion; // Manually set the input field value
-    } else if (e.key === 'Enter' && !showSuggestions) {
-      // Trigger search click when no suggestions are shown or after suggestion has been selected
-      handleSearchClick();
+    } else if (e.key === 'Enter') {
+      if (showSuggestions && highlightedIndex >= 0) {
+        // Select the highlighted suggestion and trigger the search immediately
+        const selectedSuggestion = suggestions[highlightedIndex].name;
+        setSearchTerm(selectedSuggestion);
+        inputRef.current.value = selectedSuggestion; // Manually set the input field value
+        setShowSuggestions(false);
+        handleSearchClick(); // Trigger the search function
+      } else {
+        // If no suggestions are shown, just run the search
+        handleSearchClick();
+      }
     }
   };
 
@@ -220,20 +234,27 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             <img src={require('../assets/search.png')} alt="Search" className="search-icon4" />
           </button>
           {showSuggestions && suggestions.length > 0 && (
-            <ul className="suggestions-list4">
+            <ul className="suggestions-list2">
               {suggestions.map((suggestion, index) => (
-                <li
-                  key={index}
-                  className={`suggestion-item4 ${index === highlightedIndex ? 'highlighted4' : ''}`}
-                  onMouseDown={() => setSearchTerm(suggestion.name)} // On click, set the search term
-                >
-                  <img
-                    className="suggestion-image4"
-                    src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
-                    alt={suggestion.name}
-                  />
-                  {suggestion.name}
-                </li>
+              <li
+              key={index}
+              className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
+              onMouseDown={() => {
+                const selectedSuggestion = suggestion.name;
+                setSearchTerm(selectedSuggestion); // Set the search term to the selected suggestion
+                inputRef.current.value = selectedSuggestion; // Update the input field manually
+                setShowSuggestions(false); // Hide the suggestion list
+                handleSearchClick(); // Trigger the search for the selected suggestion
+              }}
+            >
+              <img
+                className="suggestion-image"
+                src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
+                alt={suggestion.name}
+              />
+              {suggestion.name}
+            </li>
+             
               ))}
             </ul>
           )}
