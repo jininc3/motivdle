@@ -10,7 +10,7 @@ function Home() {
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
     const [backgroundStyle, setBackgroundStyle] = useState({});
-    const [subscribeStyle, setSubscribeStyle] = useState({}); // State for Subscribe section
+    
 
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
@@ -31,7 +31,7 @@ function Home() {
             
         } else if (!isSection3Visible) {
             setBackgroundStyle({});
-            setSubscribeStyle({}); // Reset Subscribe section style
+            // Reset Subscribe section style
         }
     }, [isSection3Visible]);
 

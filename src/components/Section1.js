@@ -5,7 +5,7 @@ import './Section1.css';
 
 function Section1({ handleScroll }) {
   const [isButtonVisible, setButtonVisible] = useState(false);
-  const [isNavOpen, setIsNavOpen] = useState(false); // State for the nav menu
+  
 
   useEffect(() => {
     const timer = setTimeout(() => {
