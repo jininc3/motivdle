@@ -1,20 +1,22 @@
-.overlay4 {
+.overlay2 {
   position: relative;
-  top: 40%; /* Adjust as needed to vertically center */
+  top: 50%; /* Adjust as needed to vertically center */
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: black;
   text-align: center;
   width: 80%;
   justify-content: center;
   align-items: center;
+  
 }
 
-.quotey4 {
-  font-family: 'Arial', sans-serif;
+.quotey {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 900;
   font-size: 15pt;
   line-height: 1.6;
-  color: #ffffff; /* Ensure the text color is white */
+  color: #ffffff;
   padding: 30px;
   border-radius: 15px;
   width: 600px;
@@ -25,14 +27,15 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
   border: 1px solid #ffd935;
-  
   position: relative;
-  background-image: url('../assets/jordan1.jpg'); /* Correct path to your image */
+  background-image: url('../assets/kobe2.png'); /* Correct path to your image */
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
+  background-color: #ffd935;
   
+  overflow: hidden;
+  border: solid;
   /* Centering Content */
   display: flex;  /* Use flexbox for centering */
   justify-content: center;  /* Center horizontally */
@@ -40,20 +43,23 @@
   text-align: center;
 }
 
-.quotey4:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6 ); /* Make background dimmer */
-  border-radius: 15px;
-  z-index: 1;
+.quoteandclue {
+  
+  display: flex;
 }
 
-.thequote4 {
-  color: #ffffff; /* Ensure the text is white */
+.button-container {
+  position: relative;
+  gap: 300px;
+  display: flex;
+  flex-direction: column;
+  right: 450px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.thequote {
+  color: white; /* Ensure the text is white */
   /* No background color */
   z-index: 2; /* Keep text above the overlay */
   position: relative; /* Position text above any other elements */
@@ -64,8 +70,21 @@
   
 }
 
+/* Add a darker overlay to the background image */
+.quotey:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4 ); /* Make background dimmer */
+  border-radius: 15px;
+  z-index: 1;
+}
+
 /* Ensure the text remains above the overlay */
-.quotey4 p {
+.quotey p {
   position: relative;
   z-index: 2; /* Make sure the text is above the overlay */
   margin: 0;
@@ -73,31 +92,21 @@
 
 
 
-
-/* Ensure the text remains above the overlay */
-.quotey4 p {
-  position: relative;
-  z-index: 2; /* Make sure the text is above the overlay */
-  margin: 0;
-}
-
-
-
-.quotey4:hover {
+.quotey:hover {
   transform: scale(1.02);
   box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.6);
 }
 
-.quotey4.fit-text {
+.quotey.fit-text {
   font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
 }
 
-.quotey4.fade-in {
+.quotey.fade-in {
   opacity: 1;
   transform: translateY(-20px); /* Slight upward movement */
 }
 
-.quote-button4 {
+.quote-button2 {
   position: relative;
   top: 40%;
   padding: 10px 20px; /* Increase padding */
@@ -115,17 +124,17 @@
   font-family: "Oswald", sans-serif;
 }
 
-.quote-button4.fade-in {
+.quote-button2.fade-in {
   opacity: 1;
 }
 
-.quote-button4:hover {
+.quote-button2:hover {
   transform: scale(1.1); /* Slightly increase size on hover */
   background-color: white; /* Change background to white on hover */
   color: black; /* Change text to green on hover */
 }
 
-.whosays4 {
+.whosays {
   color: #ffd935; /* Bright yellow color */
   font-family: "Oswald", sans-serif;
   font-weight: bolder;
@@ -137,7 +146,7 @@
   text-transform: uppercase; /* Capitalize text */
 }
 
-.rounds4 {
+.rounds {
   color: #ffd935;
   font-size: 20pt; /* Increase font size */
   padding: 0;
@@ -147,14 +156,14 @@
   text-transform: uppercase; /* Capitalize text */
 }
 
-.search-bar-container4 {
+.search-bar-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 30px; /* Increase space above the search bar */
 }
 
-.search-input4 {
+.search-input {
   padding: 12px 20px; /* Increase padding */
   font-size: 18px;
   border-radius: 50px; /* Rounded corners */
@@ -165,7 +174,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.search-button4 {
+.search-button {
   padding: 12px; /* Increase space between input and button */
   font-size: 18px; /* Increase font size */
   border-radius: 50px; /* Fully rounded button */
@@ -178,17 +187,17 @@
 }
 
 
-.search-button4:active {
+.search-button:active {
   transform: scale(0.98); /* Slight press-down effect */
 }
 
-.search-button4:hover {
+.search-button:hover {
   background-color: white; /* Change background on hover */
   color: black; /* Change text color */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
-.search-icon4 {
+.search-icon {
   width: 45px; /* Set the desired width for the search icon */
   height: 45px; /* Set the desired height for the search icon */
 }
@@ -197,16 +206,16 @@
   border-color: #ffd935; /* Highlight border on focus */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on focus */
 }
-.search-input4.incorrect-guess4 {
+.search-input.incorrect-guess {
   border-color: orangered;
   background-color: #ffdada;
 }
 
-.suggestion-item4.incorrect-guess4 {
+.suggestion-item.incorrect-guess {
   color: orangered;
 }
 
-.guess-tracker4 {
+.guess-tracker {
   color: #ffd935;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
@@ -215,17 +224,17 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
 }
 
-.incorrect-guesses4 {
+.incorrect-guesses {
   margin-top: 20px;
   height: auto; /* Adjust height */
   font-size: 18px;
 }
 
-.guess-number4 {
+.guess-number {
   color: #ffd935 ;
 }
 
-.incorrect-guess-text4 {
+.incorrect-guess-text {
   color: #ff2c2c; /* Red color for incorrect guesses */
   font-family: "Oswald", sans-serif;
   font-weight: bold;
@@ -234,34 +243,115 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
 }
 
-.hint-container4 {
-  margin-top: 20px; /* Space between the buttons and the hint container */
+
+.hint-container {
+  position: relative;
 }
 
-.hint-bubble4 {
-  position: relative;
+.disabled-button {
+  background-color: #ccc; /* Grey background */
+  border-color: #999; /* Grey border */
+   /* Disabled cursor */
+  filter: opacity(0.5); /* Lower opacity */
+   /* Disable clicks */
+}
+
+.enabled-button {
+  background-color: #ffd935; /* Active yellow background */
+  cursor: pointer;
+  pointer-events: auto; /* Enable clicks */
+  filter: opacity(1);
+  border: 2px solid #ffd935;
+}
+
+.enabled-button:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: #ffd935;/* Change background color on hover */
+  color: black; /* Change text color on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  filter: opacity(1);
+}
+
+.disabled-button:hover {
+  transform: scale(1); /* Slightly increase size on hover */
+  background-color: grey;/* Change background color on hover */
+  color: black; /* Change text color on hover */
+   /* Enhanced shadow on hover */
+  filter: opacity(1);
+}
+
+.hint-bubble {
+  position: absolute;
   background-color: #ffd935; /* Bright yellow background */
   color: black;
-  padding: 15px 20px; /* Increase padding for better spacing */
-  border-radius: 20px; /* Rounder corners */
-  font-size: 14px; /* Slightly larger font size for readability */
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 14px;
   font-weight: bold;
-  font-family: 'Arial', sans-serif; /* Modern and clean font */
-  margin-top: 20px;  /* Space between the hint and other elements */
-  display: inline-block;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Softer, more modern shadow */
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  top: 125px; 
+  right: 250px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.hint-bubble1 {
+  position: absolute;
+  background-color: #ffd935; /* Bright yellow background */
+  color: black;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  top: 125px; 
+  right: 250px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.hint-bubble2 {
+  position: absolute;
+  background-color: #ffd935; /* Bright yellow background */
+  color: black;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  top: 265px; 
+  right: 220px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+
+.hint-bubble:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10px; /* Position the arrow to the left of the bubble */
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #ffd935; /* Make the arrow match the bubble color */
 }
 
 /* Add hover effect to give the hint more interaction */
-.hint-bubble4:hover {
-  background-color: #ffce00; /* Slightly lighter yellow on hover */
+.hint-bubble:hover {
+  background-color: white; /* Slightly lighter yellow on hover */
   transform: translateY(-5px); /* Subtle lift on hover */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 /* Adjust the arrow under the bubble */
-.hint-bubble4:after {
+.hint-bubble:after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -272,20 +362,21 @@
   border-color: #ffd935 transparent transparent transparent;
 }
 
-.hint-bubble4:hover:after {
+.hint-bubble:hover:after {
   border-color: #ffce00 transparent transparent transparent; /* Change arrow color on hover */
 }
 
-.button-container4 {
-  position: relative;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 
-.suggestions-list4 {
+
+
+
+
+
+
+
+
+.suggestions-list2 {
   position: absolute;
   top: 100%;  /* Make sure it appears just below the input */
   left: 600px; /* Align to the left side of the search bar */
@@ -300,24 +391,23 @@
   list-style: none;
   margin: 0;
   padding: 0;
-
 }
-.suggestions-list4::-webkit-scrollbar {
+.suggestions-list::-webkit-scrollbar {
   width: 5px;  /* Set scrollbar width */
 }
 
-.suggestions-list4::-webkit-scrollbar-thumb {
+.suggestions-list::-webkit-scrollbar-thumb {
   background-color: #333;  /* Dark scrollbar handle */
   border-radius: 10px;  /* Rounded scrollbar handle */
   /* Adds padding to the handle */
 }
 
-.suggestions-list4::-webkit-scrollbar-track {
+.suggestions-list::-webkit-scrollbar-track {
     /* Matches the list background */
   border-radius: 10px;
 }
 
-.suggestion-item4 {
+.suggestion-item {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -326,28 +416,29 @@
   text-transform: capitalize;
 }
 
-.suggestion-item4.highlighted4 {
+.suggestion-item.highlighted {
   background-color:white;
   color: black;
 }
 
-.suggestion-item4:hover {
+.suggestion-item:hover {
   background-color:white;
   color: black;
 }
 
-.search-bar-container4 {
+.search-bar-container {
   position: relative; /* Make the search container relative to handle the absolute dropdown */
 }
 
 
 
-.hint-button4, .audio-button4 {
+.hint-button, .audio-button {
   position: relative;
   margin: 0 10px;
   font-weight: bold;
-  border: 2px solid #ffd935;
-  background-color: #ffd935;;
+  
+  
+  margin-bottom: 50px;
   color: black;
   cursor: pointer;
   border-radius: 10px; /* Rounded corners */
@@ -362,25 +453,19 @@
   
 }
 
-.hint-button4:hover, .audio-button4:hover {
-  transform: scale(1.1); /* Slightly increase size on hover */
-  background-color: #ffd935; /* Change background color on hover */
-  color: black; /* Change text color on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-  filter: opacity(1);
-}
 
-.hint-button4:active, .audio-button4:active {
+
+.hint-button:active, .audio-button:active {
   transform: scale(0.95); /* Press-down effect */
 }
 
-.icons4 {
+.icons {
   max-width: 35px; /* Adjusted size */
   height: 35px; /* Adjusted size */
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Add drop shadow for better visibility */
 }
 
-.button-container4 {
+.button-container {
   position: relative;
   margin-top: 20px;
   display: flex;
@@ -391,7 +476,7 @@
 
 
 
-.hint-button4:hover:after, .audio-button4:hover:after {
+.hint-button:hover:after, .audio-button:hover:after {
   content: attr(data-tooltip); /* Use the data-tooltip attribute for the tooltip content */
   position: absolute;
   bottom: -40px; /* Adjust for tooltip position */
@@ -408,7 +493,7 @@
   z-index: 100;
 }
 
-.hint-button4:hover:before, .audio-button4:hover:before {
+.hint-button:hover:before, .audio-button:hover:before {
   content: '';
   position: absolute;
   bottom: -15px; /* Adjust for tooltip arrow */
@@ -420,7 +505,7 @@
 }
 
 
-.suggestion-image4 {
+.suggestion-image {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -428,11 +513,11 @@
   object-fit: cover;
 }
 
-.hint-button4:active {
+.hint-button:active {
   transform: scale(0.98); /* Press-down effect */
 }
 
-.section4 {
+.section {
   height: 100vh;
   padding: 20px;
 }

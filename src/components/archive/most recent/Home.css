@@ -1,6 +1,4 @@
-html {
-  scroll-behavior: smooth;
-}
+
 
 .content {
   position: relative;
@@ -14,12 +12,8 @@ html {
   width: 100%;
   height: 100vh;
   background: #14213D;
-  background-size: cover; /* Ensures the image covers the whole background */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents repeating the image */
-  z-index: -1; /* Keeps the background behind other elements *//* Optional: Adjusts transparency of the background */
+  z-index: -1;
 }
-
 
 body {
   font-family: "Oswald", sans-serif;

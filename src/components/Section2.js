@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Section2.css';
 import { db } from '../firebase';
 import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
-import TextLogo from './TextLogo';
+
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
@@ -80,20 +80,29 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const handleSearchClick = async () => {
     // Always use the trimmed and lower-cased search term for comparison
     const guessedName = inputRef.current.value.trim().toLowerCase();
-  
+
+    // Check if the guessed name exists in the suggestions
+    const matchedSuggestion = suggestions.find(suggestion => suggestion.name.toLowerCase() === guessedName);
+
+    // Ignore single letters or invalid guesses
+    if (guessedName.length < 2 || !matchedSuggestion) {
+      alert("Please enter a valid name from the suggestions.");
+      return;
+    }
+
     if (incorrectGuesses.map(guess => guess.toLowerCase()).includes(guessedName)) {
       alert("You have already guessed this name. Try a different one.");
       return;
     }
-  
+
     if (guessedName.length > 0) {
       // Fetch the quoteOfTheDay document to get the current name
       const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD', 'quoteOfTheDay'));
-  
+
       if (quoteOfTheDayDoc.exists()) {
         const dailyQuote = quoteOfTheDayDoc.data();
         const quoteInfluencerName = dailyQuote.name.toLowerCase();
-  
+
         // Compare the guessed name (now from the selected suggestion) with the name from quoteOfTheDay
         if (guessedName === quoteInfluencerName) {
           // If it matches, scroll to section3
@@ -106,13 +115,14 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       } else {
         console.error('Quote of the day not found');
       }
-  
+
       setSearchTerm("");
       setShowSuggestions(false);
     } else {
       alert('Please enter a name in the search bar.');
     }
   };
+
   
   
   
@@ -197,7 +207,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
 
   return (
     <div id="section2" className="section" ref={ref}>
-      < TextLogo />
+     
       <div className="overlay2">
         
         <p className="whosays">
@@ -208,32 +218,40 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
         <div className="button-container">
-        <button
-    className={`hint-button ${guessCount >= 2 ? 'enabled-button' : 'disabled-button'}`}
-    onClick={guessCount >= 2 ? toggleHint1 : null}
-    data-tooltip={guessCount >= 2 ? "Character Clue" : "Clue after 2 guesses"}
-  >
-    <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
-  </button>
+  <div className="hint-wrapper">
+    <button
+      className={`hint-button ${guessCount >= 2 ? 'enabled-button' : 'disabled-button'}`}
+      onClick={guessCount >= 2 ? toggleHint1 : null}
+      data-tooltip={guessCount >= 2 ? "Character Clue" : "Clue after 2 guesses"}
+    >
+      <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+    </button>
+    <span className="hint-description">FIRST CLUE</span> {/* Add text description */}
+  </div>
 
-  {/* Achievements Clue button - enabled after 5 guesses */}
-  <button
-    className={`hint-button ${guessCount >= 5 ? 'enabled-button' : 'disabled-button'}`}
-    onClick={guessCount >= 5 ? toggleHint2 : null}
-    data-tooltip={guessCount >= 5 ? "Achievements Clue" : "Clue after 5 guesses"}
-  >
-    <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-  </button>
+  <div className="hint-wrapper">
+    <button
+      className={`hint-button ${guessCount >= 5 ? 'enabled-button' : 'disabled-button'}`}
+      onClick={guessCount >= 5 ? toggleHint2 : null}
+      data-tooltip={guessCount >= 5 ? "Achievements Clue" : "Clue after 5 guesses"}
+    >
+      <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+    </button>
+    <span className="hint-description">SECOND CLUE</span> {/* Add text description */}
+  </div>
 
-  {/* Audio Clue button - enabled after 7 guesses */}
-  <button
-    className={`audio-button ${guessCount >= 7 ? 'enabled-button' : 'disabled-button'}`}
-    onClick={guessCount >= 7 ? handleAudioToggle : null}
-    data-tooltip={guessCount >= 7 ? "Audio Clue" : "Clue after 7 guesses"}
-  >
-    <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
-  </button>
-        </div>
+  <div className="hint-wrapper">
+    <button
+      className={`audio-button ${guessCount >= 7 ? 'enabled-button' : 'disabled-button'}`}
+      onClick={guessCount >= 7 ? handleAudioToggle : null}
+      data-tooltip={guessCount >= 7 ? "Audio Clue" : "Clue after 7 guesses"}
+    >
+      <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+    </button>
+    <span className="hint-description">AUDIO CLUE</span> {/* Add text description */}
+  </div>
+</div>
+
 
         <div className="hint-container">
   {showHint1 && (

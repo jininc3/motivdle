@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Section1.css';
-
+import logo from '../assets/m-button3.png';
 
 function Section1({ handleScroll }) {
   const [isButtonVisible, setButtonVisible] = useState(false);
@@ -15,11 +15,12 @@ function Section1({ handleScroll }) {
     return () => clearTimeout(timer);
   }, []);
 
-
+  const toggleNavMenu = () => {
+    setIsNavOpen(!isNavOpen); // Toggle the nav menu
+  };
 
   return (
     <div id="section1" className="section1">
-     
       {/* Title and Subtitle */}
       <Link to="/"><h1 className="title-home">MOTIVDLE</h1></Link>
       

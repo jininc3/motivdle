@@ -1,25 +1,23 @@
-.overlay2 {
+.overlay4 {
   position: relative;
-  top: 43%; /* Adjust as needed to vertically center */
+  top: 40%; /* Adjust as needed to vertically center */
   left: 50%;
   transform: translate(-50%, -50%);
-  color: black;
+  color: white;
   text-align: center;
-  width: 100%;
+  width: 80%;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  
 }
 
-.quotey {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
+.quotey4 {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 900;
   font-size: 15pt;
   line-height: 1.6;
+  color: #ffffff; /* Ensure the text color is white */
   padding: 30px;
-  color: #FCA311;
+  border-radius: 15px;
   width: 600px;
   height: 500px;
   margin: 20px auto;
@@ -27,15 +25,15 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
-  border: 50px solid black;
+  border: 1px solid #ffd935;
+  background-color: #ffd935;
   position: relative;
-  background-image: url('../assets/kobe2.png');
+  background-image: url('../assets/jordan1.png'); /* Correct path to your image */
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
-  background-color: #FCA311;
   overflow: hidden;
-  border: solid;
+  
   /* Centering Content */
   display: flex;  /* Use flexbox for centering */
   justify-content: center;  /* Center horizontally */
@@ -43,47 +41,32 @@
   text-align: center;
 }
 
-.quoteandclue {
-  
-  display: flex;
-}
-
-.button-container {
-  position: relative;
-  
-  display: flex;
-  flex-direction: column;
-  right:650px;
-  align-items: flex-start;
-  justify-content: space-evenly;
-}
-
-.thequote {
-  color: white; /* Ensure the text is white */
-  /* No background color */
-  z-index: 2; /* Keep text above the overlay */
-  position: relative; /* Position text above any other elements */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add subtle shadow to enhance visibility */
-  width: 500px;
-  height: auto;
-  font-size: 25pt;
-}
-
-/* Add a darker overlay to the background image */
-.quotey:before {
+.quotey4:before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2 ); /* Make background dimmer */
-  filter: opacity(0.9);
+  background-color: rgba(0, 0, 0, 0.6 ); /* Make background dimmer */
+  border-radius: 15px;
   z-index: 1;
 }
 
+.thequote4 {
+  color: #ffffff; /* Ensure the text is white */
+  /* No background color */
+  z-index: 2; /* Keep text above the overlay */
+  position: relative; /* Position text above any other elements */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add subtle shadow to enhance visibility */
+  width: 500px;
+  height: auto;
+  font-size: 20pt;
+  
+}
+
 /* Ensure the text remains above the overlay */
-.quotey p {
+.quotey4 p {
   position: relative;
   z-index: 2; /* Make sure the text is above the overlay */
   margin: 0;
@@ -91,26 +74,36 @@
 
 
 
-.quotey:hover {
+
+/* Ensure the text remains above the overlay */
+.quotey4 p {
+  position: relative;
+  z-index: 2; /* Make sure the text is above the overlay */
+  margin: 0;
+}
+
+
+
+.quotey4:hover {
   transform: scale(1.02);
   box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.6);
 }
 
-.quotey.fit-text {
+.quotey4.fit-text {
   font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
 }
 
-.quotey.fade-in {
+.quotey4.fade-in {
   opacity: 1;
   transform: translateY(-20px); /* Slight upward movement */
 }
 
-.quote-button2 {
+.quote-button4 {
   position: relative;
   top: 40%;
   padding: 10px 20px; /* Increase padding */
    /* Add margin */
-  
+  border-radius: 5px; /* Rounded corners */
   font-size: 24px; /* Increase font size */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
   border: none;
@@ -119,22 +112,22 @@
   opacity: 0; /* Initially hidden */
   transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
   background-color: black; /* Green background */
-  color:#FCA311; /* White text */
+  color:#ffd935;; /* White text */
   font-family: "Oswald", sans-serif;
 }
 
-.quote-button2.fade-in {
+.quote-button4.fade-in {
   opacity: 1;
 }
 
-.quote-button2:hover {
+.quote-button4:hover {
   transform: scale(1.1); /* Slightly increase size on hover */
   background-color: white; /* Change background to white on hover */
   color: black; /* Change text to green on hover */
 }
 
-.whosays {
-  color: #FCA311; /* Bright yellow color */
+.whosays4 {
+  color: #ffd935; /* Bright yellow color */
   font-family: "Oswald", sans-serif;
   font-weight: bolder;
   font-size: 30pt; /* Increase the font size */
@@ -145,8 +138,8 @@
   text-transform: uppercase; /* Capitalize text */
 }
 
-.rounds {
-  color: #FCA311;
+.rounds4 {
+  color: #ffd935;
   font-size: 20pt; /* Increase font size */
   padding: 0;
   margin-top: -20px; /* Adjust margin to bring closer to the title */
@@ -155,25 +148,25 @@
   text-transform: uppercase; /* Capitalize text */
 }
 
-.search-bar-container {
+.search-bar-container4 {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 30px; /* Increase space above the search bar */
 }
 
-.search-input {
+.search-input4 {
   padding: 12px 20px; /* Increase padding */
   font-size: 18px;
-   /* Rounded corners */
-  border: 2px solid #FCA311;
+  border-radius: 50px; /* Rounded corners */
+  border: 2px solid #ffd935;
   width: 400px; /* Increase input width */
   outline: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
   transition: all 0.3s ease-in-out;
 }
 
-.search-button {
+.search-button4 {
   padding: 12px; /* Increase space between input and button */
   font-size: 18px; /* Increase font size */
   border-radius: 50px; /* Fully rounded button */
@@ -186,36 +179,36 @@
 }
 
 
-.search-button:active {
+.search-button4:active {
   transform: scale(0.98); /* Slight press-down effect */
 }
 
-.search-button:hover {
+.search-button4:hover {
   background-color: white; /* Change background on hover */
   color: black; /* Change text color */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
-.search-icon {
+.search-icon4 {
   width: 45px; /* Set the desired width for the search icon */
   height: 45px; /* Set the desired height for the search icon */
 }
 
 .search-input:focus {
-  border-color: #FCA311; /* Highlight border on focus */
+  border-color: #ffd935; /* Highlight border on focus */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on focus */
 }
-.search-input.incorrect-guess {
+.search-input4.incorrect-guess4 {
   border-color: orangered;
   background-color: #ffdada;
 }
 
-.suggestion-item.incorrect-guess {
+.suggestion-item4.incorrect-guess4 {
   color: orangered;
 }
 
-.guess-tracker {
-  color: #FCA311;
+.guess-tracker4 {
+  color: #ffd935;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   margin-top: 20px;
@@ -223,22 +216,17 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
 }
 
-.incorrect-guesses {
+.incorrect-guesses4 {
   margin-top: 20px;
   height: auto; /* Adjust height */
   font-size: 18px;
-  
-  display: flex;
-  justify-content: center; /* Start in the center */
-  flex-wrap: nowrap; /* Prevent items from wrapping */
-  gap: 10px; /* Adjust the gap between guesses */
 }
 
-.guess-number {
-  color: #FCA311 ;
+.guess-number4 {
+  color: #ffd935 ;
 }
 
-.incorrect-guess-text {
+.incorrect-guess-text4 {
   color: #ff2c2c; /* Red color for incorrect guesses */
   font-family: "Oswald", sans-serif;
   font-weight: bold;
@@ -247,114 +235,34 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
 }
 
+.hint-container4 {
+  margin-top: 20px; /* Space between the buttons and the hint container */
+}
 
-.hint-container {
+.hint-bubble4 {
   position: relative;
-}
-
-.disabled-button {
-  background-color: #ccc; /* Grey background */
-  border-color: #999; /* Grey border */
-   /* Disabled cursor */
-  filter: opacity(0.5); /* Lower opacity */
-   /* Disable clicks */
-}
-
-.enabled-button {
-  background-color: #FCA311; /* Active yellow background */
-  cursor: pointer;
-  pointer-events: auto; /* Enable clicks */
-  filter: opacity(1);
-  border: 2px solid #FCA311;
-}
-
-.enabled-button:hover {
-  transform: scale(1.1); /* Slightly increase size on hover */
-  background-color: #FCA311;/* Change background color on hover */
-  color: black; /* Change text color on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-  filter: opacity(1);
-}
-
-.disabled-button:hover {
-  transform: scale(1); /* Slightly increase size on hover */
-  background-color: grey;/* Change background color on hover */
-  color: black; /* Change text color on hover */
-   /* Enhanced shadow on hover */
-  filter: opacity(1);
-}
-
-.hint-bubble {
-  position: absolute;
-  background-color: #FCA311; /* Bright yellow background */
+  background-color: #ffd935; /* Bright yellow background */
   color: black;
-  padding: 15px 20px;
-  font-size: 14px;
+  padding: 15px 20px; /* Increase padding for better spacing */
+  border-radius: 20px; /* Rounder corners */
+  font-size: 14px; /* Slightly larger font size for readability */
   font-weight: bold;
-  font-family: 'Arial', sans-serif;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-  white-space: nowrap;
-  top: 125px; 
-  right: 350px;
-  z-index: 10;
-  transition: all 0.3s ease;
-}
-
-.hint-bubble1 {
-  position: absolute;
-  background-color: #FCA311; /* Bright yellow background */
-  color: black;
-  padding: 15px 20px;
-  
-  font-size: 14px;
-  font-weight: bold;
-  font-family: 'Arial', sans-serif;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-  white-space: nowrap;
-  top: 125px; 
-  right: 400px;
-  z-index: 10;
-  transition: all 0.3s ease;
-}
-
-.hint-bubble2 {
-  position: absolute;
-  background-color: #FCA311; /* Bright yellow background */
-  color: black;
-  padding: 15px 20px;
-  
-  font-size: 14px;
-  font-weight: bold;
-  font-family: 'Arial', sans-serif;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-  white-space: nowrap;
-  top: 265px; 
-  right: 350px;
-  z-index: 10;
-  transition: all 0.3s ease;
-}
-
-
-.hint-bubble:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -10px; /* Position the arrow to the left of the bubble */
-  transform: translateY(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent transparent #FCA311; /* Make the arrow match the bubble color */
+  font-family: 'Arial', sans-serif; /* Modern and clean font */
+  margin-top: 20px;  /* Space between the hint and other elements */
+  display: inline-block;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Softer, more modern shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
 /* Add hover effect to give the hint more interaction */
-.hint-bubble:hover {
-  background-color: white; /* Slightly lighter yellow on hover */
+.hint-bubble4:hover {
+  background-color: #ffce00; /* Slightly lighter yellow on hover */
   transform: translateY(-5px); /* Subtle lift on hover */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 /* Adjust the arrow under the bubble */
-.hint-bubble:after {
+.hint-bubble4:after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -362,21 +270,30 @@
   transform: translateX(-50%);
   border-width: 10px;
   border-style: solid;
-  border-color: #FCA311 transparent transparent transparent;
+  border-color: #ffd935 transparent transparent transparent;
 }
 
-.hint-bubble:hover:after {
-  border-color: #FCA311 transparent transparent transparent; /* Change arrow color on hover */
+.hint-bubble4:hover:after {
+  border-color: #ffce00 transparent transparent transparent; /* Change arrow color on hover */
 }
 
-.suggestions-list2 {
+.button-container4 {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.suggestions-list4 {
   position: absolute;
   top: 100%;  /* Make sure it appears just below the input */
-  left: 810px; /* Align to the left side of the search bar */
+  left: 600px; /* Align to the left side of the search bar */
   width: 440px; /* Full width of the parent container (search bar) */
-  background-color: #FCA311;
-  border: 1px solid #FCA311;
-   /* Rounded corners */
+  background-color: #ffd935;
+  border: 1px solid #ffd935;
+  border-radius: 30px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 200px;  /* Limit height and make it scrollable */
   overflow-y: auto;
@@ -384,23 +301,24 @@
   list-style: none;
   margin: 0;
   padding: 0;
+
 }
-.suggestions-list::-webkit-scrollbar {
+.suggestions-list4::-webkit-scrollbar {
   width: 5px;  /* Set scrollbar width */
 }
 
-.suggestions-list::-webkit-scrollbar-thumb {
+.suggestions-list4::-webkit-scrollbar-thumb {
   background-color: #333;  /* Dark scrollbar handle */
   border-radius: 10px;  /* Rounded scrollbar handle */
   /* Adds padding to the handle */
 }
 
-.suggestions-list::-webkit-scrollbar-track {
+.suggestions-list4::-webkit-scrollbar-track {
     /* Matches the list background */
   border-radius: 10px;
 }
 
-.suggestion-item {
+.suggestion-item4 {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -409,67 +327,61 @@
   text-transform: capitalize;
 }
 
-.suggestion-item.highlighted {
+.suggestion-item4.highlighted4 {
   background-color:white;
   color: black;
 }
 
-.suggestion-item:hover {
+.suggestion-item4:hover {
   background-color:white;
   color: black;
 }
 
-.search-bar-container {
+.search-bar-container4 {
   position: relative; /* Make the search container relative to handle the absolute dropdown */
 }
 
 
 
-.hint-button, .audio-button {
+.hint-button4, .audio-button4 {
   position: relative;
   margin: 0 10px;
   font-weight: bold;
-  margin-bottom: 50px;
+  border: 2px solid #ffd935;
+  background-color: #ffd935;;
   color: black;
   cursor: pointer;
-   /* Rounded corners */
+  border-radius: 10px; /* Rounded corners */
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  width: 50px; /* Adjusted size */
-  height: 50px; /* Adjusted size */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 70px; /* Adjusted size */
+  height: 70px; /* Adjusted size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  filter: opacity(0.6);
   
 }
 
-.hint-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.hint-button4:hover, .audio-button4:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+  background-color: #ffd935; /* Change background color on hover */
+  color: black; /* Change text color on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  filter: opacity(1);
 }
 
-.hint-description {
-  margin-top: -45px;
-  font-size: 12px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-}
-
-.hint-button:active, .audio-button:active {
+.hint-button4:active, .audio-button4:active {
   transform: scale(0.95); /* Press-down effect */
 }
 
-.icons {
-  max-width: 25px; /* Adjusted size */
-  height: 25px; /* Adjusted size */
+.icons4 {
+  max-width: 35px; /* Adjusted size */
+  height: 35px; /* Adjusted size */
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Add drop shadow for better visibility */
 }
 
-.button-container {
+.button-container4 {
   position: relative;
   margin-top: 20px;
   display: flex;
@@ -480,13 +392,13 @@
 
 
 
-.hint-button:hover:after, .audio-button:hover:after {
+.hint-button4:hover:after, .audio-button4:hover:after {
   content: attr(data-tooltip); /* Use the data-tooltip attribute for the tooltip content */
   position: absolute;
-  top: -40px;/* Adjust for tooltip position */
+  bottom: -40px; /* Adjust for tooltip position */
   left: 50%;
   transform: translateX(-50%);
-  background-color: #FCA311;
+  background-color: #ffd935;
   color: black;
   padding: 5px 10px;
   border-radius: 5px;
@@ -497,19 +409,19 @@
   z-index: 100;
 }
 
-.hint-button:hover:before, .audio-button:hover:before {
+.hint-button4:hover:before, .audio-button4:hover:before {
   content: '';
   position: absolute;
-  top: -14px;/* Adjust for tooltip arrow */
+  bottom: -15px; /* Adjust for tooltip arrow */
   left: 50%;
   transform: translateX(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: #FCA311 transparent transparent transparent;
+  border-color: #ffd935 transparent transparent transparent;
 }
 
 
-.suggestion-image {
+.suggestion-image4 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -517,14 +429,13 @@
   object-fit: cover;
 }
 
-.hint-button:active {
+.hint-button4:active {
   transform: scale(0.98); /* Press-down effect */
 }
 
-.section {
+.section4 {
   height: 100vh;
   padding: 20px;
-  background: #14213D;
 }
 
 

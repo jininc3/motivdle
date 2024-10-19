@@ -1,15 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
-import './Section2.css';
-import { db } from '../firebase';
-import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
 
+import React, { useEffect, useState, useRef } from 'react';
+import './Section4.css';
+import { db } from '../firebase';
+import { doc, getDoc, setDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
 const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [quote, setQuote] = useState("");
+  const [quoteInfluencer, setQuoteInfluencer] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1); // Track highlighted suggestion
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioFile, setAudioFile] = useState("");
   const [guessCount, setGuessCount] = useState(0);
@@ -18,10 +19,10 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   const [showHint1, setShowHint1] = useState(false);
   const [hint2, setHint2] = useState("");
   const [showHint2, setShowHint2] = useState(false);
-  const [quoteInfluencer, setQuoteInfluencer] = useState(""); // Define state for the influencer
-  const [videoFile, setVideoFile] = useState(""); // Define state for the video file
   const audioRef = useRef(null);
+  const [videoFile, setVideoFile] = useState("");
   const inputRef = useRef(null);
+
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -30,102 +31,107 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
     const fetchQuoteOfTheDay = async () => {
       const today = new Date();
       const currentDay = today.toDateString(); // Convert current date to a string
-  
-      // Check Firestore for today's quote in the quoteOfTheDay collection
-      const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD', 'quoteOfTheDay'));
-  
+
+      // Check Firestore for today's quote in the quoteOTD2 collection
+      const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
+
       if (quoteOfTheDayDoc.exists() && quoteOfTheDayDoc.data().date === currentDay) {
-        // If today's quote exists, use the quote data directly from quoteOfTheDay
-        const dailyQuote = quoteOfTheDayDoc.data();
-        setQuote(`"${dailyQuote.quote}"`);
-        setQuoteInfluencer(dailyQuote.name); // Store the name from Firestore
-        setHint1(dailyQuote.hint1);
-        setHint2(dailyQuote.hint2);
-        setAudioFile(dailyQuote.audio);
-        setVideoFile(dailyQuote.video);
-  
-        console.log("Quote of the Day:", dailyQuote.quote);
+        // If today's quote exists, use the quote ID to fetch the actual quote
+        const quoteId = quoteOfTheDayDoc.data().quoteId2;
+        const quoteDoc = await getDoc(doc(db, 'quotes', quoteId));
+
+        if (quoteDoc.exists()) {
+          const dailyQuote = quoteDoc.data();
+          setQuote(`"${dailyQuote.quote}"`);
+          setQuoteInfluencer(dailyQuote.influencer);
+          setHint1(dailyQuote.hint1);
+          setHint2(dailyQuote.hint2);
+          setAudioFile(dailyQuote.audio);
+          setVideoFile(dailyQuote.video);
+
+          console.log("Quote of the Day:", dailyQuote.quote);
+        } else {
+          console.error('Quote not found');
+        }
       } else {
         // Pick a new random quote from the quotes collection and set it as today's quote
         const quotesCollection = collection(db, 'quotes');
         const quoteSnapshot = await getDocs(quotesCollection);
-        const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay');
-  
-        // Randomly select a quote from the pool
+        const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay2'); // Exclude the `quoteOfTheDay2` doc
+
         const randomIndex = Math.floor(Math.random() * quotesList.length);
-        const selectedQuote = quotesList[randomIndex].data();
-  
-        // Set the new quote in the state
-        setQuote(`"${selectedQuote.quote}"`);
-        setQuoteInfluencer(selectedQuote.name);
-        setHint1(selectedQuote.hint1);
-        setHint2(selectedQuote.hint2);
-        setAudioFile(selectedQuote.audio);
-        setVideoFile(selectedQuote.video);
-  
-        // Store all quote data in the quoteOfTheDay document for future reference
-        await setDoc(doc(db, 'quoteOTD', 'quoteOfTheDay'), {
-          ...selectedQuote, // Store all fields from the selected quote
-          date: currentDay  // Store today's date
+        const selectedQuote = quotesList[randomIndex];
+
+        // Set the new quote
+        setQuote(`"${selectedQuote.data().quote}"`);
+        setQuoteInfluencer(selectedQuote.data().influencer);
+        setHint1(selectedQuote.data().hint1);
+        setHint2(selectedQuote.data().hint2);
+        setAudioFile(selectedQuote.data().audio);
+        setVideoFile(selectedQuote.data().video);
+
+        // Store the new quote's ID and today's date in Firestore
+        await setDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'), {
+          quoteId2: selectedQuote.id, // Store the ID of the randomly selected quote
+          date: currentDay            // Store today's date
         });
-  
-        console.log("New Quote of the Day:", selectedQuote.quote);
+
+        console.log("New Quote of the Day for Section 4:", selectedQuote.data().quote);
       }
     };
-  
+
     fetchQuoteOfTheDay();
   }, []);
   
-  
   const handleSearchClick = async () => {
-    // Always use the trimmed and lower-cased search term for comparison
     const guessedName = inputRef.current.value.trim().toLowerCase();
-
-    // Check if the guessed name exists in the suggestions
-    const matchedSuggestion = suggestions.find(suggestion => suggestion.name.toLowerCase() === guessedName);
-
-    // Ignore single letters or invalid guesses
-    if (guessedName.length < 2 || !matchedSuggestion) {
-      alert("Please enter a valid name from the suggestions.");
-      return;
-    }
-
+    console.log('Guessed Name:', guessedName); // Log the guessed name
+  
     if (incorrectGuesses.map(guess => guess.toLowerCase()).includes(guessedName)) {
       alert("You have already guessed this name. Try a different one.");
       return;
     }
-
+  
     if (guessedName.length > 0) {
-      // Fetch the quoteOfTheDay document to get the current name
-      const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
-
-      if (quoteOfTheDayDoc.exists()) {
-        const dailyQuote = quoteOfTheDayDoc.data();
-        const quoteInfluencerName = dailyQuote.name.toLowerCase();
-
-        // Compare the guessed name (now from the selected suggestion) with the name from quoteOfTheDay
-        if (guessedName === quoteInfluencerName) {
-          // If it matches, scroll to section3
-          onSearchMatch(dailyQuote.name, dailyQuote.video);
+      try {
+        // Fetch the quoteOfTheDay2 document to get the current quoteId2
+        const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD2', 'quoteOfTheDay2'));
+        console.log('quoteOfTheDayDoc:', quoteOfTheDayDoc.exists() ? quoteOfTheDayDoc.data() : 'No document found');
+  
+        if (quoteOfTheDayDoc.exists()) {
+          const dailyQuote = quoteOfTheDayDoc.data();
+          const quoteId2 = dailyQuote.quoteId2;
+          console.log('Quote ID 2:', quoteId2); // Log the fetched quote ID
+  
+          // Compare the guessed name with quoteId2 directly
+          if (guessedName === quoteId2.toLowerCase()) {
+            console.log('Match found!'); // Log if a match is found
+            // If it matches, scroll to section4
+            onSearchMatch(quoteId2, videoFile); // Pass name and video for next section
+          } else {
+            console.log('No match found, incorrect guess'); // Log if no match is found
+            // If it doesn't match, log an incorrect guess
+            setIncorrectGuesses(prev => [...prev.slice(-4), guessedName]);
+            setGuessCount(guessCount + 1);
+          }
         } else {
-          // If it doesn't match, log an incorrect guess
-          setIncorrectGuesses(prev => [...prev.slice(-4), guessedName]);
-          setGuessCount(guessCount + 1);
+          console.error('Quote of the day document not found.');
         }
-      } else {
-        console.error('Quote of the day not found');
+      } catch (error) {
+        console.error('Error fetching quote of the day or quote document:', error);
       }
-
+  
       setSearchTerm("");
       setShowSuggestions(false);
     } else {
       alert('Please enter a name in the search bar.');
     }
   };
+  
+  
+  
+  
 
-  
-  
-  
   const handleSearch = async (e) => {
     const value = e.target.value;
     setSearchTerm(value);
@@ -175,7 +181,6 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
       }
     }
   };
-  
 
   const handleAudioToggle = () => {
     if (audioRef.current) {
@@ -206,76 +211,27 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
   };
 
   return (
-    <div id="section2" className="section" ref={ref}>
-     
-      <div className="overlay2">
-        
-        <p className="whosays">
-          Guess Who Says This Quote?
+    <div id="section4" className="section4" ref={ref}>
+      <div className="overlay4">
+        <p className="whosays4">
+          GUESS WHO SAYS THIS QUOTE?
           <br />
-          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span>
+          <span className="rounds4" style={{ marginTop: '-10px' }}>(ROUND 2)</span>
         </p>
-        <div className="quoteandclue">
-        <p className="quotey"><span className="thequote">{quote}</span></p>
-        <div className="button-container">
-  <div className="hint-wrapper">
-    <button
-      className={`hint-button ${guessCount >= 2 ? 'enabled-button' : 'disabled-button'}`}
-      onClick={guessCount >= 2 ? toggleHint1 : null}
-      data-tooltip={guessCount >= 2 ? "Character Clue" : "Clue after 2 guesses"}
-    >
-      <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
-    </button>
-    <span className="hint-description">FIRST CLUE</span> {/* Add text description */}
-  </div>
+        <p className="quotey4"><span className="thequote4">{quote}</span></p>
 
-  <div className="hint-wrapper">
-    <button
-      className={`hint-button ${guessCount >= 5 ? 'enabled-button' : 'disabled-button'}`}
-      onClick={guessCount >= 5 ? toggleHint2 : null}
-      data-tooltip={guessCount >= 5 ? "Achievements Clue" : "Clue after 5 guesses"}
-    >
-      <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-    </button>
-    <span className="hint-description">SECOND CLUE</span> {/* Add text description */}
-  </div>
-
-  <div className="hint-wrapper">
-    <button
-      className={`audio-button ${guessCount >= 7 ? 'enabled-button' : 'disabled-button'}`}
-      onClick={guessCount >= 7 ? handleAudioToggle : null}
-      data-tooltip={guessCount >= 7 ? "Audio Clue" : "Clue after 7 guesses"}
-    >
-      <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
-    </button>
-    <span className="hint-description">AUDIO CLUE</span> {/* Add text description */}
-  </div>
-</div>
-
-
-        <div className="hint-container">
-  {showHint1 && (
-    <div className="hint-bubble hint-bubble1">{hint1}</div>
-  )}
-
-  {showHint2 && (
-    <div className="hint-bubble hint-bubble2">{hint2}</div>
-  )}
-</div>
-        </div>
-
-        <div className="search-bar-container">
+        <div className="search-bar-container4">
           <input
             ref={inputRef}
             type="text"
-            className="search-input"
+            className="search-input4"
             placeholder="Type a name..."
             value={searchTerm}
             onChange={handleSearch}
             onKeyDown={handleKeyDown} // Add keydown listener
           />
-          <button className="search-button" onClick={handleSearchClick}>
-            <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+          <button className="search-button4" onClick={handleSearchClick}>
+            <img src={require('../assets/search.png')} alt="Search" className="search-icon4" />
           </button>
           {showSuggestions && suggestions.length > 0 && (
             <ul className="suggestions-list2">
@@ -303,12 +259,34 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             </ul>
           )}
         </div>
-        <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
-        
+        <p className="guess-tracker4">You have made <span className='guess-number4'>{guessCount}</span> guesses</p>
+        <div className="button-container4">
+          <button className="hint-button4" onClick={toggleHint1} data-tooltip="Character Clue">
+            <img className="icons4" src={require('../assets/details-clue.png')} alt="Character Clue" />
+          </button>
 
-        <div className="incorrect-guesses">
+          <button className="hint-button" onClick={toggleHint2} data-tooltip="Achievements Clue">
+            <img className="icons4" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+          </button>
+
+          <button className="audio-button" onClick={handleAudioToggle} data-tooltip="Audio Clue">
+            <img className="icons4" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+          </button>
+        </div>
+
+        <div className="hint-container4">
+          {showHint1 && (
+            <div className="hint-bubble4">{hint1}</div>
+          )}
+
+          {showHint2 && (
+            <div className="hint-bubble4">{hint2}</div>
+          )}
+        </div>
+
+        <div className="incorrect-guesses4">
           {incorrectGuesses.map((guess, index) => (
-            <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
+            <p key={index} className="incorrect-guess-text4">{guess.toUpperCase()}</p>
           ))}
         </div>
 
@@ -321,8 +299,7 @@ const Section2 = React.forwardRef(({ handleScroll, onSearchMatch }, ref) => {
             Your browser does not support the audio element.
           </audio>
         )}
-        {/* Invisible quoteInfluencer and videoFile */}
-      <div style={{ display: 'none' }}>
+           <div style={{ display: 'none' }}>
         <p>{quoteInfluencer}</p>
         <video src={videoFile} controls />
         </div>
