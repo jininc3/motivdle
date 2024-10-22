@@ -10,11 +10,10 @@ body, html {
 }
 
 /* Style for the menu button */
-/* Style for the menu button */
 .menu-button {
   position: fixed;
   top: 40px;
-  right: 20px;
+  left: 20px; /* Move to the left side */
   background-color: transparent;
   border: none;
   color: #FCA311;
@@ -22,7 +21,7 @@ body, html {
   padding: 10px 20px;
   cursor: pointer;
   z-index: 1000;
-  transition: right 0.3s ease, transform 0.3s ease; /* Smooth transition for button movement */
+  transition: left 0.3s ease, transform 0.3s ease; /* Smooth transition for button movement */
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   border-radius: 5px;
@@ -34,17 +33,17 @@ body, html {
 }
 
 .menu-button.open {
-  right: 250px; /* Move the button when the menu is open */
+  left: 250px; /* Move the button when the menu is open */
   transform: rotate(90deg);
   color: black;
-  border:solid black;
+  border: solid black;
 }
 
 .menu-button.open:hover {
-  
   color: white;
   border: solid white;
 }
+
 
 
 .active-link {
@@ -60,14 +59,14 @@ body, html {
 
 
 /* Right-side navigation menu */
-/* Right-side navigation menu */
+/* Left-side navigation menu */
 .nav-menu {
   position: fixed;
-  right: -400px; /* Hidden initially */
+  left: -400px; /* Hidden initially */
   height: 100%;
   width: 300px;
   background-color: #FCA311;
-  transition: right 0.3s ease;
+  transition: left 0.3s ease;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -76,12 +75,13 @@ body, html {
   z-index: 999;
   gap: 100px;
   padding: 20px;
-  border-radius: 10px 0 0 10px;
+  border-radius: 0 10px 10px 0;
 }
 
 .nav-menu.open {
-  right: 0;
+  left: 0;
 }
+
 
 .nav-item {
   position: relative;
@@ -138,9 +138,9 @@ body, html {
 
 .logo-container {
   position: fixed;
-  top: 0;
-  left: 3%;
-  transform: translateX(-50%);
+  top: -20px;
+  right: 3%; /* Move to the right side */
+  transform: translateX(50%); /* Adjust for the right-aligned position */
   z-index: 1000;
   padding: 10px 0;
 }

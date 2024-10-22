@@ -3,6 +3,7 @@ import './Home.css';
 import Section1 from './Section1';
 import Section2 from './Section2';
 import Section3 from './Section3';
+import { useLocation } from 'react-router-dom';
 
 function Home() {
     const [isSection2Visible, setIsSection2Visible] = useState(false);
@@ -10,16 +11,26 @@ function Home() {
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
     const [backgroundStyle, setBackgroundStyle] = useState({});
-    
 
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
+    const location = useLocation();
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const scrollTo = params.get('scrollTo');
+
+        if (scrollTo === 'section2') {
+            setIsSection2Visible(true); // Directly show Section2
+        }
+    }, [location]);
+
+    
 
     // Scroll to Section2 when "MOTIVDLE GAME" is clicked
     useEffect(() => {
         if (isSection2Visible && section2Ref.current) {
             section2Ref.current.scrollIntoView({ behavior: 'smooth' });
-            
         }
     }, [isSection2Visible]);
 

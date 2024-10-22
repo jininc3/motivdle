@@ -54,7 +54,7 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const handleButtonClick = async () => {
       
 
-            navigate('/section4');
+            navigate('/round1');
        
         
     };

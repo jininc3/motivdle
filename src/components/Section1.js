@@ -35,7 +35,7 @@ function Section1({ handleScroll }) {
         className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
         onClick={handleScroll}
       >
-        THE MOTIVDLE GAME
+        MOTIVDLE ROUND 1
       </button>
 
       

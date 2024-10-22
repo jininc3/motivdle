@@ -15,6 +15,8 @@ function App() {
     setIsNavOpen(!isNavOpen);
   };
 
+
+
   return (
     <Router>
       <div className="App">
@@ -34,8 +36,7 @@ function App() {
 
         {/* Right-side navigation menu */}
         <div className={`nav-menu ${isNavOpen ? 'open' : ''}`}>
-          <div className="nav-item"><a href="/">HOME</a></div>
-          <div className="nav-item"><a href="/section2">ROUND 1</a></div>
+          <div className="nav-item"><a href="/?scrollTo=section2">ROUND 1</a></div>
           <div className="nav-item"><a href="/contact">ROUND 2</a></div>
           <div className="nav-item"><a href="/help">ROUND 3</a></div>
         </div>
@@ -44,7 +45,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/section1" element={<Section1 />} />
           <Route path="/section3" element={<Section3 />} />
-          <Route path="/section2" element={<Section2 />} />
+          <Route 
+            path="/section2" 
+            element={<Section2/>} // Add this line
+          />
         </Routes>
       </div>
     </Router>
