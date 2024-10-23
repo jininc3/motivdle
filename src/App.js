@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
-import Section1 from './components/Section1';
+import Home2 from './components/Home2'; // Import Home2
 import Section3 from './components/Section3';
-import Section2 from './components/Section2';
 import logo from './assets/cheetah-logo2.png';
-
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(true);
@@ -15,40 +13,28 @@ function App() {
     setIsNavOpen(!isNavOpen);
   };
 
-
-
   return (
     <Router>
       <div className="App">
-        {/* Logo at the top center */}
         <div className="logo-container">
-  
-        <a href="/"><img src={logo} alt="Cheetah Logo" className="cheetah-logo" /></a>
-          
-  <div className="motivdle-small">MOTIVDLE</div>
-</div>
+          <a href="/"><img src={logo} alt="Cheetah Logo" className="cheetah-logo" /></a>
+          <div className="motivdle-small">MOTIVDLE</div>
+        </div>
 
-
-        {/* Menu Button */}
         <button className={`menu-button ${isNavOpen ? 'open' : ''}`} onClick={toggleNav}>
           Menu
         </button>
 
-        {/* Right-side navigation menu */}
         <div className={`nav-menu ${isNavOpen ? 'open' : ''}`}>
-          <div className="nav-item"><a href="/?scrollTo=section2">ROUND 1</a></div>
-          <div className="nav-item"><a href="/contact">ROUND 2</a></div>
-          <div className="nav-item"><a href="/help">ROUND 3</a></div>
+          <div className="nav-item"><a href="/">HOME</a></div>
+          <div className="nav-item"><a href="/?scrollTo=section2">ROUND 1</a></div> {/* Link to Home */}
+          <div className="nav-item"><a href="/home2">ROUND 2</a></div> {/* Link to Home2 */}
         </div>
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/section1" element={<Section1 />} />
+          <Route path="/home2" element={<Home2 />} /> {/* Add route for Home2 */}
           <Route path="/section3" element={<Section3 />} />
-          <Route 
-            path="/section2" 
-            element={<Section2/>} // Add this line
-          />
         </Routes>
       </div>
     </Router>

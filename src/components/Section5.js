@@ -1,12 +1,9 @@
-
 import React, { useEffect, useRef, useState } from 'react';
-import './Section3.css';
-
+import './Section3.css'; // Reuse Section3.css for styling
 import { useNavigate } from 'react-router-dom';
 
 
-
-const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [videoSrc, setVideoSrc] = useState("");
@@ -49,18 +46,12 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         }
     }, [videoFileName]);
 
-   
-
     const handleButtonClick = async () => {
-      
-
-            navigate('/home2');
-       
-        
+        navigate('/home2'); // Navigate to the appropriate route after the video
     };
 
     return (
-        <div id="section3" className="section3" ref={ref}>
+        <div id="section5" className="section3" ref={ref}>
             <div className="overlay-3">
                 {isVideoLoaded ? (
                     <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto">
@@ -84,14 +75,12 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                         className="video-button3 fade-in"
                         onClick={handleButtonClick}
                     >
-                        PRESS FOR ROUND 2
+                        PRESS FOR ROUND 3
                     </button>
                 </div>
             </div>
-            
-            
         </div>
     );
 });
 
-export default Section3;
+export default Section5;

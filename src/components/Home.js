@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
-import Section1 from './Section1';
+import './Section1.css'; // Keep the styles for Section1
 import Section2 from './Section2';
 import Section3 from './Section3';
 import { useLocation } from 'react-router-dom';
@@ -10,11 +10,20 @@ function Home() {
     const [isSection3Visible, setIsSection3Visible] = useState(false);
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
+    const [isButtonVisible, setButtonVisible] = useState(false); // Merged from Section1.js
     const [backgroundStyle, setBackgroundStyle] = useState({});
 
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
     const location = useLocation();
+
+    // Section1 functionality: Show button after a delay
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setButtonVisible(true);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -24,8 +33,6 @@ function Home() {
             setIsSection2Visible(true); // Directly show Section2
         }
     }, [location]);
-
-    
 
     // Scroll to Section2 when "MOTIVDLE GAME" is clicked
     useEffect(() => {
@@ -38,11 +45,6 @@ function Home() {
     useEffect(() => {
         if (isSection3Visible && section3Ref.current) {
             section3Ref.current.scrollIntoView({ behavior: 'smooth' });
-             // Change background when Section3 is visible
-            
-        } else if (!isSection3Visible) {
-            setBackgroundStyle({});
-            // Reset Subscribe section style
         }
     }, [isSection3Visible]);
 
@@ -59,26 +61,40 @@ function Home() {
     return (
         <div style={backgroundStyle}> {/* Apply dynamic background style here */}
             <div className="background-home"></div>
-            
-            <div className="content">
-                <Section1 handleScroll={handleScrollToSection2} />
-                
-                {isSection2Visible && (
-                    <Section2
-                        ref={section2Ref}
-                        onSearchMatch={handleSearchTriggerScroll} // Pass the handler for correct guess
-                    />
-                )}
 
-                {isSection3Visible && (
-                    <Section3
-                        ref={section3Ref}
-                        influencerName={influencerName}
-                        videoFileName={videoFile}
-                    />
-                )}
+            {/* Section1 Content */}
+            <div id="section1" className="section1">
+                <h1 className="title-home">MOTIVDLE</h1>
+                <p className="description">
+                    The game where you guess who says the motivational quote, and in hopes of taking away some inspiration.
+                    I'm a big fan of quotes from actual achievers so the quotes are strictly from real-life winners.
+                </p>
+                <button
+                    id="scrollButton"
+                    className={`test-button ${isButtonVisible ? 'fade-in' : ''}`}
+                    onClick={handleScrollToSection2}
+                >
+                    MOTIVDLE ROUND 1
+                </button>
             </div>
-            
+
+            {/* Section2 Content */}
+            {isSection2Visible && (
+                <Section2
+                    ref={section2Ref}
+                    onSearchMatch={handleSearchTriggerScroll} // Pass the handler for correct guess
+                />
+            )}
+
+            {/* Section3 Content */}
+            {isSection3Visible && (
+                <Section3
+                    ref={section3Ref}
+                    influencerName={influencerName}
+                    videoFileName={videoFile}
+                />
+            )}
+
             <footer className="footer">
                 <p>&copy; 2024 Motivdle. All rights reserved.</p>
             </footer>
