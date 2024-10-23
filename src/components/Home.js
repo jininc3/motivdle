@@ -11,7 +11,7 @@ function Home() {
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
     const [isButtonVisible, setButtonVisible] = useState(false); // Merged from Section1.js
- 
+    const [backgroundStyle] = useState({});
 
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
