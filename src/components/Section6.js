@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Section3.css'; // Reuse Section3.css for styling
 import { useNavigate } from 'react-router-dom';
 
-
-const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [videoSrc, setVideoSrc] = useState("");
@@ -17,12 +16,10 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
             video.preload = 'auto';
 
             video.onloadeddata = () => {
-                console.log('Video preloaded successfully:', url);
                 resolve(url);
             };
 
             video.onerror = () => {
-                console.error('Error preloading video:', url);
                 reject(new Error('Error preloading video'));
             };
         });
@@ -47,11 +44,11 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     }, [videoFileName]);
 
     const handleButtonClick = async () => {
-        navigate('/home3'); // Navigate to the appropriate route after the video
+        navigate('/'); // Navigate to the home page or a new route after this round
     };
 
     return (
-        <div id="section5" className="section3" ref={ref}>
+        <div id="section6" className="section3" ref={ref}>
             <div className="overlay-3">
                 {isVideoLoaded ? (
                     <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto">
@@ -75,7 +72,7 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                         className="video-button3 fade-in"
                         onClick={handleButtonClick}
                     >
-                        PRESS FOR ROUND 3
+                        FINISH GAME
                     </button>
                 </div>
             </div>
@@ -83,4 +80,4 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     );
 });
 
-export default Section5;
+export default Section6;

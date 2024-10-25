@@ -85,6 +85,8 @@ function Home2() {
         } else {
             setIncorrectGuesses([...incorrectGuesses, guessedName]);
             setGuessCount(guessCount + 1);
+            setSearchTerm("");
+        inputRef.current.value = ""; 
         }
     };
 
@@ -167,7 +169,7 @@ function Home2() {
         <p className="whosays">
           Guess Who Says This Quote?
           <br />
-          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span>
+          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span>
         </p>
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
