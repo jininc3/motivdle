@@ -162,7 +162,7 @@ function Home2() {
     };
 
     return (
-        <div id="section2" className="section" >
+        <div id="home2" className="section" >
      
       <div className="overlay2">
         

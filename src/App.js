@@ -28,7 +28,7 @@ function App() {
 
         <div className={`nav-menu ${isNavOpen ? 'open' : ''}`}>
           <div className="nav-item"><a href="/">HOME</a></div>
-          <div className="nav-item"><a href="/?scrollTo=section2">ROUND 1</a></div> {/* Link to Home */}
+          <div className="nav-item"><a href="/?showSection=section2">ROUND 1</a></div>
           <div className="nav-item"><a href="/home2">ROUND 2</a></div> {/* Link to Home2 */}
           <div className="nav-item"><a href="/home3">ROUND 3</a></div> {/* Link to Home3 */}
         </div>
