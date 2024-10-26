@@ -10,7 +10,7 @@ import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebas
 function Home() {
     const [isSection2Visible, setIsSection2Visible] = useState(false);
     const [isSection3Visible, setIsSection3Visible] = useState(false);
-    const [influencerName] = useState("");
+    const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
     const [isButtonVisible, setButtonVisible] = useState(false); // Merged from Section1.js
     const [backgroundStyle] = useState({});
@@ -28,7 +28,7 @@ function Home() {
     const [showHint1, setShowHint1] = useState(false);
     const [hint2, setHint2] = useState("");
     const [showHint2, setShowHint2] = useState(false);
-    const [quoteInfluencer, setQuoteInfluencer] = useState(""); // Define state for the influencer
+    const [quoteInfluencer] = useState(""); // Define state for the influencer
     
     const audioRef = useRef(null);
     const inputRef = useRef(null);
@@ -84,55 +84,44 @@ function Home() {
   
 
     useEffect(() => {
-        const fetchQuoteOfTheDay = async () => {
+      const fetchQuoteOfTheDay = async () => {
           const today = new Date();
-          const currentDay = today.toDateString(); // Convert current date to a string
-      
-          // Check Firestore for today's quote in the quoteOfTheDay collection
+          const currentDay = today.toDateString();
+
           const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD', 'quoteOfTheDay'));
-      
+
           if (quoteOfTheDayDoc.exists() && quoteOfTheDayDoc.data().date === currentDay) {
-            // If today's quote exists, use the quote data directly from quoteOfTheDay
-            const dailyQuote = quoteOfTheDayDoc.data();
-            setQuote(`"${dailyQuote.quote}"`);
-            setQuoteInfluencer(dailyQuote.name); // Store the name from Firestore
-            setHint1(dailyQuote.hint1);
-            setHint2(dailyQuote.hint2);
-            setAudioFile(dailyQuote.audio);
-            setVideoFile(dailyQuote.video);
-      
-            console.log("Quote of the Day:", dailyQuote.quote);
+              const dailyQuote = quoteOfTheDayDoc.data();
+              setQuote(`"${dailyQuote.quote}"`);
+              setInfluencerName(dailyQuote.name);
+              setHint1(dailyQuote.hint1);
+              setHint2(dailyQuote.hint2);
+              setAudioFile(dailyQuote.audio);
+              setVideoFile(dailyQuote.video);
           } else {
-            // Pick a new random quote from the quotes collection and set it as today's quote
-            const quotesCollection = collection(db, 'quotes');
-            const quoteSnapshot = await getDocs(quotesCollection);
-            const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay');
-      
-            // Randomly select a quote from the pool
-            const randomIndex = Math.floor(Math.random() * quotesList.length);
-            const selectedQuote = quotesList[randomIndex].data();
-      
-            // Set the new quote in the state
-            setQuote(`"${selectedQuote.quote}"`);
-            setQuoteInfluencer(selectedQuote.name);
-            setHint1(selectedQuote.hint1);
-            setHint2(selectedQuote.hint2);
-            setAudioFile(selectedQuote.audio);
-            setVideoFile(selectedQuote.video);
-      
-            // Store all quote data in the quoteOfTheDay document for future reference
-            await setDoc(doc(db, 'quoteOTD', 'quoteOfTheDay'), {
-              ...selectedQuote, // Store all fields from the selected quote
-              date: currentDay  // Store today's date
-            });
-      
-            console.log("New Quote of the Day:", selectedQuote.quote);
+              const quotesCollection = collection(db, 'quotes');
+              const quoteSnapshot = await getDocs(quotesCollection);
+              const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay');
+
+              const randomIndex = Math.floor(Math.random() * quotesList.length);
+              const selectedQuote = quotesList[randomIndex].data();
+
+              setQuote(`"${selectedQuote.quote}"`);
+              setInfluencerName(selectedQuote.name);
+              setHint1(selectedQuote.hint1);
+              setHint2(selectedQuote.hint2);
+              setAudioFile(selectedQuote.audio);
+              setVideoFile(selectedQuote.video);
+
+              await setDoc(doc(db, 'quoteOTD', 'quoteOfTheDay'), {
+                  ...selectedQuote,
+                  date: currentDay,
+              });
           }
-        };
+      };
       
-        fetchQuoteOfTheDay();
-      }, []);
-      
+      fetchQuoteOfTheDay();
+    }, []);
       
       const handleSearchClick = () => {
         const guessedName = inputRef.current.value.trim().toLowerCase();
