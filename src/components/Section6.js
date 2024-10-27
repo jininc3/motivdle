@@ -51,7 +51,7 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         <div id="section6" className="section3" ref={ref}>
             <div className="overlay-3">
                 {isVideoLoaded ? (
-                    <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto">
+                    <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto" autoPlay >
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>

@@ -13,7 +13,7 @@ html {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #14213D;
+  
   background-size: cover; /* Ensures the image covers the whole background */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents repeating the image */
@@ -76,7 +76,6 @@ body {
 
 .section1 {
   height: 100vh;
-  background: #14213D;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -3,7 +3,22 @@ body, html {
   padding: 0;
   width: 100%;
   height: 100%;
+  
 }
+
+body {
+  background-image: url('./assets/background200.png'); /* Ensure the path is correct */
+  background-size: cover; /* Make the image cover the entire viewport */
+  background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif; /* Adjust the font if needed */
+  color: white; /* Default text color, adjust as needed */
+}
+
 
 .App {
   text-align: center;
@@ -203,51 +218,32 @@ a .title:hover {
   
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .subscribe {
-    padding: 20px;
-    font-size: 1rem;
-  }
 
-  .subscribe input, .subscribe button {
-    width: 100%;
-    margin: 5px 0;
-  }
-}
-
-
-.subscribe {
-  padding: 40px;
-  font-size: 1.2rem;
-  color: white;
-  font-family: "Oswald", sans-serif;
-  
-}
-
-.subscribe input {
-  padding: 10px;
-  font-size: 1rem;
-  margin-right: 10px;
-  font-family: "Oswald", sans-serif;
-}
-
-.subscribe button {
-  padding: 10px;
-  font-size: 1rem;
-  background-color: white;
-  color: #181818;
-  border: none;
-  cursor: pointer;
-  font-family: "Oswald", sans-serif;
-}
-
-.subscribe button:hover {
-  background-color: #333;
-  color: white;
-}
 
 .footer {
   padding: 10px;
   color: white;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #14213D; /* This is a fallback if the image fails */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #FCA311;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.3s;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
