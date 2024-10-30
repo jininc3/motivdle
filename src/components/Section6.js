@@ -35,6 +35,11 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     if (videoRef.current) {
                         videoRef.current.classList.add('fade-in');
                     }
+                    setTimeout(() => {
+                        if (videoRef.current) {
+                            videoRef.current.play();
+                        }
+                    }, 1000); // 1 second delay
                 })
                 .catch((error) => {
                     console.error('Failed to preload video:', error);
@@ -51,7 +56,7 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
         <div id="section6" className="section3" ref={ref} >
             <div className="overlay-3">
                 {isVideoLoaded ? (
-                    <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto" autoPlay >
+                    <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto" >
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
