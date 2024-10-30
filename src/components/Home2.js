@@ -4,6 +4,7 @@ import './Section2.css'; // Reuse Section2 styles
 import Section5 from './Section5'; // Section5 remains separate for round completion
 import { db } from '../firebase';
 import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
+import './Section5.css';
 
 function Home2() {
     const [isSection5Visible, setIsSection5Visible] = useState(false);
@@ -25,6 +26,8 @@ function Home2() {
     const [videoFile, setVideoFile] = useState("");
     const section5Ref = useRef(null);
     const [backgroundStyle, setBackgroundStyle] = useState({});
+    const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
+const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
 
     const inputRef = useRef(null);
     const audioRef = useRef(null);
@@ -34,13 +37,19 @@ function Home2() {
     }, []);
 
     useEffect(() => {
-      if (isSection5Visible && section5Ref.current) {
-          section5Ref.current.scrollIntoView({ behavior: 'smooth' });
-          setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.7)', transition: 'background-color 0.5s ease' });
+      if (isSection5Visible) {
+          setBackgroundStyle({
+              backgroundColor: 'rgba(0, 0, 0, 0.7)', // This adds a dark overlay effect
+              transition: 'background-color 0.5s ease' // Smooth transition effect
+          });
+      } else {
+          setBackgroundStyle({
+              backgroundColor: 'rgba(0, 0, 0, 0)', // Revert to normal when Section5 is not visible
+              transition: 'background-color 0.5s ease'
+          });
       }
   }, [isSection5Visible]);
 
- 
 
     useEffect(() => {
         const fetchQuoteOfTheDay = async () => {
@@ -149,15 +158,7 @@ function Home2() {
         }
       };
 
-    const toggleHint1 = () => {
-        setShowHint1(!showHint1);
-        if (showHint2) setShowHint2(false);
-    };
-
-    const toggleHint2 = () => {
-        setShowHint2(!showHint2);
-        if (showHint1) setShowHint1(false);
-    };
+ 
 
     const handleAudioToggle = () => {
         if (audioRef.current) {
@@ -170,155 +171,161 @@ function Home2() {
         }
     };
 
+        
+    const toggleHint1 = () => {
+      setShowHint1(!showHint1);
+      setIsFlashingFirstHint(false); // Stop flashing when the button is clicked
+      if (showHint2) setShowHint2(false);
+  };
+  
+  const toggleHint2 = () => {
+      setShowHint2(!showHint2);
+      setIsFlashingSecondHint(false); // Stop flashing when the second button is clicked
+      if (showHint1) setShowHint1(false);
+  };
+
     return (
       <div style={backgroundStyle}>
-        <div id="home2" className="section" >
-         
-     
-      <div className="overlay2">
-        
-        <p className="whosays">
-          Guess Who Says This Quote?
-          <br />
-          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span>
-        </p>
-
-        <div className="quoteandclue">
-        <p className="quotey"><span className="thequote">{quote}</span></p>
-
-        <div className="button-container">
-
-  <div className="hint-wrapper">
-    <button
-      className="hint-button enabled-button" // Always enabled
-      onClick={toggleHint1}
-      data-tooltip="Character Clue"
-    >
-      <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
-    </button>
-    <span className="hint-description">FIRST CLUE</span>
-  </div>
-
-  <div className="hint-wrapper">
-    <button
-      className="hint-button enabled-button" // Always enabled
-      onClick={toggleHint2}
-      data-tooltip="Achievements Clue"
-    >
-      <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-    </button>
-    <span className="hint-description">SECOND CLUE</span>
-  </div>
-
-  <div className="hint-wrapper">
-    <button
-      className="audio-button enabled-button" // Always enabled
-      onClick={handleAudioToggle}
-      data-tooltip="Audio Clue"
-    >
-      <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
-    </button>
-    <span className="hint-description">AUDIO CLUE</span>
-  </div>
-
-</div>
-        <div className="hint-container">
-  {showHint1 && (
-    <div className="hint-bubble3">{hint1}</div>
-  )}
-
-  {showHint2 && (
-    <div className="hint-bubble4">{hint2}</div>
-  )}
-</div>
+      
+        <div id="section2" className="section" ref={section5Ref} >
+        <div className="overlay2">
+                <p className="whosays">
+                  Guess Who Says This Quote?<br />
+                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span></p>
+                <div className="quoteandclue">
+                <p className="quotey"><span className="thequote">{quote}</span></p>
+                <div className="button-container">
+                <div className="hint-wrapper">
+            <button
+                className={`hint-button enabled-button ${isFlashingFirstHint && guessCount >= 2 ? 'flash-hint' : ''}`} // Apply flash class based on state
+                onClick={toggleHint1}
+                data-tooltip="Character Clue">
+                <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+            </button>
+            <span className="hint-description">FIRST CLUE</span>
         </div>
-
-        <div className="search-bar-container">
-          <input
-            ref={inputRef}
-            type="text"
-            className="search-input"
-            placeholder="Type a name..."
-            value={searchTerm}
-            onChange={handleSearch}
-            onKeyDown={handleKeyDown} // Add keydown listener
-          />
-          <button className="search-button" onClick={handleSearchClick}>
-            <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
-          </button>
-          {showSuggestions && suggestions.length > 0 && (
-            <ul className="suggestions-list2">
-              {suggestions.map((suggestion, index) => (
-              <li
-              key={index}
-              className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
-              onMouseDown={() => {
-                const selectedSuggestion = suggestion.name;
-                setSearchTerm(selectedSuggestion); // Set the search term to the selected suggestion
-                inputRef.current.value = selectedSuggestion; // Update the input field manually
-                setShowSuggestions(false); // Hide the suggestion list
-                handleSearchClick(); // Trigger the search for the selected suggestion
-              }}
+        <div className="hint-wrapper">
+            <button
+                className={`hint-button enabled-button ${isFlashingSecondHint && guessCount >= 4 ? 'flash-hint' : ''}`} // Apply flash class based on state and guess count
+                onClick={toggleHint2}
+                data-tooltip="Achievements Clue">
+                <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+            </button>
+            <span className="hint-description">SECOND CLUE</span>
+        </div>
+        
+        
+          <div className="hint-wrapper">
+            <button
+              className="audio-button enabled-button" // Always enabled
+              onClick={handleAudioToggle}
+              data-tooltip="Audio Clue"
             >
-              <img
-                className="suggestion-image"
-                src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
-                alt={suggestion.name}
-              />
-              {suggestion.name}
-            </li>
-             
-              ))}
-            </ul>
+              <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+            </button>
+            <span className="hint-description">AUDIO CLUE</span>
+          </div>
+        </div>
+        
+        
+        
+                <div className="hint-container">
+          {showHint1 && (
+            <div className="hint-bubble hint-bubble1">{hint1}</div>
+          )}
+        
+          {showHint2 && (
+            <div className="hint-bubble hint-bubble2">{hint2}</div>
           )}
         </div>
-        <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
+                </div>
         
-
-        <div className="incorrect-guesses">
-          {incorrectGuesses.map((guess, index) => (
-            <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
-          ))}
-        </div>
-
-        {audioFile && (
-          <audio ref={audioRef}>
-            <source
-              src={`https://storage.googleapis.com/motivdle-audio/${audioFile}`}
-              type="audio/mpeg"
-            />
-            Your browser does not support the audio element.
-          </audio>
-        )}
-
-        {/* Invisible quoteInfluencer and videoFile */}
-      <div style={{ display: 'none' }}>
-        <p>{quoteInfluencer}</p>
-        <video src={videoFile} controls />
-        </div>
+                <div className="search-bar-container">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    className="search-input"
+                    placeholder="Type a name..."
+                    value={searchTerm}
+                    onChange={handleSearch}
+                    onKeyDown={handleKeyDown} // Add keydown listener
+                  />
+                  <button className="search-button" onClick={handleSearchClick}>
+                    <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+                  </button>
+                  {showSuggestions && suggestions.length > 0 && (
+                    <ul className="suggestions-list2">
+                      {suggestions.map((suggestion, index) => (
+                      <li
+                      key={index}
+                      className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
+                      onMouseDown={() => {
+                        const selectedSuggestion = suggestion.name;
+                        setSearchTerm(selectedSuggestion); // Set the search term to the selected suggestion
+                        inputRef.current.value = selectedSuggestion; // Update the input field manually
+                        setShowSuggestions(false); // Hide the suggestion list
+                        handleSearchClick(); // Trigger the search for the selected suggestion
+                      }}
+                    >
+                      <img
+                        className="suggestion-image"
+                        src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
+                        alt={suggestion.name}
+                      />
+                      {suggestion.name}
+                    </li>
+                     
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
+                
         
-      </div>
-      
-    
-    
-            {/* Section5 */}
-            {isSection5Visible && (
-                <Section5
-                ref={section5Ref}
-                    influencerName={influencerName}
-                    videoFileName={videoFile}
-                    
-                    
-                />
-            )}
-
-            <footer className="footer">
-                <p>&copy; 2024 Motivdle. All rights reserved.</p>
-            </footer>
-
-        </div>
-        </div>
-    );
-}
-
-export default Home2;
+                <div className="incorrect-guesses">
+                  {incorrectGuesses.map((guess, index) => (
+                    <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
+                  ))}
+                </div>
+        
+                {audioFile && (
+                  <audio ref={audioRef}>
+                    <source
+                      src={`https://storage.googleapis.com/motivdle-audio/${audioFile}`}
+                      type="audio/mpeg"
+                    />
+                    Your browser does not support the audio element.
+                  </audio>
+                )}
+                
+                {/* Invisible quoteInfluencer and videoFile */}
+              <div style={{ display: 'none' }}>
+                <p>{quoteInfluencer}</p>
+                <video src={videoFile} controls />
+                </div>
+              </div>
+            </div>
+              
+                        
+                   
+        
+                    {/* Section3 Content */}
+                    {isSection5Visible && (
+                        <Section5
+                            ref={section5Ref}
+                            influencerName={influencerName}
+                            videoFileName={videoFile}
+        
+        
+                        />
+                    )}
+        
+                    <footer className="footer">
+                        <p>&copy; 2024 Motivdle. All rights reserved.</p>
+                    </footer>
+                </div>
+            );
+        }
+        
+        export default Home2;
+        

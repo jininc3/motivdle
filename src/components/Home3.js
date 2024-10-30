@@ -24,6 +24,9 @@ function Home3() {
     const [videoFile, setVideoFile] = useState("");
     const section6Ref = useRef(null);
     const [quoteInfluencer] = useState("");
+    const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
+const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
+const [backgroundStyle, setBackgroundStyle] = useState({});
 
     const inputRef = useRef(null);
     const audioRef = useRef(null);
@@ -31,6 +34,17 @@ function Home3() {
     useEffect(() => {
         inputRef.current?.focus();
     }, []);
+
+    useEffect(() => {
+      if (isSection6Visible && section6Ref.current) {
+          section6Ref.current.scrollIntoView({ behavior: 'smooth' });
+          setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.7)', transition: 'background-color 0.5s ease' });
+          
+      }
+  }, [isSection6Visible]);
+
+
+
 
     useEffect(() => {
         const fetchQuoteOfTheDay = async () => {
@@ -140,13 +154,15 @@ function Home3() {
         }
       };
 
-    const toggleHint1 = () => {
+      const toggleHint1 = () => {
         setShowHint1(!showHint1);
+        setIsFlashingFirstHint(false); // Stop flashing when the button is clicked
         if (showHint2) setShowHint2(false);
     };
-
+    
     const toggleHint2 = () => {
         setShowHint2(!showHint2);
+        setIsFlashingSecondHint(false); // Stop flashing when the second button is clicked
         if (showHint1) setShowHint1(false);
     };
 
@@ -162,139 +178,146 @@ function Home3() {
     };
 
     return (
-        <div id="home3" className="section" >
-     
+      <div style={backgroundStyle}>
+      
+        <div id="section6" className="section" ref={section6Ref} >
         <div className="overlay2">
-          
-          <p className="whosays">
-            Guess Who Says This Quote?
-            <br />
-            <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span>
-          </p>
-          <div className="quoteandclue">
-          <p className="quotey"><span className="thequote">{quote}</span></p>
-          <div className="button-container">
-  <div className="hint-wrapper">
-    <button
-      className="hint-button enabled-button" // Always enabled
-      onClick={toggleHint1}
-      data-tooltip="Character Clue"
-    >
-      <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
-    </button>
-    <span className="hint-description">FIRST CLUE</span>
-  </div>
-
-  <div className="hint-wrapper">
-    <button
-      className="hint-button enabled-button" // Always enabled
-      onClick={toggleHint2}
-      data-tooltip="Achievements Clue"
-    >
-      <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-    </button>
-    <span className="hint-description">SECOND CLUE</span>
-  </div>
-
-  <div className="hint-wrapper">
-    <button
-      className="audio-button enabled-button" // Always enabled
-      onClick={handleAudioToggle}
-      data-tooltip="Audio Clue"
-    >
-      <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
-    </button>
-    <span className="hint-description">AUDIO CLUE</span>
-  </div>
-</div>
-
-  
-  
-          <div className="hint-container">
-    {showHint1 && (
-      <div className="hint-bubble hint-bubble1">{hint1}</div>
-    )}
-  
-    {showHint2 && (
-      <div className="hint-bubble hint-bubble2">{hint2}</div>
-    )}
-  </div>
-          </div>
-  
-          <div className="search-bar-container">
-            <input
-              ref={inputRef}
-              type="text"
-              className="search-input"
-              placeholder="Type a name..."
-              value={searchTerm}
-              onChange={handleSearch}
-              onKeyDown={handleKeyDown} // Add keydown listener
-            />
-            <button className="search-button" onClick={handleSearchClick}>
-              <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+                <p className="whosays">
+                  Guess Who Says This Quote?<br />
+                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span></p>
+                <div className="quoteandclue">
+                <p className="quotey"><span className="thequote">{quote}</span></p>
+                <div className="button-container">
+                <div className="hint-wrapper">
+            <button
+                className={`hint-button enabled-button ${isFlashingFirstHint && guessCount >= 2 ? 'flash-hint' : ''}`} // Apply flash class based on state
+                onClick={toggleHint1}
+                data-tooltip="Character Clue">
+                <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
             </button>
-            {showSuggestions && suggestions.length > 0 && (
-              <ul className="suggestions-list2">
-                {suggestions.map((suggestion, index) => (
-                <li
-                key={index}
-                className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
-                onMouseDown={() => {
-                  const selectedSuggestion = suggestion.name;
-                  setSearchTerm(selectedSuggestion); // Set the search term to the selected suggestion
-                  inputRef.current.value = selectedSuggestion; // Update the input field manually
-                  setShowSuggestions(false); // Hide the suggestion list
-                  handleSearchClick(); // Trigger the search for the selected suggestion
-                }}
-              >
-                <img
-                  className="suggestion-image"
-                  src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
-                  alt={suggestion.name}
-                />
-                {suggestion.name}
-              </li>
-               
-                ))}
-              </ul>
-            )}
+            <span className="hint-description">FIRST CLUE</span>
+        </div>
+        <div className="hint-wrapper">
+            <button
+                className={`hint-button enabled-button ${isFlashingSecondHint && guessCount >= 4 ? 'flash-hint' : ''}`} // Apply flash class based on state and guess count
+                onClick={toggleHint2}
+                data-tooltip="Achievements Clue">
+                <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+            </button>
+            <span className="hint-description">SECOND CLUE</span>
+        </div>
+        
+        
+          <div className="hint-wrapper">
+            <button
+              className="audio-button enabled-button" // Always enabled
+              onClick={handleAudioToggle}
+              data-tooltip="Audio Clue"
+            >
+              <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+            </button>
+            <span className="hint-description">AUDIO CLUE</span>
           </div>
-          <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
-          
-  
-          <div className="incorrect-guesses">
-            {incorrectGuesses.map((guess, index) => (
-              <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
-            ))}
-          </div>
-  
-          {audioFile && (
-            <audio ref={audioRef}>
-              <source
-                src={`https://storage.googleapis.com/motivdle-audio/${audioFile}`}
-                type="audio/mpeg"
-              />
-              Your browser does not support the audio element.
-            </audio>
+        </div>
+        
+        
+        
+                <div className="hint-container">
+          {showHint1 && (
+            <div className="hint-bubble hint-bubble1">{hint1}</div>
           )}
-          {/* Invisible quoteInfluencer and videoFile */}
-        <div style={{ display: 'none' }}>
-          <p>{quoteInfluencer}</p>
-          <video src={videoFile} controls />
-          </div>
+        
+          {showHint2 && (
+            <div className="hint-bubble hint-bubble2">{hint2}</div>
+          )}
         </div>
-
-            {/* Section6 */}
-            {isSection6Visible && (
-                <Section6
-                    ref={section6Ref}
-                    influencerName={influencerName}
-                    videoFileName={videoFile}
-                />
-            )}
-        </div>
-    );
-}
-
-export default Home3;
+                </div>
+        
+                <div className="search-bar-container">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    className="search-input"
+                    placeholder="Type a name..."
+                    value={searchTerm}
+                    onChange={handleSearch}
+                    onKeyDown={handleKeyDown} // Add keydown listener
+                  />
+                  <button className="search-button" onClick={handleSearchClick}>
+                    <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+                  </button>
+                  {showSuggestions && suggestions.length > 0 && (
+                    <ul className="suggestions-list2">
+                      {suggestions.map((suggestion, index) => (
+                      <li
+                      key={index}
+                      className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
+                      onMouseDown={() => {
+                        const selectedSuggestion = suggestion.name;
+                        setSearchTerm(selectedSuggestion); // Set the search term to the selected suggestion
+                        inputRef.current.value = selectedSuggestion; // Update the input field manually
+                        setShowSuggestions(false); // Hide the suggestion list
+                        handleSearchClick(); // Trigger the search for the selected suggestion
+                      }}
+                    >
+                      <img
+                        className="suggestion-image"
+                        src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
+                        alt={suggestion.name}
+                      />
+                      {suggestion.name}
+                    </li>
+                     
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>
+                
+        
+                <div className="incorrect-guesses">
+                  {incorrectGuesses.map((guess, index) => (
+                    <p key={index} className="incorrect-guess-text">{guess.toUpperCase()}</p>
+                  ))}
+                </div>
+        
+                {audioFile && (
+                  <audio ref={audioRef}>
+                    <source
+                      src={`https://storage.googleapis.com/motivdle-audio/${audioFile}`}
+                      type="audio/mpeg"
+                    />
+                    Your browser does not support the audio element.
+                  </audio>
+                )}
+                
+                {/* Invisible quoteInfluencer and videoFile */}
+              <div style={{ display: 'none' }}>
+                <p>{quoteInfluencer}</p>
+                <video src={videoFile} controls />
+                </div>
+              </div>
+            </div>
+              
+                        
+                   
+        
+                   
+                    {isSection6Visible && (
+                        <Section6
+                            ref={section6Ref}
+                            influencerName={influencerName}
+                            videoFileName={videoFile}
+        
+        
+                        />
+                    )}
+        
+                    <footer className="footer">
+                        <p>&copy; 2024 Motivdle. All rights reserved.</p>
+                    </footer>
+                </div>
+            );
+        }
+        
+        export default Home3;

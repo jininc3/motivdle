@@ -3,7 +3,7 @@ import './Section3.css'; // Reuse Section3.css for styling
 import { useNavigate } from 'react-router-dom';
 
 
-const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+const Section5 = React.forwardRef(({ influencerName, videoFileName, backgroundStyle }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [videoSrc, setVideoSrc] = useState("");
@@ -51,7 +51,7 @@ const Section5 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     };
 
     return (
-        <div id="section5" className="section3" ref={ref}  >
+        <div id="section5" className="section3" ref={ref} style={backgroundStyle}>
             <div className="overlay-3">
                 {isVideoLoaded ? (
                     <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto" autoPlay >

@@ -1,0 +1,4 @@
+.section5-background-dim {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    transition: background-color 0.5s ease; /* Smooth transition */
+}

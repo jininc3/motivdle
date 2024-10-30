@@ -257,17 +257,11 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
 
             {/* Section2 Content */}
             {isSection2Visible && (
-                
-                    
-                    <div id="section2" className="section" ref={section2Ref} >
-     
-      <div className="overlay2">
-        
+<div id="section2" className="section" ref={section2Ref} >
+<div className="overlay2">
         <p className="whosays">
-          Guess Who Says This Quote?
-          <br />
-          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span>
-        </p>
+          Guess Who Says This Quote?<br />
+          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span></p>
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
         <div className="button-container">
@@ -275,19 +269,16 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
     <button
         className={`hint-button enabled-button ${isFlashingFirstHint && guessCount >= 2 ? 'flash-hint' : ''}`} // Apply flash class based on state
         onClick={toggleHint1}
-        data-tooltip="Character Clue"
-    >
+        data-tooltip="Character Clue">
         <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
     </button>
     <span className="hint-description">FIRST CLUE</span>
 </div>
-
 <div className="hint-wrapper">
     <button
         className={`hint-button enabled-button ${isFlashingSecondHint && guessCount >= 4 ? 'flash-hint' : ''}`} // Apply flash class based on state and guess count
         onClick={toggleHint2}
-        data-tooltip="Achievements Clue"
-    >
+        data-tooltip="Achievements Clue">
         <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
     </button>
     <span className="hint-description">SECOND CLUE</span>
