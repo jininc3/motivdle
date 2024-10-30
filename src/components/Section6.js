@@ -48,7 +48,7 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     };
 
     return (
-        <div id="section6" className="section3" ref={ref}>
+        <div id="section6" className="section3" ref={ref} >
             <div className="overlay-3">
                 {isVideoLoaded ? (
                     <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto" autoPlay >

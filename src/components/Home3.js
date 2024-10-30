@@ -174,39 +174,40 @@ function Home3() {
           <div className="quoteandclue">
           <p className="quotey"><span className="thequote">{quote}</span></p>
           <div className="button-container">
-    <div className="hint-wrapper">
-      <button
-        className={`hint-button ${guessCount >= 2 ? 'enabled-button' : 'disabled-button'}`}
-        onClick={guessCount >= 2 ? toggleHint1 : null}
-        data-tooltip={guessCount >= 2 ? "Character Clue" : "Clue after 2 guesses"}
-      >
-        <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
-      </button>
-      <span className="hint-description">FIRST CLUE</span> {/* Add text description */}
-    </div>
-  
-    <div className="hint-wrapper">
-      <button
-        className={`hint-button ${guessCount >= 5 ? 'enabled-button' : 'disabled-button'}`}
-        onClick={guessCount >= 5 ? toggleHint2 : null}
-        data-tooltip={guessCount >= 5 ? "Achievements Clue" : "Clue after 5 guesses"}
-      >
-        <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-      </button>
-      <span className="hint-description">SECOND CLUE</span> {/* Add text description */}
-    </div>
-  
-    <div className="hint-wrapper">
-      <button
-        className={`audio-button ${guessCount >= 7 ? 'enabled-button' : 'disabled-button'}`}
-        onClick={guessCount >= 7 ? handleAudioToggle : null}
-        data-tooltip={guessCount >= 7 ? "Audio Clue" : "Clue after 7 guesses"}
-      >
-        <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
-      </button>
-      <span className="hint-description">AUDIO CLUE</span> {/* Add text description */}
-    </div>
+  <div className="hint-wrapper">
+    <button
+      className="hint-button enabled-button" // Always enabled
+      onClick={toggleHint1}
+      data-tooltip="Character Clue"
+    >
+      <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+    </button>
+    <span className="hint-description">FIRST CLUE</span>
   </div>
+
+  <div className="hint-wrapper">
+    <button
+      className="hint-button enabled-button" // Always enabled
+      onClick={toggleHint2}
+      data-tooltip="Achievements Clue"
+    >
+      <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+    </button>
+    <span className="hint-description">SECOND CLUE</span>
+  </div>
+
+  <div className="hint-wrapper">
+    <button
+      className="audio-button enabled-button" // Always enabled
+      onClick={handleAudioToggle}
+      data-tooltip="Audio Clue"
+    >
+      <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
+    </button>
+    <span className="hint-description">AUDIO CLUE</span>
+  </div>
+</div>
+
   
   
           <div className="hint-container">

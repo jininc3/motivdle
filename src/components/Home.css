@@ -7,19 +7,6 @@ html {
   z-index: 1;
 }
 
-.background-home {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  
-  background-size: cover; /* Ensures the image covers the whole background */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents repeating the image */
-  z-index: -1; /* Keeps the background behind other elements *//* Optional: Adjusts transparency of the background */
-}
-
 
 body {
   font-family: "Oswald", sans-serif;
@@ -38,51 +25,12 @@ body {
   display: block;
 }
 
-/* Additional CSS for smooth transition effects */
-.subscribe {
-  padding: 40px;
-  font-size: 1.2rem;
-  color: white;
-  font-family: "Oswald", sans-serif;
-  transition: background-color 0.5s ease; /* Smooth transition */
-}
-
-.subscribe input {
-  padding: 10px;
-  font-size: 1rem;
-  margin-right: 10px;
-  font-family: "Oswald", sans-serif;
-}
-
-.subscribe button {
-  padding: 10px;
-  font-size: 1rem;
-  background-color: white;
-  color: #181818;
-  border: none;
-  cursor: pointer;
-  font-family: "Oswald", sans-serif;
-}
-
-.subscribe button:hover {
-  background-color: #333;
-  color: white;
-}
-
 .footer {
   padding: 10px;
   color: white;
 }
 
-.section1 {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: -100px;
-}
+
 
 
 .title-home {

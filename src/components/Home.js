@@ -13,7 +13,7 @@ function Home() {
     const [influencerName, setInfluencerName] = useState("");
     const [videoFile, setVideoFile] = useState("");
     const [isButtonVisible, setButtonVisible] = useState(false); // Merged from Section1.js
-    const [backgroundStyle] = useState({});
+    const [backgroundStyle, setBackgroundStyle] = useState({});
 
     const [quote, setQuote] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
@@ -29,6 +29,10 @@ function Home() {
     const [hint2, setHint2] = useState("");
     const [showHint2, setShowHint2] = useState(false);
     const [quoteInfluencer] = useState(""); // Define state for the influencer
+    const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
+const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
+
+
     
     const audioRef = useRef(null);
     const inputRef = useRef(null);
@@ -36,10 +40,7 @@ function Home() {
     const section2Ref = useRef(null);
     const section3Ref = useRef(null);
     const location = useLocation();
-    
-    useEffect(() => {
-        inputRef.current?.focus();
-      }, []);
+ 
 
     // Section1 functionality: Show button after a delay
     useEffect(() => {
@@ -64,6 +65,8 @@ function Home() {
     useEffect(() => {
         if (isSection2Visible && section2Ref.current) {
             section2Ref.current.scrollIntoView({ behavior: 'smooth' });
+
+            inputRef.current?.focus();
         }
     }, [isSection2Visible]);
 
@@ -71,6 +74,8 @@ function Home() {
     useEffect(() => {
         if (isSection3Visible && section3Ref.current) {
             section3Ref.current.scrollIntoView({ behavior: 'smooth' });
+            setBackgroundStyle({ backgroundColor: 'rgba(0, 0, 0, 0.7)', transition: 'background-color 0.5s ease' });
+            
         }
     }, [isSection3Visible]);
 
@@ -213,14 +218,21 @@ function Home() {
     
       const toggleHint1 = () => {
         setShowHint1(!showHint1);
+        setIsFlashingFirstHint(false); // Stop flashing when the button is clicked
         if (showHint2) setShowHint2(false);
-      };
+    };
     
-      const toggleHint2 = () => {
+    const toggleHint2 = () => {
         setShowHint2(!showHint2);
+        setIsFlashingSecondHint(false); // Stop flashing when the second button is clicked
         if (showHint1) setShowHint1(false);
-      };
+    };
+    
 
+
+
+      
+      
 
 
     return (
@@ -259,39 +271,41 @@ function Home() {
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
         <div className="button-container">
-  <div className="hint-wrapper">
+        <div className="hint-wrapper">
     <button
-      className={`hint-button ${guessCount >= 2 ? 'enabled-button' : 'disabled-button'}`}
-      onClick={guessCount >= 2 ? toggleHint1 : null}
-      data-tooltip={guessCount >= 2 ? "Character Clue" : "Clue after 2 guesses"}
+        className={`hint-button enabled-button ${isFlashingFirstHint && guessCount >= 2 ? 'flash-hint' : ''}`} // Apply flash class based on state
+        onClick={toggleHint1}
+        data-tooltip="Character Clue"
     >
-      <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
+        <img className="icons" src={require('../assets/details-clue.png')} alt="Character Clue" />
     </button>
-    <span className="hint-description">FIRST CLUE</span> {/* Add text description */}
-  </div>
+    <span className="hint-description">FIRST CLUE</span>
+</div>
+
+<div className="hint-wrapper">
+    <button
+        className={`hint-button enabled-button ${isFlashingSecondHint && guessCount >= 4 ? 'flash-hint' : ''}`} // Apply flash class based on state and guess count
+        onClick={toggleHint2}
+        data-tooltip="Achievements Clue"
+    >
+        <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
+    </button>
+    <span className="hint-description">SECOND CLUE</span>
+</div>
+
 
   <div className="hint-wrapper">
     <button
-      className={`hint-button ${guessCount >= 5 ? 'enabled-button' : 'disabled-button'}`}
-      onClick={guessCount >= 5 ? toggleHint2 : null}
-      data-tooltip={guessCount >= 5 ? "Achievements Clue" : "Clue after 5 guesses"}
-    >
-      <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-    </button>
-    <span className="hint-description">SECOND CLUE</span> {/* Add text description */}
-  </div>
-
-  <div className="hint-wrapper">
-    <button
-      className={`audio-button ${guessCount >= 7 ? 'enabled-button' : 'disabled-button'}`}
-      onClick={guessCount >= 7 ? handleAudioToggle : null}
-      data-tooltip={guessCount >= 7 ? "Audio Clue" : "Clue after 7 guesses"}
+      className="audio-button enabled-button" // Always enabled
+      onClick={handleAudioToggle}
+      data-tooltip="Audio Clue"
     >
       <img className="icons" src={require('../assets/audio-clue.png')} alt="Audio Clue" />
     </button>
-    <span className="hint-description">AUDIO CLUE</span> {/* Add text description */}
+    <span className="hint-description">AUDIO CLUE</span>
   </div>
 </div>
+
 
 
         <div className="hint-container">
@@ -362,6 +376,7 @@ function Home() {
             Your browser does not support the audio element.
           </audio>
         )}
+        
         {/* Invisible quoteInfluencer and videoFile */}
       <div style={{ display: 'none' }}>
         <p>{quoteInfluencer}</p>
