@@ -7,7 +7,7 @@ body, html {
 }
 
 body {
-  background-image: url('./assets/background200.png'); /* Ensure the path is correct */
+  background-image: url('./assets/background5.jpg'); /* Ensure the path is correct */
   background-size: cover; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
   background-position: center; /* Center the image */
