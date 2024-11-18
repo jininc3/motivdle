@@ -138,22 +138,11 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
 
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowDown' && showSuggestions) {
-        // Move highlight down
         setHighlightedIndex((prevIndex) =>
           prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex
         );
       } else if (e.key === 'ArrowUp' && showSuggestions) {
-        // Move highlight up
         setHighlightedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-      } else if (e.key === 'Enter' && showSuggestions && highlightedIndex >= 0) {
-        // Set search term to the highlighted suggestion, but do not search yet
-        const selectedSuggestion = suggestions[highlightedIndex].name;
-        setSearchTerm(selectedSuggestion); // Fill the input with highlighted suggestion
-        setShowSuggestions(false);
-        inputRef.current.value = selectedSuggestion; // Manually set the input field value
-      } else if (e.key === 'Enter' && !showSuggestions) {
-        // Trigger search click when no suggestions are shown or after suggestion has been selected
-        handleSearchClick();
       } else if (e.key === 'Enter') {
         if (showSuggestions && highlightedIndex >= 0) {
           // Select the highlighted suggestion and trigger the search immediately

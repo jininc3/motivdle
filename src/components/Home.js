@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
 
-function Home() {
+function Home({ toggleNav }) {
     const [isSection2Visible, setIsSection2Visible] = useState(false);
     const [isSection3Visible, setIsSection3Visible] = useState(false);
     const [influencerName, setInfluencerName] = useState("");
@@ -81,6 +81,7 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
 
     const handleScrollToSection2 = () => {
         setIsSection2Visible(true); // Makes Section2 visible
+        toggleNav();
         setTimeout(() => {
             section2Ref.current.scrollIntoView({ behavior: 'smooth' });
         }, 100); // Delay ensures Section2 is rendered before scrolling

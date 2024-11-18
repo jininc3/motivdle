@@ -82,6 +82,7 @@ body {
   width: 300px;
   background-color: #FCA311;
   transition: left 0.3s ease;
+
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -246,4 +247,35 @@ a .title:hover {
 .preloader.hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+
+@media (min-width:0px) and (max-width: 1921px) {
+  .nav-menu {
+    position: fixed;
+    left: -400px; /* Hidden initially */
+    height: 100%;
+    width: 200px;
+    background-color: #FCA311;
+    transition: left 0.3s ease;
+  
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; /* Ensures everything inside is centered */
+    z-index: 999;
+    gap: 100px;
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .menu-button.open {
+    left: 160px; /* Move the button when the menu is open */
+    transform: rotate(90deg);
+    color: black;
+    border: solid black;
+  }
+
+
 }

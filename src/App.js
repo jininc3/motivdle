@@ -39,7 +39,7 @@ function App() {
           </div>
 
           <Routes>
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home toggleNav={toggleNav} />} />
             <Route path="/home2" element={<Home2 />} />
             <Route path="/home3" element={<Home3 />} />
             <Route path="/section3" element={<Section3 />} />
