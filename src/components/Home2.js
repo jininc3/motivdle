@@ -33,6 +33,10 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
     const audioRef = useRef(null);
 
     useEffect(() => {
+      window.scrollTo(0, 0); // Ensure the page scrolls to the top
+  }, []);
+
+    useEffect(() => {
         inputRef.current?.focus();
     }, []);
 
@@ -191,7 +195,7 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
         <div className="overlay2">
                 <p className="whosays">
                   Guess Who Says This Quote?<br />
-                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span></p>
+                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span></p>
                 <div className="quoteandclue">
                 <p className="quotey"><span className="thequote">{quote}</span></p>
                 <div className="button-container">

@@ -244,8 +244,7 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
             <div id="section1" className="section1">
                 <h1 className="title-home">MOTIVDLE</h1>
                 <p className="description">
-                    The game where you guess who says the motivational quote, and in hopes of taking away some inspiration.
-                    I'm a big fan of quotes from actual achievers so the quotes are strictly from real-life winners.
+                "Guess who said the motivational quote and take away some inspiration! All quotes are from real-life achievers and winners."
                 </p>
                 <button
                     id="scrollButton"

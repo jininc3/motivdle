@@ -32,6 +32,10 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
     const audioRef = useRef(null);
 
     useEffect(() => {
+      window.scrollTo(0, 0); // Ensure the page scrolls to the top
+  }, []);
+  
+    useEffect(() => {
         inputRef.current?.focus();
     }, []);
 

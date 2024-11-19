@@ -161,6 +161,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 30px; /* Increase space above the search bar */
+  
 }
 
 .search-input {
@@ -172,6 +173,7 @@
   outline: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
   transition: all 0.3s ease-in-out;
+  border-radius: 15px;
 }
 
 .search-button {
@@ -192,7 +194,7 @@
 }
 
 .search-button:hover {
-  background-color: white; /* Change background on hover */
+  transform: scale(1.1);
   color: black; /* Change text color */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
@@ -291,7 +293,7 @@
   background-color: #FCA311; /* Bright yellow background */
   color: black;
   padding: 15px 20px;
-  
+  border-radius: 15px;
   font-size: 14px;
   font-weight: bold;
   font-family: 'Arial', sans-serif;
@@ -308,7 +310,7 @@
   background-color: #FCA311; /* Bright yellow background */
   color: black;
   padding: 15px 20px;
-  
+  border-radius: 15px;
   font-size: 14px;
   font-weight: bold;
   font-family: 'Arial', sans-serif;
@@ -469,6 +471,7 @@
   position: relative;
   margin: 0 10px;
   font-weight: bold;
+  border-radius: 50%;
   margin-bottom: 50px;
   color: black;
   cursor: pointer;
@@ -581,5 +584,101 @@
 
 
 @media (min-width:0px) and (max-width: 1921px) {
+  .quotey {
+    height: 350px;
+    width: 450px;
+  }
+
+  .overlay2 {
+    position: relative;
+    top: 45%; /* Adjust as needed to vertically center */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    
+  }
+
+  .whosays {
+    color: #FCA311; /* Bright yellow color */
+    font-family: "Oswald", sans-serif;
+    font-weight: bolder;
+    font-size: 30pt; /* Increase the font size */
+    margin-top:0px; /* Increase space below */
+    padding: 0; /* Remove padding */
+    line-height: 1.2; /* Adjust line height */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); /* Add shadow for depth */
+    text-transform: uppercase; /* Capitalize text */
+  }
   
+  .rounds {
+    color: #FCA311;
+    font-size: 20pt; /* Increase font size */
+    padding: 0;
+    margin-top: 20px; /* Adjust margin to bring closer to the title */
+    letter-spacing: 1px; /* Slightly increase letter spacing */
+    font-weight: bold;
+    text-transform: uppercase; /* Capitalize text */
+  }
+
+  .button-container {
+    right: 600px;
+  }
+
+  .hint-bubble1 {
+    position: absolute;
+    background-color: #FCA311; /* Bright yellow background */
+    color: black;
+    padding: 15px 20px;
+    
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    top: 110px; 
+    right: 400px;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+  
+  .hint-bubble2 {
+    position: absolute;
+    background-color: #FCA311; /* Bright yellow background */
+    color: black;
+    padding: 15px 20px;
+    
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    top: 203px; 
+    right: 305px;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .suggestions-list2 {
+    position: absolute;
+    top: 90%;  /* Make sure it appears just below the input */
+    left: 675px; /* Align to the left side of the search bar */
+    width: 440px; /* Full width of the parent container (search bar) */
+    background-color: #FCA311;
+    border: 1px solid #FCA311;
+     /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;  /* Limit height and make it scrollable */
+    overflow-y: auto;
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 15px;
+  }
 }

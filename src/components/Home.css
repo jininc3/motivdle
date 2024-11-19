@@ -61,6 +61,7 @@ body {
   position: relative;
   overflow: hidden; /* To handle the animated background effect */
   z-index: 1;
+  border-radius: 15px;
 }
 
 .test-button:before {

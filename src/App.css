@@ -91,7 +91,7 @@ body {
   z-index: 999;
   gap: 100px;
   padding: 20px;
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .nav-menu.open {
@@ -255,7 +255,7 @@ a .title:hover {
     position: fixed;
     left: -400px; /* Hidden initially */
     height: 100%;
-    width: 200px;
+    width: 250px;
     background-color: #FCA311;
     transition: left 0.3s ease;
   
