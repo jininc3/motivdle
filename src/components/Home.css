@@ -39,9 +39,11 @@ body {
   margin: 0;
   text-align: center;
   letter-spacing: -8px; /* Adjust letter spacing to reduce the gap between letters */
-  
+  background-color: transparent;
   padding: 0px;
-  margin-bottom: -50px;
+  margin-bottom: -500px;
+  width: 1400px;
+  height: auto;
 }
 
 

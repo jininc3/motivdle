@@ -5,6 +5,7 @@ import './Section2.css';
 import Section3 from './Section3';
 import { useLocation } from 'react-router-dom';
 import { db } from '../firebase';
+import titleImage from '../assets/title.png';
 import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
 
 function Home({ toggleNav }) {
@@ -242,7 +243,7 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
 
             {/* Section1 Content */}
             <div id="section1" className="section1">
-                <h1 className="title-home">MOTIVDLE</h1>
+            <img src={titleImage} alt="MOTIVDLE" className="title-home" />;
                 <p className="description">
                 "Guess who said the motivational quote and take away some inspiration! All quotes are from real-life achievers and winners."
                 </p>

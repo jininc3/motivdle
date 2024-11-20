@@ -235,11 +235,11 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
         
                 <div className="hint-container">
           {showHint1 && (
-            <div className="hint-bubble hint-bubble1">{hint1}</div>
+            <div className=" hint-bubble hint-bubble3">{hint1}</div>
           )}
         
           {showHint2 && (
-            <div className="hint-bubble hint-bubble2">{hint2}</div>
+            <div className=" hint-bubble hint-bubble4">{hint2}</div>
           )}
         </div>
                 </div>

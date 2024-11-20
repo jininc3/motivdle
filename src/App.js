@@ -10,7 +10,7 @@ import Preloader from './components/Preloader'; // Import Preloader
 import logo from './assets/cheetah-logo2.png';
 
 function App() {
-  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const toggleNav = () => {

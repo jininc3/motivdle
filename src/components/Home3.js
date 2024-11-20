@@ -188,7 +188,7 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
         <div className="overlay2">
                 <p className="whosays">
                   Guess Who Says This Quote?<br />
-                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span></p>
+                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 3)</span></p>
                 <div className="quoteandclue">
                 <p className="quotey"><span className="thequote">{quote}</span></p>
                 <div className="button-container">
