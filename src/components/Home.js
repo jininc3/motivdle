@@ -245,7 +245,7 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
             <div id="section1" className="section1">
             <img src={titleImage} alt="MOTIVDLE" className="title-home" />;
                 <p className="description">
-                "Guess who said the motivational quote and take away some inspiration! All quotes are from real-life achievers and winners."
+                "Guess who said the daily motivational quote and take away some inspiration! All quotes are from real-life achievers and winners."
                 </p>
                 <button
                     id="scrollButton"

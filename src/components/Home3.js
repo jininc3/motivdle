@@ -228,11 +228,11 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
         
                 <div className="hint-container">
           {showHint1 && (
-            <div className="hint-bubble hint-bubble1">{hint1}</div>
+            <div className="hint-bubble hint-bubble5">{hint1}</div>
           )}
         
           {showHint2 && (
-            <div className="hint-bubble hint-bubble2">{hint2}</div>
+            <div className="hint-bubble hint-bubble6">{hint2}</div>
           )}
         </div>
                 </div>
