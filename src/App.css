@@ -31,8 +31,8 @@ body {
   left: 20px; /* Move to the left side */
   background-color: transparent;
   border: none;
-  color: #FCA311;
-  border: solid #FCA311;
+  color: #f3b32b;
+  border: solid #f3b32b;
   padding: 10px 20px;
   cursor: pointer;
   z-index: 1000;
@@ -43,7 +43,7 @@ body {
 }
 
 .menu-button:hover {
-  background-color: #FCA311;
+  background-color: #f3b32b;
   color: white;
 }
 
@@ -80,7 +80,7 @@ body {
   left: -400px; /* Hidden initially */
   height: 100%;
   width: 300px;
-  background-color: #FCA311;
+  background-color: #f3b32b;
   transition: left 0.3s ease;
 
   overflow-x: hidden;
@@ -112,6 +112,7 @@ body {
   cursor: pointer;
   z-index: 1;
   overflow: hidden;
+  
 }
 
 .nav-item a {
@@ -129,7 +130,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #FCA311; /* Yellow background */
+  background-color: #f3b32b; /* Yellow background */
   z-index: -1;
   transform: scaleX(0); /* Start with the background hidden */
   transform-origin: left;
@@ -154,7 +155,7 @@ body {
 
 .logo-container {
   position: fixed;
-  top: -20px;
+  top: 0px;
   right: 3%; /* Move to the right side */
   transform: translateX(50%); /* Adjust for the right-aligned position */
   z-index: 1000;
@@ -163,7 +164,7 @@ body {
 
 .motivdle-small {
   font-size: 1.2rem;
-  color: #FCA311;
+  color: #f3b32b;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   margin-top: -20px;
@@ -172,7 +173,7 @@ body {
 }
 
 .cheetah-logo {
-  width: 150px;
+  width: 100px;
   height: auto;
   background-color: transparent;
 }
@@ -236,7 +237,7 @@ a .title:hover {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #FCA311;
+  color: #f3b32b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,8 +256,8 @@ a .title:hover {
     position: fixed;
     left: -400px; /* Hidden initially */
     height: 100%;
-    width: 250px;
-    background-color: #FCA311;
+    width: 200px;
+    background-color: #f3b32b;
     transition: left 0.3s ease;
   
     overflow-x: hidden;

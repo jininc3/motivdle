@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 10px;
+  padding: 30px;
   
 }
 
@@ -19,7 +19,7 @@
   font-size: 15pt;
   line-height: 1.6;
   padding: 30px;
-  color: #FCA311;
+  color: #f3b32b;
   width: 600px;
   height: 500px;
   margin: 20px auto;
@@ -33,7 +33,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #FCA311;
+  background-color: #f3b32b;
   overflow: hidden;
   border: solid;
   /* Centering Content */
@@ -119,7 +119,7 @@
   opacity: 0; /* Initially hidden */
   transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
   background-color: black; /* Green background */
-  color:#FCA311; /* White text */
+  color:#f3b32b; /* White text */
   font-family: "Oswald", sans-serif;
 }
 
@@ -134,7 +134,7 @@
 }
 
 .whosays {
-  color: #FCA311; /* Bright yellow color */
+  color: #f3b32b; /* Bright yellow color */
   font-family: "Oswald", sans-serif;
   font-weight: bolder;
   font-size: 30pt; /* Increase the font size */
@@ -146,7 +146,7 @@
 }
 
 .rounds {
-  color: #FCA311;
+  color: #f3b32b;
   font-size: 20pt; /* Increase font size */
   padding: 0;
   margin-top: -20px; /* Adjust margin to bring closer to the title */
@@ -167,7 +167,7 @@
   padding: 12px 20px; /* Increase padding */
   font-size: 18px;
    /* Rounded corners */
-  border: 2px solid #FCA311;
+  border: 2px solid #f3b32b;
   width: 400px; /* Increase input width */
   outline: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
@@ -204,7 +204,7 @@
 }
 
 .search-input:focus {
-  border-color: #FCA311; /* Highlight border on focus */
+  border-color: #f3b32b; /* Highlight border on focus */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on focus */
 }
 .search-input.incorrect-guess {
@@ -217,7 +217,7 @@
 }
 
 .guess-tracker {
-  color: #FCA311;
+  color: #f3b32b;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   margin-top: 20px;
@@ -237,7 +237,7 @@
 }
 
 .guess-number {
-  color: #FCA311 ;
+  color: #f3b32b ;
 }
 
 .incorrect-guess-text {
@@ -263,16 +263,16 @@
 }
 
 .enabled-button {
-  background-color: #FCA311; /* Active yellow background */
+  background-color: #f3b32b; /* Active yellow background */
   cursor: pointer;
   pointer-events: auto; /* Enable clicks */
   filter: opacity(1);
-  border: 2px solid #FCA311;
+  border: 2px solid #f3b32b;
 }
 
 .enabled-button:hover {
   transform: scale(1.1); /* Slightly increase size on hover */
-  background-color: #FCA311;/* Change background color on hover */
+  background-color: #f3b32b;/* Change background color on hover */
   color: black; /* Change text color on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
   filter: opacity(1);
@@ -289,7 +289,7 @@
 
 .hint-bubble1 {
   position: absolute;
-  background-color: #FCA311; /* Bright yellow background */
+  background-color: #f3b32b; /* Bright yellow background */
   color: black;
   padding: 15px 20px;
   border-radius: 15px;
@@ -306,7 +306,7 @@
 
 .hint-bubble2 {
   position: absolute;
-  background-color: #FCA311; /* Bright yellow background */
+  background-color: #f3b32b; /* Bright yellow background */
   color: black;
   padding: 15px 20px;
   border-radius: 15px;
@@ -323,7 +323,7 @@
 
 .hint-bubble3 {
   position: absolute;
-  background-color: #FCA311; /* Bright yellow background */
+  background-color: #f3b32b; /* Bright yellow background */
   color: black;
   padding: 15px 20px;
   border-radius: 15px;
@@ -340,7 +340,7 @@
 
 .hint-bubble4 {
   position: absolute;
-  background-color: #FCA311; /* Bright yellow background */
+  background-color: #f3b32b; /* Bright yellow background */
   color: black;
   padding: 15px 20px;
   border-radius: 15px;
@@ -364,7 +364,7 @@
   transform: translateY(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent transparent #FCA311; /* Make the arrow match the bubble color */
+  border-color: transparent transparent transparent#f3b32b; /* Make the arrow match the bubble color */
 }
 
 /* Add hover effect to give the hint more interaction */
@@ -383,17 +383,17 @@
   transform: translateX(-50%);
   border-width: 10px;
   border-style: solid;
-  border-color: #FCA311 transparent transparent transparent;
+  border-color: #f3b32b transparent transparent transparent;
 }
 
 .hint-bubble:hover:after {
-  border-color: #FCA311 transparent transparent transparent; /* Change arrow color on hover */
+  border-color: #f3b32b transparent transparent transparent; /* Change arrow color on hover */
 }
 
 /* Update the flash animation */
 @keyframes flash {
   0%, 100% {
-    background-color: #FCA311; /* Original button color */
+    background-color: #f3b32b; /* Original button color */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
   50% {
@@ -416,8 +416,8 @@
   top: 100%;  /* Make sure it appears just below the input */
   left: 810px; /* Align to the left side of the search bar */
   width: 440px; /* Full width of the parent container (search bar) */
-  background-color: #FCA311;
-  border: 1px solid #FCA311;
+  background-color: #f3b32b;
+  border: 1px solid #f3b32b;
    /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 200px;  /* Limit height and make it scrollable */
@@ -529,7 +529,7 @@
   top: -40px;/* Adjust for tooltip position */
   left: 50%;
   transform: translateX(-50%);
-  background-color: #FCA311;
+  background-color: #f3b32b;
   color: black;
   padding: 5px 10px;
   border-radius: 5px;
@@ -548,7 +548,7 @@
   transform: translateX(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: #FCA311 transparent transparent transparent;
+  border-color: #f3b32b transparent transparent transparent;
 }
 
 
@@ -605,7 +605,7 @@
   }
 
   .whosays {
-    color: #FCA311; /* Bright yellow color */
+    color: #f3b32b; /* Bright yellow color */
     font-family: "Oswald", sans-serif;
     font-weight: bolder;
     font-size: 30pt; /* Increase the font size */
@@ -617,7 +617,7 @@
   }
   
   .rounds {
-    color: #FCA311;
+    color: #f3b32b;
     font-size: 20pt; /* Increase font size */
     padding: 0;
     margin-top: 20px; /* Adjust margin to bring closer to the title */
@@ -632,7 +632,7 @@
 
   .hint-bubble1 {
     position: absolute;
-    background-color: #FCA311; /* Bright yellow background */
+    background-color: #f3b32b; /* Bright yellow background */
     color: black;
     padding: 15px 20px;
     
@@ -649,7 +649,7 @@
   
   .hint-bubble2 {
     position: absolute;
-    background-color: #FCA311; /* Bright yellow background */
+    background-color: #f3b32b; /* Bright yellow background */
     color: black;
     padding: 15px 20px;
     
@@ -665,7 +665,7 @@
   }
   .hint-bubble3 {
     position: absolute;
-    background-color: #FCA311; /* Bright yellow background */
+    background-color: #f3b32b; /* Bright yellow background */
     color: black;
     padding: 15px 20px;
     border-radius: 15px;
@@ -682,7 +682,7 @@
   
   .hint-bubble4 {
     position: absolute;
-    background-color: #FCA311; /* Bright yellow background */
+    background-color: #f3b32b; /* Bright yellow background */
     color: black;
     padding: 15px 20px;
     border-radius: 15px;
@@ -702,8 +702,8 @@
     top: 90%;  /* Make sure it appears just below the input */
     left: 675px; /* Align to the left side of the search bar */
     width: 440px; /* Full width of the parent container (search bar) */
-    background-color: #FCA311;
-    border: 1px solid #FCA311;
+    background-color: #f3b32b;
+    border: 1px solid #f3b32b;
      /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-height: 200px;  /* Limit height and make it scrollable */

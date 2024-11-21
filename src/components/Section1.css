@@ -11,7 +11,7 @@
 
 .title-home {
   font-size: 20rem;
-  color: #FCA311;
+  color: #f3b32b;
   margin: 0;
   text-align: center;
   letter-spacing: -8px; /* Adjust letter spacing to reduce the gap between letters */
@@ -27,13 +27,13 @@
 .test-button {
   margin-top: 40px;
   background-color: transparent;
-  color: #FCA311;
+  color: #f3b32b;
   font-size: 1.5rem;
   padding: 15px 40px;
   border: none;
   cursor: pointer;
   transition: all 0.5s ease;
-  border: solid #FCA311;
+  border: solid #f3b32b;
   position: relative;
   overflow: hidden; /* To handle the animated background effect */
   z-index: 1;
@@ -46,7 +46,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #FCA311;
+  background-color: #f3b32b;
   z-index: -1;
   transform: scaleX(0);
   transform-origin: left;
