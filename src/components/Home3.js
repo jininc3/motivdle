@@ -27,6 +27,7 @@ function Home3() {
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
 const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
 const [backgroundStyle, setBackgroundStyle] = useState({});
+const [showModal, setShowModal] = useState(false);
 
     const inputRef = useRef(null);
     const audioRef = useRef(null);
@@ -59,6 +60,7 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
 
             if (quoteOfTheDayDoc.exists() && quoteOfTheDayDoc.data().date === currentDay) {
                 const dailyQuote = quoteOfTheDayDoc.data();
+                
                 setQuote(`"${dailyQuote.quote}"`);
                 setInfluencerName(dailyQuote.name);
                 setHint1(dailyQuote.hint1);
@@ -69,6 +71,7 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
                 const quotesCollection = collection(db, 'quotes');
                 const quoteSnapshot = await getDocs(quotesCollection);
                 const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay3');
+                
 
                 const randomIndex = Math.floor(Math.random() * quotesList.length);
                 const selectedQuote = quotesList[randomIndex].data();
@@ -91,8 +94,18 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
     }, []);
 
     const handleSearchClick = () => {
-        const guessedName = inputRef.current.value.trim().toLowerCase();
-
+      const guessedName = inputRef.current.value.trim().toLowerCase();
+  
+      // Check if the input matches one of the suggestions
+      const isValidSuggestion = suggestions.some(
+          (suggestion) => suggestion.name.toLowerCase() === guessedName
+      );
+  
+      if (!isValidSuggestion) {
+          setShowModal(true); // Show the modal
+          inputRef.current.value = ""; // Clear the input
+          return; // Exit the function early
+      }
         if (guessedName === influencerName.toLowerCase()) {
             setIsSection6Visible(true); // Show Section6 after a correct guess
 
@@ -109,32 +122,38 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
     };
 
     const handleSearch = async (e) => {
-        const value = e.target.value;
-        setSearchTerm(value);
-
-        if (value.length > 0) {
-            const lowerCaseValue = value.toLowerCase();
-            const quotesCollection = collection(db, 'quotes');
-            const q = query(
-                quotesCollection,
-                where('name', '>=', lowerCaseValue),
-                where('name', '<=', lowerCaseValue + '\uf8ff')
-            );
-
-            const querySnapshot = await getDocs(q);
-            const results = querySnapshot.docs.map(doc => ({
-                name: doc.data().name,
-                icon: doc.data().icon,
-            })).filter(suggestion => suggestion.name.toLowerCase().includes(lowerCaseValue));
-
-            setSuggestions(results);
-            setShowSuggestions(true);
-            setHighlightedIndex(-1); 
-        } else {
-            setSuggestions([]);
-            setShowSuggestions(false);
-        }
-    };
+      const value = e.target.value;
+      setSearchTerm(value);
+  
+      if (value.length > 0) {
+          const lowerCaseValue = value.toLowerCase();
+          const quotesCollection = collection(db, 'quotes');
+          const q = query(
+              quotesCollection,
+              where('name', '>=', lowerCaseValue),
+              where('name', '<=', lowerCaseValue + '\uf8ff')
+          );
+  
+          const querySnapshot = await getDocs(q);
+          const results = querySnapshot.docs.map(doc => ({
+              name: doc.data().name,
+              icon: doc.data().icon,
+          })).filter(suggestion => suggestion.name.toLowerCase().includes(lowerCaseValue));
+  
+          // Filter out duplicates based on the 'name' field
+          const uniqueResults = results.filter(
+              (suggestion, index, self) =>
+                  index === self.findIndex((s) => s.name.toLowerCase() === suggestion.name.toLowerCase())
+          );
+  
+          setSuggestions(uniqueResults);
+          setShowSuggestions(true);
+          setHighlightedIndex(-1); // Reset the highlighted index when new suggestions are shown
+      } else {
+          setSuggestions([]);
+          setShowSuggestions(false);
+      }
+  };
 
     const handleKeyDown = (e) => {
         if (e.key === 'ArrowDown' && showSuggestions) {
@@ -316,7 +335,15 @@ const [backgroundStyle, setBackgroundStyle] = useState({});
         
                         />
                     )}
-        
+        {showModal && (
+    <div className="modal-overlay">
+        <div className="modal">
+            <h2>Invalid Input</h2>
+            <p>Please select a valid suggestion from the list.</p>
+            <button onClick={() => setShowModal(false)}>OK</button>
+        </div>
+    </div>
+)}
                     <footer className="footer">
                         <p>&copy; 2024 Motivdle. All rights reserved.</p>
                     </footer>

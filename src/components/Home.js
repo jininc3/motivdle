@@ -32,6 +32,7 @@ function Home({ toggleNav }) {
     const [quoteInfluencer] = useState(""); // Define state for the influencer
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
 const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
+const [showModal, setShowModal] = useState(false);
 
 
     
@@ -99,6 +100,7 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
 
           if (quoteOfTheDayDoc.exists() && quoteOfTheDayDoc.data().date === currentDay) {
               const dailyQuote = quoteOfTheDayDoc.data();
+              
               setQuote(`"${dailyQuote.quote}"`);
               setInfluencerName(dailyQuote.name);
               setHint1(dailyQuote.hint1);
@@ -109,6 +111,7 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
               const quotesCollection = collection(db, 'quotes');
               const quoteSnapshot = await getDocs(quotesCollection);
               const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay');
+              
 
               const randomIndex = Math.floor(Math.random() * quotesList.length);
               const selectedQuote = quotesList[randomIndex].data();
@@ -126,56 +129,77 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
               });
           }
       };
-      
-      fetchQuoteOfTheDay();
-    }, []);
-      
-      const handleSearchClick = () => {
-        const guessedName = inputRef.current.value.trim().toLowerCase();
 
-        if (guessedName === influencerName.toLowerCase()) {
-            setIsSection3Visible(true); 
-            setTimeout(() => {
+      fetchQuoteOfTheDay();
+  }, []);
+      
+    const handleSearchClick = () => {
+      const guessedName = inputRef.current.value.trim().toLowerCase();
+  
+      // Check if the input matches one of the suggestions
+      const isValidSuggestion = suggestions.some(
+          (suggestion) => suggestion.name.toLowerCase() === guessedName
+      );
+  
+      if (!isValidSuggestion) {
+          setShowModal(true); // Show the modal
+          inputRef.current.value = ""; // Clear the input
+          return; // Exit the function early
+      }
+  
+      // Proceed with the original functionality
+      if (guessedName === influencerName.toLowerCase()) {
+          setIsSection3Visible(true);
+          setTimeout(() => {
               section3Ref.current.scrollIntoView({ behavior: 'smooth' });
-          }, 100);// Show Section5 after a correct guess
-        } else {
-            setIncorrectGuesses([...incorrectGuesses, guessedName]);
-            setGuessCount(guessCount + 1);
-            setSearchTerm("");
-        inputRef.current.value = ""; 
-        }
-    };
+          }, 100);
+      } else {
+          setIncorrectGuesses([...incorrectGuesses, guessedName]);
+          setGuessCount(guessCount + 1);
+          setSearchTerm("");
+          inputRef.current.value = "";
+      }
+  };
+  
+  
     
       
       
       
-      const handleSearch = async (e) => {
-        const value = e.target.value;
-        setSearchTerm(value);
-    
-        if (value.length > 0) {
-          const lowerCaseValue = value.toLowerCase();
-          const quotesCollection = collection(db, 'quotes');
-          const q = query(
+  const handleSearch = async (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (value.length > 0) {
+        const lowerCaseValue = value.toLowerCase();
+        const quotesCollection = collection(db, 'quotes');
+        const q = query(
             quotesCollection,
             where('name', '>=', lowerCaseValue),
             where('name', '<=', lowerCaseValue + '\uf8ff')
-          );
-    
-          const querySnapshot = await getDocs(q);
-          const results = querySnapshot.docs.map(doc => ({
+        );
+
+        const querySnapshot = await getDocs(q);
+        const results = querySnapshot.docs.map(doc => ({
             name: doc.data().name,
             icon: doc.data().icon,
-          })).filter(suggestion => suggestion.name.toLowerCase().includes(lowerCaseValue));
-    
-          setSuggestions(results);
-          setShowSuggestions(true);
-          setHighlightedIndex(-1); // Reset the highlighted index when new suggestions are shown
-        } else {
-          setSuggestions([]);
-          setShowSuggestions(false);
-        }
-      };
+        })).filter(suggestion => suggestion.name.toLowerCase().includes(lowerCaseValue));
+
+        // Filter out duplicates based on the 'name' field
+        const uniqueResults = results.filter(
+            (suggestion, index, self) =>
+                index === self.findIndex((s) => s.name.toLowerCase() === suggestion.name.toLowerCase())
+        );
+
+        setSuggestions(uniqueResults);
+        setShowSuggestions(true);
+        setHighlightedIndex(-1); // Reset the highlighted index when new suggestions are shown
+    } else {
+        setSuggestions([]);
+        setShowSuggestions(false);
+    }
+};
+
     
       const handleKeyDown = (e) => {
         if (e.key === 'ArrowDown' && showSuggestions) {
@@ -390,6 +414,16 @@ const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); //
 
                 />
             )}
+
+{showModal && (
+    <div className="modal-overlay">
+        <div className="modal">
+            <h2>Invalid Input</h2>
+            <p>Please select a valid suggestion from the list.</p>
+            <button onClick={() => setShowModal(false)}>OK</button>
+        </div>
+    </div>
+)}
 
             <footer className="footer">
                 <p>&copy; 2024 Motivdle. All rights reserved.</p>

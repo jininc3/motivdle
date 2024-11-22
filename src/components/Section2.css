@@ -615,6 +615,54 @@
 }
 
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+  padding-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  width: 90%;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal p {
+  margin: 15px 0;
+  color: black;
+}
+
+.modal button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f3b32b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal button:hover {
+  background-color: #e0a529;
+}
+
+
 
 @media (min-width:0px) and (max-width: 1921px) {
   .quotey {
@@ -675,7 +723,7 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
     top: 110px; 
-    right: 385px;
+    right: 375px;
     z-index: 10;
     transition: all 0.3s ease;
   }
@@ -692,7 +740,7 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
     top: 203px; 
-    right: 335px;
+    right: 345px;
     z-index: 10;
     transition: all 0.3s ease;
   }
@@ -707,8 +755,8 @@
     font-family: 'Arial', sans-serif;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
-    top: 110px; 
-    right: 365px;
+    top: 120px; 
+    right: 545px;
     z-index: 10;
     transition: all 0.3s ease;
   }
@@ -724,8 +772,8 @@
     font-family: 'Arial', sans-serif;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
-    top: 200px; 
-    right: 330px;
+    top: 210px; 
+    right: 540px;
     z-index: 10;
     transition: all 0.3s ease;
   }
