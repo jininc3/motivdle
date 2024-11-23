@@ -51,47 +51,49 @@ const [showModal, setShowModal] = useState(false);
 
 
 
-    useEffect(() => {
-        const fetchQuoteOfTheDay = async () => {
-            const today = new Date();
-            const currentDay = today.toDateString();
+  useEffect(() => {
+    const fetchMovieOfTheDay = async () => {
+        const today = new Date();
+        const currentDay = today.toDateString();
 
-            const quoteOfTheDayDoc = await getDoc(doc(db, 'quoteOTD', 'quoteOfTheDay3'));
+        const movieOfTheDayDoc = await getDoc(doc(db, 'movieOTD', 'MovieOfTheDay'));
 
-            if (quoteOfTheDayDoc.exists() && quoteOfTheDayDoc.data().date === currentDay) {
-                const dailyQuote = quoteOfTheDayDoc.data();
-                
-                setQuote(`"${dailyQuote.quote}"`);
-                setInfluencerName(dailyQuote.name);
-                setHint1(dailyQuote.hint1);
-                setHint2(dailyQuote.hint2);
-                setAudioFile(dailyQuote.audio);
-                setVideoFile(dailyQuote.video);
-            } else {
-                const quotesCollection = collection(db, 'quotes');
-                const quoteSnapshot = await getDocs(quotesCollection);
-                const quotesList = quoteSnapshot.docs.filter(doc => doc.id !== 'quoteOfTheDay3');
-                
+        if (movieOfTheDayDoc.exists() && movieOfTheDayDoc.data().date === currentDay) {
+            const dailyMovie = movieOfTheDayDoc.data();
 
-                const randomIndex = Math.floor(Math.random() * quotesList.length);
-                const selectedQuote = quotesList[randomIndex].data();
+            setQuote(`"${dailyMovie.mquote}"`);
+            setInfluencerName(dailyMovie.name);
+            setHint1(dailyMovie.hint1);
+            setHint2(dailyMovie.hint2);
+            setAudioFile(dailyMovie.audio);
+            setVideoFile(dailyMovie.video);
+        } else {
+            const movieQuotesCollection = collection(db, 'moviequotes');
+            const movieQuoteSnapshot = await getDocs(movieQuotesCollection);
+            const movieQuotesList = movieQuoteSnapshot.docs;
 
-                setQuote(`"${selectedQuote.quote}"`);
-                setInfluencerName(selectedQuote.name);
-                setHint1(selectedQuote.hint1);
-                setHint2(selectedQuote.hint2);
-                setAudioFile(selectedQuote.audio);
-                setVideoFile(selectedQuote.video);
+            // Pick a random movie quote
+            const randomIndex = Math.floor(Math.random() * movieQuotesList.length);
+            const selectedMovieQuote = movieQuotesList[randomIndex].data();
 
-                await setDoc(doc(db, 'quoteOTD', 'quoteOfTheDay3'), {
-                    ...selectedQuote,
-                    date: currentDay,
-                });
-            }
-        };
+            setQuote(`"${selectedMovieQuote.mquote}"`);
+            setInfluencerName(selectedMovieQuote.name);
+            setHint1(selectedMovieQuote.hint1);
+            setHint2(selectedMovieQuote.hint2);
+            setAudioFile(selectedMovieQuote.audio);
+            setVideoFile(selectedMovieQuote.video);
 
-        fetchQuoteOfTheDay();
-    }, []);
+            // Save the selected movie quote to Firestore
+            await setDoc(doc(db, 'movieOTD', 'MovieOfTheDay'), {
+                ...selectedMovieQuote,
+                date: currentDay,
+            });
+        }
+    };
+
+    fetchMovieOfTheDay();
+}, []);
+
 
     const handleSearchClick = () => {
       const guessedName = inputRef.current.value.trim().toLowerCase();
@@ -127,9 +129,9 @@ const [showModal, setShowModal] = useState(false);
   
       if (value.length > 0) {
           const lowerCaseValue = value.toLowerCase();
-          const quotesCollection = collection(db, 'quotes');
+          const movieQuotesCollection = collection(db, 'moviequotes');
           const q = query(
-              quotesCollection,
+              movieQuotesCollection,
               where('name', '>=', lowerCaseValue),
               where('name', '<=', lowerCaseValue + '\uf8ff')
           );
@@ -206,7 +208,7 @@ const [showModal, setShowModal] = useState(false);
         <div id="section6" className="section" ref={section6Ref} >
         <div className="overlay2">
                 <p className="whosays">
-                  Guess Who Says This Quote?<br />
+                  Guess the Movie of this quote<br />
                   <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 3)</span></p>
                 <div className="quoteandclue">
                 <p className="quotey"><span className="thequote">{quote}</span></p>

@@ -29,11 +29,42 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
   border: 50px solid black;
   position: relative;
-  background-image: url('../assets/kobe2.png');
+  background-image: url('../assets/background2000.png');
+  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #f3b32b;
+  overflow: hidden;
+  border: solid;
+  /* Centering Content */
+  display: flex;  /* Use flexbox for centering */
+  justify-content: center;  /* Center horizontally */
+  align-items: center;  /* Center vertically */
+  text-align: center;
+}
+
+.quotey3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15pt;
+  line-height: 1.6;
+  padding: 30px;
+  color: #D22B2B;
+  width: 600px;
+  height: 500px;
+  margin: 20px auto;
+  word-break: break-word;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
+  border: 50px solid black;
+  position: relative;
+  background-image: url('../assets/background3000.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #D22B2B;
   overflow: hidden;
   border: solid;
   /* Centering Content */
@@ -78,7 +109,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.2 ); /* Make background dimmer */
-  filter: opacity(0.9);
+  filter: opacity(0.99);
   z-index: 1;
 }
 
@@ -828,5 +859,36 @@
     right: 540px;
     z-index: 10;
     transition: all 0.3s ease;
+  }
+
+  .quotey3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15pt;
+    line-height: 1.6;
+    padding: 30px;
+    color: #f3b32b;
+    width: 600px;
+    height: 500px;
+    margin: 20px auto;
+    word-break: break-word;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
+    border: 50px solid black;
+    position: relative;
+    background-image: url('../assets/background2000.png');
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f3b32b;
+    overflow: hidden;
+    border: solid;
+    /* Centering Content */
+    display: flex;  /* Use flexbox for centering */
+    justify-content: center;  /* Center horizontally */
+    align-items: center;  /* Center vertically */
+    text-align: center;
   }
 }
