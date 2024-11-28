@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Home.css'; // Reuse Home styles
 import './Section2.css'; // Reuse Section2 styles for consistency
 import Section6 from './Section6'; // Use Section6 as the final section for this round
 import { db } from '../firebase';
@@ -25,7 +24,7 @@ function Home3() {
     const section6Ref = useRef(null);
     const [quoteInfluencer] = useState("");
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
-const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
+ 
 const [backgroundStyle, setBackgroundStyle] = useState({});
 const [showModal, setShowModal] = useState(false);
 
@@ -184,12 +183,7 @@ const [showModal, setShowModal] = useState(false);
         setIsFlashingFirstHint(false); // Stop flashing when the button is clicked
         if (showHint2) setShowHint2(false);
     };
-    
-    const toggleHint2 = () => {
-        setShowHint2(!showHint2);
-        setIsFlashingSecondHint(false); // Stop flashing when the second button is clicked
-        if (showHint1) setShowHint1(false);
-    };
+  
 
     const handleAudioToggle = () => {
         if (audioRef.current) {
@@ -211,7 +205,7 @@ const [showModal, setShowModal] = useState(false);
                   Guess the Movie of this quote<br />
                   <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 3)</span></p>
                 <div className="quoteandclue">
-                <p className="quotey"><span className="thequote">{quote}</span></p>
+                <p className="quotey3"><span className="thequote3">{quote}</span></p>
                 <div className="button-container">
                 <div className="hint-wrapper">
             <button
@@ -222,15 +216,7 @@ const [showModal, setShowModal] = useState(false);
             </button>
             <span className="hint-description">FIRST CLUE</span>
         </div>
-        <div className="hint-wrapper">
-            <button
-                className={`hint-button enabled-button ${isFlashingSecondHint && guessCount >= 4 ? 'flash-hint' : ''}`} // Apply flash class based on state and guess count
-                onClick={toggleHint2}
-                data-tooltip="Achievements Clue">
-                <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-            </button>
-            <span className="hint-description">SECOND CLUE</span>
-        </div>
+       
         
         
           <div className="hint-wrapper">
@@ -243,6 +229,22 @@ const [showModal, setShowModal] = useState(false);
             </button>
             <span className="hint-description">AUDIO CLUE</span>
           </div>
+
+          <div className="hint-wrapper">
+        <button
+            className="give-up-button enabled-button"
+            onClick={() => {
+                setIsSection6Visible(true);
+                setTimeout(() => {
+                    section6Ref.current.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }}
+            data-tooltip="Skip to Section 6"
+        >
+            <img className="icons" src={require('../assets/give-up.png')} alt="Give Up" />
+        </button>
+        <span className="hint-description">GIVE UP</span>
+    </div>
         </div>
         
         

@@ -8,6 +8,7 @@ body, html {
 
 body {
   background-image: url('./assets/background9.jpg'); /* Ensure the path is correct */
+  
   background-size: cover; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
   background-position: center; /* Center the image */
@@ -17,6 +18,22 @@ body {
   overflow-x: hidden;
   font-family: Arial, sans-serif; /* Adjust the font if needed */
   color: white; /* Default text color, adjust as needed */
+}
+
+body::before {
+  content: '';
+  position: fixed; /* Ensures it covers the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/background9.jpg'); /* Ensure the path is correct */
+  background-size: cover; /* Make the image cover the entire viewport */
+  background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  filter: brightness(30%); /* Adjust the brightness of the image */
+  z-index: -1; /* Push the background behind other content */
 }
 
 
@@ -141,6 +158,8 @@ body {
   transform: scaleX(1); /* Expand background on hover */
   transform-origin: right;
 }
+
+
 
 .nav-item:hover a {
   color: white; /* Change text color to white on hover */

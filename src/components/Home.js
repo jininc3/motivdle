@@ -30,8 +30,7 @@ function Home({ toggleNav }) {
     const [hint2, setHint2] = useState("");
     const [showHint2, setShowHint2] = useState(false);
     const [quoteInfluencer] = useState(""); // Define state for the influencer
-    const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
-const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
+    const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true); 
 const [showModal, setShowModal] = useState(false);
 
 
@@ -83,7 +82,6 @@ const [showModal, setShowModal] = useState(false);
 
     const handleScrollToSection2 = () => {
         setIsSection2Visible(true); // Makes Section2 visible
-        toggleNav();
         setTimeout(() => {
             section2Ref.current.scrollIntoView({ behavior: 'smooth' });
         }, 100); // Delay ensures Section2 is rendered before scrolling
@@ -248,11 +246,7 @@ const [showModal, setShowModal] = useState(false);
         if (showHint2) setShowHint2(false);
     };
     
-    const toggleHint2 = () => {
-        setShowHint2(!showHint2);
-        setIsFlashingSecondHint(false); // Stop flashing when the second button is clicked
-        if (showHint1) setShowHint1(false);
-    };
+   
     
 
 
@@ -267,7 +261,8 @@ const [showModal, setShowModal] = useState(false);
 
             {/* Section1 Content */}
             <div id="section1" className="section1">
-            <img src={titleImage} alt="MOTIVDLE" className="title-home" />;
+            <img src={titleImage} alt="MOTIVDLE" className="title-home" />
+            <br></br><br></br>
                 <p className="description">
                 "Guess who said the daily motivational quote and take away some inspiration! All quotes are from real-life achievers and winners."
                 </p>
@@ -290,6 +285,7 @@ const [showModal, setShowModal] = useState(false);
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
         <div className="button-container">
+
         <div className="hint-wrapper">
     <button
         className={`hint-button enabled-button ${isFlashingFirstHint && guessCount >= 2 ? 'flash-hint' : ''}`} // Apply flash class based on state
@@ -299,16 +295,6 @@ const [showModal, setShowModal] = useState(false);
     </button>
     <span className="hint-description">FIRST CLUE</span>
 </div>
-<div className="hint-wrapper">
-    <button
-        className={`hint-button enabled-button ${isFlashingSecondHint && guessCount >= 4 ? 'flash-hint' : ''}`} // Apply flash class based on state and guess count
-        onClick={toggleHint2}
-        data-tooltip="Achievements Clue">
-        <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-    </button>
-    <span className="hint-description">SECOND CLUE</span>
-</div>
-
 
   <div className="hint-wrapper">
     <button
@@ -320,7 +306,26 @@ const [showModal, setShowModal] = useState(false);
     </button>
     <span className="hint-description">AUDIO CLUE</span>
   </div>
+
+  <div className="hint-wrapper">
+        <button
+            className="give-up-button enabled-button"
+            onClick={() => {
+                setIsSection3Visible(true);
+                setTimeout(() => {
+                    section3Ref.current.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }}
+            data-tooltip="Skip to Section 3"
+        >
+            <img className="icons" src={require('../assets/give-up.png')} alt="Give Up" />
+        </button>
+        <span className="hint-description">GIVE UP</span>
+    </div>
+
 </div>
+
+
 
 
 

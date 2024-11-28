@@ -27,7 +27,7 @@ function Home2() {
     const section5Ref = useRef(null);
     const [backgroundStyle, setBackgroundStyle] = useState({});
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
-const [isFlashingSecondHint, setIsFlashingSecondHint] = useState(true); // 
+ 
 const [showModal, setShowModal] = useState(false);
 
     const inputRef = useRef(null);
@@ -200,11 +200,6 @@ const [showModal, setShowModal] = useState(false);
       if (showHint2) setShowHint2(false);
   };
   
-  const toggleHint2 = () => {
-      setShowHint2(!showHint2);
-      setIsFlashingSecondHint(false); // Stop flashing when the second button is clicked
-      if (showHint1) setShowHint1(false);
-  };
 
     return (
       <div style={backgroundStyle}>
@@ -226,15 +221,7 @@ const [showModal, setShowModal] = useState(false);
             </button>
             <span className="hint-description">FIRST CLUE</span>
         </div>
-        <div className="hint-wrapper">
-            <button
-                className={`hint-button enabled-button ${isFlashingSecondHint && guessCount >= 4 ? 'flash-hint' : ''}`} // Apply flash class based on state and guess count
-                onClick={toggleHint2}
-                data-tooltip="Achievements Clue">
-                <img className="icons" src={require('../assets/achievements-clue.png')} alt="Achievements Clue" />
-            </button>
-            <span className="hint-description">SECOND CLUE</span>
-        </div>
+        
         
         
           <div className="hint-wrapper">
@@ -247,6 +234,22 @@ const [showModal, setShowModal] = useState(false);
             </button>
             <span className="hint-description">AUDIO CLUE</span>
           </div>
+
+          <div className="hint-wrapper">
+        <button
+            className="give-up-button enabled-button"
+            onClick={() => {
+                setIsSection5Visible(true);
+                setTimeout(() => {
+                    section5Ref.current.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }}
+            data-tooltip="Skip to Section 5"
+        >
+            <img className="icons" src={require('../assets/give-up.png')} alt="Give Up" />
+        </button>
+        <span className="hint-description">GIVE UP</span>
+    </div>
         </div>
         
         

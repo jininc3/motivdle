@@ -19,7 +19,6 @@
   font-size: 15pt;
   line-height: 1.6;
   padding: 30px;
-  color: #f3b32b;
   width: 600px;
   height: 500px;
   margin: 20px auto;
@@ -27,14 +26,11 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
-  border: 50px solid black;
   position: relative;
-  background-image: url('../assets/background2000.png');
-  
+  background-image: url('../assets/b1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #f3b32b;
   overflow: hidden;
   border: solid;
   /* Centering Content */
@@ -50,7 +46,6 @@
   font-size: 15pt;
   line-height: 1.6;
   padding: 30px;
-  color: #D22B2B;
   width: 600px;
   height: 500px;
   margin: 20px auto;
@@ -58,13 +53,11 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
-  border: 50px solid black;
   position: relative;
-  background-image: url('../assets/background3000.png');
+  background-image: url('../assets/t1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #D22B2B;
   overflow: hidden;
   border: solid;
   /* Centering Content */
@@ -100,6 +93,17 @@
   font-family: "Oswald", sans-serif;
 }
 
+.thequote3 {
+  color: white; /* Ensure the text is white */
+  font-size: clamp(16px, 5vw, 25pt);
+  z-index: 2; /* Keep text above the overlay */
+  position: relative; /* Position text above any other elements */
+  text-shadow: 2px 1px 2px rgba(0, 0, 0, 1); /* Add subtle shadow to enhance visibility */
+  width: 500px;
+  height: auto;
+  font-family: "Oswald", sans-serif;
+}
+
 /* Add a darker overlay to the background image */
 .quotey:before {
   content: "";
@@ -108,8 +112,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2 ); /* Make background dimmer */
-  filter: opacity(0.99);
+  background-color: rgba(0, 0, 0, 0.5 ); /* Make background dimmer */
+  z-index: 1;
+}
+
+.quotey3:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5 ); /* Make background dimmer */
   z-index: 1;
 }
 
@@ -472,6 +486,22 @@
   animation: flash 4s infinite; /* Slower animation duration */
 }
 
+.give-up-button {
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition on hover */
+  margin-top: 100px;
+}
+
+.give-up-button:hover {
+  background-color: #ff4b4b;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); 
+}
 
 
 
@@ -720,7 +750,7 @@
     color: #f3b32b; /* Bright yellow color */
     font-family: "Oswald", sans-serif;
     font-weight: bolder;
-    font-size: 30pt; /* Increase the font size */
+    font-size: 40pt; /* Increase the font size */
     margin-top:0px; /* Increase space below */
     padding: 0; /* Remove padding */
     line-height: 1.2; /* Adjust line height */
@@ -729,7 +759,7 @@
   }
   
   .rounds {
-    color: #f3b32b;
+    color: white;
     font-size: 20pt; /* Increase font size */
     padding: 0;
     margin-top: 20px; /* Adjust margin to bring closer to the title */
@@ -867,9 +897,9 @@
     font-size: 15pt;
     line-height: 1.6;
     padding: 30px;
-    color: #f3b32b;
-    width: 600px;
-    height: 500px;
+    
+    width: 500px;
+    height: 400px;
     margin: 20px auto;
     word-break: break-word;
     text-align: center;
@@ -877,12 +907,12 @@
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
     border: 50px solid black;
     position: relative;
-    background-image: url('../assets/background2000.png');
+    background-image: url('../assets/t1.png');
     
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #f3b32b;
+  
     overflow: hidden;
     border: solid;
     /* Centering Content */
