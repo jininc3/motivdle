@@ -1,62 +1,76 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Section3.css'; // Reuse Section3.css for styling
+import './Section3.css';
 import { useNavigate } from 'react-router-dom';
+import { doc, getDoc, updateDoc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase'; // Adjust the import path to your firebase.js file
 
 const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
     const videoRef = useRef(null);
-    const buttonRef = useRef(null);
-    const [videoSrc, setVideoSrc] = useState("");
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [videoSrc] = useState("");
+    const [isVideoLoaded] = useState(false);
     const navigate = useNavigate();
-
-    const preloadVideo = async (url) => {
-        return new Promise((resolve, reject) => {
-            const video = document.createElement('video');
-            video.src = url;
-            video.preload = 'auto';
-
-            video.onloadeddata = () => {
-                resolve(url);
-            };
-
-            video.onerror = () => {
-                reject(new Error('Error preloading video'));
-            };
-        });
-    };
+    const [showOverlay, setShowOverlay] = useState(false);
+    const [timeLeft, setTimeLeft] = useState("");
+    const [finishCount, setFinishCount] = useState(0);
 
     useEffect(() => {
-        if (videoFileName) {
-            const videoUrl = `https://storage.googleapis.com/motivdle-videos/${videoFileName}`;
-            preloadVideo(videoUrl)
-                .then((url) => {
-                    setVideoSrc(url);
-                    setIsVideoLoaded(true);
-                    if (videoRef.current) {
-                        videoRef.current.classList.add('fade-in');
-                    }
-                    setTimeout(() => {
-                        if (videoRef.current) {
-                            videoRef.current.play();
-                        }
-                    }, 1000); // 1 second delay
-                })
-                .catch((error) => {
-                    console.error('Failed to preload video:', error);
-                    setIsVideoLoaded(false);
-                });
-        }
-    }, [videoFileName]);
+        // Fetch countdown time
+        const now = new Date();
+        const endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
+        const msLeft = endOfDay - now;
+
+        setTimeLeft(new Date(msLeft).toISOString().substr(11, 8));
+
+        const interval = setInterval(() => {
+            const ms = endOfDay - new Date();
+            setTimeLeft(new Date(ms).toISOString().substr(11, 8));
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        // Fetch initial click count from Firestore
+        const fetchClickCount = async () => {
+            const docRef = doc(db, 'clicks', 'buttonClick');
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setFinishCount(docSnap.data().count || 0);
+            } else {
+                // Initialize the document if it doesn't exist
+                await setDoc(docRef, { count: 0, date: new Date().toISOString().split('T')[0] });
+                setFinishCount(0);
+            }
+        };
+
+        fetchClickCount();
+    }, []);
 
     const handleButtonClick = async () => {
-        navigate('/'); // Navigate to the home page or a new route after this round
+        setShowOverlay(true);
+
+        // Update the click count in Firestore
+        const docRef = doc(db, 'clicks', 'buttonClick');
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const currentCount = docSnap.data().count || 0;
+            const newCount = currentCount + 1;
+
+            await updateDoc(docRef, { count: newCount });
+            setFinishCount(newCount);
+        }
     };
 
+    const handleOverlayClose = () => navigate('/');
+
     return (
-        <div id="section6" className="section3" ref={ref} >
+        <div id="section6" className="section3" ref={ref}>
             <div className="overlay-3">
                 {isVideoLoaded ? (
-                    <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto" >
+                    <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto">
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
@@ -73,7 +87,6 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                         This video showcases a powerful quote from {influencerName}. It is intended to inspire and motivate viewers to take action and push themselves beyond their limits. Watch the video and feel the power of positive words in action.
                     </p>
                     <button
-                        ref={buttonRef}
                         className="video-button3 fade-in"
                         onClick={handleButtonClick}
                     >
@@ -81,6 +94,20 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                     </button>
                 </div>
             </div>
+            {showOverlay && (
+                <div className="finish-overlay">
+                    <h2>Congratulations on finishing today's Motivdle!</h2>
+                    <p>
+                        Time left until the next Motivdle: <span className="highlight">{timeLeft}</span>
+                    </p>
+                    <p>
+                        Number of participants who finished today: <span className="highlight">{finishCount}</span>
+                    </p>
+                    <button className="overlay-close" onClick={handleOverlayClose}>
+                        Close
+                    </button>
+                </div>
+            )}
         </div>
     );
 });
