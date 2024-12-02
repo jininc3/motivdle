@@ -520,6 +520,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  border-radius: 10px; /* Smooth rounded corners */
+  overflow: hidden; /* Prevent content overflow */
 }
 .suggestions-list::-webkit-scrollbar {
   width: 5px;  /* Set scrollbar width */
@@ -539,20 +541,24 @@
 .suggestion-item {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 15px; /* More padding for better spacing */
   cursor: pointer;
+  font-size: 18px; /* Increased font size for readability */
+  font-weight: bold;
   color: black;
   text-transform: capitalize;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle divider for items */
 }
 
 .suggestion-item.highlighted {
-  background-color:white;
-  color: black;
+  background-color: #e6e6e6; /* Lighter highlight for selection */
 }
 
 .suggestion-item:hover {
-  background-color:white;
-  color: black;
+  background-color: white; /* Highlight background on hover */
+  color: black; /* Maintain text color */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
 }
 
 .search-bar-container {
@@ -647,11 +653,12 @@
 
 
 .suggestion-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-  object-fit: cover;
+  width: 70px; /* Increased width */
+  height: 70px; /* Increased height */
+  border-radius: 50%; /* Circular image */
+  margin-right: 15px; /* More spacing between image and text */
+  object-fit: cover; /* Ensure the image covers the frame without distortion */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visibility */
 }
 
 .hint-button:active {
