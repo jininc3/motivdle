@@ -27,6 +27,7 @@ function Home3() {
  
 const [backgroundStyle, setBackgroundStyle] = useState({});
 const [showModal, setShowModal] = useState(false);
+const [profile, setProfile] = useState(false);
 
     const inputRef = useRef(null);
     const audioRef = useRef(null);
@@ -66,6 +67,7 @@ const [showModal, setShowModal] = useState(false);
             setHint2(dailyMovie.hint2);
             setAudioFile(dailyMovie.audio);
             setVideoFile(dailyMovie.video);
+            setProfile(dailyMovie.profile);
         } else {
             const movieQuotesCollection = collection(db, 'moviequotes');
             const movieQuoteSnapshot = await getDocs(movieQuotesCollection);
@@ -81,6 +83,7 @@ const [showModal, setShowModal] = useState(false);
             setHint2(selectedMovieQuote.hint2);
             setAudioFile(selectedMovieQuote.audio);
             setVideoFile(selectedMovieQuote.video);
+            setProfile(selectedMovieQuote.profile);
 
             // Save the selected movie quote to Firestore
             await setDoc(doc(db, 'movieOTD', 'MovieOfTheDay'), {
@@ -335,6 +338,7 @@ const [showModal, setShowModal] = useState(false);
                             ref={section6Ref}
                             influencerName={influencerName}
                             videoFileName={videoFile}
+                            profileDescription={profile} 
         
         
                         />

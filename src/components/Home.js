@@ -8,7 +8,7 @@ import { db } from '../firebase';
 import titleImage from '../assets/title.png';
 import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
 
-function Home({ toggleNav }) {
+function Home() {
     const [isSection2Visible, setIsSection2Visible] = useState(false);
     const [isSection3Visible, setIsSection3Visible] = useState(false);
     const [influencerName, setInfluencerName] = useState("");
@@ -31,7 +31,9 @@ function Home({ toggleNav }) {
     const [showHint2, setShowHint2] = useState(false);
     const [quoteInfluencer] = useState(""); // Define state for the influencer
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true); 
+    const [profile, setProfile] = useState(false);
 const [showModal, setShowModal] = useState(false);
+
 
 
     
@@ -105,6 +107,8 @@ const [showModal, setShowModal] = useState(false);
               setHint2(dailyQuote.hint2);
               setAudioFile(dailyQuote.audio);
               setVideoFile(dailyQuote.video);
+              setProfile(dailyQuote.profile);
+              
           } else {
               const quotesCollection = collection(db, 'quotes');
               const quoteSnapshot = await getDocs(quotesCollection);
@@ -120,6 +124,7 @@ const [showModal, setShowModal] = useState(false);
               setHint2(selectedQuote.hint2);
               setAudioFile(selectedQuote.audio);
               setVideoFile(selectedQuote.video);
+              setProfile(selectedQuote.profile); 
 
               await setDoc(doc(db, 'quoteOTD', 'quoteOfTheDay'), {
                   ...selectedQuote,
@@ -415,6 +420,7 @@ const [showModal, setShowModal] = useState(false);
                     ref={section3Ref}
                     influencerName={influencerName}
                     videoFileName={videoFile}
+                    profileDescription={profile} 
 
 
                 />

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
+const Section3 = React.forwardRef(({ influencerName, videoFileName, profileDescription }, ref) => {
     const videoRef = useRef(null);
     const buttonRef = useRef(null);
     const [videoSrc, setVideoSrc] = useState("");
@@ -83,8 +83,8 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName }, ref) => {
                         THIS QUOTE IS FROM <span className="influencer-name3">{influencerName}</span>
                     </h1>
                     <p className="video-description3">
-                        This video showcases a powerful quote from {influencerName}. It is intended to inspire and motivate viewers to take action and push themselves beyond their limits. Watch the video and feel the power of positive words in action.
-                    </p>
+    {profileDescription || `This video showcases a powerful quote from ${influencerName}. It is intended to inspire and motivate viewers to take action and push themselves beyond their limits.`}
+</p>
                     <button
                         ref={buttonRef}
                         className="video-button3 fade-in"

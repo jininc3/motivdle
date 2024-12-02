@@ -27,6 +27,7 @@ function Home2() {
     const section5Ref = useRef(null);
     const [backgroundStyle, setBackgroundStyle] = useState({});
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
+    const [profile, setProfile] = useState(false);
  
 const [showModal, setShowModal] = useState(false);
 
@@ -71,6 +72,7 @@ const [showModal, setShowModal] = useState(false);
                 setHint2(dailyQuote.hint2);
                 setAudioFile(dailyQuote.audio);
                 setVideoFile(dailyQuote.video);
+                setProfile(dailyQuote.profile);
             } else {
                 const quotesCollection = collection(db, 'quotes');
                 const quoteSnapshot = await getDocs(quotesCollection);
@@ -85,6 +87,7 @@ const [showModal, setShowModal] = useState(false);
                 setHint2(selectedQuote.hint2);
                 setAudioFile(selectedQuote.audio);
                 setVideoFile(selectedQuote.video);
+                setProfile(selectedQuote.profile); 
 
                 await setDoc(doc(db, 'quoteOTD', 'quoteOfTheDay2'), {
                     ...selectedQuote,
@@ -340,6 +343,7 @@ const [showModal, setShowModal] = useState(false);
                             ref={section5Ref}
                             influencerName={influencerName}
                             videoFileName={videoFile}
+                            profileDescription={profile} 
         
         
                         />
