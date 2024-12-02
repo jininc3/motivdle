@@ -55,11 +55,45 @@ const Preloader = ({ onLoadComplete }) => {
   return (
     <div
       className={`preloader ${loading ? 'visible' : 'hidden'}`}
-      style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' }}
+      style={{
+        position: 'relative',
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        height: '100vh', // Ensure the div covers the viewport
+        width: '100vw',
+        overflow: 'hidden',
+      }}
     >
-      <h1>Loading...</h1>
+      {/* Background dimming using pseudo-element */}
+      <div
+        style={{
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)', // Apply dimming here
+          zIndex: 0, // Ensure it sits below the text
+        }}
+      ></div>
+  
+      {/* Text */}
+      <div
+        style={{
+          position: 'relative', // Keep it above the background dimming
+          
+          transform: 'translate(-50%, -50%)',
+          zIndex: 1, // Place the text above the dimming
+        }}
+      >
+        <h1 style={{ color: 'white' }}>Loading...</h1>
+      </div>
     </div>
   );
+  
+  
+  
 };
 
 export default Preloader;
