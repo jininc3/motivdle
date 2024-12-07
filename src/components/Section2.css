@@ -1,6 +1,6 @@
 .overlay2 {
   position: relative;
-  top: 43%; /* Adjust as needed to vertically center */
+  top: 47%; /* Adjust as needed to vertically center */
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
@@ -18,7 +18,6 @@
   font-weight: 400;
   font-size: 15pt;
   line-height: 1.6;
-  padding: 30px;
   width: 600px;
   height: 500px;
   margin: 20px auto;
@@ -27,7 +26,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   position: relative;
-  
+  bottom: 60px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -84,7 +83,6 @@
   background-repeat: no-repeat;
   overflow: hidden;
 
-  /* Centering Content */
   display: flex;  /* Use flexbox for centering */
   justify-content: center;  /* Center horizontally */
   align-items: center;  /* Center vertically */
@@ -93,25 +91,27 @@
 
 .quoteandclue {
   display: flex;
+ 
 }
 
 .button-container {
   position: relative;
-  
   display: flex;
   flex-direction: column;
   right:700px;
+  bottom: 100px ;
   align-items: flex-start;
   justify-content: space-evenly;
 }
 
 .thequote {
-  color: white; /* Ensure the text is white */
+  color: #f3b32b; /* Ensure the text is white */
   font-size: clamp(16px, 5vw, 25pt);
   z-index: 2; /* Keep text above the overlay */
   position: relative; /* Position text above any other elements */
   text-shadow: 2px 1px 2px rgba(0, 0, 0, 1); /* Add subtle shadow to enhance visibility */
-  width: 500px;
+  width: 800px;
+ 
   height: auto;
   font-family: "Oswald", sans-serif;
 }
@@ -177,8 +177,6 @@
   position: relative;
   top: 40%;
   padding: 10px 20px; /* Increase padding */
-   /* Add margin */
-  
   font-size: 24px; /* Increase font size */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
   border: none;
@@ -202,7 +200,7 @@
 }
 
 .whosays {
-  color: #f3b32b; /* Bright yellow color */
+  color: #fc5460; /* Bright yellow color */
   font-family: "Oswald", sans-serif;
   font-weight: bolder;
   font-size: 50pt; /* Increase the font size */
@@ -214,7 +212,7 @@
 }
 
 .rounds {
-  color: #f3b32b;
+  color: #fc5460;
   font-size: 30pt; /* Increase font size */
   padding: 0;
   letter-spacing: 1px; /* Slightly increase letter spacing */
@@ -225,44 +223,42 @@
 .search-bar-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 30px; /* Increase space above the search bar */
-  
+  align-items: center; /* Add some spacing from other elements */
+  gap: 10px; /* Space between the input and button */
 }
 
 .search-input {
-  padding: 12px 20px; /* Increase padding */
-  font-size: 18px;
-   /* Rounded corners */
-  border: 2px solid #f3b32b;
-  width: 400px; /* Increase input width */
+  padding: 15px 20px; /* Increase padding for better feel */
+  font-size: 16px;
+  border-radius: 10px; /* Fully rounded corners */
+  border: 2px solid #f3b32b; /* Match theme color */
+  width: 400px;
   outline: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
   transition: all 0.3s ease-in-out;
-  border-radius: 15px;
 }
 
 .search-button {
-  padding: 12px; /* Increase space between input and button */
-  font-size: 18px; /* Increase font size */
-  border-radius: 50px; /* Fully rounded button */
-  border: transparent;
-  background-color: transparent; /* Yellow background */
-  color: black;
+  background-color: transparent; /* Button background color */
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+  color: black; /* Text color */
+  border-radius: 25px; /* Fully rounded button */
   cursor: pointer;
-   /* Add shadow */
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  
 }
 
-
 .search-button:active {
-  transform: scale(0.98); /* Slight press-down effect */
+  transform: scale(0.95); /* Press-down effect */
 }
 
 .search-button:hover {
   transform: scale(1.1);
   color: black; /* Change text color */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  /* Enhanced shadow on hover */
 }
 
 .search-icon {
@@ -271,8 +267,8 @@
 }
 
 .search-input:focus {
-  border-color: #f3b32b; /* Highlight border on focus */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on focus */
+  border-color: #ffd700; /* Highlight border on focus */
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4); /* Glowing effect on focus */
 }
 .search-input.incorrect-guess {
   border-color: orangered;

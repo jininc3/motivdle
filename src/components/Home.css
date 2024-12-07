@@ -60,7 +60,7 @@ body {
   cursor: pointer;
   transition: all 0.5s ease;
  font-weight: bolder;
-  background-color: #f3b32b; /* Fully yellow background */
+  background-color: white; /* Fully yellow background */
   position: relative;
   overflow: hidden; /* To handle the animated background effect */
   z-index: 1;
@@ -69,7 +69,7 @@ body {
 
 .test-button:hover {
   background-color: black; /* A slightly darker shade of yellow on hover */
-  color:#f3b32b; /* Keep text black on hover */
+  color:white ; /* Keep text black on hover */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add a shadow */
   transform: scale(1.05); /* Scale the button slightly */
 }

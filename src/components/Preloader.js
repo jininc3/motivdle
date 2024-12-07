@@ -1,6 +1,6 @@
 // Preloader.js
 import React, { useEffect, useState } from 'react';
-import backgroundImage from '../assets/background9.jpg'; // Import the background image
+import backgroundImage from '../assets/c1.png'; // Import the background image
 
 const Preloader = ({ onLoadComplete }) => {
   const [loading, setLoading] = useState(true);

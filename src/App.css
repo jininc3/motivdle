@@ -44,19 +44,19 @@ body::before {
 /* Style for the menu button */
 .menu-button {
   position: fixed;
-  top: 40px;
-  left: 20px; /* Move to the left side */
-  background-color: transparent;
-  border: none;
-  color: #f3b32b;
-  border: solid #f3b32b;
-  padding: 10px 20px;
-  cursor: pointer;
+  top: 12px; /* Adjust as needed */
+  left:3%; /* Center horizontally */
+  transform: translateX(-50%);
   z-index: 1000;
-  transition: left 0.3s ease, transform 0.3s ease; /* Smooth transition for button movement */
-  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid #f3b32b;
+  color: #f3b32b;
+  padding: 5px 10px;
   font-size: 16px;
-  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 15px;
 }
 
 .menu-button:hover {
@@ -65,12 +65,9 @@ body::before {
 }
 
 .menu-button.open {
-  left: 250px; /* Move the button when the menu is open */
-  transform: rotate(90deg);
-  color: black;
-  border: solid black;
+  color: black; /* Rotate for visual effect */
+  border: 2px solid;
 }
-
 .menu-button.open:hover {
   color: white;
   border: solid white;
@@ -79,103 +76,72 @@ body::before {
 
 
 .active-link {
-  background-color: #FFD700; /* Highlight effect */
+  background-color: #e8ac34; /* Highlight effect */
   color: black; /* Change text color */
   padding-left: 20px;
   font-weight: bold;
-  border-left: 5px solid #FFD700; /* Optional border for extra highlight */
+  border-left: 5px solid #e8ac34; /* Optional border for extra highlight */
 }
 
 
 /* Other existing styles remain the same */
 
 
-/* Right-side navigation menu */
-/* Left-side navigation menu */
 .nav-menu {
   position: fixed;
-  left: -400px; /* Hidden initially */
-  height: 100%;
-  width: 300px;
-  background-color: #f3b32b;
-  transition: left 0.3s ease;
-
-  overflow-x: hidden;
+  top: -60px; /* Hidden initially */
+  left: 0;
+  height: 50px; /* Thinner height */
+  width: 100%;
+  background-color: rgba(243, 179, 43, 0.95); /* Transparent yellow for modern look */
+  transition: top 0.3s ease;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center; /* Ensures everything inside is centered */
+  flex-direction: row; /* Horizontal layout */
+  justify-content: space-around; /* Even spacing between items */
+  align-items: center; /* Center items vertically */
   z-index: 999;
-  gap: 100px;
-  padding: 20px;
-  border-radius: 10px 10px 10px 10px;
+  padding: 0 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  border-bottom: 1px solid #ffd700; /* Subtle bottom border */
 }
 
 .nav-menu.open {
-  left: 0;
+  top: 0; /* Slide down to become visible */
 }
-
 
 .nav-item {
-  position: relative;
-  padding: 30px 20px;
-  text-align: center; /* Center the text */
-  white-space: nowrap;
-  color: black;
-  font-size: 15pt;
+  padding: 5px 100px; /* Smaller padding for a thinner menu */
+  font-size: 12pt; /* Slightly smaller font */
   font-family: "Oswald", sans-serif;
-  font-weight: 700;
-  transition: background-color 0.3s ease, padding-left 0.3s ease;
-  cursor: pointer;
-  z-index: 1;
-  overflow: hidden;
-  
-}
-
-.nav-item a {
+  font-weight: 600; /* Bold for emphasis */
   color: black;
-  text-decoration: none;
-  display: block;
   text-align: center;
-  transition: color 0.3s ease;
-}
-
-.nav-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f3b32b; /* Yellow background */
-  z-index: -1;
-  transform: scaleX(0); /* Start with the background hidden */
-  transform-origin: left;
-  transition: transform 0.5s ease; /* Smooth transition for hover effect */
-}
-
-.nav-item:hover::before {
-  transform: scaleX(1); /* Expand background on hover */
-  transform-origin: right;
-}
-
-
-
-.nav-item:hover a {
-  color: white; /* Change text color to white on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px; /* Rounded edges for hover effect */
 }
 
 .nav-item:hover {
-  transform: scale(1.05); /* Slight scaling effect */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+  background-color: #ffd700; /* Highlight on hover */
+  color: white; /* Change text color */
+  transform: scale(1.05); /* Slight scaling effect on hover */
 }
+
+.nav-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-item a:hover {
+  text-decoration: underline; /* Optional underline on hover */
+}
+
 
 
 
 .logo-container {
   position: fixed;
-  top: 0px;
-  right: 3%; /* Move to the right side */
+  top: 50px;
+  left: -1.8%; /* Move to the right side */
   transform: translateX(50%); /* Adjust for the right-aligned position */
   z-index: 1000;
   padding: 10px 0;
