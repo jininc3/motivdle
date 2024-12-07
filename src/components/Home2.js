@@ -213,7 +213,7 @@ const [showModal, setShowModal] = useState(false);
                   Guess Who Says This Quote?<br />
                   <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span></p>
                 <div className="quoteandclue">
-                <p className="quotey"><span className="thequote">{quote}</span></p>
+                <p className="quotey2"><span className="thequote">{quote}</span></p>
                 <div className="button-container">
                 <div className="hint-wrapper">
             <button

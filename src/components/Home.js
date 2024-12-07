@@ -5,7 +5,7 @@ import './Section2.css';
 import Section3 from './Section3';
 import { useLocation } from 'react-router-dom';
 import { db } from '../firebase';
-import titleImage from '../assets/title.png';
+import titleImage from '../assets/titlered.png';
 import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
 
 function Home() {
@@ -285,8 +285,8 @@ const [showModal, setShowModal] = useState(false);
 <div id="section2" className="section" ref={section2Ref} >
 <div className="overlay2">
         <p className="whosays">
-          Guess Who Says This Quote?<br />
-          <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 1)</span></p>
+          INSPIRATIONAL QUOTE<br />
+          <span className="rounds" style={{ marginTop: '-10px' }}>ROUND 1</span></p>
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
         <div className="button-container">

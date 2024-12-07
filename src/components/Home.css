@@ -40,9 +40,10 @@ body {
   text-align: center;
   letter-spacing: -8px; /* Adjust letter spacing to reduce the gap between letters */
   background-color: transparent;
+  
   padding: 0px;
   margin-bottom: -500px;
-  width: 1400px;
+  width: 1000px;
   height: auto;
 }
 
@@ -52,49 +53,32 @@ body {
 /* Play button styling */
 .test-button {
   margin-top: 40px;
-  background-color: transparent;
-  color: #f3b32b;
+  color: black; /* Black text */
   font-size: 1.5rem;
   padding: 15px 40px;
   border: none;
   cursor: pointer;
   transition: all 0.5s ease;
-  border: solid #f3b32b;
+ font-weight: bolder;
+  background-color: #f3b32b; /* Fully yellow background */
   position: relative;
   overflow: hidden; /* To handle the animated background effect */
   z-index: 1;
   border-radius: 15px;
 }
 
-.test-button:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f3b32b;
-  z-index: -1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease;
-}
-
-.test-button:hover:before {
-  transform: scaleX(1);
-  transform-origin: right;
-}
-
 .test-button:hover {
-  color: black; /* Text color changes to black */
+  background-color: black; /* A slightly darker shade of yellow on hover */
+  color:#f3b32b; /* Keep text black on hover */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add a shadow */
-  transform: scale(1.1); /* Scale the button slightly */
+  transform: scale(1.05); /* Scale the button slightly */
 }
+
 
 
 .description {
   font-size: 1.5rem;
-  color: #E5E5E5;
-  max-width: 700px;
+  color: #f3b32b;
+  max-width: 900px;
   margin: 20px auto;
 }

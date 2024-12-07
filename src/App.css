@@ -7,7 +7,7 @@ body, html {
 }
 
 body {
-  background-image: url('./assets/background9.jpg'); /* Ensure the path is correct */
+  background-image: url('./assets/c1.png'); /* Ensure the path is correct */
   
   background-size: cover; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
@@ -27,12 +27,12 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./assets/background9.jpg'); /* Ensure the path is correct */
+  background-image: url('./assets/c1.png'); /* Ensure the path is correct */
   background-size: cover; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
-  filter: brightness(30%); /* Adjust the brightness of the image */
+ /* Adjust the brightness of the image */
   z-index: -1; /* Push the background behind other content */
 }
 
