@@ -140,8 +140,8 @@ body::before {
 
 .logo-container {
   position: fixed;
-  top: 50px;
-  left: -1.8%; /* Move to the right side */
+  top: 20px;
+  left: -3%; /* Move to the right side */
   transform: translateX(50%); /* Adjust for the right-aligned position */
   z-index: 1000;
   padding: 10px 0;
@@ -153,12 +153,13 @@ body::before {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   margin-top: -20px;
+
   letter-spacing: -2px;
   font-weight: 600;
 }
 
 .cheetah-logo {
-  width: 100px;
+  width: 130px;
   height: auto;
   background-color: transparent;
 }

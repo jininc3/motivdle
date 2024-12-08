@@ -6,8 +6,8 @@ import { db } from '../firebase'; // Adjust the import path to your firebase.js 
 
 const Section6 = React.forwardRef(({ influencerName, videoFileName, profileDescription }, ref) => {
     const videoRef = useRef(null);
-    const [videoSrc] = useState("");
-    const [isVideoLoaded] = useState(false);
+    const [videoSrc, setVideoSrc] = useState("");
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const navigate = useNavigate();
     const [showOverlay, setShowOverlay] = useState(false);
     const [timeLeft, setTimeLeft] = useState("");
@@ -29,6 +29,48 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName, profileDescr
 
         return () => clearInterval(interval);
     }, []);
+
+    const preloadVideo = async (url) => {
+        return new Promise((resolve, reject) => {
+            const video = document.createElement('video');
+            video.src = url;
+            video.preload = 'auto';
+
+            video.onloadeddata = () => {
+                console.log('Video preloaded successfully:', url);
+                resolve(url);
+            };
+
+            video.onerror = () => {
+                console.error('Error preloading video:', url);
+                reject(new Error('Error preloading video'));
+            };
+        });
+    };
+
+    useEffect(() => {
+        if (videoFileName) {
+            const videoUrl = `https://storage.googleapis.com/motivdle-videos/${videoFileName}`;
+            preloadVideo(videoUrl)
+                .then((url) => {
+                    setVideoSrc(url);
+                    setIsVideoLoaded(true);
+                    if (videoRef.current) {
+                        videoRef.current.classList.add('fade-in');
+                    }
+                    setTimeout(() => {
+                        if (videoRef.current) {
+                            videoRef.current.play();
+                        }
+                    }, 1000); // 1 second delay
+                
+                })
+                .catch((error) => {
+                    console.error('Failed to preload video:', error);
+                    setIsVideoLoaded(false);
+                });
+        }
+    }, [videoFileName]);
 
     useEffect(() => {
         // Fetch initial click count from Firestore
@@ -73,6 +115,7 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName, profileDescr
                     <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto">
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
+                        
                     </video>
                 ) : (
                     <p>Loading video...</p>

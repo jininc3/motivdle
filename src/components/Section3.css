@@ -40,7 +40,7 @@
     height: 500px;/* Adjust width as needed */
     padding: 20px;
      /* Remove top margin */
-    text-align: left;
+    text-align: center;
     margin-left: 20px; /* Align with the video on the left */
     
 }
@@ -66,12 +66,13 @@
 .video-description3 {
     text-align: left; /* Center text */
     color: white;
-    font-size: 18px;
+    font-size: 20pt;
     line-height: 1.6;
     max-width: 90%; 
     height: auto;/* Ensure text width doesn’t overflow */
     margin: 20px auto; /* Space around the text */
     font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
 .influencer-name3 {

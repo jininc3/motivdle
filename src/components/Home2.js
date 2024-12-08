@@ -161,27 +161,28 @@ const [showModal, setShowModal] = useState(false);
   };
   
 
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowDown' && showSuggestions) {
-        setHighlightedIndex((prevIndex) =>
-          prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex
-        );
-      } else if (e.key === 'ArrowUp' && showSuggestions) {
-        setHighlightedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-      } else if (e.key === 'Enter') {
-        if (showSuggestions && highlightedIndex >= 0) {
-          // Select the highlighted suggestion and trigger the search immediately
-          const selectedSuggestion = suggestions[highlightedIndex].name;
-          setSearchTerm(selectedSuggestion);
-          inputRef.current.value = selectedSuggestion; // Manually set the input field value
-          setShowSuggestions(false);
-          handleSearchClick(); // Trigger the search function
-        } else {
-          // If no suggestions are shown, just run the search
-          handleSearchClick();
-        }
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowDown' && showSuggestions) {
+      setHighlightedIndex((prevIndex) =>
+        prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex
+      );
+    } else if (e.key === 'ArrowUp' && showSuggestions) {
+      setHighlightedIndex((prevIndex) =>
+        prevIndex > 0 ? prevIndex - 1 : 0
+      );
+    } else if (e.key === 'Enter') {
+      if (showSuggestions && highlightedIndex >= 0) {
+        const selectedSuggestion = suggestions[highlightedIndex].name;
+        setSearchTerm(selectedSuggestion);
+        inputRef.current.value = selectedSuggestion;
+        setShowSuggestions(false);
+        handleSearchClick();
+      } else {
+        handleSearchClick();
       }
-    };
+    }
+  };
+  
 
  
 
@@ -282,29 +283,30 @@ const [showModal, setShowModal] = useState(false);
                     <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
                   </button>
                   {showSuggestions && suggestions.length > 0 && (
-                    <ul className="suggestions-list2">
-                      {suggestions.map((suggestion, index) => (
-                      <li
-                      key={index}
-                      className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
-                      onMouseDown={() => {
-                        const selectedSuggestion = suggestion.name;
-                        setSearchTerm(selectedSuggestion); // Set the search term to the selected suggestion
-                        inputRef.current.value = selectedSuggestion; // Update the input field manually
-                        setShowSuggestions(false); // Hide the suggestion list
-                        handleSearchClick(); // Trigger the search for the selected suggestion
-                      }}
-                    >
-                      <img
-                        className="suggestion-image"
-                        src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
-                        alt={suggestion.name}
-                      />
-                      {suggestion.name}
-                    </li>
-                     
-                      ))}
-                    </ul>
+                   <ul className="suggestions-list2">
+                   {suggestions.map((suggestion, index) => (
+                     <li
+                       key={index}
+                       className={`suggestion-item ${index === highlightedIndex ? 'highlighted' : ''}`}
+                       ref={index === highlightedIndex ? (el) => el?.scrollIntoView({ block: 'nearest' }) : null}
+                       onMouseDown={() => {
+                         const selectedSuggestion = suggestion.name;
+                         setSearchTerm(selectedSuggestion);
+                         inputRef.current.value = selectedSuggestion;
+                         setShowSuggestions(false);
+                         handleSearchClick();
+                       }}
+                     >
+                       <img
+                         className="suggestion-image"
+                         src={`https://storage.googleapis.com/motivdle-images/${suggestion.icon}`}
+                         alt={suggestion.name}
+                       />
+                       {suggestion.name}
+                     </li>
+                   ))}
+                 </ul>
+                 
                   )}
                 </div>
                 <p className="guess-tracker">You have made <span className='guess-number'>{guessCount}</span> guesses</p>

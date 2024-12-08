@@ -16,27 +16,21 @@
 .quotey {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 15pt;
-  line-height: 1.6;
-  width: 600px;
-  height: 500px;
+  font-size: 14pt; /* Slightly smaller font size */
+  line-height: 1.4; /* Reduce line height for compactness */
+  width: 700px; /* Smaller width */
+  height: auto; /* Allow height to adjust dynamically based on content */
   margin: 20px auto;
   word-break: break-word;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
   position: relative;
-  bottom: 60px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 20px; /* Add padding for better spacing inside */
+   /* Darker background for better text contrast */
+  border-radius: 10px; /* Rounded corners *//* Subtle shadow for depth */
   overflow: hidden;
-  
-  /* Centering Content */
-  display: flex;  /* Use flexbox for centering */
-  justify-content: center;  /* Center horizontally */
-  align-items: center;  /* Center vertically */
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .quotey2 {
@@ -105,7 +99,7 @@
 }
 
 .thequote {
-  color: #f3b32b; /* Ensure the text is white */
+  color: white; /* Ensure the text is white */
   font-size: clamp(16px, 5vw, 25pt);
   z-index: 2; /* Keep text above the overlay */
   position: relative; /* Position text above any other elements */
@@ -200,7 +194,7 @@
 }
 
 .whosays {
-  color: #fc5460; /* Bright yellow color */
+  color: #f3b32b; /* Bright yellow color */
   font-family: "Oswald", sans-serif;
   font-weight: bolder;
   font-size: 50pt; /* Increase the font size */
@@ -212,7 +206,7 @@
 }
 
 .rounds {
-  color: #fc5460;
+  color: #f3b32b;
   font-size: 30pt; /* Increase font size */
   padding: 0;
   letter-spacing: 1px; /* Slightly increase letter spacing */
@@ -224,13 +218,13 @@
   display: flex;
   justify-content: center;
   align-items: center; /* Add some spacing from other elements */
-  gap: 10px; /* Space between the input and button */
+  left: 50px;
 }
 
 .search-input {
   padding: 15px 20px; /* Increase padding for better feel */
   font-size: 16px;
-  border-radius: 10px; /* Fully rounded corners */
+  border-radius: 10px 25px 25px 10px;
   border: 2px solid #f3b32b; /* Match theme color */
   width: 400px;
   outline: none;
@@ -248,7 +242,9 @@
   border-radius: 25px; /* Fully rounded button */
   cursor: pointer;
   transition: all 0.3s ease;
-  
+  top: 2px;
+  position: relative;
+  left: -65px;
 }
 
 .search-button:active {
@@ -262,13 +258,13 @@
 }
 
 .search-icon {
-  width: 45px; /* Set the desired width for the search icon */
-  height: 45px; /* Set the desired height for the search icon */
+  width: 50px; /* Set the desired width for the search icon */
+  height: 50px; /* Set the desired height for the search icon */
 }
 
 .search-input:focus {
   border-color: #ffd700; /* Highlight border on focus */
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4); /* Glowing effect on focus */
+  
 }
 .search-input.incorrect-guess {
   border-color: orangered;
@@ -280,7 +276,7 @@
 }
 
 .guess-tracker {
-  color: #f3b32b;
+  color: white;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   margin-top: 20px;
@@ -511,10 +507,10 @@
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds shadow effect */
-  transition: box-shadow 0.3s ease; /* Smooth transition on hover */
-  margin-top: 100px;
+  position: relative; /* Needed for tooltip positioning */
+  margin-top: 50px;
 }
 
 .give-up-button:hover {
@@ -522,40 +518,69 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); 
 }
 
+/* Tooltip styles */
+.give-up-button:hover::after {
+  content: 'Give up?'; /* Tooltip text */
+  position: absolute;
+  top: -40px; /* Position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff4b4b; /* Tooltip background color */
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  z-index: 1000;
+}
+
+/* Optional tooltip arrow */
+.give-up-button:hover::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #ff4b4b transparent; /* Arrow pointing down */
+}
+
+
 
 
 .suggestions-list2 {
   position: absolute;
-  top: 100%;  /* Make sure it appears just below the input */
-  left: 810px; /* Align to the left side of the search bar */
-  width: 440px; /* Full width of the parent container (search bar) */
+  top: 90%; /* Adjust placement as needed */
+  left: 827px; /* Adjust for your layout */
+  width: 440px;
   background-color: #f3b32b;
   border: 1px solid #f3b32b;
-   /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 200px;  /* Limit height and make it scrollable */
-  overflow-y: auto;
+  max-height: 200px; /* Limits height */
+  overflow-y: auto; /* Enables vertical scrolling */
   z-index: 1000;
   list-style: none;
   margin: 0;
   padding: 0;
-  border-radius: 10px; /* Smooth rounded corners */
-  overflow: hidden; /* Prevent content overflow */
-}
-.suggestions-list::-webkit-scrollbar {
-  width: 5px;  /* Set scrollbar width */
+  
 }
 
-.suggestions-list::-webkit-scrollbar-thumb {
-  background-color: #333;  /* Dark scrollbar handle */
-  border-radius: 10px;  /* Rounded scrollbar handle */
-  /* Adds padding to the handle */
+
+.suggestions-list2::-webkit-scrollbar {
+  width: 8px;
 }
 
-.suggestions-list::-webkit-scrollbar-track {
-    /* Matches the list background */
-  border-radius: 10px;
+.suggestions-list2::-webkit-scrollbar-thumb {
+  background-color: grey; /* Matches your theme */
 }
+
+.suggestions-list2::-webkit-scrollbar-track {
+  background-color: #e6e6e6; /* Subtle contrast for scrollbar track */
+}
+
 
 .suggestion-item {
   display: flex;
@@ -567,7 +592,7 @@
   color: black;
   text-transform: capitalize;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle divider for items */
+  border-bottom: 1px solid rgba(0, 0, 0, 1); /* Subtle divider for items */
 }
 
 .suggestion-item.highlighted {
@@ -674,7 +699,7 @@
 .suggestion-image {
   width: 70px; /* Increased width */
   height: 70px; /* Increased height */
-  border-radius: 50%; /* Circular image */
+  /* Circular image */
   margin-right: 15px; /* More spacing between image and text */
   object-fit: cover; /* Ensure the image covers the frame without distortion */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visibility */
