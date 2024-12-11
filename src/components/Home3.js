@@ -207,7 +207,7 @@ const [profile, setProfile] = useState(false);
         <div id="section6" className="section" ref={section6Ref} >
         <div className="overlay2">
                 <p className="whosays">
-                  Guess the Movie of this quote<br />
+                  MOTIVDLE MOVIE QUOTE<br />
                   <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 3)</span></p>
                 <div className="quoteandclue">
                 <p className="quotey3"><span className="thequote3">{quote}</span></p>

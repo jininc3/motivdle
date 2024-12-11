@@ -77,8 +77,9 @@ body {
 
 
 .description {
-  font-size: 1.5rem;
-  color: #f3b32b;
+  font-size: 2rem;
+  color: #fc5460;
   max-width: 900px;
   margin: 20px auto;
+  font-weight: bolder;
 }

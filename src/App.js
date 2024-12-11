@@ -7,7 +7,7 @@ import Home2 from './components/Home2';
 import Home3 from './components/Home3';
 import Section3 from './components/Section3';
 import Preloader from './components/Preloader'; // Import Preloader
-import logo from './assets/motivdlelogo.png';
+import logo from './assets/logo50.png';
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(true);

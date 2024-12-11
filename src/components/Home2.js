@@ -212,8 +212,8 @@ const [showModal, setShowModal] = useState(false);
         <div id="section2" className="section" ref={section5Ref} >
         <div className="overlay2">
                 <p className="whosays">
-                  Guess Who Says This Quote?<br />
-                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 2)</span></p>
+                  MOTIVDLE QUOTE <br />
+                  <span className="rounds" style={{ marginTop: '-10px' }}>ROUND 2</span></p>
                 <div className="quoteandclue">
                 <p className="quotey2"><span className="thequote">{quote}</span></p>
                 <div className="button-container">

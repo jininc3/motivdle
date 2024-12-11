@@ -5,7 +5,7 @@ import './Section2.css';
 import Section3 from './Section3';
 import { useLocation } from 'react-router-dom';
 import { db } from '../firebase';
-import titleImage from '../assets/titlered.png';
+import titleImage from '../assets/m10.png';
 import { collection, getDocs, doc, getDoc, setDoc, } from 'firebase/firestore';
 
 function Home() {
@@ -256,13 +256,6 @@ const handleKeyDown = (e) => {
     };
     
    
-    
-
-
-
-      
-      
-
 
     return (
         <div style={backgroundStyle}> {/* Apply dynamic background style here */}
@@ -289,7 +282,7 @@ const handleKeyDown = (e) => {
 <div id="section2" className="section" ref={section2Ref} >
 <div className="overlay2">
         <p className="whosays">
-          INSPIRATIONAL QUOTE<br />
+          MOTIVDLE QUOTE<br />
           <span className="rounds" style={{ marginTop: '-10px' }}>ROUND 1</span></p>
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
@@ -360,7 +353,7 @@ const handleKeyDown = (e) => {
             onKeyDown={handleKeyDown} // Add keydown listener
           />
           <button className="search-button" onClick={handleSearchClick}>
-            <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+            <img src={require('../assets/red-arrow.png')} alt="Search" className="search-icon" />
           </button>
           {showSuggestions && suggestions.length > 0 && (
            <ul className="suggestions-list2">
