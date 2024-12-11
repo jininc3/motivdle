@@ -3,7 +3,7 @@ import './Home.css';
 import './Section2.css'; // Reuse Section2 styles
 import Section5 from './Section5'; // Section5 remains separate for round completion
 import { db } from '../firebase';
-import { collection, getDocs, query, where, doc, getDoc, setDoc, } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, setDoc, } from 'firebase/firestore';
 import './Section5.css';
 
 function Home2() {
@@ -133,19 +133,20 @@ const [showModal, setShowModal] = useState(false);
       if (value.length > 0) {
           const lowerCaseValue = value.toLowerCase();
           const quotesCollection = collection(db, 'quotes');
-          const q = query(
-              quotesCollection,
-              where('name', '>=', lowerCaseValue),
-              where('name', '<=', lowerCaseValue + '\uf8ff')
-          );
+          const querySnapshot = await getDocs(quotesCollection);
   
-          const querySnapshot = await getDocs(q);
-          const results = querySnapshot.docs.map(doc => ({
-              name: doc.data().name,
-              icon: doc.data().icon,
-          })).filter(suggestion => suggestion.name.toLowerCase().includes(lowerCaseValue));
+          // Filter suggestions based on search term matching first or last name
+          const results = querySnapshot.docs.map(doc => {
+              const data = doc.data();
+              const nameParts = data.name.toLowerCase().split(" "); // Split name into parts (first and last)
+              return {
+                  name: data.name,
+                  icon: data.icon,
+                  matches: nameParts.some(part => part.startsWith(lowerCaseValue)) // Check if any part matches
+              };
+          }).filter(suggestion => suggestion.matches); // Keep only matching suggestions
   
-          // Filter out duplicates based on the 'name' field
+          // Remove duplicates
           const uniqueResults = results.filter(
               (suggestion, index, self) =>
                   index === self.findIndex((s) => s.name.toLowerCase() === suggestion.name.toLowerCase())

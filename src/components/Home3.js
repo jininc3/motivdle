@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Section2.css'; // Reuse Section2 styles for consistency
 import Section6 from './Section6'; // Use Section6 as the final section for this round
 import { db } from '../firebase';
-import { collection, getDocs, query, where, doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
 
 function Home3() {
     const [isSection6Visible, setIsSection6Visible] = useState(false);
@@ -131,20 +131,21 @@ const [profile, setProfile] = useState(false);
   
       if (value.length > 0) {
           const lowerCaseValue = value.toLowerCase();
-          const movieQuotesCollection = collection(db, 'moviequotes');
-          const q = query(
-              movieQuotesCollection,
-              where('name', '>=', lowerCaseValue),
-              where('name', '<=', lowerCaseValue + '\uf8ff')
-          );
+          const quotesCollection = collection(db, 'moviequotes');
+          const querySnapshot = await getDocs(quotesCollection);
   
-          const querySnapshot = await getDocs(q);
-          const results = querySnapshot.docs.map(doc => ({
-              name: doc.data().name,
-              icon: doc.data().icon,
-          })).filter(suggestion => suggestion.name.toLowerCase().includes(lowerCaseValue));
+          // Filter suggestions based on search term matching first or last name
+          const results = querySnapshot.docs.map(doc => {
+              const data = doc.data();
+              const nameParts = data.name.toLowerCase().split(" "); // Split name into parts (first and last)
+              return {
+                  name: data.name,
+                  icon: data.icon,
+                  matches: nameParts.some(part => part.startsWith(lowerCaseValue)) // Check if any part matches
+              };
+          }).filter(suggestion => suggestion.matches); // Keep only matching suggestions
   
-          // Filter out duplicates based on the 'name' field
+          // Remove duplicates
           const uniqueResults = results.filter(
               (suggestion, index, self) =>
                   index === self.findIndex((s) => s.name.toLowerCase() === suggestion.name.toLowerCase())
