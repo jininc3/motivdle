@@ -1,3 +1,5 @@
+
+
 .overlay2 {
   position: relative;
   top: 47%; /* Adjust as needed to vertically center */
@@ -943,34 +945,5 @@
     transition: all 0.3s ease;
   }
 
-  .quotey3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 15pt;
-    line-height: 1.6;
-    padding: 30px;
-    
-    width: 500px;
-    height: 400px;
-    margin: 20px auto;
-    word-break: break-word;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
-    border: 50px solid black;
-    position: relative;
-    background-image: url('../assets/t1.png');
-    
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  
-    overflow: hidden;
-    border: solid;
-    /* Centering Content */
-    display: flex;  /* Use flexbox for centering */
-    justify-content: center;  /* Center horizontally */
-    align-items: center;  /* Center vertically */
-    text-align: center;
-  }
+
 }

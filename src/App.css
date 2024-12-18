@@ -8,8 +8,8 @@ body, html {
 
 body {
   background-image: url('./assets/m11.png'); /* Ensure the path is correct */
-  
-  background-size: cover; /* Make the image cover the entire viewport */
+  background-color: black;
+  background-size: 80%; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -28,9 +28,10 @@ body::before {
   width: 100%;
   height: 100%;
   filter: brightness(0.5);
-  background-image: url('./assets/m11.png');
+  background-image: url('./assets/m11.png'), url('./assets/blur1.png');
+  
  /* Ensure the path is correct */
-  background-size: cover; /* Make the image cover the entire viewport */
+  background-size: 95% 100%, cover; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -38,6 +39,9 @@ body::before {
   z-index: -1; /* Push the background behind other content */
   
 }
+
+
+
 
 
 .App {

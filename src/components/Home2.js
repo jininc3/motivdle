@@ -210,7 +210,7 @@ const [showModal, setShowModal] = useState(false);
       <div style={backgroundStyle}>
       
         <div id="section2" className="section" ref={section5Ref} >
-        <div className="overlay2">
+        <div className="overlay2 home2" >
                 <p className="whosays">
                   MOTIVDLE QUOTE <br />
                   <span className="rounds" style={{ marginTop: '-10px' }}>ROUND 2</span></p>

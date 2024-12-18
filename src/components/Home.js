@@ -32,7 +32,7 @@ function Home() {
     const [quoteInfluencer] = useState(""); // Define state for the influencer
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true); 
     const [profile, setProfile] = useState(false);
-const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
 
 
