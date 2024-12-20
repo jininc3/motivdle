@@ -68,6 +68,7 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName, profileDescr
     return (
         <div id="section3" className="section3" ref={ref}>
             <div className="overlay-3">
+            <div className="video-container3">
                 {isVideoLoaded ? (
                     <video ref={videoRef} className="middle-video3 fade-in" controls preload="auto"  >
                         <source src={videoSrc} type="video/mp4" />
@@ -76,6 +77,7 @@ const Section3 = React.forwardRef(({ influencerName, videoFileName, profileDescr
                 ) : (
                     <p>Loading video...</p>
                 )}
+                </div>
                 <div className="text-content3">
                     <h1 className="congratulations-title3">
                         <span className="congratulations-text3">CONGRATULATIONS!</span>

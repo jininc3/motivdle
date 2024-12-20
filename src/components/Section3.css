@@ -8,7 +8,7 @@
    align-items: flex-start;
     width: 100%; 
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for depth */
+    
     color: white;
 }
 
@@ -23,11 +23,14 @@
 
 }
 
+
+  
+
 .middle-video3 {
     max-width: 450px; /* Increase the width to make the video bigger */
     height:auto;
-    margin-right: 20px; /* Add space between video and text */
-    
+    /* Add space between video and text */
+    border: solid #fc5460;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
     opacity: 1; /* Make it visible */
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out;
@@ -41,7 +44,7 @@
     padding: 20px;
      /* Remove top margin */
     text-align: center;
-    margin-left: 20px; /* Align with the video on the left */
+   /* Align with the video on the left */
     
 }
 
@@ -76,7 +79,7 @@
 }
 
 .influencer-name3 {
-    color: #f3b32b; /* Yellow color for the name */
+    color:  #fc5460; /* Yellow color for the name */
     font-size: 3rem; /* Adjust size */
     display: inline;
 }
@@ -95,7 +98,7 @@ border-radius: 10px;
     bottom: 10px;/* Positioned 20px from the bottom */
     left: 56%; /* Positioned in the middle */
     transform: translateX(-50%); /* Center the button horizontally */
-    background-color: #f3b32b; /* Green background */
+    background-color:  #fc5460; /* Green background */
   color: black; /* Button text color */
     font-family: "Oswald", sans-serif; 
     z-index: 1000;
@@ -125,7 +128,7 @@ border-radius: 10px;
     background-image: url("../assets/l100.jpg"); 
     
    /* Ensure proper opacity */
-    color: #f3b32b;
+    color:  #fc5460;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.9); /* Enhanced shadow */
@@ -173,7 +176,7 @@ border-radius: 10px;
 .overlay-close {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #f3b32b;
+    background-color:  #fc5460;
     color: black;
     border: none;
     cursor: pointer;

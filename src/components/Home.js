@@ -284,7 +284,7 @@ const handleKeyDown = (e) => {
 <div id="section2" className="section" ref={section2Ref} >
 <div className="overlay2">
         <p className="whosays">
-          MOTIVDLE QUOTE<br />
+          GUESS THE VOICE OF INSPIRATION<br />
           <span className="rounds" style={{ marginTop: '-10px' }}>ROUND 1</span></p>
         <div className="quoteandclue">
         <p className="quotey"><span className="thequote">{quote}</span></p>
@@ -324,15 +324,10 @@ const handleKeyDown = (e) => {
         >
             <img className="icons" src={require('../assets/give-up.png')} alt="Give Up" />
         </button>
-        <span className="hint-description">GIVE UP</span>
+        <span className="hint-description3">GIVE UP</span>
     </div>
 
 </div>
-
-
-
-
-
         <div className="hint-container">
   {showHint1 && (
     <div className="hint-bubble hint-bubble1">{hint1}</div>
