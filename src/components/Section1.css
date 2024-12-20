@@ -1,24 +1,7 @@
-.section1 {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: -100px;
-}
 
 
-.title-home {
-  font-size: 20rem;
-  color: #f3b32b;
-  margin: 0;
-  text-align: center;
-  letter-spacing: -8px; /* Adjust letter spacing to reduce the gap between letters */
-  
-  padding: 0px;
-  margin-bottom: -50px;
-}
+
+
 
 
 

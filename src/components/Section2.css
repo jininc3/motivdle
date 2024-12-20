@@ -1,4 +1,12 @@
-
+.section1 {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -100px;
+}
 
 .overlay2 {
   position: relative;
@@ -10,10 +18,13 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  
   padding: 30px;
   
 }
+
+
+
 
 .quotey {
   font-family: 'Montserrat', sans-serif;

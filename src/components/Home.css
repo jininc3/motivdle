@@ -34,17 +34,19 @@ body {
 
 
 .title-home {
-  font-size: 20rem;
+  
   color: #FCA311;
   margin: 0;
   text-align: center;
   letter-spacing: -8px; /* Adjust letter spacing to reduce the gap between letters */
   background-color: transparent;
-  
+  position: absolute;
   padding: 0px;
-  margin-bottom: -500px;
-  width: 1000px;
+  right: 150px;
+  top: 200px;
+  width: 800px;
   height: auto;
+  z-index: 2;
 }
 
 
@@ -52,34 +54,52 @@ body {
 
 /* Play button styling */
 .test-button {
-  margin-top: 40px;
   color: black; /* Black text */
   font-size: 1.5rem;
   padding: 15px 40px;
-  border: none;
+  border: solid black;
   cursor: pointer;
-  transition: all 0.5s ease;
- font-weight: bolder;
-  background-color: white; /* Fully yellow background */
-  position: relative;
-  overflow: hidden; /* To handle the animated background effect */
+  transition: all 0.3s ease;
+  font-weight: 600;
+  background-color: #f04c4c; /* Red background */
+  position: absolute;
+  top: 900px;
+  right: 400px;
+  overflow: hidden;
   z-index: 1;
   border-radius: 15px;
+
+  /* Add box shadow */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Main shadow */
+              
 }
 
 .test-button:hover {
-  background-color: black; /* A slightly darker shade of yellow on hover */
-  color:white ; /* Keep text black on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add a shadow */
-  transform: scale(1.05); /* Scale the button slightly */
+  background-color: black; /* Change background on hover */
+  color: white; /* Change text color */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* Larger shadow on hover */
+              
+  transform: scale(1.1); /* Slightly enlarge the button */
 }
+
 
 
 
 .description {
-  font-size: 2rem;
-  color: #fc5460;
-  max-width: 900px;
+  font-size: 4rem;
+  color: #f04c4c;
+  max-width: 800px;
   margin: 20px auto;
   font-weight: bolder;
+  position:absolute;
+  top: 600px;
+  right: 320px;
+  z-index: 2;
+
+  /* Add black border around text */
+  text-shadow: 
+    -1px -1px 0 #000,  /* Top-left shadow */
+    1px -1px 0 #000,   /* Top-right shadow */
+    -1px 1px 0 #000,   /* Bottom-left shadow */
+    1px 1px 0 #000;    /* Bottom-right shadow */
 }

@@ -9,7 +9,7 @@ body, html {
 body {
   background-image: url('./assets/m11.png'); /* Ensure the path is correct */
   background-color: black;
-  background-size: 80%; /* Make the image cover the entire viewport */
+  background-size: 100%; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -24,14 +24,14 @@ body::before {
   content: '';
   position: fixed; /* Ensures it covers the viewport */
   top: 0;
-  left: 0;
+  
   width: 100%;
   height: 100%;
   filter: brightness(0.5);
   background-image: url('./assets/m11.png'), url('./assets/blur1.png');
   
  /* Ensure the path is correct */
-  background-size: 95% 100%, cover; /* Make the image cover the entire viewport */
+  background-size: 100% 100%, cover; /* Make the image cover the entire viewport */
   background-attachment: fixed; /* Fix the image so it doesn't move when scrolling */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -43,7 +43,6 @@ body::before {
 
 
 
-
 .App {
   text-align: center;
 }
@@ -51,23 +50,23 @@ body::before {
 /* Style for the menu button */
 .menu-button {
   position: fixed;
-  top: 12px; /* Adjust as needed */
+  top: 10px; /* Adjust as needed */
   left:3%; /* Center horizontally */
   transform: translateX(-50%);
   z-index: 1000;
-  background-color: transparent;
+  background-color: #fc5460;
   border: 2px solid #fc5460;
   color: #fc5460;
-  padding: 5px 10px;
+  padding: 3px 10px;
   font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Oswald", sans-serif;
   cursor: pointer;
   transition: transform 0.3s ease;
   border-radius: 15px;
 }
 
 .menu-button:hover {
-  background-color: #f3b32b;
+  background-color: #fc5460;
   color: white;
 }
 
@@ -83,11 +82,11 @@ body::before {
 
 
 .active-link {
-  background-color: #e8ac34; /* Highlight effect */
+  background-color: #fc5460; /* Highlight effect */
   color: black; /* Change text color */
   padding-left: 20px;
   font-weight: bold;
-  border-left: 5px solid #e8ac34; /* Optional border for extra highlight */
+  border-left: 5px solid #fc5460; /* Optional border for extra highlight */
 }
 
 
@@ -100,7 +99,7 @@ body::before {
   left: 0;
   height: 50px; /* Thinner height */
   width: 100%;
-  background-color: #fc5460; /* Transparent yellow for modern look */
+  background-color: transparent; /* Transparent yellow for modern look */
   transition: top 0.3s ease;
   display: flex;
   flex-direction: row; /* Horizontal layout */
@@ -121,15 +120,15 @@ body::before {
   font-size: 12pt; /* Slightly smaller font */
   font-family: "Oswald", sans-serif;
   font-weight: 600; /* Bold for emphasis */
-  color: black;
+  color: #fc5460;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
   border-radius: 5px; /* Rounded edges for hover effect */
 }
 
 .nav-item:hover {
-  background-color: #ffd700; /* Highlight on hover */
-  color: white; /* Change text color */
+  background-color: white; /* Highlight on hover */
+  color: #fc5460; /* Change text color */
   transform: scale(1.05); /* Slight scaling effect on hover */
 }
 
@@ -147,8 +146,8 @@ body::before {
 
 .logo-container {
   position: fixed;
-  top: 20px;
-  left: -3%; /* Move to the right side */
+  top: 50px;
+  left: -2%; /* Move to the right side */
   transform: translateX(50%); /* Adjust for the right-aligned position */
   z-index: 1000;
   padding: 10px 0;

@@ -6,6 +6,7 @@ import Section3 from './Section3';
 import { useLocation } from 'react-router-dom';
 import { db } from '../firebase';
 import titleImage from '../assets/m10.png';
+
 import { collection, getDocs, doc, getDoc, setDoc, } from 'firebase/firestore';
 
 function Home() {
@@ -266,7 +267,7 @@ const handleKeyDown = (e) => {
             <img src={titleImage} alt="MOTIVDLE" className="title-home" />
             <br></br><br></br>
                 <p className="description">
-                "Guess who said the daily motivational quote and take away some inspiration! All quotes are from real-life achievers and winners."
+                GUESS THE QUOTE.<br></br> GET INSPIRED.
                 </p>
                 <button
                     id="scrollButton"
@@ -275,6 +276,7 @@ const handleKeyDown = (e) => {
                 >
                     MOTIVDLE ROUND 1
                 </button>
+                
             </div>
 
             {/* Section2 Content */}

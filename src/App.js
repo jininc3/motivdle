@@ -7,7 +7,8 @@ import Home2 from './components/Home2';
 import Home3 from './components/Home3';
 import Section3 from './components/Section3';
 import Preloader from './components/Preloader'; // Import Preloader
-import logo from './assets/motivdlelogo.png';
+
+
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(true);
@@ -22,12 +23,10 @@ function App() {
       {!isLoaded && <Preloader onLoadComplete={() => setIsLoaded(true)} />}
       {isLoaded && (
         <div className="App">
-          <div className="logo-container">
-            <a href="/"><img src={logo} alt="Cheetah Logo" className="cheetah-logo" /></a>
-          </div>
+           
 
           <button className={`menu-button ${isNavOpen ? 'open' : ''}`} onClick={toggleNav}>
-            Menu
+            MENU
           </button>
 
           <div className={`nav-menu ${isNavOpen ? 'open' : ''}`}>
