@@ -456,8 +456,8 @@
   font-family: "Oswald", sans-serif;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
-  top: 185px; 
-  right: 415px;
+  top: 140px; 
+  right: 650px;
   z-index: 10;
   transition: all 0.3s ease;
 }
@@ -490,8 +490,8 @@
   font-family: "Oswald", sans-serif;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
-  top: 185px; 
-  right: 415px;
+  top: 130px; 
+  right: 610px;
   z-index: 10;
   transition: all 0.3s ease;
 }
@@ -526,7 +526,7 @@
 
 /* Add hover effect to give the hint more interaction */
 .hint-bubble:hover {
-  background-color: #fc5460; /* Slightly lighter yellow on hover */
+  background-color: white; /* Slightly lighter yellow on hover */
   transform: translateY(-5px); /* Subtle lift on hover */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }

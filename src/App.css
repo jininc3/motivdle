@@ -58,7 +58,7 @@ body::before {
   border: 2px solid #fc5460;
   color: #fc5460;
   padding: 3px 10px;
-  font-size: 16px;
+  font-size: 20px;
   font-family: "Oswald", sans-serif;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -97,7 +97,7 @@ body::before {
   position: fixed;
   top: -60px; /* Hidden initially */
   left: 0;
-  height: 50px; /* Thinner height */
+  height: 60px; /* Thinner height */
   width: 100%;
   background-color: transparent; /* Transparent yellow for modern look */
   transition: top 0.3s ease;
@@ -117,7 +117,7 @@ body::before {
 
 .nav-item {
   padding: 5px 100px; /* Smaller padding for a thinner menu */
-  font-size: 12pt; /* Slightly smaller font */
+  font-size: 20pt; 
   font-family: "Oswald", sans-serif;
   font-weight: 600; /* Bold for emphasis */
   color: #fc5460;

@@ -28,23 +28,32 @@
 
 .middle-video3 {
     max-width: 450px; /* Increase the width to make the video bigger */
-    height:auto;
+    height: auto;
     /* Add space between video and text */
-    border: solid #fc5460;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
+    border: solid 4px #fc5460;
+    box-shadow: 0px 0px 10px #fc5460, 0px 0px 20px #fc5460, 0px 0px 30px #fc5460;
     opacity: 1; /* Make it visible */
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease-in-out;
     z-index: 1000;
 }
 
 
+
 .text-content3 {
     max-width: 800px; 
     height: 500px;/* Adjust width as needed */
     padding: 20px;
+    margin-left: 100px;
      /* Remove top margin */
     text-align: center;
    /* Align with the video on the left */
+background: transparent;
+   background: rgba(0, 0, 0, 0.5); /* Optional: Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply the blur effect */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10%;
+  border: solid 4px #fc5460;
+    box-shadow: 0px 0px 10px #fc5460, 0px 0px 20px #fc5460, 0px 0px 30px #fc5460;
     
 }
 
@@ -96,7 +105,7 @@ border-radius: 10px;
     transition: opacity 1s ease-in-out, transform 0.5s ease-out; /* Smooth transition for fade-in effect */
     position: fixed; /* Changed to fixed positioning */
     bottom: 10px;/* Positioned 20px from the bottom */
-    left: 56%; /* Positioned in the middle */
+    right: 300px; /* Positioned in the middle */
     transform: translateX(-50%); /* Center the button horizontally */
     background-color:  #fc5460; /* Green background */
   color: black; /* Button text color */
@@ -128,7 +137,7 @@ border-radius: 10px;
     background-image: url("../assets/l100.jpg"); 
     
    /* Ensure proper opacity */
-    color:  #fc5460;
+    color:  white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.9); /* Enhanced shadow */
@@ -150,7 +159,7 @@ border-radius: 10px;
     left: 0;
     width: 100%;
     height: 100%;
-    filter: brightness(0.5);
+    filter: brightness(0.3);
     background-image: url('../assets/l100.jpg');
    /* Ensure the path is correct */
     background-size: cover; /* Make the image cover the entire viewport */
@@ -171,6 +180,7 @@ border-radius: 10px;
 .finish-overlay p {
     margin: 10px 0; 
     font-size: 2.5rem;
+    color: white;
 }
 
 .overlay-close {

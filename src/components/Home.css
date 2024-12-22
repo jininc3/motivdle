@@ -42,9 +42,9 @@ body {
   background-color: transparent;
   position: absolute;
   padding: 0px;
-  right: 150px;
-  top: 200px;
-  width: 800px;
+  
+  top: 300px;
+  width: 700px;
   height: auto;
   z-index: 2;
 }
@@ -63,8 +63,8 @@ body {
   font-weight: 600;
   background-color: #f04c4c; /* Red background */
   position: absolute;
-  top: 900px;
-  right: 400px;
+  top: 800px;
+  
   overflow: hidden;
   z-index: 1;
   border-radius: 15px;
@@ -86,14 +86,13 @@ body {
 
 
 .description {
-  font-size: 4rem;
+  font-size: 3rem;
   color: #f04c4c;
-  max-width: 800px;
+  max-width: 500px;
   margin: 20px auto;
   font-weight: bolder;
   position:absolute;
   top: 600px;
-  right: 320px;
   z-index: 2;
 
   /* Add black border around text */

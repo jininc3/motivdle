@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+  import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
 import './Section1.css'; // Keep the styles for Section1
 import './Section2.css';

@@ -141,10 +141,10 @@ const Section6 = React.forwardRef(({ influencerName, videoFileName, profileDescr
                 <div className="finish-overlay">
                     <h2>Congratulations on finishing today's Motivdle!</h2>
                     <p>
-                        Time left until the next Motivdle: <span className="highlight">{timeLeft}</span>
+                        Next Motivdle in: <span className="highlight">{timeLeft}</span>
                     </p>
                     <p>
-                        Number of participants who finished today: <span className="highlight">{finishCount}</span>
+                        No. of people who finished Motivdle today: <span className="highlight">{finishCount}</span>
                     </p>
                     <button className="overlay-close" onClick={handleOverlayClose}>
                         Close

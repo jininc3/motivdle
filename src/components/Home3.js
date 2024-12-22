@@ -210,7 +210,7 @@ const [profile, setProfile] = useState(false);
                   MOTIVDLE MOVIE QUOTE<br />
                   <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 3)</span></p>
                 <div className="quoteandclue">
-                <p className="quotey3"><span className="thequote3">{quote}</span></p>
+                <p className="quotey"><span className="thequote3">{quote}</span></p>
                 <div className="button-container">
                 <div className="hint-wrapper">
             <button
@@ -248,7 +248,7 @@ const [profile, setProfile] = useState(false);
         >
             <img className="icons" src={require('../assets/give-up.png')} alt="Give Up" />
         </button>
-        <span className="hint-description">GIVE UP</span>
+        <span className="hint-description3">GIVE UP</span>
     </div>
         </div>
         
@@ -276,7 +276,7 @@ const [profile, setProfile] = useState(false);
                     onKeyDown={handleKeyDown} // Add keydown listener
                   />
                   <button className="search-button" onClick={handleSearchClick}>
-                    <img src={require('../assets/search.png')} alt="Search" className="search-icon" />
+                    <img src={require('../assets/red-arrow.png')} alt="Search" className="search-icon" />
                   </button>
                   {showSuggestions && suggestions.length > 0 && (
                     <ul className="suggestions-list2">
