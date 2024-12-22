@@ -838,7 +838,7 @@
 
 
 
-@media (max-width: 461px) {
+@media (min-width: 0px) and (max-width: 461px) {
   /* Adjust the quote container */
   .section1,
   .section {
