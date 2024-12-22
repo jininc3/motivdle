@@ -340,7 +340,7 @@
   position: relative;
   top: 0px;
   font-weight: bold;
-  font-size: 24px; /* Increase font size */
+  font-size: 20px; /* Increase font size */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
 }
 
@@ -838,173 +838,183 @@
 
 
 
-@media (min-width:0px) and (max-width: 1921px) {
-  .quotey {
-    height: 350px;
-    width: 450px;
+@media (max-width: 431px) {
+  /* Adjust the quote container */
+  .section1,
+  .section {
+    width: 100%; /* Ensure sections fit within the viewport width */
+    overflow-x: hidden; /* Prevent horizontal scrolling within sections */
   }
 
-  .overlay2 {
-    position: relative;
-    top: 45%; /* Adjust as needed to vertically center */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: black;
-    text-align: center;
+
+    .whosays {
+      color: #fc5460; /* Bright text color */
+      font-family: "Oswald", sans-serif;
+      font-weight: bolder;
+      font-size: 25pt; /* Adjust for smaller screens */
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      backdrop-filter: blur(10px); /* Blur effect */
+      -webkit-backdrop-filter: blur(10px); /* For Safari support */
+      text-shadow: 
+        -1px -1px 0 #000,  /* Top-left shadow */
+        1px -1px 0 #000,   /* Top-right shadow */
+        -1px 1px 0 #000,   /* Bottom-left shadow */
+        1px 1px 0 #000;    /* Bottom-right shadow */
+      width: 90%; /* Adjust width to fit smaller screens */
+      position: relative; /* Change to relative for easier positioning */
+      top: 100px;
+      left: 212px;
+      /* Center horizontally */
+       /* Adjust padding */
+      border-radius: 15px; /* Rounded corners */
+      line-height: 1.2; /* Adjust line height */
+      text-transform: uppercase; /* Capitalize text */
+      text-align: center; /* Ensure text alignment */
+    }
+
+
+    .overlay2 {
+      position: relative;
+      transform: translate(-50%, -50%);
+      color: black;
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      
+      padding: 30px;
+      
+    }
+  
+  
+
+
+    .quotey {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 18pt;
+      line-height: 1.4;
+      width: 90%; /* Use a percentage to make it responsive */
+      max-width: 700px; /* Add a max-width for larger screens */
+      height: auto; /* Allow the height to adjust dynamically */
+      margin: 20px auto; /* Center horizontally and add spacing from other elements */
+      word-break: break-word;
+      text-align: center;
+      position: relative;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      backdrop-filter: blur(10px); /* Apply blur effect */
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
+      padding: 20px; /* Add padding for better spacing */
+      border-radius: 10px; /* Rounded corners */
+      border: solid #fc5460; /* Match your theme color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 20px; 
+      left: 10px;
+    }
+    
+
+  .thequote {
+    font-size: 20px; /* Scale the font size for small screens */
+    line-height: 1.4; /* Adjust line height for readability */
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    
+    max-width: 100%;
   }
 
-  .whosays {
-    color: #f3b32b; /* Bright yellow color */
-    font-family: "Oswald", sans-serif;
-    font-weight: bolder;
-    font-size: 40pt; /* Increase the font size */
-    margin-top:0px; /* Increase space below */
-    background-color: white;
-    border-radius: 15px;
-    padding: 0; /* Remove padding */
-    line-height: 1.2; /* Adjust line height */
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); /* Add shadow for depth */
-    text-transform: uppercase; /* Capitalize text */
-  }
-  
-  .rounds {
+  /* Adjust the header section */
+  .guess-tracker {
     color: white;
-    font-size: 20pt; /* Increase font size */
-    padding: 0;
-    margin-top: 20px; /* Adjust margin to bring closer to the title */
-    letter-spacing: 1px; /* Slightly increase letter spacing */
+    font-family: "Oswald", sans-serif;
+    position: relative;
+    top: -150px;
     font-weight: bold;
-    text-transform: uppercase; /* Capitalize text */
+    font-size: 20px; /* Increase font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
+  } 
+
+  /* Search bar container adjustments */
+  .search-bar-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align elements */
+    gap: 10px; /* Add spacing between the input and button */
+    margin-top: 20px; /* Add spacing from the previous element */
+    width: 300px;
+    position: relative;
+    top: -100px;
   }
 
-  .button-container {
-    right: 600px;
+  .search-input {
+    width: 90%; /* Scale input to fit screen */
+    padding: 10px; /* Adjust padding */
+    font-size: 14px; /* Reduce font size */
+    position: relative;
+    left: 10px;
   }
 
-  .hint-bubble1 {
-    position: absolute;
-    background-color: #f3b32b; /* Bright yellow background */
-    color: black;
-    padding: 15px 20px;
-    
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-    top: 110px; 
-    right: 375px;
-    z-index: 10;
-    transition: all 0.3s ease;
-  }
-  
-  .hint-bubble2 {
-    position: absolute;
-    background-color: #f3b32b; /* Bright yellow background */
-    color: black;
-    padding: 15px 20px;
-    
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-    top: 203px; 
-    right: 345px;
-    z-index: 10;
-    transition: all 0.3s ease;
-  }
-  .hint-bubble3 {
-    position: absolute;
-    background-color: #f3b32b; /* Bright yellow background */
-    color: black;
-    padding: 15px 20px;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-    top: 120px; 
-    right: 545px;
-    z-index: 10;
-    transition: all 0.3s ease;
-  }
-  
-  .hint-bubble4 {
-    position: absolute;
-    background-color: #fc5460; /* Bright yellow background */
-    color: black;
-    padding: 15px 20px;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-    top: 210px; 
-    right: 540px;
-    z-index: 10;
-    transition: all 0.3s ease;
+  .search-button {
+    width: auto; /* Adjust width to fit content */
+    padding: 8px; /* Adjust padding */
+    font-size: 14px; /* Reduce font size */
+    position: relative;
+    top: 87px;
+    left: 140px;
   }
 
   .suggestions-list2 {
     position: absolute;
-    top: 90%;  /* Make sure it appears just below the input */
-    left: 675px; /* Align to the left side of the search bar */
-    width: 440px; /* Full width of the parent container (search bar) */
-    background-color: #fc5460;
+    top: calc(100% + 75px); /* Position just below the search input */
+    left: 14px; /* Align with the input */
+    width: 96%; /* Match the width of the search input */
+    max-width: 300px; /* Ensure it stays within screen boundaries */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Add blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
     border: 1px solid #fc5460;
-     /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-height: 200px;  /* Limit height and make it scrollable */
-    overflow-y: auto;
+    max-height: 200px; /* Limit height */
+    overflow-y: auto; /* Enable scrolling if items exceed max height */
     z-index: 1000;
     list-style: none;
-    margin: 0;
     padding: 0;
-    border-radius: 15px;
-  }
-
-  .hint-bubble5 {
-    position: absolute;
-    background-color: #f3b32b; /* Bright yellow background */
-    color: black;
-    padding: 15px 20px;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-    top: 120px; 
-    right: 545px;
-    z-index: 10;
-    transition: all 0.3s ease;
+    margin: 0;
   }
   
-  .hint-bubble6 {
-    position: absolute;
-    background-color: #f3b32b; /* Bright yellow background */
-    color: black;
-    padding: 15px 20px;
-    border-radius: 15px;
-    font-size: 14px;
+  .suggestion-item {
+    padding: 10px; /* Adjust padding for better spacing */
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size for readability */
     font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-    top: 210px; 
-    right: 540px;
-    z-index: 10;
-    transition: all 0.3s ease;
+    color: #fc5460;
+    text-transform: capitalize;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle divider */
+  }
+  
+  .suggestion-item:hover {
+    background-color: #fc5460; /* Highlight on hover */
+    color: white; /* Change text color */
+  }
+  
+  .suggestion-item.highlighted {
+    background-color: #fc5460; /* Highlight for keyboard navigation */
+    color: white;
+  }
+  
+
+  /* Adjust the incorrect guesses section */
+  .incorrect-guesses {
+    font-size: 12px; /* Reduce font size for mobile */
+    text-align: center; /* Align text in the center */
+    position: relative;
+    top:-50px;
   }
 
-
+  /* Footer adjustments */
+  .footer {
+    font-size: 12px; /* Reduce font size */
+    text-align: center; /* Center-align the footer */
+    padding: 10px; /* Adjust padding */
+  }
 }
+

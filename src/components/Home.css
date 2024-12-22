@@ -102,3 +102,64 @@ body {
     -1px 1px 0 #000,   /* Bottom-left shadow */
     1px 1px 0 #000;    /* Bottom-right shadow */
 }
+
+
+
+
+
+@media (min-width:0px) and (max-width: 431px) {
+  .title-home {
+    margin: 0;
+    text-align: center;
+    letter-spacing: -8px; /* Adjust letter spacing to reduce the gap between letters */
+    background-color: transparent;
+    position: absolute;
+    padding: 0px;
+    
+    top: 300px;
+    width: 400px;
+    height: auto;
+    z-index: 2;
+  }
+
+
+  .description {
+    font-size: 2.5rem;
+    color: #f04c4c;
+    max-width: 400px;
+    margin: 20px auto;
+    font-weight: bolder;
+    position:absolute;
+    top: 500px;
+    z-index: 2;
+  
+    /* Add black border around text */
+    text-shadow: 
+      -1px -1px 0 #000,  /* Top-left shadow */
+      1px -1px 0 #000,   /* Top-right shadow */
+      -1px 1px 0 #000,   /* Bottom-left shadow */
+      1px 1px 0 #000;    /* Bottom-right shadow */
+  }
+
+  .test-button {
+    color: black; /* Black text */
+    font-size: 1rem;
+    padding: 15px 40px;
+    border: solid black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    background-color: #f04c4c; /* Red background */
+    position: absolute;
+    top: 700px;
+    
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 15px;
+  
+    /* Add box shadow */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Main shadow */
+                
+  }
+
+}

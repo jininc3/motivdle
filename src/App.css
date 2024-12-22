@@ -243,32 +243,49 @@ a .title:hover {
 }
 
 
-@media (min-width:0px) and (max-width: 1921px) {
-  .nav-menu {
-    position: fixed;
-    left: -400px; /* Hidden initially */
-    height: 100%;
-    width: 200px;
-    background-color: #f3b32b;
-    transition: left 0.3s ease;
-  
+@media (min-width: 0px) and (max-width: 431px) {
+  body {
+    background-image: url('./assets/m11.png'); /* Use only the larger image */
+    background-size: cover;
+     /* Zoom and scale proportionally */
+    background-position: center; /* Focus the background in the center */
+    background-repeat: no-repeat; /* No repeating */
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center; /* Ensures everything inside is centered */
-    z-index: 999;
-    gap: 100px;
-    padding: 20px;
-    border-radius: 0 10px 10px 0;
-  }
+    font-family: Arial, sans-serif;
+    color: white;
+    
+}
 
-  .menu-button.open {
-    left: 160px; /* Move the button when the menu is open */
-    transform: rotate(90deg);
-    color: black;
-    border: solid black;
-  }
 
+/* Optional for a content layer on top */
+body::before {
+  content: ''; /* Remove if used */
+  background-size: 150%;
+  display: none; /* Hides the additional layer */
+  background-image: url('./assets/m11.png'); /* Use only the larger image */
+    background-size: cover;
+     /* Zoom and scale proportionally */
+    background-position: center; /* Focus the background in the center */
+    background-repeat: no-repeat; /* No repeating */
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    
 
 }
+.nav-menu {
+  display: none; /* Hide the navigation menu */
+}
+
+  
+  .menu-button {
+      display: none;
+  }
+
+  .footer {
+      font-size: 0.8rem; /* Scale down footer text */
+      text-align: center;
+      padding: 10px;
+  }
+}
+
