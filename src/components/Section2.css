@@ -120,9 +120,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  right:700px;
-  bottom: 100px ;
-  align-items: flex-start;
+  right:790px;
+  height: 300px;
+  top: 120px;
   justify-content: space-evenly;
 }
 
@@ -132,7 +132,7 @@
   z-index: 2; /* Keep text above the overlay */
   position: relative; /* Position text above any other elements */
   text-shadow: 2px 1px 2px rgba(0, 0, 0, 1); /* Add subtle shadow to enhance visibility */
-  width: 550px;
+  width: 500px;
  
   height: auto;
   font-family: "Oswald", sans-serif;
@@ -181,10 +181,7 @@
 
 
 
-.quotey:hover {
-  transform: scale(1.02);
-  
-}
+
 
 .quotey.fit-text {
   font-size: calc(50px + (25 - 50) * ((100vw - 300px) / (1600 - 300)));
@@ -221,6 +218,10 @@
   color: black; /* Change text to green on hover */
 }
 
+.title-container {
+  display: block;
+}
+
 .whosays {
   color: #fc5460; /* Bright text color */
   font-family: "Oswald", sans-serif;
@@ -235,7 +236,7 @@
     1px -1px 0 #000,   /* Top-right shadow */
     -1px 1px 0 #000,   /* Bottom-left shadow */
     1px 1px 0 #000;    /* Bottom-right shadow */
-  width: 500px;
+  width: 600px;
   position: absolute;
   top: 0%; /* Center vertically */
   left: 50%; /* Center horizontally */
@@ -245,7 +246,31 @@
   padding: 10px; /* Adjust padding for spacing */
   line-height: 1.2; /* Adjust line height */
   text-transform: uppercase; /* Capitalize text */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 20px; 
 }
+
+.tv {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  
+}
+
+.boxing {
+  width: 75px;
+  height: 75px;
+}
+
+.tv1 {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  
+}
+
 
 
 .rounds {
@@ -254,7 +279,9 @@
   padding: 0;
   letter-spacing: 1px; /* Slightly increase letter spacing */
   font-weight: bold;
+  margin-top: 10px;
   text-transform: uppercase; /* Capitalize text */
+  
 }
 
 .search-bar-container {
@@ -420,7 +447,7 @@
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
   top: 130px; 
-  right: 545px;
+  right: 640px;
   z-index: 10;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px); /* Apply blur to the background */
@@ -447,8 +474,8 @@
 
 .hint-bubble3 {
   position: absolute;
-  background-color: #fc5460; /* Bright yellow background */
-  color: black;
+  background-color: transparent; /* Bright yellow background */
+  color: #fc5460;
   padding: 15px 20px;
   border-radius: 15px;
   font-size: 14px;
@@ -456,10 +483,13 @@
   font-family: "Oswald", sans-serif;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
-  top: 140px; 
-  right: 650px;
+  top: 130px; 
+  right: 480px;
   z-index: 10;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px); /* Apply blur to the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border: 1px solid #fc5460; /* Subtle border for visibility */
 }
 
 .hint-bubble4 {
@@ -481,8 +511,8 @@
 
 .hint-bubble5 {
   position: absolute;
-  background-color: #fc5460; /* Bright yellow background */
-  color: black;
+  background-color: transparent; /* Bright yellow background */
+  color: #fc5460;
   padding: 15px 20px;
   border-radius: 15px;
   font-size: 14px;
@@ -491,9 +521,12 @@
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
   top: 130px; 
-  right: 610px;
+  right: 670px;
   z-index: 10;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px); /* Apply blur to the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border: 1px solid #fc5460; /* Subtle border for visibility */
 }
 
 .hint-bubble6 {
@@ -704,6 +737,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 
 .hint-description {
@@ -728,16 +762,6 @@
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Add drop shadow for better visibility */
 }
 
-.button-container {
-  position: relative;
-  top: 50px;
-  margin-left: 10px;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px; /* Space between buttons */
-}
 
 
 
@@ -1018,3 +1042,105 @@
   }
 }
 
+@media (min-width: 462px) and (max-width: 1920px) {
+
+  .overlay2 {
+    position: relative;
+    top: 420px;
+    transform: translate(-50%, -50%);
+    color: black;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-container {
+    position: relative;
+    left: -650px;
+    top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between buttons */
+  }
+
+  .suggestions-list2 {
+    position: absolute;
+    top: calc(100% + 150px); /* Position just below the search input */
+    left: 700px; /* Align with the input */
+    width: 96%; /* Match the width of the search input */
+    max-width: 440px; /* Ensure it stays within screen boundaries */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Add blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    border: 1px solid #fc5460;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px; /* Limit height */
+    overflow-y: auto; /* Enable scrolling if items exceed max height */
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hint-bubble1 {
+    position: absolute;
+    background-color: transparent; /* Bright yellow background */
+    color: #fc5460;
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    top: 120px; 
+    right: 500px;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px); /* Apply blur to the background */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid #fc5460; /* Subtle border for visibility */
+  }
+
+  .hint-bubble3 {
+    position: absolute;
+    background-color: transparent; /* Bright yellow background */
+    color: #fc5460;
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    top: 120px; 
+    right: 350px;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px); /* Apply blur to the background */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid #fc5460; /* Subtle border for visibility */
+  }
+
+  .hint-bubble5 {
+    position: absolute;
+    background-color: transparent; /* Bright yellow background */
+    color: #fc5460;
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    top: 120px; 
+    right: 530px;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px); /* Apply blur to the background */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid #fc5460; /* Subtle border for visibility */
+  }
+}

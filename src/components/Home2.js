@@ -5,6 +5,7 @@ import Section5 from './Section5'; // Section5 remains separate for round comple
 import { db } from '../firebase';
 import { collection, getDocs, doc, getDoc, setDoc, } from 'firebase/firestore';
 import './Section5.css';
+import boxing from '../assets/boxing.png';
 
 function Home2() {
     const [isSection5Visible, setIsSection5Visible] = useState(false);
@@ -212,8 +213,10 @@ const [showModal, setShowModal] = useState(false);
         <div id="section2" className="section" ref={section5Ref} >
         <div className="overlay2 home2" >
                 <p className="whosays">
-                  MOTIVDLE QUOTE <br />
-                  <span className="rounds" style={{ marginTop: '-10px' }}>ROUND 2</span></p>
+                  <img src={boxing} alt="MOTIVDLE" className="boxing" />
+                GUESS THE VOICE OF INSPIRATION 2 <br />
+                <img src={boxing} alt="MOTIVDLE" className="boxing" />
+                  </p>
                 <div className="quoteandclue">
                 <p className="quotey"><span className="thequote">{quote}</span></p>
                 <div className="button-container">

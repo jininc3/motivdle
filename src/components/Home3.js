@@ -3,6 +3,7 @@ import './Section2.css'; // Reuse Section2 styles for consistency
 import Section6 from './Section6'; // Use Section6 as the final section for this round
 import { db } from '../firebase';
 import { collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
+import tv from '../assets/tv.png';
 
 function Home3() {
     const [isSection6Visible, setIsSection6Visible] = useState(false);
@@ -24,7 +25,6 @@ function Home3() {
     const section6Ref = useRef(null);
     const [quoteInfluencer] = useState("");
     const [isFlashingFirstHint, setIsFlashingFirstHint] = useState(true);
- 
 const [backgroundStyle, setBackgroundStyle] = useState({});
 const [showModal, setShowModal] = useState(false);
 const [profile, setProfile] = useState(false);
@@ -206,9 +206,12 @@ const [profile, setProfile] = useState(false);
       
         <div id="section6" className="section" ref={section6Ref} >
         <div className="overlay2">
+          <div className="title-container">
                 <p className="whosays">
-                  MOTIVDLE MOVIE QUOTE<br />
-                  <span className="rounds" style={{ marginTop: '-10px' }}>(ROUND 3)</span></p>
+                  <img src={tv} alt="MOTIVDLE" className="tv" />
+                  GUESS THE MOVIE QUOTE <img src={tv} alt="MOTIVDLE" className="tv1" /> 
+                  </p>
+                </div>
                 <div className="quoteandclue">
                 <p className="quotey"><span className="thequote3">{quote}</span></p>
                 <div className="button-container">
